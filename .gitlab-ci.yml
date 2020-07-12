@@ -1,0 +1,17 @@
+image: node:latest
+# Run against merge requests.
+# https://docs.gitlab.com/ee/ci/merge_request_pipelines/
+workflow:
+  rules:
+    - if: $CI_MERGE_REQUEST_ID
+    - if: $CI_COMMIT_BRANCH == 'dev'
+before_script:
+  - yarn install
+lint_and_tests:
+  stage: test
+  script:
+    - yarn run fix
+    - git diff
+    - "git --no-pager diff -- . ':(exclude)yarn.lock' ':(exclude)yarn.lock'"
+    - "[[ -z $(git --no-pager diff -- . ':(exclude)yarn.lock' ':(exclude)yarn.lock') ]]"
+    - export CI=1 && yarn run test
