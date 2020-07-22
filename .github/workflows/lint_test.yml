@@ -14,8 +14,8 @@ jobs:
         with:
           node-version: '12'
       - name: Install Dependencies
-        run: npm ci
-      - name: Run Prettier Fix
-        run: npm run fix
+        run: yarn install
+      - name: Running Linting
+        run: yarn run lint
       - name: Running Tests
-        run: export CI=1 && npm run test
+        run: export CI=1 && yarn run test
