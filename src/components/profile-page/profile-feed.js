@@ -1,35 +1,20 @@
 import React from 'react';
-import profileImg from './imgs/profile.jpg';
+import ProfileNavbar from './navbar';
+import ProfileSidebar from './sidebar';
 
 const ProfileFeed = () => {
   return (
-    <nav className="flex justify-around items-center w-screen py-6 bg-darkP text-beige text-sm">
-      <h1 className="text-base">
-        <a href={'#'}>We Care</a>
-      </h1>
-      <ul className="flex">
-        <li className="mr-10">
-          <a href={'#'}>For you</a>
-        </li>
-        <li className="mr-10">
-          <a href={'#'}>Counseling</a>
-        </li>
-        <li>
-          <a href={'#'}>Connect Now</a>
-        </li>
-      </ul>
-      <div className="flex items-center">
-        <a href={'#'}>
-          <img
-            src={profileImg}
-            className="rounded-full h-10 w-10 object-cover"
-          ></img>
-        </a>
-        <p className="ml-2">
-          <a href={'#'}>Bruce Lee</a>
-        </p>
-      </div>
-    </nav>
+    <div className="h-screen bg-beige flex flex-col">
+      <ProfileNavbar />
+      <main className="flex h-full">
+        <ProfileSidebar />
+        <div className="w-4/5 h-full flex flex-col justify-center items-center">
+          <div className="bg-white w-64 h-40 rounded-md text-darkP">
+            hello world
+          </div>
+        </div>
+      </main>
+    </div>
   );
 };
 
