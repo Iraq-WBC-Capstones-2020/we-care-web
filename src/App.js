@@ -1,11 +1,8 @@
 import React from 'react';
+import ProfileFeed from './components/profile-page/profile-feed';
 
 function App() {
-  return (
-    <div>
-      <h1>We Care</h1>
-    </div>
-  );
+  return <ProfileFeed />;
 }
 
 export default App;
