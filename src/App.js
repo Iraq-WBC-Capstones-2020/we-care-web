@@ -1,9 +1,10 @@
 import React from 'react';
-import Navbar from './components/Navbar';
+import CounslerSignUp from './components/Counseling SignUp/Sign Up Page';
+
 function App() {
   return (
     <div>
-      <Navbar />
+      <CounslerSignUp />
       {/* <h1>We Care</h1> */}
     </div>
   );
