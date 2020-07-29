@@ -11,7 +11,7 @@ const Post = () => {
           <img className="rounded-full" src={profilePic} />
         </div>
         <div>
-          <h2 className="text-lg">Charles Davies</h2>
+          <h2 className="text-lg font-semibold">Charles Davies</h2>
           <p className="text-sm text-orangeP">5 minutes ago</p>
         </div>
       </div>
