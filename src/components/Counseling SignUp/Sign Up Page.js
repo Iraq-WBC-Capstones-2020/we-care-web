@@ -5,9 +5,9 @@ import Content from './Content';
 const CounslerSignUp = () => {
   return (
     <>
-      <div className="bg-darkBeige h-full w-full ">
+      <div className="bg-darkBeige sm:bg-darkBeige">
         <Navbar />
-        <div className="flex justify-around items-center h-screen">
+        <div className="sm:flex justify-around items-center h-screen">
           {/* this div is for splitting the other two*/}
           <Form></Form>
           <Content />
