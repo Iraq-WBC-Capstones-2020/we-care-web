@@ -6,13 +6,14 @@ import ProfileFeed from './profile-feed/profile-feed';
 import ProfileJournal from './profile-journal/profile-journal';
 import ProfileMessages from './profile-messages/profile-messages';
 import ProfileYourPosts from './profile-your-posts/profile-your-posts';
+import './scrollBar.css';
 
 const ProfilePage = () => {
   const [section, setSection] = useState('feed');
   return (
-    <div className="h-screen bg-beige flex flex-col">
+    <div className="h-screen bg-beige flex flex-col overflow-hidden">
       <ProfileNavbar />
-      <main className="flex h-full">
+      <main className="flex justify-between h-full">
         <ProfileSidebar setSection={setSection} section={section} />
         {switchToSection(section)}
       </main>

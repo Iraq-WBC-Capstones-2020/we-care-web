@@ -8,7 +8,7 @@ import dashtext from './imgs/dash.svg';
 
 const ProfileSidebar = ({ setSection, section }) => {
   return (
-    <div className="w-1/5 lg:w-2/12 bg-darkP flex flex-col justify-start text-beige text-center">
+    <div className="w-1/5 h-full lg:w-2/12 bg-darkP flex flex-col justify-start text-beige text-center">
       <div className="w-full mt-3">
         <img className="w-12 ml-8 mt-4" src={dashtext} />
         <ul className="flex flex-col text-sm mt-8">
