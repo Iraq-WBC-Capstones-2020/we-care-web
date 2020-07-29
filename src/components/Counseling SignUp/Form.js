@@ -4,9 +4,9 @@ function Form() {
   return (
     <>
       {/* placeholder-darkBeige if I want to change  */}
-      <div className="w-1/2 bg-white rounded md:flex md:justify-center mx-10">
+      <div className="w-1/3 sm:w-auto md:w-1/3 lg:w-1/3 xl:w-1/3 bg-white rounded md:flex md:justify-center ml-10">
         <form
-          className="w-full max-w-sm my-20 text-darkP"
+          className="w-full max-w-sm my-16 text-darkP"
           style={{ fontFamily: 'Roboto' }}
         >
           <div className="md:flex md:items-center mb-6">
