@@ -4,7 +4,7 @@ function Form() {
   return (
     <>
       {/* placeholder-darkBeige if I want to change  */}
-      <div className="w-1/2 bg-white rounded md:flex md:justify-center">
+      <div className="w-1/2 bg-white rounded md:flex md:justify-center mx-10">
         <form
           className="w-full max-w-sm my-20 text-darkP"
           style={{ fontFamily: 'Roboto' }}
@@ -20,7 +20,7 @@ function Form() {
                 className="border border-darkP rounded w-full py-2 px-4  leading-tight focus:outline-none focus:bg-white focus:border-darkBeige"
                 id="inline-full-name"
                 type="text"
-                placeholder="Your"
+                placeholder="Your Name"
               ></input>
             </div>
           </div>
@@ -82,7 +82,7 @@ function Form() {
             </div>
             <div className="md:w-3/4">
               <textarea
-                className="border border-darkP rounded w-full py-2 px-4 resize-none leading-tight focus:outline-none focus:bg-white focus:border-darkBeige"
+                className="border border-darkP rounded w-full py-4 px-4 resize-none leading-tight focus:outline-none focus:bg-white focus:border-darkBeige"
                 name="body"
                 placeholder="Type Your Comment"
               ></textarea>
