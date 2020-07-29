@@ -1,8 +1,8 @@
 import React from 'react';
-import ProfileFeed from './components/profile-page/profile-feed';
+import ProfilePage from './components/profile-page/profile-page.js';
 
 function App() {
-  return <ProfileFeed />;
+  return <ProfilePage />;
 }
 
 export default App;
