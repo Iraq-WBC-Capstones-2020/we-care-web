@@ -1,6 +1,7 @@
 import React from 'react';
 import ProfileNavbar from './navbar';
 import ProfileSidebar from './sidebar';
+import Post from './post';
 
 const ProfileFeed = () => {
   return (
@@ -9,9 +10,7 @@ const ProfileFeed = () => {
       <main className="flex h-full">
         <ProfileSidebar />
         <div className="w-4/5 h-full flex flex-col justify-center items-center">
-          <div className="bg-white w-64 h-40 rounded-md text-darkP">
-            hello world
-          </div>
+          <Post />
         </div>
       </main>
     </div>
