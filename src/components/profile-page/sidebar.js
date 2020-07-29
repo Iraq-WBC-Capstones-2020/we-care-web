@@ -6,13 +6,17 @@ import { BsChat } from 'react-icons/bs';
 import { BsPerson } from 'react-icons/bs';
 import dashtext from './imgs/dash.svg';
 
-const ProfileSidebar = ({ setSection }) => {
+const ProfileSidebar = ({ setSection, section }) => {
   return (
     <div className="w-1/5 lg:w-2/12 bg-darkP flex flex-col justify-start text-beige text-center">
       <div className="w-full mt-3">
         <img className="w-12 ml-8 mt-4" src={dashtext} />
         <ul className="flex flex-col text-sm mt-8">
-          <li className="text-orangeP border-l-4 border-orangeP py-4">
+          <li
+            className={`py-4 ${
+              section === 'feed' ? 'border-l-4 border-orangeP text-orangeP' : ''
+            }`}
+          >
             <a
               href={'#'}
               onClick={() => {
@@ -24,7 +28,13 @@ const ProfileSidebar = ({ setSection }) => {
               <p>Feed</p>
             </a>
           </li>
-          <li className="py-4">
+          <li
+            className={`py-4 ${
+              section === 'journal'
+                ? 'border-l-4 border-orangeP text-orangeP'
+                : ''
+            }`}
+          >
             <a
               href={'#'}
               onClick={() => {
@@ -36,7 +46,13 @@ const ProfileSidebar = ({ setSection }) => {
               <p>Journal</p>
             </a>
           </li>
-          <li className="py-4">
+          <li
+            className={`py-4 ${
+              section === 'messages'
+                ? 'border-l-4 border-orangeP text-orangeP'
+                : ''
+            }`}
+          >
             <a
               href={'#'}
               onClick={() => {
@@ -48,7 +64,13 @@ const ProfileSidebar = ({ setSection }) => {
               <p>Messages</p>
             </a>
           </li>
-          <li className="py-4">
+          <li
+            className={`py-4 ${
+              section === 'yourPosts'
+                ? 'border-l-4 border-orangeP text-orangeP'
+                : ''
+            }`}
+          >
             <a
               href={'#'}
               onClick={() => {
@@ -60,7 +82,13 @@ const ProfileSidebar = ({ setSection }) => {
               <p>Your Posts</p>
             </a>
           </li>
-          <li className="py-4">
+          <li
+            className={`py-4 ${
+              section === 'profile'
+                ? 'border-l-4 border-orangeP text-orangeP'
+                : ''
+            }`}
+          >
             <a
               href={'#'}
               onClick={() => {
@@ -79,14 +107,3 @@ const ProfileSidebar = ({ setSection }) => {
 };
 
 export default ProfileSidebar;
-
-// case 'feed':
-//   return <ProfileFeed />;
-// case 'journal':
-//   return <ProfileJournal />;
-// case 'messages':
-//   return <ProfileMessages />;
-// case 'yourPosts':
-//   return <ProfileYourPosts />;
-// case 'profile':
-//   return <Profile />;

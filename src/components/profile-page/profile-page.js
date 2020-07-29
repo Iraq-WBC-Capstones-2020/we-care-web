@@ -13,7 +13,7 @@ const ProfilePage = () => {
     <div className="h-screen bg-beige flex flex-col">
       <ProfileNavbar />
       <main className="flex h-full">
-        <ProfileSidebar setSection={setSection} />
+        <ProfileSidebar setSection={setSection} section={section} />
         {switchToSection(section)}
       </main>
     </div>
