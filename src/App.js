@@ -1,10 +1,19 @@
 import React from 'react';
-
+import './styles/main.css';
+import SignUp from './components/regiterUser/SignUp';
+import Navbar from './components/regiterUser/Navbar';
+import Login from './components/regiterUser/Login';
+import { Route, Switch } from 'react-router-dom';
 function App() {
   return (
-    <div>
-      <h1>We Care</h1>
-    </div>
+    <>
+      <Switch>
+        <Route path="/" exact component={SignUp} />
+        <Route path="/login" component={Login} />
+        <SignUp />
+        <Login />
+      </Switch>
+    </>
   );
 }
 
