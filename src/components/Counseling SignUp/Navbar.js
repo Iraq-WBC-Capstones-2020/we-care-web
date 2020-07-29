@@ -2,7 +2,7 @@ import React from 'react';
 const GeneralNavbar = () => {
   return (
     <>
-      <nav className="flex justify-around items-center w-screen py-6 bg-darkBeige text-darkP text-sm">
+      <nav className="flex justify-around items-center py-6 bg-darkBeige text-darkP text-sm">
         <h1 className="text-lg">
           <a href={'#'} style={{ fontFamily: 'Pacifico' }}>
             We Care
