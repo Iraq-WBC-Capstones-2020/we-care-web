@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
 import { FiSend } from 'react-icons/fi';
+import PropTypes from 'prop-types';
 
 const MessageTextarea = ({ messages, setMessages }) => {
   const messageInput = useRef('');
@@ -32,3 +33,8 @@ const MessageTextarea = ({ messages, setMessages }) => {
 };
 
 export default MessageTextarea;
+
+MessageTextarea.propTypes = {
+  messages: PropTypes.array.isRequired,
+  setMessages: PropTypes.func.isRequired,
+};

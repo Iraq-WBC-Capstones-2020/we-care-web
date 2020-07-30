@@ -5,7 +5,8 @@ import MessageTextarea from './message-textarea';
 
 const ProfileMessages = () => {
   const [currentMessageFrom, setCurrentMessageFrom] = useState('Harry Davies');
-  const [allMessages, setAllMessages] = useState(['Harry Davies', 'John Doe']);
+  const [allMessages] = useState(['Harry Davies', 'John Doe']);
+
   const [messages, setMessages] = useState([
     {
       from: 'Harry Davies',
@@ -27,7 +28,7 @@ const ProfileMessages = () => {
   return (
     <>
       <div className="w-4/5 h-full flex flex-col justify-start overflow-y-auto">
-        <Messages currentMessageFrom={currentMessageFrom} messages={messages} />
+        <Messages messages={messages} />
         <MessageTextarea messages={messages} setMessages={setMessages} />
       </div>
       <RightSidebar

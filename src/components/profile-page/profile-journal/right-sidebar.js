@@ -1,5 +1,6 @@
 import React from 'react';
-import { FiPlus, FiTarget } from 'react-icons/fi';
+import { FiPlus } from 'react-icons/fi';
+import PropTypes from 'prop-types';
 
 const RightSidebar = ({ Journals, setCurrentJournal, currentJournal }) => {
   return (
@@ -30,3 +31,9 @@ const RightSidebar = ({ Journals, setCurrentJournal, currentJournal }) => {
 };
 
 export default RightSidebar;
+
+RightSidebar.propTypes = {
+  Journals: PropTypes.array.isRequired,
+  setCurrentJournal: PropTypes.func.isRequired,
+  currentJournal: PropTypes.string.isRequired,
+};

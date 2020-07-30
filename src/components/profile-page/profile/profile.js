@@ -1,10 +1,15 @@
 import React from 'react';
+import ProfileAbout from './about';
+import RightSidebar from './right-sidebar';
 
 const Profile = () => {
   return (
-    <div className="w-4/5 h-full flex flex-col justify-between items-center">
-      Hello world! this is the profile section
-    </div>
+    <>
+      <div className="w-4/5 h-full flex flex-col justify-center items-center">
+        <ProfileAbout />
+      </div>
+      <RightSidebar />
+    </>
   );
 };
 

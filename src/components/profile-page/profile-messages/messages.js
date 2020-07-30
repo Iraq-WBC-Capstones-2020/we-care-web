@@ -1,7 +1,8 @@
 import React from 'react';
 import Message from './message';
+import PropTypes from 'prop-types';
 
-const Messages = ({ currentMessageFrom, messages }) => {
+const Messages = ({ messages }) => {
   return (
     <>
       {messages.some((message) => message.from === 'Harry Davies') ? ( // ToDo: think about how you can differentiate between who the messages are from and switching
@@ -24,3 +25,7 @@ const Messages = ({ currentMessageFrom, messages }) => {
 };
 
 export default Messages;
+
+Messages.propTypes = {
+  messages: PropTypes.array.isRequired,
+};

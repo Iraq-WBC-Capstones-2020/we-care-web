@@ -2,6 +2,7 @@ import React from 'react';
 import profilePic from '../imgs/profile.png';
 import { FaHeart } from 'react-icons/fa';
 import { MdReply } from 'react-icons/md';
+import PropTypes from 'prop-types';
 import moment from 'moment';
 
 const Post = ({ post }) => {
@@ -33,3 +34,7 @@ const Post = ({ post }) => {
 };
 
 export default Post;
+
+Post.propTypes = {
+  post: PropTypes.object.isRequired,
+};

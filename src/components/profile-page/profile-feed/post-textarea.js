@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
 import { FiSend } from 'react-icons/fi';
+import PropTypes from 'prop-types';
 
 const WritePostTextarea = ({ posts, setPosts }) => {
   const postInput = useRef('');
@@ -25,3 +26,10 @@ const WritePostTextarea = ({ posts, setPosts }) => {
 };
 
 export default WritePostTextarea;
+
+WritePostTextarea.propTypes = {
+  posts: PropTypes.array.isRequired,
+  setPosts: PropTypes.func.isRequired,
+};
+
+WritePostTextarea.defaultProps = {}; // useful for later: if you don't pass a prop but want to initialize a prop here with a value assigned.

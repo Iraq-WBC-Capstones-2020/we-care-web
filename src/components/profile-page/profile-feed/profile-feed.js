@@ -10,8 +10,8 @@ const ProfileFeed = () => {
     },
   ]);
   return (
-    <div className="w-full h-full flex flex-col justify-between items-center overflow-hidden">
-      <div className="w-full flex flex-col justify-center items-center overflow-y-auto">
+    <div className="w-full h-full flex flex-col justify-between items-center overflow-y-auto">
+      <div className="w-full flex flex-col justify-center items-center ">
         {posts &&
           posts.map((postObj, index) => <Post post={postObj} key={index} />)}
       </div>

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const Journal = ({ journal }) => {
   return (
@@ -10,3 +11,7 @@ const Journal = ({ journal }) => {
 };
 
 export default Journal;
+
+Journal.propTypes = {
+  journal: PropTypes.object.isRequired,
+};

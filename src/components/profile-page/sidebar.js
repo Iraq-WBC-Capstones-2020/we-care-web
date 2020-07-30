@@ -5,6 +5,7 @@ import { AiOutlineMail } from 'react-icons/ai';
 import { BsChat } from 'react-icons/bs';
 import { BsPerson } from 'react-icons/bs';
 import dashtext from './imgs/dash.svg';
+import PropTypes from 'prop-types';
 
 const ProfileSidebar = ({ setSection, section }) => {
   return (
@@ -107,3 +108,8 @@ const ProfileSidebar = ({ setSection, section }) => {
 };
 
 export default ProfileSidebar;
+
+ProfileSidebar.propTypes = {
+  setSection: PropTypes.func.isRequired,
+  section: PropTypes.string.isRequired,
+};

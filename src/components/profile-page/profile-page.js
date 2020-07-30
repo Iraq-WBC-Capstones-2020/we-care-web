@@ -10,10 +10,11 @@ import './scrollBar.css';
 
 const ProfilePage = () => {
   const [section, setSection] = useState('feed');
+
   return (
-    <div className="h-screen bg-beige flex flex-col overflow-y-auto overflow-x-hidden">
+    <div className="h-screen bg-beige flex flex-col">
       <ProfileNavbar />
-      <main className="flex justify-between h-full">
+      <main className="flex justify-between h-full overflow-y-auto overflow-x-hidden">
         <ProfileSidebar setSection={setSection} section={section} />
         {switchToSection(section)}
       </main>

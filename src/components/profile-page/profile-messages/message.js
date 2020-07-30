@@ -1,6 +1,7 @@
 import React from 'react';
 import profilePic from '../imgs/profile.png';
 import profilePic2 from '../imgs/profile2.png';
+import PropTypes from 'prop-types';
 import moment from 'moment';
 
 const Message = ({ message, classes }) => {
@@ -28,3 +29,8 @@ const Message = ({ message, classes }) => {
 };
 
 export default Message;
+
+Message.propTypes = {
+  message: PropTypes.object.isRequired,
+  classes: PropTypes.string.isRequired,
+};

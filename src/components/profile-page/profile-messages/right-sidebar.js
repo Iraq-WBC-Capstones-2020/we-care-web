@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const RightSidebar = ({
   allMessages,
@@ -32,3 +33,9 @@ const RightSidebar = ({
 };
 
 export default RightSidebar;
+
+RightSidebar.propTypes = {
+  allMessages: PropTypes.array.isRequired,
+  currentMessageFrom: PropTypes.string.isRequired,
+  setCurrentMessageFrom: PropTypes.func.isRequired,
+};

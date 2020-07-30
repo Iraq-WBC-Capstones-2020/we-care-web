@@ -6,7 +6,7 @@ const ProfileJournal = () => {
   const [currentJournal, setCurrentJournal] = useState(
     'So, I learned something today'
   );
-  const [Journals, setJournals] = useState([
+  const [Journals] = useState([
     {
       title: 'So, I learned something today',
       body:
