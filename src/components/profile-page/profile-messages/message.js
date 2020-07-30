@@ -23,7 +23,7 @@ const Message = ({ message, classes }) => {
           </p>
         </div>
       </div>
-      <div className="mb-3">{message.body}</div>
+      <div className="mb-3 text-sm">{message.body}</div>
     </div>
   );
 };

@@ -4,7 +4,7 @@ import ProfilePage from './components/profile-page/profile-page.js';
 import ChatroomPage from './components/chatroom-page/chatroom-page';
 
 function App() {
-  return <ChatroomPage />;
+  return <ProfilePage />;
 }
 
 export default App;

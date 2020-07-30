@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import Post from './post';
 import tree from '../imgs/tree.svg';
 import moment from 'moment';
+import { putPostsIntoGrid } from '../util';
 
 const ProfileYourPosts = () => {
   const [yourPosts] = useState([
@@ -46,6 +46,7 @@ const ProfileYourPosts = () => {
       ],
     },
   ]);
+
   return (
     <div className="w-4/5 h-full flex flex-col justify-center items-center text-darkP overflow-y-auto overflow-x-hidden">
       {yourPosts.length !== 0 ? (
@@ -66,28 +67,3 @@ const ProfileYourPosts = () => {
 };
 
 export default ProfileYourPosts;
-
-function putPostsIntoGrid(posts) {
-  let lastElIndex = posts.length - 1;
-  return posts.map((post, index) => {
-    if (index % 2 === 1) {
-      return (
-        <div className="flex justify-start items-center w-1/2" key={index}>
-          <Post post={post} classes={'ml-5'} />
-        </div>
-      );
-    } else if (index % 2 !== 1 && index === lastElIndex) {
-      return (
-        <div className="flex justify-center items-center w-1/2" key={index}>
-          <Post post={post} classes={''} />
-        </div>
-      );
-    } else {
-      return (
-        <div className="flex justify-end items-center w-1/2" key={index}>
-          <Post post={post} classes={'mr-5'} />
-        </div>
-      );
-    }
-  });
-}
