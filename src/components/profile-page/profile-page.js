@@ -6,7 +6,6 @@ import ProfileFeed from './profile-feed/profile-feed';
 import ProfileJournal from './profile-journal/profile-journal';
 import ProfileMessages from './profile-messages/profile-messages';
 import ProfileYourPosts from './profile-your-posts/profile-your-posts';
-import './scrollBar.css';
 
 const ProfilePage = () => {
   const [section, setSection] = useState('feed');
