@@ -1,6 +1,7 @@
 import React from 'react';
 import profileImg from './imgs/profile.png';
 import logo from './imgs/Logo.svg';
+import { Link } from 'react-router-dom';
 
 const ProfileNavbar = () => {
   return (
@@ -17,16 +18,16 @@ const ProfileNavbar = () => {
           <a href={'#'}>Counseling</a>
         </li>
       </ul>
-      <div className="flex items-center">
-        <a href={'#'}>
+      <div className="flex justify-center items-center">
+        <Link to="/profile">
           <img
             src={profileImg}
             className="rounded-full h-10 w-10 object-cover"
           ></img>
-        </a>
-        <p className="ml-2">
-          <a href={'#'}>Bruce Lee</a>
-        </p>
+        </Link>
+        <Link to="/profile">
+          <p className="ml-2">Bruce Lee</p>
+        </Link>
       </div>
     </nav>
   );

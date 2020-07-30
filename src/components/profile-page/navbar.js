@@ -1,6 +1,7 @@
 import React from 'react';
 import profileImg from './imgs/profile.png';
 import logo from './imgs/Logo.svg';
+import { Link } from 'react-router-dom';
 
 const ProfileNavbar = () => {
   return (
@@ -14,7 +15,7 @@ const ProfileNavbar = () => {
           <a href={'#'}>Counseling</a>
         </li>
         <li>
-          <a href={'#'}>Connect Now</a>
+          <Link to="/chatroom">Connect Now</Link>
         </li>
       </ul>
       <div className="flex items-center">
