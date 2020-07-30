@@ -24,6 +24,7 @@ const MessageTextarea = ({ messages, setMessages }) => {
               createdAt: moment().format('LT'),
             },
           ]);
+          messageInput.current.value = '';
         }}
         className="bg-darkP flex items-center text-beige rounded-sm px-6 py-1 absolute bottom-0 right-0 mr-4 mb-4 hover:text-orangeP"
       >
