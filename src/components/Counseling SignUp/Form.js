@@ -68,12 +68,14 @@ function Form() {
                 <input
                   className="cursor-pointer absolute block opacity-0 pin-r pin-t  placeholder-darkP"
                   type="file"
-                  name="vacancyImageFiles"
-                  multiple
+                  id="profile_pic"
+                  name="profile_pic"
+                  accept="image/*"
                 ></input>
               </div>
             </div>
           </div>
+
           <div className="md:flex md:items-center mb-6">
             <div className="md:w-2/5">
               <label className="block md:text-right mb-1 md:mb-0 pr-4">
@@ -147,7 +149,9 @@ function Form() {
                 <input
                   className="cursor-pointer absolute block opacity-0 pin-r pin-t"
                   type="file"
-                  name="vacancyImageFiles"
+                  id="certificate"
+                  name="certificate"
+                  accept=".pdf, .doc, .docx"
                   multiple
                 ></input>
               </div>
