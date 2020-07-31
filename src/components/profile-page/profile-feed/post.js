@@ -1,5 +1,5 @@
 import React from 'react';
-import profilePic from '../imgs/profile.png';
+import profilePic from '../imgs/profile.svg';
 import { FaHeart } from 'react-icons/fa';
 import { MdReply } from 'react-icons/md';
 import PropTypes from 'prop-types';

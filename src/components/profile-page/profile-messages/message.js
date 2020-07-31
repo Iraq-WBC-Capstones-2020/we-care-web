@@ -1,6 +1,6 @@
 import React from 'react';
-import profilePic from '../imgs/profile.png';
-import profilePic2 from '../imgs/profile2.png';
+import profilePic from '../imgs/profile.svg';
+import profilePic2 from '../imgs/profile2.svg';
 import PropTypes from 'prop-types';
 import moment from 'moment';
 

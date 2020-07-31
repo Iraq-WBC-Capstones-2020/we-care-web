@@ -2,7 +2,7 @@ import React from 'react';
 
 const ProfileAbout = () => {
   return (
-    <div className="bg-white w-2/5 rounded-md text-darkP flex flex-col p-8 text-center">
+    <div className="bg-white w-5/12 rounded-md text-darkP flex flex-col p-8 text-center">
       <h1 className="font-semibold text-2xl">About</h1>
       <div className="my-4">
         <h2 className="font-bold">Likes</h2>
