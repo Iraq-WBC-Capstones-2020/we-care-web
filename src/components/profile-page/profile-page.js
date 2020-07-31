@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import ProfileNavbar from './navbar';
 import ProfileSidebar from './sidebar';
 import Profile from './profile/profile';
@@ -6,34 +6,34 @@ import ProfileFeed from './profile-feed/profile-feed';
 import ProfileJournal from './profile-journal/profile-journal';
 import ProfileMessages from './profile-messages/profile-messages';
 import ProfileYourPosts from './profile-your-posts/profile-your-posts';
+import { Switch, Route } from 'react-router-dom';
 
 const ProfilePage = () => {
-  const [section, setSection] = useState('feed');
-
   return (
     <div className="h-screen bg-beige flex flex-col">
       <ProfileNavbar />
       <main className="flex justify-between h-full overflow-y-auto overflow-x-hidden">
-        <ProfileSidebar setSection={setSection} section={section} />
-        {switchToSection(section)}
+        <ProfileSidebar />
+        <Switch>
+          <Route path="/profile">
+            <Profile />
+          </Route>
+          <Route path="/feed">
+            <ProfileFeed />
+          </Route>
+          <Route path="/journal">
+            <ProfileJournal />
+          </Route>
+          <Route path="/messages">
+            <ProfileMessages />
+          </Route>
+          <Route path="/your-posts">
+            <ProfileYourPosts />
+          </Route>
+        </Switch>
       </main>
     </div>
   );
 };
 
 export default ProfilePage;
-
-const switchToSection = (section) => {
-  switch (section) {
-    case 'feed':
-      return <ProfileFeed />;
-    case 'journal':
-      return <ProfileJournal />;
-    case 'messages':
-      return <ProfileMessages />;
-    case 'yourPosts':
-      return <ProfileYourPosts />;
-    case 'profile':
-      return <Profile />;
-  }
-};

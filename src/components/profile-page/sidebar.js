@@ -1,13 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BsChatSquare } from 'react-icons/bs';
 import { BsPencil } from 'react-icons/bs';
 import { AiOutlineMail } from 'react-icons/ai';
 import { BsChat } from 'react-icons/bs';
 import { BsPerson } from 'react-icons/bs';
 import dashtext from './imgs/dash.svg';
-import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
-const ProfileSidebar = ({ setSection, section }) => {
+const ProfileSidebar = () => {
+  const [section, setSection] = useState('profile');
   return (
     <div className="sm:w-1/3 h-full lg:w-2/12 bg-darkP flex flex-col justify-start text-beige text-center">
       <div className="w-full mt-3">
@@ -18,16 +19,16 @@ const ProfileSidebar = ({ setSection, section }) => {
               section === 'feed' ? 'border-l-4 border-orangeP text-orangeP' : ''
             }`}
           >
-            <a
-              href={'#'}
+            <Link
+              to="/feed"
+              className="flex justify-start items-center"
               onClick={() => {
                 setSection('feed');
               }}
-              className="flex justify-start items-center"
             >
               <BsChatSquare className="ml-8 mr-4" />
-              <p>Feed</p>
-            </a>
+              Feed
+            </Link>
           </li>
           <li
             className={`py-4 ${
@@ -36,16 +37,16 @@ const ProfileSidebar = ({ setSection, section }) => {
                 : ''
             }`}
           >
-            <a
-              href={'#'}
+            <Link
+              to="/journal"
+              className="flex justify-start items-center"
               onClick={() => {
                 setSection('journal');
               }}
-              className="flex justify-start items-center"
             >
               <BsPencil className="ml-8 mr-4" />
-              <p>Journal</p>
-            </a>
+              Journal
+            </Link>
           </li>
           <li
             className={`py-4 ${
@@ -54,16 +55,16 @@ const ProfileSidebar = ({ setSection, section }) => {
                 : ''
             }`}
           >
-            <a
-              href={'#'}
+            <Link
+              to="/messages"
+              className="flex justify-start items-center"
               onClick={() => {
                 setSection('messages');
               }}
-              className="flex justify-start items-center"
             >
               <AiOutlineMail className="ml-8 mr-4" />
-              <p>Messages</p>
-            </a>
+              Messages
+            </Link>
           </li>
           <li
             className={`py-4 ${
@@ -72,16 +73,16 @@ const ProfileSidebar = ({ setSection, section }) => {
                 : ''
             }`}
           >
-            <a
-              href={'#'}
+            <Link
+              to="/your-posts"
+              className="flex justify-start items-center"
               onClick={() => {
                 setSection('yourPosts');
               }}
-              className="flex justify-start items-center"
             >
               <BsChat className="ml-8 mr-4" />
-              <p>Your Posts</p>
-            </a>
+              Your Posts
+            </Link>
           </li>
           <li
             className={`py-4 ${
@@ -90,16 +91,16 @@ const ProfileSidebar = ({ setSection, section }) => {
                 : ''
             }`}
           >
-            <a
-              href={'#'}
+            <Link
+              to="/profile"
+              className="flex justify-start items-center"
               onClick={() => {
                 setSection('profile');
               }}
-              className="flex justify-start items-center"
             >
               <BsPerson className="ml-8 mr-4 text-lg" />
-              <p>Profile</p>
-            </a>
+              Profile
+            </Link>
           </li>
         </ul>
       </div>
@@ -108,8 +109,3 @@ const ProfileSidebar = ({ setSection, section }) => {
 };
 
 export default ProfileSidebar;
-
-ProfileSidebar.propTypes = {
-  setSection: PropTypes.func.isRequired,
-  section: PropTypes.string.isRequired,
-};
