@@ -3,10 +3,9 @@ import React from 'react';
 function Form() {
   return (
     <>
-      {/* placeholder-darkBeige if I want to change  */}
-      <div className="w-1/3 sm:w-auto md:w-1/3 lg:w-1/3 xl:w-1/3 bg-white rounded md:flex md:justify-center ml-10">
+      <div className="w-3/4 sm:w-3/4 md:w-2/4 lg:w-1/3 xl:w-1/3 bg-white rounded md:flex md:justify-center mx-auto px-8 py-2 sm:mb-0">
         <form
-          className="w-full max-w-sm my-16 text-darkP"
+          className="w-full max-w-sm my-6 text-darkP "
           style={{ fontFamily: 'Roboto' }}
         >
           <div className="md:flex md:items-center mb-6">
@@ -31,7 +30,7 @@ function Form() {
               </label>
             </div>
             <div className="md:w-3/4">
-              <div className="md:flex md:items-center mb-6">
+              <div className="md:flex md:items-center mb-6 overflow-hidden relative">
                 <button className="border border-darkP rounded w-full pl-2 mt-5 leading-tight focus:outline-none focus:bg-white focus:border-darkBeige inline-flex items-center">
                   <span>Attach Here </span>
                   <svg
@@ -66,7 +65,7 @@ function Form() {
                   </svg>
                 </button>
                 <input
-                  className="cursor-pointer absolute block opacity-0 pin-r pin-t  placeholder-darkP"
+                  className="cursor-pointer absolute block opacity-0 pin-r pin-t"
                   type="file"
                   id="profile_pic"
                   name="profile_pic"
@@ -112,7 +111,7 @@ function Form() {
               </label>
             </div>
             <div className="md:w-3/4">
-              <div className="md:flex md:items-center mb-6">
+              <div className="md:flex md:items-center mb-6 overflow-hidden relative">
                 <button className="border border-darkP rounded w-full pl-2 mt-5 leading-tight focus:outline-none focus:bg-white focus:border-darkBeige inline-flex items-center">
                   <span>Attach Here </span>
                   <svg
@@ -151,7 +150,7 @@ function Form() {
                   type="file"
                   id="certificate"
                   name="certificate"
-                  accept=".pdf, .doc, .docx"
+                  accept=".pdf, .doc, .docx"
                   multiple
                 ></input>
               </div>
@@ -167,7 +166,7 @@ function Form() {
                 Cancel
               </button>
             </div>
-            <div className="md:w-2/5 mx-2">
+            <div className="md:w-2/5 mx-2 mt-2">
               <button
                 className="shadow bg-darkP w-full focus:shadow-outline focus:outline-none text-white py-2 px-4 rounded"
                 type="button"

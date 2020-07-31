@@ -7,9 +7,8 @@ const CounslerSignUp = () => {
     <>
       <div className="bg-darkBeige sm:bg-darkBeige">
         <Navbar />
-        <div className="sm:flex justify-around items-center h-screen">
-          {/* this div is for splitting the other two*/}
-          <Form></Form>
+        <div className="md:flex justify-evenly items-center md:h-screen">
+          <Form />
           <Content />
         </div>
       </div>
