@@ -3,31 +3,33 @@ import './../../styles/main.css';
 
 const Login = () => {
   return (
-    <section class="text-gray-700 body-font bg-pink-930">
-      <header class="text-gray-700 body-font">
-        <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
-          <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
-            <span class="ml-3 text-xl font-body text-pink-920">We Care</span>
+    <section className="text-gray-700 body-font bg-pink-930">
+      <header className="text-gray-700 body-font">
+        <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+          <a className="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
+            <span className="ml-3 text-xl font-body text-pink-920">
+              We Care
+            </span>
           </a>
-          <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
-            <a class="mr-5 text-pink-920" href="#">
+          <nav className="md:ml-auto flex flex-wrap items-center text-base justify-center">
+            <a className="mr-5 text-pink-920" href="#">
               For You
             </a>
-            <a class="mr-5 text-pink-920" href="#">
+            <a className="mr-5 text-pink-920" href="#">
               Counseling
             </a>
-            <a class="mr-5 text-pink-920" href="#">
+            <a className="mr-5 text-pink-920" href="#">
               Sign Up
             </a>
           </nav>
         </div>
       </header>
-      <div class="container  px-5 py-24 mx-auto flex flex-wrap items-center">
-        <div class="lg:w-3/5 md:w-1/2 md:pr-16 lg:pr-0 pr-0">
-          <h1 class="title-font lg:w-2/3 mx-auto leading-relaxed mb-6  font-bold text-4xl text-pink-920">
+      <div className="container  px-5 py-24 mx-auto flex flex-wrap items-center">
+        <div className="lg:w-3/5 md:w-1/2 md:pr-16 lg:pr-0 pr-0">
+          <h1 className="title-font lg:w-2/3 mx-auto leading-relaxed mb-6  font-bold text-4xl text-pink-920">
             Welcome Back
           </h1>
-          <p class="lg:w-2/3 mx-auto leading-relaxed text-base text-pink-920 ">
+          <p className="lg:w-2/3 mx-auto leading-relaxed text-base text-pink-920 ">
             We are very happy to have you as part of our community.
           </p>
           <svg
@@ -37,7 +39,7 @@ const Login = () => {
             width="288.222"
             px-6
             height="352"
-            class="ml-12"
+            className="ml-12"
             viewBox="0 0 786.29468 749.1971"
           >
             <title>friends</title>
@@ -267,25 +269,25 @@ const Login = () => {
             />
           </svg>
         </div>
-        <div class="lg:w-2/6 md:w-1/2 bg-pink-920 rounded-lg  mx-12 p-16 flex flex-col md:ml-auto w-full mt-10 md:mt-0">
-          <h2 class="text-white text-center text-4xl font-medium  title-font mb-5">
+        <div className="lg:w-2/6 md:w-1/2 bg-pink-920 rounded-lg  mx-12 p-16 flex flex-col md:ml-auto w-full mt-10 md:mt-0">
+          <h2 className="text-white text-center text-4xl font-medium  title-font mb-5">
             Sign in
           </h2>
           <input
-            class="bg-white rounded border border-gray-400 focus:outline-none focus:border-indigo-500 text-base px-4 py-2 mb-4"
+            className="bg-white rounded border border-gray-400 focus:outline-none focus:border-indigo-500 text-base px-4 py-2 mb-4"
             placeholder="Email"
             type="text"
           />
           <input
-            class="bg-white rounded border border-gray-400 focus:outline-none focus:border-indigo-500 text-base px-4 py-2 mb-4"
+            className="bg-white rounded border border-gray-400 focus:outline-none focus:border-indigo-500 text-base px-4 py-2 mb-4"
             placeholder="Password"
             type="email"
           />
-          <button class="text-pink-920 bg-pink-910 border-0 py-2 px-8 focus:outline-none  rounded text-lg">
+          <button className="text-pink-920 bg-pink-910 border-0 py-2 px-8 focus:outline-none  rounded text-lg">
             Sign in
           </button>
-          <p class="text-xs text-pink-930 mt-3">
-            Don't have an account yet ?
+          <p className="text-xs text-pink-930 mt-3">
+            Don&apos;t have an account yet ?
           </p>
         </div>
       </div>

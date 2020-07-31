@@ -4,19 +4,19 @@ import Navbar from './Navbar';
 
 const SignUp = () => {
   return (
-    <section class="text-gray-700 body-font bg-pink-920">
+    <section className="text-gray-700 body-font bg-pink-920">
       <Navbar />
-      <div class="container  px-5 py-24  flex flex-wrap items-center">
-        <div class="lg:w-3/5 md:w-1/2 md:pr-16 lg:pr-0 pr-0">
-          <h1 class="title-font lg:w-2/3 mx-auto leading-relaxed  font-bold mb-6 text-4xl text-pink-910">
+      <div className="container  px-5 py-24  flex flex-wrap items-center">
+        <div className="lg:w-3/5 md:w-1/2 md:pr-16 lg:pr-0 pr-0">
+          <h1 className="title-font lg:w-2/3 mx-auto leading-relaxed  font-bold mb-6 text-4xl text-pink-910">
             Join Our Community
           </h1>
-          <p class="lg:w-2/3 mx-auto leading-relaxed text-base text-pink-930 ">
+          <p className="lg:w-2/3 mx-auto leading-relaxed text-base text-pink-930 ">
             We care community will always be there for you. Whether you are
             going through something or you just want to connect with kind human
             beings.
           </p>
-          <div class="">
+          <div className="">
             <svg
               id="a7136578-9e51-4be6-bab0-c6e74466be7a"
               data-name="Layer 1"
@@ -24,7 +24,7 @@ const SignUp = () => {
               width="288.222"
               px-6
               height="352"
-              class="ml-12"
+              className="ml-12"
               viewBox="0 0 738.222 702"
             >
               <path
@@ -135,44 +135,47 @@ const SignUp = () => {
             </svg>
           </div>
         </div>
-        <div class="lg:w-2/6 md:w-1/2 bg-pink-910 rounded-lg mb-12 mx-12 p-10 flex flex-col md:ml-auto w-full mt-10 md:mt-0">
-          <h2 class="text-pink-920 text-center text-4xl font-sans font-bold title-font mb-5">
+        <div className="lg:w-2/6 md:w-1/2 bg-pink-910 rounded-lg mb-12 mx-4 p-10 flex flex-col md:ml-auto w-full mt-10 md:mt-0">
+          <h2 className="text-pink-920 text-center text-4xl font-sans font-bold title-font mb-5">
             Sign Up
           </h2>
           <input
-            class="bg-white rounded border border-gray-400 focus:outline-none focus:border-indigo-500 text-base px-4 py-2 mb-4"
+            className="bg-white rounded border border-gray-400 focus:outline-none focus:border-indigo-500 text-base px-4 py-2 mb-4"
             placeholder="Username"
             type="text"
           />
           <input
-            class="bg-white rounded border border-gray-400 focus:outline-none focus:border-indigo-500 text-base px-4 py-2 mb-4"
+            className="bg-white rounded border border-gray-400 focus:outline-none focus:border-indigo-500 text-base px-4 py-2 mb-4"
             placeholder="Email"
             type="text"
           />
           <input
-            class="bg-white rounded border border-gray-400 focus:outline-none focus:border-indigo-500 text-base px-4 py-2 mb-4"
+            className="bg-white rounded border border-gray-400 focus:outline-none focus:border-indigo-500 text-base px-4 py-2 mb-4"
             placeholder="Password"
             type="email"
           />
-          <div class="flex items-center justify-center w-full mb-12 mt-12">
-            <label for="toogleA" class="flex items-center cursor-pointer">
-              <div class="mr-3 text-pink-920 font-medium">Member</div>
-              <div class="relative">
-                <input id="toogleA" type="checkbox" class="hidden" />
+          <div className="flex items-center justify-center w-full mb-12 mt-12">
+            <label
+              htmlFor="toogleA"
+              className="flex·items-center·cursor-pointer"
+            >
+              <div className="mr-3 text-pink-920 font-medium">Member</div>
+              <div className="relative">
+                <input id="toogleA" type="checkbox" className="hidden" />
 
-                <div class="toggle__line w-10 h-4 bg-white rounded-full shadow-inner"></div>
-                <div class="toggle__dot absolute w-6 h-6 bg-pink-920 rounded-full shadow inset-y-0 left-0"></div>
+                <div className="toggle__line w-10 h-4 bg-white rounded-full shadow-inner"></div>
+                <div className="toggle__dot absolute w-6 h-6 bg-pink-920 rounded-full shadow inset-y-0 left-0"></div>
               </div>
-              <div class="ml-3 text-pink-920 font-medium">Therapist</div>
+              <div className="ml-3 text-pink-920 font-medium">Therapist</div>
             </label>
           </div>
 
-          <button class="text-pink-920 bg-white font-bold border-0 py-2 px-8 focus:outline-none  rounded text-lg">
+          <button className="text-pink-920 bg-white font-bold border-0 py-2 px-8 focus:outline-none  rounded text-lg">
             Sign Up
           </button>
-          <p class="text-xs text-pink-930 mt-3">
+          <p className="text-xs text-pink-930 mt-3">
             Already have an acount ?{' '}
-            <span class=" text-pink-920">
+            <span className=" text-pink-920">
               <a href="#">sign in</a>
             </span>
           </p>
