@@ -1,9 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import RightSidebar from './right-sidebar';
 import Messages from './messages';
 import MessageTextarea from './message-textarea';
 
 const ProfileMessages = () => {
+  useEffect(() => {
+    const textarea = document.getElementById('message-textarea');
+    textarea.scrollIntoView();
+  }, []);
   const [currentMessageFrom, setCurrentMessageFrom] = useState('Harry Davies');
   const [allMessages] = useState(['Harry Davies', 'John Doe']);
 

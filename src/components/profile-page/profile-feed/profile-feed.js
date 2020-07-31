@@ -1,9 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Post from './post';
 import WritePostTextarea from './post-textarea';
 
 const ProfileFeed = () => {
+  useEffect(() => {
+    const textarea = document.getElementById('post-textarea');
+    textarea.scrollIntoView();
+  }, []);
   const [posts, setPosts] = useState([
+    {
+      body:
+        'Rich in mystery across the centuries decipherment finite but unbounded Rig Veda globular star cluster.',
+    },
     {
       body:
         'Rich in mystery across the centuries decipherment finite but unbounded Rig Veda globular star cluster.',
