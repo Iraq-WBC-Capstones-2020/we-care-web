@@ -45,14 +45,34 @@ const ProfileYourPosts = () => {
         { createdAt: moment().format('MMM Do YY'), body: "that's cool" },
       ],
     },
+    {
+      createdAt: moment().format('MMM Do YY'),
+      body:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ultricies imperdiet porttitor.',
+      likes: 34,
+      numOfReplies: 1,
+      replies: [
+        { createdAt: moment().format('MMM Do YY'), body: "that's cool" },
+      ],
+    },
+    {
+      createdAt: moment().format('MMM Do YY'),
+      body:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ultricies imperdiet porttitor.',
+      likes: 34,
+      numOfReplies: 1,
+      replies: [
+        { createdAt: moment().format('MMM Do YY'), body: "that's cool" },
+      ],
+    },
   ]);
 
   return (
     <div className="w-4/5 h-full flex flex-col justify-center items-center text-darkP overflow-y-auto overflow-x-hidden">
       {yourPosts.length !== 0 ? (
         <>
-          <h1 className="text-2xl font-semibold mt-2 mb-10">Your Posts</h1>
-          <div className="flex flex-wrap justify-center items-center">
+          {/* <h1 className="text-2xl font-semibold mt-2 mb-10">Your Posts</h1> */}
+          <div className="flex flex-wrap justify-center items-center h-full overflow-y-auto overflow-x-hidden p-20">
             {putPostsIntoGrid(yourPosts)}
           </div>
         </>
