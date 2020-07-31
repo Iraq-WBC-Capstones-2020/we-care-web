@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 const Message = ({ message, classes }) => {
   return (
     <div
-      className={`bg-white w-5/12 rounded-md text-darkP flex flex-col p-5 my-4 ${classes}`}
+      className={`bg-white lg:w-7/12 xl:w-5/12 rounded-md text-darkP flex flex-col p-5 my-4 ${classes}`}
     >
       <div className="flex mb-3">
         <div>

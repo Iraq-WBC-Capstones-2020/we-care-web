@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 const MessageTextarea = ({ messages, setMessages }) => {
   const messageInput = useRef('');
   return (
-    <div className="w-4/6 text-darkP relative my-10 self-center">
+    <div className="lg:w-4/5 xl:w-4/6 text-darkP relative my-10 self-center">
       <h2 className="text-lg font-semibold">Leave a message</h2>
       <textarea
         ref={messageInput}

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 const RightSidebar = ({ Journals, setCurrentJournal, currentJournal }) => {
   return (
-    <div className="w-1/5 h-full lg:w-2/12 bg-darkP flex flex-col justify-center text-beige">
+    <div className="lg:w-1/5 h-full bg-darkP flex flex-col justify-center text-beige">
       <div className="w-full pl-8 pr-3">
         <h2 className="text-lg font-semibold">Journals</h2>
         <ul className="text-sm my-5">
