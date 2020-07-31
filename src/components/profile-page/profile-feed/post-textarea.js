@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 const WritePostTextarea = ({ posts, setPosts }) => {
   const postInput = useRef('');
   return (
-    <div className="w-1/2 text-darkP relative my-8">
+    <div className="lg:w-1/2 text-darkP relative my-8">
       <h2 className="text-lg font-semibold">Write a post</h2>
       <textarea
         ref={postInput}

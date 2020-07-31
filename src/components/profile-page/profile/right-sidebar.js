@@ -4,7 +4,7 @@ import { FiSmile } from 'react-icons/fi';
 
 const RightSidebar = () => {
   return (
-    <div className="w-1/5 h-full lg:w-2/12 bg-darkP flex flex-col justify-center text-beige">
+    <div className="lg:w-1/5 h-full bg-darkP flex flex-col justify-center text-beige">
       <div className="w-full self-center flex flex-col items-center">
         <div className="flex flex-col justify-center items-center mb-3">
           <img className="rounded-full w-24 mb-4" src={profilePic} />
