@@ -30,6 +30,10 @@ const ProfilePage = () => {
           <Route path="/your-posts">
             <ProfileYourPosts />
           </Route>
+          <Route path="/">
+            {/* temporary */}
+            <Profile />
+          </Route>
         </Switch>
       </main>
     </div>

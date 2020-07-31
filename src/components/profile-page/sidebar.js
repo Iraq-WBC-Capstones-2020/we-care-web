@@ -87,7 +87,7 @@ const ProfileSidebar = () => {
           </li>
           <li
             className={`py-4 ${
-              section === 'profile'
+              section === 'profile' || section === ''
                 ? 'border-l-4 border-orangeP text-orangeP'
                 : ''
             }`}
