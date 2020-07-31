@@ -8,18 +8,18 @@ import moment from 'moment';
 const Post = ({ post }) => {
   return (
     <div className="bg-white w-1/2 rounded-md text-darkP flex flex-col p-8 my-5">
-      <div className="flex mb-3">
+      <div className="flex">
         <div className="mr-4">
-          <img className="rounded-full" src={profilePic} />
+          <img className="rounded-full w-12" src={profilePic} />
         </div>
         <div>
-          <h2 className="text-lg font-semibold">Charles Davies</h2>
+          <h2 className="text-base font-semibold">Charles Davies</h2>
           <p className="text-sm text-orangeP">
             {moment().startOf('hour').fromNow()}
           </p>
         </div>
       </div>
-      <div className="mb-3">{post.body}</div>
+      <div className="my-4 text-sm">{post.body}</div>
       <div className="flex items-center justify-end text-xs font-semibold">
         <FaHeart className="mr-3" />
         <span>56</span>

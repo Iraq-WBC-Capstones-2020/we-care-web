@@ -7,8 +7,8 @@ const Post = ({ post, classes }) => {
     <div
       className={`bg-white w-1/2 rounded-md text-darkP flex flex-col lg:p-8 sm:p-6 my-4 ${classes}`}
     >
-      <h2 className="text-lg font-semibold mb-4">{post.createdAt}</h2>
-      <div className="mb-3">{post.body}</div>
+      <h2 className="text-base font-semibold">{post.createdAt}</h2>
+      <div className="my-4 text-sm">{post.body}</div>
       <div className="flex items-center justify-end text-xs font-semibold">
         <FaHeart className="mr-3" />
         <span className="mr-6">{post.likes}</span>

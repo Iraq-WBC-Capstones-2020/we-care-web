@@ -5,10 +5,11 @@ import { AiOutlineMail } from 'react-icons/ai';
 import { BsChat } from 'react-icons/bs';
 import { BsPerson } from 'react-icons/bs';
 import dashtext from './imgs/dash.svg';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 const ProfileSidebar = () => {
-  const [section, setSection] = useState('profile');
+  let location = useLocation();
+  const [section, setSection] = useState(`${location.pathname.slice(1)}`);
   return (
     <div className="sm:w-1/3 h-full lg:w-2/12 bg-darkP flex flex-col justify-start text-beige text-center">
       <div className="w-full mt-3">
@@ -68,7 +69,7 @@ const ProfileSidebar = () => {
           </li>
           <li
             className={`py-4 ${
-              section === 'yourPosts'
+              section === 'your-posts'
                 ? 'border-l-4 border-orangeP text-orangeP'
                 : ''
             }`}
@@ -77,7 +78,7 @@ const ProfileSidebar = () => {
               to="/your-posts"
               className="flex justify-start items-center"
               onClick={() => {
-                setSection('yourPosts');
+                setSection('your-posts');
               }}
             >
               <BsChat className="ml-8 mr-4" />
