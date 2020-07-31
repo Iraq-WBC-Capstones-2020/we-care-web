@@ -31,7 +31,7 @@ const ProfileMessages = () => {
   ]);
   return (
     <>
-      <div className="w-4/5 h-full flex flex-col justify-start overflow-y-auto">
+      <div className="lg:w-4/5 h-full flex flex-col justify-between overflow-y-auto">
         <Messages messages={messages} />
         <MessageTextarea messages={messages} setMessages={setMessages} />
       </div>

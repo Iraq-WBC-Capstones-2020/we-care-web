@@ -5,7 +5,7 @@ import RightSidebar from './right-sidebar';
 const Profile = () => {
   return (
     <>
-      <div className="w-4/5 h-full flex flex-col justify-center items-center">
+      <div className="lg:w-4/5 h-full flex flex-col justify-center items-center">
         <ProfileAbout />
       </div>
       <RightSidebar />

@@ -7,7 +7,7 @@ import moment from 'moment';
 
 const Post = ({ post }) => {
   return (
-    <div className="bg-white lg:w-1/2 rounded-md text-darkP flex flex-col p-8 my-8">
+    <div className="bg-white w-4/5 lg:w-1/2 rounded-md text-darkP flex flex-col p-8 my-8">
       <div className="flex">
         <div className="mr-4">
           <img className="rounded-full w-12" src={profilePic} />

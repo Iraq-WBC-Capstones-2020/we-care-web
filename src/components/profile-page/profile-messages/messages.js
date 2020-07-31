@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 const Messages = ({ messages }) => {
   return (
-    <div className="lg:w-4/5 xl:w-4/6 self-center flex flex-col">
+    <div className="w-5/6 lg:w-4/5 xl:w-4/6 self-center flex flex-col">
       {messages.some((message) => message.from === 'Harry Davies') ? ( // ToDo: think about how you can differentiate between who the messages are from and switching
         messages.map((message, index) =>
           message.from === 'Bruce Lee' ? (

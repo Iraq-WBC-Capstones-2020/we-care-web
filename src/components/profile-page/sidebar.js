@@ -10,96 +10,82 @@ import { Link, useLocation } from 'react-router-dom';
 const ProfileSidebar = () => {
   let location = useLocation();
   const [section, setSection] = useState(`${location.pathname.slice(1)}`);
+  const sectionIndicator =
+    'border-b-4 border-l-0 lg:border-l-4 lg:border-b-0 border-orangeP text-orangeP';
   return (
-    <div className="h-full lg:w-1/5 xl:w-2/12 bg-darkP flex flex-col justify-start text-beige text-center">
-      <div className="w-full mt-3">
-        <img className="w-12 ml-8 mt-4" src={dashtext} />
-        <ul className="flex flex-col text-sm mt-8">
-          <li
-            className={`py-4 ${
-              section === 'feed' ? 'border-l-4 border-orangeP text-orangeP' : ''
-            }`}
-          >
+    <div className="lg:h-full h-auto lg:w-1/5 xl:w-2/12 bg-darkP flex flex-col justify-start text-beige text-center">
+      <div className="w-full lg:mt-3">
+        <img className="w-12 ml-8 mt-4 lg:block hidden" src={dashtext} />
+        <ul className="flex lg:flex-col flex-row lg:justify-start justify-evenly text-sm lg:mt-8">
+          <li className={`py-4 ${section === 'feed' ? sectionIndicator : ''}`}>
             <Link
               to="/feed"
-              className="flex justify-start items-center"
+              className="flex lg:justify-start justify-center items-center"
               onClick={() => {
                 setSection('feed');
               }}
             >
-              <BsChatSquare className="ml-8 mr-4" />
+              <BsChatSquare className="lg:ml-8 mr-4" />
               Feed
             </Link>
           </li>
           <li
-            className={`py-4 ${
-              section === 'journal'
-                ? 'border-l-4 border-orangeP text-orangeP'
-                : ''
-            }`}
+            className={`py-4 ${section === 'journal' ? sectionIndicator : ''}`}
           >
             <Link
               to="/journal"
-              className="flex justify-start items-center"
+              className="flex lg:justify-start justify-center items-center"
               onClick={() => {
                 setSection('journal');
               }}
             >
-              <BsPencil className="ml-8 mr-4" />
+              <BsPencil className="lg:ml-8 mr-4" />
               Journal
             </Link>
           </li>
           <li
-            className={`py-4 ${
-              section === 'messages'
-                ? 'border-l-4 border-orangeP text-orangeP'
-                : ''
-            }`}
+            className={`py-4 ${section === 'messages' ? sectionIndicator : ''}`}
           >
             <Link
               to="/messages"
-              className="flex justify-start items-center"
+              className="flex lg:justify-start justify-center items-center"
               onClick={() => {
                 setSection('messages');
               }}
             >
-              <AiOutlineMail className="ml-8 mr-4" />
+              <AiOutlineMail className="lg:ml-8 mr-4" />
               Messages
             </Link>
           </li>
           <li
             className={`py-4 ${
-              section === 'your-posts'
-                ? 'border-l-4 border-orangeP text-orangeP'
-                : ''
+              section === 'your-posts' ? sectionIndicator : ''
             }`}
           >
             <Link
               to="/your-posts"
-              className="flex justify-start items-center"
+              className="flex lg:justify-start justify-center items-center"
               onClick={() => {
                 setSection('your-posts');
               }}
             >
-              <BsChat className="ml-8 mr-4" />
+              <BsChat className="lg:ml-8 mr-4" />
               Your Posts
             </Link>
           </li>
           <li
             className={`py-4 ${
-              section === 'profile' || section === ''
-                ? 'border-l-4 border-orangeP text-orangeP'
-                : ''
+              section === 'profile' || section === '' ? sectionIndicator : ''
             }`}
           >
             <Link
               to="/profile"
-              className="flex justify-start items-center"
+              className="flex lg:justify-start justify-center items-center"
               onClick={() => {
                 setSection('profile');
               }}
             >
-              <BsPerson className="ml-8 mr-4 text-lg" />
+              <BsPerson className="lg:ml-8 mr-4 text-lg" />
               Profile
             </Link>
           </li>

@@ -10,9 +10,9 @@ import { Switch, Route } from 'react-router-dom';
 
 const ProfilePage = () => {
   return (
-    <div className="h-screen bg-beige flex flex-col">
+    <div className="h-screen bg-beige flex flex-col relative">
       <ProfileNavbar />
-      <main className="flex justify-between h-full overflow-y-auto overflow-x-hidden">
+      <main className="flex lg:flex-row flex-col-reverse justify-between h-full overflow-y-auto overflow-x-hidden">
         <ProfileSidebar />
         <Switch>
           <Route path="/profile">

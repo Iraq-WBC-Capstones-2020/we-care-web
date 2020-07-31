@@ -1,13 +1,32 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FiPlus } from 'react-icons/fi';
 import PropTypes from 'prop-types';
+import { IoIosArrowDropup } from 'react-icons/io';
+import { IoIosArrowDropdown } from 'react-icons/io';
 
 const RightSidebar = ({ Journals, setCurrentJournal, currentJournal }) => {
+  const [journalsOpened, setJournalsOpened] = useState(false);
   return (
-    <div className="lg:w-1/5 h-full bg-darkP flex flex-col justify-center text-beige">
-      <div className="w-full pl-8 pr-3">
-        <h2 className="text-lg font-semibold">Journals</h2>
-        <ul className="text-sm my-5">
+    <div className="lg:w-1/5 lg:h-full bg-darkP flex flex-col justify-center text-beige">
+      <div className="w-full flex flex-col justify-center items-center">
+        <h2
+          className="text-lg font-semibold text-center lg:text-left cursor-pointer lg:mb-0 mb-4"
+          onClick={() => {
+            journalsOpened ? setJournalsOpened(false) : setJournalsOpened(true);
+          }}
+        >
+          Journals{' '}
+          {journalsOpened ? (
+            <IoIosArrowDropup className="inline text-2xl" />
+          ) : (
+            <IoIosArrowDropdown className="inline text-2xl" />
+          )}
+        </h2>
+        <ul
+          className={`text-sm my-4 flex flex-col justify-center items-center ${
+            journalsOpened ? 'block' : 'hidden'
+          } `}
+        >
           {Journals.map((journal, index) => {
             return (
               <li
@@ -15,7 +34,7 @@ const RightSidebar = ({ Journals, setCurrentJournal, currentJournal }) => {
                 onClick={(event) => {
                   setCurrentJournal(event.target.innerText);
                 }}
-                className={`my-3 cursor-pointer ${
+                className={`my-3 cursor-pointer self-start ${
                   journal.title === currentJournal ? 'text-orangeP' : ''
                 }`}
               >
@@ -23,8 +42,10 @@ const RightSidebar = ({ Journals, setCurrentJournal, currentJournal }) => {
               </li>
             );
           })}
+          <li className="self-start mt-4">
+            <FiPlus className="text-2xl" />
+          </li>
         </ul>
-        <FiPlus className="text-2xl" />
       </div>
     </div>
   );

@@ -20,7 +20,7 @@ const ProfileJournal = () => {
   ]);
   return (
     <>
-      <div className="w-4/5 h-full flex flex-col justify-center items-center">
+      <div className="lg:w-4/5 h-full flex flex-col justify-center items-center">
         {Journals.map((journal, index) => {
           if (journal.title === currentJournal) {
             return <Journal journal={journal} key={index} />;
