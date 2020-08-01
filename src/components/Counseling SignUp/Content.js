@@ -2,7 +2,7 @@ import React from 'react';
 function Content() {
   return (
     <>
-      <div className="w-1/2 sm:w-auto md:w-1/3 lg:w-1/3 xl:w-1/3 md:flex flex-col md:justify-center mx-16 mt-4">
+      <div className="w-1/2 sm:w-auto md:w-1/3 lg:w-1/3 xl:w-1/3 md:flex flex-col mx-10 mt-4">
         <div style={{ fontFamily: 'Roboto' }} className="">
           <h1 className="text-2xl lg:text-5xl text-white leading-relaxed font-semibold ">
             Be A Reason.
@@ -11,10 +11,10 @@ function Content() {
             A reason someone is smiling and alive.
           </h6>
         </div>
-        <div className="hidden md:block mr-20 ml-auto mt-10">
+        <div className="hidden md:block mr-20 ml-auto mt-10 ">
           <svg
             width="260"
-            height="455"
+            height="300"
             viewBox="0 0 260 455"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
