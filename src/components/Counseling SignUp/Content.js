@@ -1,5 +1,5 @@
 import React from 'react';
-function Content() {
+const Content = () => {
   return (
     <>
       <div className="w-1/2 sm:w-auto md:w-1/3 lg:w-1/3 xl:w-1/3 md:flex flex-col mx-10 mt-4">
@@ -36,6 +36,6 @@ function Content() {
       </div>
     </>
   );
-}
+};
 
 export default Content;
