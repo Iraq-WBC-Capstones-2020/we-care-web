@@ -3,9 +3,9 @@ import React from 'react';
 function Form() {
   return (
     <>
-      <div className="w-3/4 sm:w-3/4 md:w-2/4 lg:w-1/3 xl:w-1/3 bg-white rounded md:flex md:justify-center mx-auto px-8 py-2 sm:mb-0">
+      <div className="w-3/4 sm:w-2/4 md:w-2/4 lg:w-1/3 xl:w-1/4 bg-white rounded md:flex md:justify-center mx-auto px-8 pt-4 pb-3">
         <form
-          className="w-full max-w-sm my-6 text-darkP "
+          className="w-full max-w-sm text-darkP"
           style={{ fontFamily: 'Roboto' }}
         >
           <div className="md:flex md:items-center mb-6">

@@ -3,7 +3,7 @@ function Content() {
   return (
     <>
       <div className="w-1/2 sm:w-auto md:w-1/3 lg:w-1/3 xl:w-1/3 md:flex flex-col mx-10 mt-4">
-        <div style={{ fontFamily: 'Roboto' }} className="">
+        <div style={{ fontFamily: 'Roboto' }} className="mt-auto">
           <h1 className="text-2xl lg:text-5xl text-white leading-relaxed font-semibold ">
             Be A Reason.
           </h1>
