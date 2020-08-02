@@ -1,13 +1,23 @@
 import React from 'react';
-// import CounslerSignUp from './components/Counseling SignUp/Sign Up Page';
-import ForYou from './components/For You/ForYou';
+import './scrollBar.css';
+import ProfilePage from './components/profile-page/profile-page.js';
+import ChatroomPage from './components/chatroom-page/chatroom-page';
+import { Switch, Route } from 'react-router-dom';
+
 function App() {
   return (
-    <div>
-      <ForYou />
-      {/* <CounslerSignUp /> */}
-      {/* <h1>We Care</h1> */}
-    </div>
+    <Switch>
+      <Route path="/profile">
+        <ProfilePage />
+      </Route>
+      <Route path="/chatroom">
+        <ChatroomPage />
+      </Route>
+      <Route path="/">
+        {/* temporary */}
+        <ProfilePage />
+      </Route>
+    </Switch>
   );
 }
 
