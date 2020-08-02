@@ -6,8 +6,8 @@ const Quotes = () => {
   return (
     <>
       <div className="bg-beige flex flex-col">
-        <section className="text-darkP body-font">
-          <div className="container px-5 pt-2 py-20 mx-auto">
+        <section className="text-darkP">
+          <div className="container px-5 pt-2 py-32 mx-auto">
             <div
               className="flex flex-col w-full mb-20"
               style={{ fontFamily: 'Roboto' }}
