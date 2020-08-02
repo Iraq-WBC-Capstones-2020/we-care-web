@@ -7,12 +7,12 @@ const ForYouContent = () => {
         <div className="container px-5 py-24 mx-auto flex flex-wrap">
           <div className="flex flex-wrap my-auto lg:w-1/2 sm:w-2/3 content-start sm:pr-10">
             <div className="w-full">
-              <h1 className="mb-2 text-base md:text-3xl leading-relaxed font-semibold ">
+              <h1 className="mb-2 text-3xl md:text-5xl leading-relaxed font-semibold ">
                 For You
               </h1>
             </div>
             <div className="md:w-2/3 ">
-              <h2 className="font-medium text-sm sm:text-base md:text-xl">
+              <h2 className="font-medium text-sm md:text-xl">
                 Your motivational area, articles from the team and the
                 community.
               </h2>
