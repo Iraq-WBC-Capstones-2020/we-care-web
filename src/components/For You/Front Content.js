@@ -6,7 +6,7 @@ const ForYouContent = () => {
       <div className="bg-beige flex justify-between">
         <div
           style={{ fontFamily: 'Roboto' }}
-          className="text-darkP mx-auto w-1/2 md:mt-20"
+          className="text-darkP ml-32 mr-auto w-1/2 md:mt-20"
         >
           <h1 className="text-base md:text-3xl leading-relaxed font-semibold ">
             For You
