@@ -17,7 +17,7 @@ const Posts = () => {
             </a>
           </div>
           <div className="flex flex-col flex-wrap sm:-m-4 -mx-4 -mb-10 -mt-4 items-center">
-            <div className="p-4 w-2/3 md:mb-0 mb-6 flex flex-col text-center items-center bg-white rounded my-16">
+            <div className="p-4 w-2/3 md:mb-0 mb-6 flex flex-col text-center items-center bg-white rounded-lg my-16">
               <img
                 src={profileImg}
                 alt="profile"
@@ -35,7 +35,7 @@ const Posts = () => {
                 ></img>
               </div>
             </div>
-            <div className="p-4 w-2/3 md:mb-0 mb-6 flex flex-col text-center items-center bg-white rounded my-16">
+            <div className="p-4 w-2/3 md:mb-0 mb-6 flex flex-col text-center items-center bg-white rounded-lg my-16">
               <img
                 src={profileImg}
                 alt="profile"
@@ -48,7 +48,7 @@ const Posts = () => {
                 <p className="leading-relaxed text-base mb-4">lol.</p>
               </div>
             </div>
-            <div className="p-4 w-2/3 md:mb-0 mb-6 flex flex-col text-center items-center bg-white rounded my-16">
+            <div className="p-4 w-2/3 md:mb-0 mb-6 flex flex-col text-center items-center bg-white rounded-lg my-16">
               <img
                 src={Anna}
                 alt="Anna"
