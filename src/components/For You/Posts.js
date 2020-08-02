@@ -17,7 +17,7 @@ const Posts = () => {
             </a>
           </div>
           <div className="flex flex-col flex-wrap sm:-m-4 -mx-4 -mb-10 -mt-4 items-center">
-            <div className="p-4 md:w-2/3 md:mb-0 mb-6 flex flex-col text-center items-center bg-white rounded my-16">
+            <div className="p-4 w-2/3 md:mb-0 mb-6 flex flex-col text-center items-center bg-white rounded my-16">
               <img
                 src={profileImg}
                 alt="profile"
@@ -35,7 +35,7 @@ const Posts = () => {
                 ></img>
               </div>
             </div>
-            <div className="p-4 md:w-2/3 md:mb-0 mb-6 flex flex-col text-center items-center bg-white rounded my-16">
+            <div className="p-4 w-2/3 md:mb-0 mb-6 flex flex-col text-center items-center bg-white rounded my-16">
               <img
                 src={profileImg}
                 alt="profile"
@@ -45,14 +45,10 @@ const Posts = () => {
                 <h2 className="text-lg title-font font-medium mb-3">
                   The Catalyzer
                 </h2>
-                <p className="leading-relaxed text-base mb-4">
-                  Blue bottle crucifix vinyl post-ironic four dollar toast vegan
-                  taxidermy. Gastropub indxgo juice poutine, ramps microdosing
-                  banh mi pug VHS try-hard.
-                </p>
+                <p className="leading-relaxed text-base mb-4">lol.</p>
               </div>
             </div>
-            <div className="p-4 sm:w-2/3 md:mb-0 mb-6 flex flex-col text-center items-center bg-white rounded my-16">
+            <div className="p-4 w-2/3 md:mb-0 mb-6 flex flex-col text-center items-center bg-white rounded my-16">
               <img
                 src={Anna}
                 alt="Anna"
