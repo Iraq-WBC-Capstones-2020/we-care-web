@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 const Post = ({ post, classes }) => {
   return (
     <div
-      className={`bg-white lg:w-11/12 xl:w-3/4 rounded-md text-darkP flex flex-col p-8 my-4 ${classes}`}
+      className={`bg-white w-full md:w-11/12 xl:w-3/4 rounded-md text-darkP flex flex-col md:p-8 p-5 my-4 ${classes}`}
     >
       <h2 className="text-base font-semibold">{post.createdAt}</h2>
       <div className="my-4 text-sm">{post.body}</div>

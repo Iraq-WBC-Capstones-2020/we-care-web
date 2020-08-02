@@ -11,7 +11,7 @@ const Messages = ({ messages, setMessages }) => {
   }, []);
   return (
     <div
-      className="flex flex-col justify-between w-7/12 bg-beige m-5 rounded-lg relative overflow-y-auto overflow-x-hidden"
+      className="flex flex-col justify-between md:w-10/12 w-11/12 lg:w-7/12 bg-beige m-5 rounded-lg relative overflow-y-auto overflow-x-hidden"
       style={{ height: '90%' }}
     >
       <button className="focus:outline-none sticky top-0 ">

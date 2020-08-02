@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import RightSidebar from './right-sidebar';
 import Messages from './messages';
 import MessageTextarea from './message-textarea';
 
@@ -8,8 +7,6 @@ const ProfileMessages = () => {
     const textarea = document.getElementById('message-textarea');
     textarea.scrollIntoView();
   }, []);
-  const [currentMessageFrom, setCurrentMessageFrom] = useState('Harry Davies');
-  const [allMessages] = useState(['Harry Davies', 'John Doe']);
 
   const [messages, setMessages] = useState([
     {
@@ -35,11 +32,6 @@ const ProfileMessages = () => {
         <Messages messages={messages} />
         <MessageTextarea messages={messages} setMessages={setMessages} />
       </div>
-      <RightSidebar
-        allMessages={allMessages}
-        currentMessageFrom={currentMessageFrom}
-        setCurrentMessageFrom={setCurrentMessageFrom}
-      />
     </>
   );
 };

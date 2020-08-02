@@ -71,7 +71,7 @@ const ProfileYourPosts = () => {
     <div className="w-full h-full flex flex-col justify-center items-center text-darkP overflow-y-auto overflow-x-hidden">
       {yourPosts.length !== 0 ? (
         <>
-          <div className="flex flex-wrap justify-center items-center h-full overflow-y-auto overflow-x-hidden p-12 lg:p-20">
+          <div className="flex flex-wrap w-full justify-center items-center h-full overflow-y-auto overflow-x-hidden md:p-12 p-4 lg:p-20">
             {putPostsIntoGrid(yourPosts)}
           </div>
         </>

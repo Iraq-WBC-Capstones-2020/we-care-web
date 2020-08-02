@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import ProfileNavbar from './navbar';
+import Navbar from './navbar';
 import illustration from './imgs/chat-undraw.svg';
 import Messages from './chat-box';
 import './scrollBar.css';
@@ -32,9 +32,9 @@ const ChatroomPage = () => {
   ]);
   return (
     <div className="h-screen flex flex-col bg-darkP">
-      <ProfileNavbar />
-      <main className="flex justify-evenly items-center h-full w-screen overflow-hidden">
-        <img src={illustration} className="w-1/4" />
+      <Navbar />
+      <main className="flex lg:justify-evenly justify-center items-center h-full w-screen overflow-hidden">
+        <img src={illustration} className="w-1/4 hidden lg:inline-block" />
         <Messages messages={messages} setMessages={setMessages} />
       </main>
     </div>

@@ -4,24 +4,22 @@ import { FiSmile } from 'react-icons/fi';
 
 const RightSidebar = () => {
   return (
-    <div className="lg:w-1/5 h-20 lg:h-full bg-darkP flex flex-col justify-center text-beige">
-      <div className="w-full self-center justify-evenly flex lg:flex-col items-center">
-        <div className="flex lg:flex-col justify-center items-center">
-          <img className="rounded-full w-12 lg:w-24 lg:mb-4" src={profilePic} />
-          <h2 className="lg:text-lg text-base font-semibold lg:ml-0 ml-4">
-            Charles Davies
-          </h2>
-          <p className="text-sm hidden lg:block font-light">
+    <div className="lg:w-1/5 order-1 lg:order-2 w-11/12 md:w-3/5 lg:h-full lg:mt-0 mt-10 mb-5 lg:mb-0 lg:p-0 p-10 lg:bg-darkP bg-white flex flex-col justify-center lg:text-beige text-darkP lg:rounded-none rounded">
+      <div className="w-full h-auto self-center justify-evenly flex flex-col items-center">
+        <div className="flex flex-col justify-center items-center">
+          <img className="rounded-full w-24 mb-4" src={profilePic} />
+          <h2 className="text-lg font-semibold lg:ml-0 ml-4">Charles Davies</h2>
+          <p className="lg:text-sm md:text-base text-sm lg:font-light">
             Joined three years ago
           </p>
         </div>
-        <div className="border border-beige border-solid rounded-full py-2 lg:mt-10 w-32 text-sm flex items-center justify-center">
+        <div className="border lg:border-beige border-darkP border-solid rounded-full py-2 mt-10 w-32 text-sm flex items-center justify-center lg:font-normal font-medium">
           <FiSmile className="mr-3 text-xl" /> 34 friends
         </div>
-        <button className="text-orangeP border border-orangeP border-solid rounded py-2 lg:mt-10 w-32 text-sm">
+        <button className="text-orangeP border lg:border-orangeP border-darkP lg:bg-transparent bg-darkP border-solid rounded py-2 mt-10 w-32 text-sm">
           Change Avatar
         </button>
-        <button className="text-orangeP border border-orangeP border-solid rounded py-2 lg:mt-6 w-32 text-sm">
+        <button className="text-orangeP border lg:border-orangeP border-darkP lg:bg-transparent bg-darkP border-solid rounded py-2 mt-6 w-32 text-sm">
           Edit About
         </button>
       </div>

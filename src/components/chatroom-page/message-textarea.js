@@ -10,7 +10,7 @@ const MessageTextarea = ({ messages, setMessages }) => {
       <textarea
         ref={messageInput}
         id={'text-area'}
-        className="resize-none rounded-md text-darkP px-4 py-3 h-32 w-full mt-4"
+        className="resize-none rounded-md text-darkP px-4 py-3 h-32 w-full mt-4 md:text-base text-sm"
         placeholder="Start typing..."
       ></textarea>
       <button
@@ -28,9 +28,9 @@ const MessageTextarea = ({ messages, setMessages }) => {
           messageInput.current.value = '';
           messageInput.current.scrollIntoView();
         }}
-        className="bg-darkP flex items-center text-beige rounded-sm px-6 py-1 absolute bottom-0 right-0 mr-4 mb-4 hover:text-orangeP"
+        className="bg-darkP flex items-center text-beige rounded-sm md:px-6 px-3 py-1 absolute bottom-0 right-0 mr-4 mb-4 hover:text-orangeP"
       >
-        <p>Send</p>
+        <p className="md:text-base text-sm">Send</p>
         <FiSend className="ml-2" />
       </button>
     </div>

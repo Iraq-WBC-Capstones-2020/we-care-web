@@ -7,7 +7,7 @@ import moment from 'moment';
 const Message = ({ message, classes }) => {
   return (
     <div
-      className={`bg-white w-7/12 rounded-md text-darkP flex flex-col p-5 my-4 ${classes}`}
+      className={`bg-white w-11/12 md:w-7/12 rounded-md text-darkP flex flex-col p-5 my-4 ${classes}`}
     >
       <div className="flex mb-3">
         <div className="mr-4">
@@ -17,13 +17,13 @@ const Message = ({ message, classes }) => {
           />
         </div>
         <div>
-          <h2 className="text-base font-semibold">{message.from}</h2>
-          <p className="text-sm text-orangeP">
+          <h2 className="md:text-base text-sm font-semibold">{message.from}</h2>
+          <p className="md:text-sm text-xs text-orangeP">
             {moment().startOf('hour').fromNow()}
           </p>
         </div>
       </div>
-      <div className="mb-3 text-sm">{message.body}</div>
+      <div className="mb-3 md:text-sm text-xs">{message.body}</div>
     </div>
   );
 };

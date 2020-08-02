@@ -13,11 +13,15 @@ const ProfileSidebar = () => {
   const sectionIndicator =
     'border-b-4 border-l-0 lg:border-l-4 lg:border-b-0 border-orangeP text-orangeP';
   return (
-    <div className="lg:h-full h-auto lg:w-1/5 xl:w-2/12 bg-darkP flex flex-col justify-start text-beige text-center">
+    <div className="lg:h-full lg:w-1/5 xl:w-2/12 bg-darkP flex flex-col justify-start text-beige text-center">
       <div className="w-full lg:mt-3">
         <img className="w-12 ml-8 mt-4 lg:block hidden" src={dashtext} />
         <ul className="flex lg:flex-col flex-row lg:justify-start justify-evenly text-sm lg:mt-8">
-          <li className={`py-4 ${section === 'feed' ? sectionIndicator : ''}`}>
+          <li
+            className={`py-4 md:px-0 px-5 ${
+              section === 'feed' ? sectionIndicator : ''
+            }`}
+          >
             <Link
               to="/feed"
               className="flex lg:justify-start justify-center items-center"
@@ -25,12 +29,14 @@ const ProfileSidebar = () => {
                 setSection('feed');
               }}
             >
-              <BsChatSquare className="lg:ml-8 mr-4" />
-              Feed
+              <BsChatSquare className="lg:ml-8 md:mr-4" />
+              <p className="hidden md:block">Feed</p>
             </Link>
           </li>
           <li
-            className={`py-4 ${section === 'journal' ? sectionIndicator : ''}`}
+            className={`py-4 md:px-0 px-5 ${
+              section === 'journal' ? sectionIndicator : ''
+            }`}
           >
             <Link
               to="/journal"
@@ -39,12 +45,14 @@ const ProfileSidebar = () => {
                 setSection('journal');
               }}
             >
-              <BsPencil className="lg:ml-8 mr-4" />
-              Journal
+              <BsPencil className="lg:ml-8 md:mr-4" />
+              <p className="hidden md:block">Journals</p>
             </Link>
           </li>
           <li
-            className={`py-4 ${section === 'messages' ? sectionIndicator : ''}`}
+            className={`py-4 md:px-0 px-5 ${
+              section === 'messages' ? sectionIndicator : ''
+            }`}
           >
             <Link
               to="/messages"
@@ -53,12 +61,12 @@ const ProfileSidebar = () => {
                 setSection('messages');
               }}
             >
-              <AiOutlineMail className="lg:ml-8 mr-4" />
-              Messages
+              <AiOutlineMail className="lg:ml-8 md:mr-4" />
+              <p className="hidden md:block">Messages</p>
             </Link>
           </li>
           <li
-            className={`py-4 ${
+            className={`py-4 md:px-0 px-5 ${
               section === 'your-posts' ? sectionIndicator : ''
             }`}
           >
@@ -69,12 +77,12 @@ const ProfileSidebar = () => {
                 setSection('your-posts');
               }}
             >
-              <BsChat className="lg:ml-8 mr-4" />
-              Your Posts
+              <BsChat className="lg:ml-8 md:mr-4" />
+              <p className="hidden md:block">Your Posts</p>
             </Link>
           </li>
           <li
-            className={`py-4 ${
+            className={`py-4 md:px-0 px-5 ${
               section === 'profile' || section === '' ? sectionIndicator : ''
             }`}
           >
@@ -85,8 +93,8 @@ const ProfileSidebar = () => {
                 setSection('profile');
               }}
             >
-              <BsPerson className="lg:ml-8 mr-4 text-lg" />
-              Profile
+              <BsPerson className="lg:ml-8 md:mr-4 text-lg" />
+              <p className="hidden md:block">Profile</p>
             </Link>
           </li>
         </ul>

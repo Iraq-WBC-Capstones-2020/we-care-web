@@ -6,20 +6,29 @@ export function putPostsIntoGrid(posts) {
   return posts.map((post, index) => {
     if (index % 2 === 1) {
       return (
-        <div className="flex justify-start items-center w-1/2" key={index}>
-          <Post post={post} classes={'ml-5'} />
+        <div
+          className="flex justify-start items-center w-full md:w-1/2"
+          key={index}
+        >
+          <Post post={post} classes={'md:ml-5'} />
         </div>
       );
     } else if (index % 2 !== 1 && index === lastIndex) {
       return (
-        <div className="flex justify-center items-center w-1/2" key={index}>
+        <div
+          className="flex justify-center items-center w-full md:w-1/2"
+          key={index}
+        >
           <Post post={post} classes={''} />
         </div>
       );
     } else {
       return (
-        <div className="flex justify-end items-center w-1/2" key={index}>
-          <Post post={post} classes={'mr-5'} />
+        <div
+          className="flex justify-end items-center w-full md:w-1/2"
+          key={index}
+        >
+          <Post post={post} classes={'md:mr-5'} />
         </div>
       );
     }
