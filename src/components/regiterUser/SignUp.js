@@ -1,14 +1,14 @@
 import React from 'react';
-import './../../styles/main.css';
-import Navbar from './Navbar';
+import './../../assets/main.css';
+import Navbar from './navbar-signUp';
 
 const SignUp = () => {
   return (
-    <section className="text-gray-700 body-font bg-pink-920">
+    <section className="text-gray-700 body-font bg-darkP w-full h-screen overflow-hidden">
       <Navbar />
-      <div className="container  px-5 py-24  flex flex-wrap items-center">
-        <div className="lg:w-3/5 md:w-1/2 md:pr-16 lg:pr-0 pr-0">
-          <h1 className="title-font lg:w-2/3 mx-auto leading-relaxed  font-bold mb-6 text-4xl text-pink-910">
+      <div className="container px-5 py-24 flex flex-wrap items-center">
+        <div className="lg:w-3/5 md:w-1/2 md:pr-16 lg:pr-0 pr-0 text-beige">
+          <h1 className="title-font lg:w-2/3 mx-auto leading-relaxed  font-bold mb-6 text-4xl text-orangeP">
             Join Our Community
           </h1>
           <p className="lg:w-2/3 mx-auto leading-relaxed text-base text-pink-930 ">
@@ -135,7 +135,7 @@ const SignUp = () => {
             </svg>
           </div>
         </div>
-        <div className="lg:w-2/6 md:w-1/2 bg-pink-910 rounded-lg mb-12 mx-4 p-10 flex flex-col md:ml-auto w-full mt-10 md:mt-0">
+        <div className="lg:w-2/6 md:w-1/2 bg-orangeP rounded-lg mb-12 mx-4 p-10 flex flex-col md:ml-auto w-full mt-10 md:mt-0">
           <h2 className="text-pink-920 text-center text-4xl font-sans font-bold title-font mb-5">
             Sign Up
           </h2>
@@ -164,7 +164,7 @@ const SignUp = () => {
                 <input id="toogleA" type="checkbox" className="hidden" />
 
                 <div className="toggle__line w-10 h-4 bg-white rounded-full shadow-inner"></div>
-                <div className="toggle__dot absolute w-6 h-6 bg-pink-920 rounded-full shadow inset-y-0 left-0"></div>
+                <div className="toggle__dot absolute w-6 h-6 bg-darkP rounded-full shadow inset-y-0 left-0"></div>
               </div>
               <div className="ml-3 text-pink-920 font-medium">Therapist</div>
             </label>
@@ -173,9 +173,9 @@ const SignUp = () => {
           <button className="text-pink-920 bg-white font-bold border-0 py-2 px-8 focus:outline-none  rounded text-lg">
             Sign Up
           </button>
-          <p className="text-xs text-pink-930 mt-3">
+          <p className="text-xs text-darkP mt-3">
             Already have an acount ?{' '}
-            <span className=" text-pink-920">
+            <span>
               <a href="#">sign in</a>
             </span>
           </p>

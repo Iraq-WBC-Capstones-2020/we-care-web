@@ -10,7 +10,6 @@ module.exports = {
       md: '768px',
       lg: '1024px',
       xl: '1280px',
-      bt: '3000px',
     },
     colors: {
       transparent: 'transparent',
@@ -19,6 +18,10 @@ module.exports = {
       black: '#000',
       white: '#fff',
 
+      beige: '#eedad1',
+      darkBeige: '#d4b5b0',
+      orangeP: '#f69e7b',
+      darkP: '#383e56',
       gray: {
         100: '#f7fafc',
         200: '#edf2f7',
@@ -128,10 +131,6 @@ module.exports = {
         700: '#b83280',
         800: '#97266d',
         900: '#702459',
-        910: '#F69E7B',
-        920: '#383E56',
-        930: '#EEDAD1',
-        940: '#D4B5B0',
       },
     },
     spacing: {
@@ -241,10 +240,6 @@ module.exports = {
     },
     fontFamily: {
       sans: [
-        'system-ui',
-        '-apple-system',
-        'BlinkMacSystemFont',
-        '"Segoe UI"',
         'Roboto',
         '"Helvetica Neue"',
         'Arial',
@@ -255,14 +250,7 @@ module.exports = {
         '"Segoe UI Symbol"',
         '"Noto Color Emoji"',
       ],
-      serif: [
-        'Georgia',
-        'Cambria',
-        '"Times New Roman"',
-        'Times',
-        'serif',
-        'Roboto',
-      ],
+      serif: ['Georgia', 'Cambria', '"Times New Roman"', 'Times', 'serif'],
       mono: [
         'Menlo',
         'Monaco',
@@ -271,7 +259,6 @@ module.exports = {
         '"Courier New"',
         'monospace',
       ],
-      body: ['Pacifico', 'cursive'],
     },
     fontSize: {
       xs: '0.75rem',

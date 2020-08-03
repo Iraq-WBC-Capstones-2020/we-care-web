@@ -7,12 +7,14 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
+    "moment": "^2.27.0",
+    "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-router": "^5.2.0",
+    "react-icons": "^3.10.0",
+    "react-player": "^2.6.0",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "3.4.1",
-    "react-test-renderer": "^16.13.1"
+    "react-scripts": "3.4.1"
   },
   "scripts": {
     "start": "npm run watch:css && react-scripts start",
@@ -20,10 +22,10 @@
     "test": "react-scripts test",
     "test:nowatch": "react-scripts test --watchAll=false",
     "eject": "react-scripts eject",
-    "build:css": "postcss src/styles/tailwind.css -o src/styles/main.css",
-    "watch:css": "postcss src/styles/tailwind.css -o src/styles/main.css",
     "fix": "prettier --write src/. public/.",
-    "lint": "eslint src/**/*.js --max-warnings 5"
+    "lint": "eslint src/**/*.js --max-warnings 5",
+    "build:css": "postcss src/assets/tailwind.css -o src/assets/main.css",
+    "watch:css": "postcss src/assets/tailwind.css -o src/assets/main.css"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -42,13 +44,13 @@
   },
   "devDependencies": {
     "autoprefixer": "^9.8.5",
+    "babel-eslint": "^10.1.0",
     "eslint-config-airbnb": "^18.2.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-prettier": "^3.1.4",
-    "eslint-plugin-react": "^7.20.5",
+    "eslint-plugin-react": "^7.20.3",
     "postcss-cli": "^7.1.1",
     "prettier": "^2.0.5",
-    "regenerator-runtime": "^0.13.7",
     "tailwindcss": "^1.5.2"
   }
 }

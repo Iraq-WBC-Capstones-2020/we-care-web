@@ -1,35 +1,16 @@
 import React from 'react';
-import './../../styles/main.css';
+import Navbar from './navbar-signIn';
 
 const Login = () => {
   return (
-    <section className="text-gray-700 body-font bg-pink-930">
-      <header className="text-gray-700 body-font">
-        <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
-          <a className="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
-            <span className="ml-3 text-xl font-body text-pink-920">
-              We Care
-            </span>
-          </a>
-          <nav className="md:ml-auto flex flex-wrap items-center text-base justify-center">
-            <a className="mr-5 text-pink-920" href="#">
-              For You
-            </a>
-            <a className="mr-5 text-pink-920" href="#">
-              Counseling
-            </a>
-            <a className="mr-5 text-pink-920" href="#">
-              Sign Up
-            </a>
-          </nav>
-        </div>
-      </header>
+    <section className="text-gray-700 body-font bg-beige w-screen h-screen">
+      <Navbar />
       <div className="container  px-5 py-24 mx-auto flex flex-wrap items-center">
-        <div className="lg:w-3/5 md:w-1/2 md:pr-16 lg:pr-0 pr-0">
-          <h1 className="title-font lg:w-2/3 mx-auto leading-relaxed mb-6  font-bold text-4xl text-pink-920">
+        <div className="lg:w-3/5 md:w-1/2 md:pr-16 lg:pr-0 pr-0 text-darkP">
+          <h1 className="title-font lg:w-2/3 mx-auto leading-relaxed mb-6  font-bold text-4xl">
             Welcome Back
           </h1>
-          <p className="lg:w-2/3 mx-auto leading-relaxed text-base text-pink-920 ">
+          <p className="lg:w-2/3 mx-auto leading-relaxed text-lg pr-20">
             We are very happy to have you as part of our community.
           </p>
           <svg
@@ -269,7 +250,7 @@ const Login = () => {
             />
           </svg>
         </div>
-        <div className="lg:w-2/6 md:w-1/2 bg-pink-920 rounded-lg  mx-12 p-16 flex flex-col md:ml-auto w-full mt-10 md:mt-0">
+        <div className="lg:w-2/6 md:w-1/2 bg-darkP rounded-lg  mx-12 p-16 flex flex-col md:ml-auto w-full mt-10 md:mt-0">
           <h2 className="text-white text-center text-4xl font-medium  title-font mb-5">
             Sign in
           </h2>
@@ -283,10 +264,10 @@ const Login = () => {
             placeholder="Password"
             type="email"
           />
-          <button className="text-pink-920 bg-pink-910 border-0 py-2 px-8 focus:outline-none  rounded text-lg">
+          <button className="text-darkP bg-orangeP border-0 py-2 px-8 focus:outline-none  rounded text-lg">
             Sign in
           </button>
-          <p className="text-xs text-pink-930 mt-3">
+          <p className="text-xs text-beige mt-3">
             Don&apos;t have an account yet ?
           </p>
         </div>
