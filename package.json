@@ -11,7 +11,8 @@
     "react-dom": "^16.13.1",
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "3.4.1"
+    "react-scripts": "3.4.1",
+    "react-test-renderer": "^16.13.1"
   },
   "scripts": {
     "start": "npm run watch:css && react-scripts start",
@@ -47,6 +48,7 @@
     "eslint-plugin-react": "^7.20.5",
     "postcss-cli": "^7.1.1",
     "prettier": "^2.0.5",
+    "regenerator-runtime": "^0.13.7",
     "tailwindcss": "^1.5.2"
   }
 }

@@ -157,7 +157,7 @@ const SignUp = () => {
           <div className="flex items-center justify-center w-full mb-12 mt-12">
             <label
               htmlFor="toogleA"
-              className="flex·items-center·cursor-pointer"
+              className="flex items-center cursor-pointer"
             >
               <div className="mr-3 text-pink-920 font-medium">Member</div>
               <div className="relative">
