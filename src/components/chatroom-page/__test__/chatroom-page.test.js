@@ -16,11 +16,18 @@
 //   expect(total(5, 20)).toBe('$25');
 // });
 
-// import React from 'react';
-// import ChatroomPage from './../chatroom-page';
-// import renderer from 'react-test-renderer';
+import React from 'react';
+import ChatroomPage from './../chatroom-page';
+import renderer from 'react-test-renderer';
+import { BrowserRouter as Router } from 'react-router-dom';
 
-// it('renders correctly', () => {
-//   const component = renderer.create(<ChatroomPage />).toJSON();
-//   expect(component).toMatchSnapshot();
-// });
+test('renders correctly', () => {
+  const component = renderer
+    .create(
+      <Router>
+        <ChatroomPage />
+      </Router>
+    )
+    .toJSON();
+  expect(component).toMatchSnapshot();
+});
