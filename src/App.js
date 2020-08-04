@@ -26,7 +26,7 @@ function App() {
       <Route path="/login">
         <Login />
       </Route>
-      <Route path="/for-you">
+      <Route path="/foryou">
         <ForYou />
       </Route>
       <Route path="/">
