@@ -7,7 +7,7 @@ import ConselingPage from './components/Conseling-Page/Conseling-Page';
 
 function App() {
   return (
-        <ConselingPage/>
+    <ConselingPage />
     // <Switch>
     //   <Route path="/profile">
     //     <ProfilePage />
