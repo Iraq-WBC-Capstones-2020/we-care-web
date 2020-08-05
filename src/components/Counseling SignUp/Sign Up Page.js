@@ -1,13 +1,13 @@
 import React from 'react';
-import Navbar from './navbar';
+import Navbar from './Navbar';
 import Form from './Form';
 import Content from './Content';
 const CounslerSignUp = () => {
   return (
     <>
-      <div className="bg-darkBeige w-screen lg:h-screen overflow-hidden">
+      <div className="bg-darkBeige w-screen xl:h-screen overflow-hidden">
         <Navbar />
-        <div className="flex justify-evenly lg:flex-row flex-col items-center w-full mt-8">
+        <div className="flex xl:justify-evenly justify-between xl:flex-row flex-col xl:items-start items-center w-full h-full mt-4">
           <Form />
           <Content />
         </div>
