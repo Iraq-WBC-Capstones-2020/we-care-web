@@ -7,7 +7,7 @@ const CounslerSignUp = () => {
     <>
       <div className="bg-darkBeige w-screen xl:h-screen overflow-hidden">
         <Navbar />
-        <div className="flex xl:justify-evenly justify-between xl:flex-row flex-col xl:items-start items-center w-full h-full mt-4">
+        <div className="flex xl:justify-evenly justify-between xl:flex-row flex-col xl:items-start items-center w-full h-full mt-4 pb-6">
           <Form />
           <Content />
         </div>
