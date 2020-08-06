@@ -14,7 +14,7 @@ export default function ConselingPage() {
               />
             </span>
             <div className="md:flex lg:mt-6 ">
-              <span className="md:mt-2">
+              <span className="md:mt-0">
                 <div className="inline-block lg:text-base sm:text-xs sm:ml-6 lg:ml-8 lg:mr-8 font-sans flex-1 md:flex-1  md:text-sm md:ml-12 md:mr-4 sm:w-32 sm:mt-0rounded-lg lg:w-40 h-auto md:w-40 md:h-auto">
                   <h2 className="inline sm:ml-6  md:ml-0 sm:text-base lg:text-lg text-orangeP ">
                     Beth Murphy
@@ -27,8 +27,8 @@ export default function ConselingPage() {
                     Hi I’m Elisabeth Davis. I’m a certified therapist with 3
                     years of experience.
                   </h2>
-                  <h2 className="inline-block  sm:mt-2 sm:mb-8 sm:ml-5  sm:text-sm md:ml-0 lg:mb-8">
-                    <div className="inline-block lg:text-lg text-orangeP">
+                  <h2 className="inline-block sm:invisible lg:text-lg lg:mt-8 md:visible md:mt-3 lg:visible sm:mb-8 sm:ml-5  sm:text-sm md:ml-0 lg:mb-8">
+                    <div className="inline-block mr-3 md:text-xl lg:text-xl text-orangeP">
                       {'$10.00'}
                     </div>
                     Hourly
@@ -36,7 +36,7 @@ export default function ConselingPage() {
                 </div>
               </span>
               <span>
-                <div className="inline-block sm:text-xs lg:text-base lg:ml-0 lg:mr-4  md:flex-1 sm:ml-6 font-sans md:ml-0 md:mr-4 lg:flex-1 md:text-sm mt-2 rounded-lg lg:w-40 h-auto">
+                <div className="inline-block sm:mt-0 sm:text-xs lg:text-base lg:ml-0 lg:mr-4  md:flex-1 sm:ml-6 font-sans md:ml-0 md:mr-4 lg:flex-1 md:text-sm mt-2 rounded-lg lg:w-40 h-auto">
                   <div className="inline ">
                     <h1 className="mb-3 mr-4 sm:ml-4 sm:text-base lg:text-lg md:ml-2 text-orangeP">
                       Specialties:
@@ -74,7 +74,21 @@ export default function ConselingPage() {
                         Depression
                       </h2>
                     </li>
-                    <button className="sm:m-2 lg:mt-4 lg:text-lg sm:mb-4 sm:ml-10 md:m-8 md:mt-2  md:ml-2 bg-transparent  text-orangeP px-1 font-sans py-2 border border-orangeP rounded">
+
+                    <button className="md:ml-0 sm:invisible md:visible lg:visible lg:mt-8 lg:text-lg sm:mb-4  md:m-8 md:mt-2 bg-transparent lg:m-0 lg:mr-6  text-orangeP sm:px-0  font-sans md:px-1 md:py-1 lg:px-1 lg:py-1  border border-orangeP rounded">
+                      Book A Time
+                    </button>
+                  </div>
+                  <div className=" sm:mt-0 ">
+                    <div className="md:invisible lg:invisible">
+                      <h2 className="lg:invisible sm:mr-4 sm:mb-0 md:invisible sm:ml-12 sm:text-xs md:ml-0 lg:mb-8">
+                        <div className="  sm:text-base  text-orangeP">
+                          {'$10.00'}
+                        </div>
+                        Hourly
+                      </h2>
+                    </div>
+                    <button className=" sm:ml-10 sm:mr-8 sm:mt-4 sm:mb-4 text-orangeP sm:px-1 sm:py-1  font-sans border border-orangeP rounded">
                       Book A Time
                     </button>
                   </div>
