@@ -36,7 +36,7 @@ export default function Navbar() {
                 <Link to="/profile/feed">Profile</Link>
               </li>
               <li className="lg:mr-10 lg:my-0 lg:py-0 py-3 hover:text-orangeP lg:border-0 border-b border-beige">
-                <a href={'#'}>For you</a>
+                <Link to="/ForYou">For You</Link>
               </li>
               <li className="lg:mb-0 lg:py-0 py-3 hover:text-orangeP">
                 <a href={'#'}>Counseling</a>

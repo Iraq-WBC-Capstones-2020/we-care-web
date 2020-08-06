@@ -1,5 +1,6 @@
 import React from 'react';
 import Navbar from './navbar-signIn';
+import { Link } from 'react-router-dom';
 
 const Login = () => {
   return (
@@ -268,7 +269,10 @@ const Login = () => {
             Sign in
           </button>
           <p className="text-xs text-beige mt-3">
-            Don&apos;t have an account yet ?
+            Don&apos;t have an account yet?
+            <Link to="/signUp" className="text-base ml-2">
+              Sign Up
+            </Link>
           </p>
         </div>
       </div>
