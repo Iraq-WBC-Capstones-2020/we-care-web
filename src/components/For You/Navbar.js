@@ -21,7 +21,7 @@ export default function Navbar() {
               type="button"
               onClick={() => setNavbarOpen(!navbarOpen)}
             >
-              <FiMenu className="text-2xl text-beige" />
+              <FiMenu className="text-2xl text-darkP" />
             </button>
           </div>
           <div
