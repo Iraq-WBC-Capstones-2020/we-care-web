@@ -5,20 +5,20 @@ import { Link } from 'react-router-dom';
 import heart from './imgs/signup.svg';
 const SignUp = () => {
   return (
-    <section className="body-font bg-darkP sm:h-screen">
+    <section className="body-font bg-darkP">
       <Navbar />
-      <div className="container px-5 pt-8 pb-8 mx-auto flex flex-wrap sm:flex-no-wrap items-center">
-        <div className="lg:w-3/5 md:w-1/2 md:pr-16 lg:pr-0 pr-0 text-beige">
-          <h1 className="title-font lg:w-2/3 mx-auto leading-relaxed  font-bold mb-6 text-4xl text-orangeP">
+      <div className="container px-5 pt-4 flex flex-col lg:flex-row flex-wrap sm:flex-no-wrap items-center">
+        <div className="lg:w-3/5 md:w-1/2 md:pr-16 lg:pr-0 pr-0 text-beige ml-auto">
+          <h1 className="title-font lg:w-2/3  leading-relaxed font-bold text-4xl text-orangeP">
             Join Our Community
           </h1>
-          <p className="lg:w-2/3 mx-auto leading-relaxed text-base text-pink-930 ">
+          <p className="lg:w-2/3 leading-relaxed text-base text-pink-930 pt-1">
             We care community will always be there for you. Whether you are
             going through something or you just want to connect with kind human
             beings.
           </p>
           <img
-            className="w-2/3 sm:w-1/2 mx-auto my-8"
+            className="w-2/3 sm:w-1/2 my-10 hidden lg:block"
             src={heart}
             alt="girl with heart"
           ></img>
