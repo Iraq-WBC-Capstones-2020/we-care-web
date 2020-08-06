@@ -21,7 +21,7 @@ const Login = () => {
               alt="friends"
             ></img>
           </div>
-          <div className="bg-darkP rounded-lg xl:w-2/6 lg:w-1/2 md:w-8/12 w-11/12 flex justify-center py-20 xl:my-0 my-5 px-10">
+          <div className="bg-darkP rounded-lg xl:w-2/6 lg:w-1/2 md:w-8/12 w-11/12 flex justify-center py-20 xl:my-0 my-5 px-10 mx-auto">
             <form className="w-auto flex flex-col justify-evenly items-center">
               <h2 className="text-white text-center text-4xl font-medium  title-font mb-5">
                 Sign in
