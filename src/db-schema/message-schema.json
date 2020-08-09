@@ -1,0 +1,38 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Message",
+  "type": "object",
+  "description": "A Message sent by a user.",
+  "properties": {
+    "messageId": {
+      "type": "number",
+      "description": "Unique identifier of the message.",
+      "exclusiveMinimum": 0
+    },
+    "senderId": {
+      "type": "string",
+      "description": "The id of the sender of the message."
+    },
+    "recipientId": {
+      "type": "string",
+      "description": "The id of the user who receives the message."
+    },
+    "senderName": {
+      "type": "string",
+      "description": "the name of the sender"
+    },
+    "senderAvatar": {
+      "type": "string",
+      "description": "The sender's avatar url."
+    },
+    "createdAt": {
+      "type": "string",
+      "description": "The time the message has been sent",
+      "format": "date-time"
+    },
+    "body": {
+      "type": "string",
+      "description": "The body of the message"
+    }
+  }
+}

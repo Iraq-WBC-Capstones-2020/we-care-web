@@ -1,0 +1,44 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Post",
+  "type": "object",
+  "description": "A post created by a user.",
+  "properties": {
+    "postId": {
+      "type": "number",
+      "description": "Unique identifier of the post.",
+      "exclusiveMinimum": 0
+    },
+    "authorId": {
+      "type": "string",
+      "description": "The id of the author of the post."
+    },
+    "createdAt": {
+      "type": "string",
+      "description": "The time the post has been created",
+      "format": "date-time"
+    },
+    "authorName": {
+      "type": "string",
+      "description": "The name of the author of the post."
+    },
+    "authorAvatar": {
+      "type": "string",
+      "description": "The author's avatar url."
+    },
+    "body": {
+      "type": "string",
+      "description": "The body of the post"
+    },
+    "likes": {
+      "type": "number",
+      "description": "The number of the post's likes",
+      "default": 0
+    },
+    "InforYou": {
+      "type": "boolean",
+      "description": "Is the post in the for you page?",
+      "default": false
+    }
+  }
+}
