@@ -31,7 +31,7 @@ export default function Navbar() {
         >
           <ul className="flex flex-col justify-end lg:flex-row list-none text-center w-full">
             <li className="lg:mr-10 lg:mt-0 lg:py-0 py-3 lg:border-0 border-b border-darkP">
-              <a href={'/for-you'}>For you</a>
+              <Link to="/ForYou">For you</Link>
             </li>
             <li className="lg:mr-10 lg:my-0 lg:py-0 py-3 lg:border-0 border-b border-darkP">
               <a href={'#'}>Counseling</a>

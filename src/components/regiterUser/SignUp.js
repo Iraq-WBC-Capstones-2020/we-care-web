@@ -1,7 +1,7 @@
 import React from 'react';
 import './../../assets/main.css';
 import Navbar from './navbar-signUp';
-
+import { Link } from 'react-router-dom';
 const SignUp = () => {
   return (
     <section className="text-gray-700 body-font bg-darkP w-full h-screen overflow-hidden">
@@ -174,10 +174,10 @@ const SignUp = () => {
             Sign Up
           </button>
           <p className="text-xs text-darkP mt-3">
-            Already have an acount ?{' '}
-            <span>
-              <a href="#">sign in</a>
-            </span>
+            Already have an acount?
+            <Link to="/login" className="text-base ml-2">
+              Sign In
+            </Link>
           </p>
         </div>
       </div>
