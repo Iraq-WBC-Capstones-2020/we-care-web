@@ -9,7 +9,7 @@ const SignUp = () => {
     <section className="body-font bg-darkP h-screen overflow-hidden flex flex-col items-center justify-between">
       <Navbar />
       <div className="container flex flex-col xl:flex-row items-center h-full sm:justify-center w-full">
-        <div className="text-beige">
+        <div className="text-beige hidden md:block">
           <h1 className="title-font md:w-2/3 leading-relaxed font-bold text-2xl md:text-4xl mx-auto items-center text-orangeP">
             Join Our Community
           </h1>
