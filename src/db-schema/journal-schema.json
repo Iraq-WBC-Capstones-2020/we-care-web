@@ -1,0 +1,26 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Journal",
+  "type": "object",
+  "description": "A journal written by a user.",
+  "properties": {
+    "journalId": {
+      "type": "number",
+      "description": "Unique identifier of the journal.",
+      "exclusiveMinimum": 0
+    },
+    "createdAt": {
+      "type": "string",
+      "description": "The time the journal has been written",
+      "format": "date-time"
+    },
+    "title": {
+      "type": "string",
+      "description": "The title of the journal"
+    },
+    "body": {
+      "type": "string",
+      "description": "The body of the journal"
+    }
+  }
+}
