@@ -7,10 +7,14 @@ import SignUp from './components/regiterUser/SignUp';
 import Login from './components/regiterUser/Login';
 import ForYou from './components/For You/ForYou';
 import CounslerSignUp from './components/Counseling SignUp/Sign Up Page';
+import ConselingPage from './components/Conseling-Page/Conseling-Page';
 
 function App() {
   return (
     <Switch>
+      <Route exact path="/ConselingPage">
+        <ConselingPage />
+      </Route>
       <Route path="/profile">
         <ProfilePage />
       </Route>
