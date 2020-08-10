@@ -5,9 +5,9 @@ import Content from './Content';
 const CounslerSignUp = () => {
   return (
     <>
-      <div className="bg-darkBeige sm:bg-darkBeige">
+      <div className="bg-darkBeige w-screen xl:h-screen overflow-hidden">
         <Navbar />
-        <div className="md:flex justify-evenly items-baseline md:h-screen">
+        <div className="flex xl:justify-evenly justify-between xl:flex-row flex-col xl:items-start items-center  mt-4 pb-6">
           <Form />
           <Content />
         </div>

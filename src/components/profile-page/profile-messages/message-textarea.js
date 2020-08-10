@@ -1,8 +1,12 @@
 import React, { useRef } from 'react';
 import { FiSend } from 'react-icons/fi';
-import PropTypes from 'prop-types';
+import { useSelector, useDispatch } from 'react-redux';
+import { setMessages } from '../../../redux/actions';
 
-const MessageTextarea = ({ messages, setMessages }) => {
+const MessageTextarea = () => {
+  const messagesList = useSelector((state) => state.messagesList);
+  const dispatch = useDispatch();
+
   const messageInput = useRef('');
   return (
     <div className="w-5/6 lg:w-4/5 xl:w-4/6 text-darkP relative my-10 self-center">
@@ -15,14 +19,17 @@ const MessageTextarea = ({ messages, setMessages }) => {
       ></textarea>
       <button
         onClick={() => {
-          setMessages([
-            ...messages,
-            {
-              from: 'Bruce Lee',
-              to: 'Harry Davies',
-              body: messageInput.current.value,
-            },
-          ]);
+          dispatch(
+            setMessages([
+              ...messagesList,
+              {
+                from: 'Bruce Lee',
+                to: 'Harry Davies',
+                body: messageInput.current.value,
+              },
+            ])
+          );
+
           messageInput.current.value = '';
           messageInput.current.scrollIntoView();
         }}
@@ -36,8 +43,3 @@ const MessageTextarea = ({ messages, setMessages }) => {
 };
 
 export default MessageTextarea;
-
-MessageTextarea.propTypes = {
-  messages: PropTypes.array.isRequired,
-  setMessages: PropTypes.func.isRequired,
-};
