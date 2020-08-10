@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 export default function Navbar() {
   const [navbarOpen, setNavbarOpen] = React.useState(false);
   return (
-    <nav className="relative flex flex-wrap items-center justify-between px-2 lg:py-6 py-4 navbar-expand-lg bg-transparent text-darkP text-sm">
+    <nav className="w-full relative flex flex-wrap items-center justify-between px-2 lg:py-6 py-4 navbar-expand-lg bg-transparent text-darkP text-sm">
       <div className="container px-4 mx-auto flex flex-wrap items-center justify-between">
         <div className="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
           <img
@@ -31,7 +31,7 @@ export default function Navbar() {
         >
           <ul className="flex flex-col justify-end lg:flex-row list-none text-center w-full">
             <li className="lg:mr-10 lg:mt-0 lg:py-0 py-3 lg:border-0 border-b border-darkP">
-              <a href={'/for-you'}>For you</a>
+              <Link to="/ForYou">For you</Link>
             </li>
             <li className="lg:mr-10 lg:my-0 lg:py-0 py-3 lg:border-0 border-b border-darkP">
               <a href={'#'}>Counseling</a>
