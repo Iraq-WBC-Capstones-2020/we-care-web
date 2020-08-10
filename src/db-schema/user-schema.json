@@ -1,0 +1,81 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "User",
+  "type": "object",
+  "description": "An object consisting of user's data in the app.",
+  "properties": {
+    "userId": {
+      "type": "number",
+      "description": "unique identifier of the user.",
+      "exclusiveMinimum": 0
+    },
+    "handler": {
+      "type": "string",
+      "description": "The user's username."
+    },
+    "avatar": {
+      "type": "string",
+      "description": "The user's profile picture url."
+    },
+    "dateJoined": {
+      "type": "string",
+      "description": "The date the user has joined",
+      "format": "date"
+    },
+    "friends": {
+      "type": "array",
+      "description": "A list of the user's friends",
+      "default": []
+    },
+    "about": {
+      "type": "object",
+      "description": "The information from the user's about section",
+      "properties": {
+        "likes": {
+          "type": "string",
+          "description": "What the user likes"
+        },
+        "dislikes": {
+          "type": "string",
+          "description": "What the user dislikes"
+        },
+        "favouriteMovies": {
+          "type": "string",
+          "description": "The user's favourite movies"
+        },
+        "favouriteSongs": {
+          "type": "string",
+          "description": "The user's favourite songs"
+        }
+      }
+    },
+    "isTherapist": {
+      "type": "boolean",
+      "description": "Is the user a therapist?"
+    },
+    "fullName": {
+      "type": "string",
+      "description": "The therapist's full name."
+    },
+    "profilePicture": {
+      "type": "string",
+      "description": "The therapist's profile picture url."
+    },
+    "expertise": {
+      "type": "array",
+      "description": "A list of the therapist's areas of expertise"
+    },
+    "therapistBio": {
+      "type": "string",
+      "description": "The bio/about of the therapist"
+    },
+    "certificate": {
+      "type": "string",
+      "description": "The therapist's certificate document url"
+    },
+    "cost": {
+      "type": "number",
+      "description": "How much the therapy session will cost"
+    }
+  }
+}
