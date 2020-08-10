@@ -4,16 +4,19 @@ import { BsPencil } from 'react-icons/bs';
 import { AiOutlineMail } from 'react-icons/ai';
 import { BsChat } from 'react-icons/bs';
 import { BsPerson } from 'react-icons/bs';
+import { MdExitToApp } from 'react-icons/md';
 import dashtext from './imgs/dash.svg';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useHistory } from 'react-router-dom';
+import firebase from './../../firebase/firebaseConfig';
 
 const ProfileSidebar = () => {
+  let history = useHistory();
   let location = useLocation();
   const [section, setSection] = useState(`${location.pathname.slice(1)}`);
   const sectionIndicator =
     'border-b-4 border-l-0 lg:border-l-4 lg:border-b-0 border-orangeP text-orangeP';
   return (
-    <div className="lg:h-full lg:w-1/5 xl:w-2/12 bg-darkP flex flex-col justify-start text-beige text-center">
+    <div className="lg:h-full lg:w-1/5 xl:w-2/12 bg-darkP flex flex-col justify-between text-beige text-center">
       <div className="w-full lg:mt-3">
         <img className="w-12 ml-8 mt-4 lg:block hidden" src={dashtext} />
         <ul className="flex lg:flex-col flex-row lg:justify-start justify-evenly text-sm lg:mt-8">
@@ -99,8 +102,17 @@ const ProfileSidebar = () => {
           </li>
         </ul>
       </div>
+      <div onClick={logout} className="flex flex-row">
+        <MdExitToApp />
+        <p>Sign out</p>
+      </div>
     </div>
   );
+
+  async function logout() {
+    await firebase.logout();
+    history.push('/');
+  }
 };
 
 export default ProfileSidebar;

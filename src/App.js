@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './scrollBar.css';
 import ProfilePage from './components/profile-page/profile-page.js';
 import ChatroomPage from './components/chatroom-page/chatroom-page';
@@ -7,9 +7,18 @@ import SignUp from './components/regiterUser/SignUp';
 import Login from './components/regiterUser/Login';
 import ForYou from './components/For You/ForYou';
 import CounslerSignUp from './components/Counseling SignUp/Sign Up Page';
+import firebase from './firebase/firebaseConfig';
 
 function App() {
-  return (
+  const [firebaseInitialized, setFirebaseInitialized] = useState(false);
+
+  useEffect(() => {
+    firebase.isInitialized().then((val) => {
+      setFirebaseInitialized(val);
+    });
+  }, []);
+
+  return firebaseInitialized !== false ? (
     <Switch>
       <Route path="/profile">
         <ProfilePage />
@@ -31,9 +40,11 @@ function App() {
       </Route>
       <Route path="/">
         {/* temporary */}
-        <ProfilePage />
+        <SignUp />
       </Route>
     </Switch>
+  ) : (
+    <div id="loader">Loading...</div>
   );
 }
 

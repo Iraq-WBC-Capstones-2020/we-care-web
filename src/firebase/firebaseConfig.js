@@ -1,7 +1,8 @@
-import * as firebase from 'firebase/app';
+import * as app from 'firebase/app';
 
 import 'firebase/auth';
 import 'firebase/firestore';
+import 'firebase/storage';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyCqOIt-4gb733slNm5Zy65GcmSESdXkd7Q',
@@ -14,9 +15,76 @@ const firebaseConfig = {
   measurementId: 'G-0869G1DRJ1',
 };
 
-firebase.initializeApp(firebaseConfig);
+class Firebase {
+  constructor(picUrl) {
+    app.initializeApp(firebaseConfig);
+    this.auth = app.auth();
+    this.db = app.firestore();
+    this.storage = app.storage();
+    this.storageRef = this.storage.ref();
+  }
 
-const db = firebase.firestore();
-const auth = firebase.auth();
+  async getAvatarUrl() {
+    const picUrl = await this.storageRef
+      .child('images/profilePic.svg')
+      .getDownloadURL();
+    return picUrl;
+  }
 
-export { db, auth };
+  login(email, password) {
+    return this.auth.signInWithEmailAndPassword(email, password);
+  }
+
+  logout() {
+    this.auth.signOut();
+  }
+
+  async register(username, email, password) {
+    await this.auth.createUserWithEmailAndPassword(email, password);
+    return this.auth.currentUser.updateProfile({
+      displayName: username,
+      // photoURL: this.storageRef.child('images/profilePic.svg'),
+    });
+  }
+
+  addUser(username) {
+    if (!this.auth.currentUser) {
+      return alert('not authorized');
+    }
+    return this.db
+      .collection('users')
+      .doc(`${this.auth.currentUser.uid}`)
+      .set({
+        handler: username,
+        dateJoined: app.firestore.Timestamp.now(),
+        friends: [],
+        about: {
+          likes: '',
+          dislikes: '',
+          favouriteMovies: '',
+          favouriteSongs: '',
+        },
+        // isTherapist: isTherapist,
+      });
+  }
+
+  isInitialized() {
+    return new Promise((resolve) => {
+      this.auth.onAuthStateChanged(resolve);
+    });
+  }
+
+  getCurrentUsername() {
+    return this.auth.currentUser && this.auth.currentUser.displayName;
+  }
+
+  async getCurrentUser() {
+    const user = await this.db
+      .collection('users')
+      .doc(`${this.auth.currentUser.uid}`)
+      .get();
+    return user;
+  }
+}
+
+export default new Firebase();

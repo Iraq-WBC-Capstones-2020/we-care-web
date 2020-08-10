@@ -1,14 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './../../assets/main.css';
 import Navbar from './navbar-signUp';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import heart from './imgs/signup.svg';
 import './toggleStyle.css';
+import firebase from './../../firebase/firebaseConfig';
+
 const SignUp = () => {
+  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  // const [isTherapist, setIsTherapist] = useState(false);
+
+  let history = useHistory();
   return (
     <section className="body-font bg-darkP h-screen overflow-hidden flex flex-col items-center justify-between">
       <Navbar />
-      <div className="container flex flex-col xl:flex-row items-center h-full sm:justify-center w-full">
+      <div className="container flex flex-col xl:flex-row items-center h-full justify-center w-full">
         <div className="text-beige hidden md:block">
           <h1 className="title-font md:w-2/3 leading-relaxed font-bold text-2xl md:text-4xl mx-auto items-center text-orangeP">
             Join Our Community
@@ -33,18 +41,27 @@ const SignUp = () => {
               className="bg-white w-full text-darkP placeholder-darkP rounded border border-white focus:outline-none focus:border-darkP text-base px-4 py-2 mb-4"
               placeholder="Username"
               type="text"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
             />
             <input
               className="bg-white w-full text-darkP placeholder-darkP rounded border border-white focus:outline-none focus:border-darkP text-base px-4 py-2 mb-4"
               placeholder="Email"
-              type="text"
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
             <input
               className="bg-white w-full text-darkP placeholder-darkP rounded border border-white focus:outline-none focus:border-darkP text-base px-4 py-2 mb-4"
               placeholder="Password"
-              type="email"
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
             />
-            <div className="flex items-center justify-center w-full mb-8 mt-8 text-sm">
+            <div
+              // onClick={setIsTherapist(true)}
+              className="flex items-center justify-center w-full mb-8 mt-8 text-sm"
+            >
               <label
                 htmlFor="toogleA"
                 className="flex items-center cursor-pointer"
@@ -58,7 +75,13 @@ const SignUp = () => {
                 <div className="ml-3 text-darkP font-medium">Therapist</div>
               </label>
             </div>
-            <button className="w-full text-darkP bg-white font-bold border-0 py-2 px-8 focus:outline-none  rounded text-lg">
+            <button
+              onClick={(e) => {
+                e.preventDefault();
+                onRegister();
+              }}
+              className="w-full text-darkP bg-white font-bold border-0 py-2 px-8 focus:outline-none  rounded text-lg"
+            >
               Sign Up
             </button>
             <p className="text-xs text-white mt-3">
@@ -72,5 +95,15 @@ const SignUp = () => {
       </div>
     </section>
   );
+
+  async function onRegister() {
+    try {
+      await firebase.register(username, email, password);
+      await firebase.addUser(username);
+      history.push('/profile');
+    } catch (error) {
+      alert(error.message);
+    }
+  }
 };
 export default SignUp;
