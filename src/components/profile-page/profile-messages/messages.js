@@ -1,12 +1,13 @@
 import React from 'react';
 import Message from './message';
-import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
 
-const Messages = ({ messages }) => {
+const Messages = () => {
+  const messagesList = useSelector((state) => state.messagesList);
   return (
     <div className="w-5/6 lg:w-4/5 xl:w-4/6 self-center flex flex-col">
-      {messages.some((message) => message.from === 'Harry Davies') ? ( // ToDo: think about how you can differentiate between who the messages are from and switching
-        messages.map((message, index) =>
+      {messagesList.some((message) => message.from === 'Harry Davies') ? ( // ToDo: think about how you can differentiate between who the messages are from and switching
+        messagesList.map((message, index) =>
           message.from === 'Bruce Lee' ? (
             <Message message={message} classes={'self-end'} key={index} />
           ) : (
@@ -21,7 +22,3 @@ const Messages = ({ messages }) => {
 };
 
 export default Messages;
-
-Messages.propTypes = {
-  messages: PropTypes.array.isRequired,
-};
