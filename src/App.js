@@ -46,7 +46,7 @@ function App() {
         <ForYou />
       </Route>
       <Route path="/">
-        <SignUp />
+        <Login />
       </Route>
     </Switch>
   ) : (
