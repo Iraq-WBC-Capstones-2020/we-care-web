@@ -48,13 +48,13 @@ class Firebase {
 
   addUser(
     username,
-    isTherapist,
-    fullName,
-    profilePicture,
-    expertise,
-    therapistBio,
-    certificate,
-    cost
+    isTherapist
+    // fullName,
+    // profilePicture,
+    // expertise,
+    // therapistBio,
+    // certificate,
+    // cost
   ) {
     if (!this.auth.currentUser) {
       return alert('not authorized');
@@ -74,15 +74,15 @@ class Firebase {
           favouriteSongs: '',
         },
         isTherapist: isTherapist,
-        ...(isTherapist && {
-          isTherapist: true,
-          fullName,
-          profilePicture,
-          expertise,
-          therapistBio,
-          certificate,
-          cost,
-        }),
+        // ...(isTherapist && {
+        //   isTherapist: true,
+        //   fullName,
+        //   profilePicture,
+        //   expertise,
+        //   therapistBio,
+        //   certificate,
+        //   cost,
+        // }),
       });
   }
 
@@ -96,6 +96,10 @@ class Firebase {
     return this.auth.currentUser && this.auth.currentUser.displayName;
   }
 
+  getCurrentUid() {
+    return this.auth.currentUser && this.auth.currentUser.uid;
+  }
+
   async getCurrentUser() {
     const user = await this.db
       .collection('users')
@@ -106,7 +110,7 @@ class Firebase {
 
   uploadFile(file, path) {
     let ref = this.storageRef.child(`${path}`);
-    ref.put(file).then(function (snapshot) {
+    ref.put(file).then(function () {
       console.log('Uploaded a blob or file!');
     });
   }

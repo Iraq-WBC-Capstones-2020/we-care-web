@@ -20,9 +20,9 @@ const SignUp = () => {
       <Switch>
         <Route exact path="/signUp/counsellor-signUp">
           <CounslerSignUp
-            username={username}
-            email={email}
-            password={password}
+          // username={username}
+          // email={email}
+          // password={password}
           />
         </Route>
 
@@ -95,10 +95,9 @@ const SignUp = () => {
                   <button
                     onClick={(e) => {
                       e.preventDefault();
+                      onRegister();
                       if (isTherapist) {
                         history.push('/signUp/counsellor-signUp');
-                      } else {
-                        onRegister();
                       }
                     }}
                     className="w-full text-darkP bg-white font-bold border-0 py-2 px-8 focus:outline-none  rounded text-lg"

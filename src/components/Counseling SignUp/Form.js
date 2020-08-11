@@ -1,14 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import firebase from './../../firebase/firebase';
 
-function Form({ username }) {
+function Form() {
+  const [uid, setUid] = useState('');
+  useEffect(() => {
+    setUid(firebase.getCurrentUid());
+  }, []);
+
   const [fullName, setFullName] = useState('');
   const [profilePicture, setProfilePicture] = useState('');
   const [expertise, setExpertise] = useState('');
   const [therapistBio, setTherapistBio] = useState('');
   const [certificate, setCertificate] = useState('');
   const [cost, setCost] = useState('');
-  console.log(profilePicture);
+
+  const randomID = function () {
+    return '_' + Math.random().toString(36).substr(2, 9);
+  };
+
   return (
     <div className="order-2 xl:order-1 bg-white rounded-lg xl:w-2/6 lg:w-1/2 md:w-8/12 w-11/12 flex justify-center py-12 xl:my-0 my-5 px-10">
       <form className="w-full max-w-sm text-darkP  flex flex-col justify-evenly items-center">
@@ -73,7 +82,10 @@ function Form({ username }) {
                 name="profile_pic"
                 accept="image/*"
                 onChange={(e) => {
-                  firebase.uploadFile(e.target.files[0], 'images/girl.jpg');
+                  firebase.uploadFile(
+                    e.target.files[0],
+                    `profile-images/${uid}/image`
+                  );
                 }}
               ></input>
             </div>
@@ -82,13 +94,13 @@ function Form({ username }) {
 
         <div className="flex flex-col w-full mb-5">
           <div className="w-full mb-2">
-            <label>About(Optional):</label>
+            <label>Bio:</label>
           </div>
           <div>
             <textarea
               className="border border-darkP rounded w-full py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-darkBeige"
               name="body"
-              placeholder="Type Your Comment"
+              placeholder="Write your bio"
             ></textarea>
           </div>
         </div>
@@ -149,8 +161,13 @@ function Form({ username }) {
               type="file"
               id="certificate"
               name="certificate"
-              accept=".pdf, .doc, .docx"
-              multiple
+              accept=".pdf, .doc, .docx, image/*"
+              onChange={(e) => {
+                firebase.uploadFile(
+                  e.target.files[0],
+                  `profile-images/${uid}/certificate`
+                );
+              }}
             ></input>
           </div>
         </div>
