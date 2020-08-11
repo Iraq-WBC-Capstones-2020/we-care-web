@@ -80,7 +80,11 @@ const SignUp = () => {
             <button
               onClick={(e) => {
                 e.preventDefault();
-                onRegister();
+                if (isTherapist) {
+                  history.push('/counsellor-signUp');
+                } else {
+                  onRegister();
+                }
               }}
               className="w-full text-darkP bg-white font-bold border-0 py-2 px-8 focus:outline-none  rounded text-lg"
             >

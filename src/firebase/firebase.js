@@ -74,6 +74,7 @@ class Firebase {
         },
         isTherapist: isTherapist,
         ...(isTherapist && {
+          isTherapist: true,
           fullName,
           profilePicture,
           expertise,
