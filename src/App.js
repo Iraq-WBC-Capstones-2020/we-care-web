@@ -35,11 +35,10 @@ function App() {
       <Route path="/login">
         <Login />
       </Route>
-      <Route path="/foryou">
+      <Route path="/for-you">
         <ForYou />
       </Route>
       <Route path="/">
-        {/* temporary */}
         <SignUp />
       </Route>
     </Switch>

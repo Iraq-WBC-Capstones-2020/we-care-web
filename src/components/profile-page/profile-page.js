@@ -20,27 +20,23 @@ const ProfilePage = () => {
           <Route path="/profile">
             <Profile />
           </Route>
-          <Route path="/feed">
+          <Route path="/profile/feed">
             <ProfileFeed />
           </Route>
-          <Route exact path="/journal">
+          <Route exact path="/profile/journals">
             <AllJournals />
           </Route>
-          <Route exact path="/journal/1">
+          <Route exact path="/profile/journals/1">
             <ProfileJournal />
           </Route>
-          <Route exact path="/messages">
+          <Route exact path="/profile/messages">
             <AllMessages />
           </Route>
-          <Route path="/messages/HarryDavies">
+          <Route path="/profile/messages/HarryDavies">
             <ProfileMessages />
           </Route>
-          <Route path="/your-posts">
+          <Route path="/profile/your-posts">
             <ProfileYourPosts />
-          </Route>
-          <Route path="/">
-            {/* temporary */}
-            <Profile />
           </Route>
         </Switch>
       </main>
