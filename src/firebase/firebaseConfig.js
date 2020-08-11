@@ -16,7 +16,7 @@ const firebaseConfig = {
 };
 
 class Firebase {
-  constructor(picUrl) {
+  constructor() {
     app.initializeApp(firebaseConfig);
     this.auth = app.auth();
     this.db = app.firestore();
