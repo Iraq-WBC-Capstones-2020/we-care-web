@@ -10,7 +10,7 @@ const RightSidebar = () => {
   const [pictureUrl, setPictureUrl] = useState(null);
 
   useEffect(() => {
-    firebase.getAvatarUrl().then((url) => {
+    firebase.getAvatarUrl(firebase.getCurrentUid()).then((url) => {
       setPictureUrl(url);
     });
   }, []);
