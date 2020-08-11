@@ -15,6 +15,8 @@ const SignUp = () => {
   const [password, setPassword] = useState('');
   const [isTherapist, setIsTherapist] = useState(false);
 
+  const changeCheckboxValueToBoolean = (value) => (value ? true : false);
+
   return (
     <>
       <Switch>
@@ -75,7 +77,11 @@ const SignUp = () => {
                       <div className="mr-3 text-darkP font-medium">Member</div>
                       <div className="relative">
                         <input
-                          onChange={(e) => setIsTherapist(e.target.value)}
+                          onChange={(e) =>
+                            setIsTherapist(
+                              changeCheckboxValueToBoolean(e.target.value)
+                            )
+                          }
                           id="toogleA"
                           type="checkbox"
                           className="hidden"

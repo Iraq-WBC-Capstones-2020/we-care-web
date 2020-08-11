@@ -108,6 +108,19 @@ class Firebase {
     return user;
   }
 
+  async getUserDocument(uid) {
+    const collection = await this.db.collection('users');
+    const snapshot = await collection.where('uid', '==', uid).get();
+    if (snapshot.empty) {
+      console.log('No matching documents.');
+      return;
+    }
+
+    snapshot.forEach((doc) => {
+      console.log(doc.id, '=>', doc.data());
+    });
+  }
+
   uploadFile(file, path) {
     let ref = this.storageRef.child(`${path}`);
     ref.put(file).then(function () {
