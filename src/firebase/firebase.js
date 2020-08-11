@@ -24,9 +24,9 @@ class Firebase {
     this.storageRef = this.storage.ref();
   }
 
-  async getAvatarUrl() {
+  async getAvatarUrl(uid) {
     const picUrl = await this.storageRef
-      .child('images/profilePic.svg')
+      .child(`profile-images/${uid}/image`)
       .getDownloadURL();
     return picUrl;
   }
