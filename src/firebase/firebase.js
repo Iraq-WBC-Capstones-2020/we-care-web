@@ -63,6 +63,7 @@ class Firebase {
       .collection('users')
       .doc(`${this.auth.currentUser.uid}`)
       .set({
+        uid: this.auth.currentUser.uid,
         handler: username,
         dateJoined: app.firestore.Timestamp.now(),
         friends: [],
