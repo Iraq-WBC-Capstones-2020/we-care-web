@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import firebase from './../../firebase/firebase';
-import { useSelector } from 'react-redux';
 
 function Form() {
   const [uid, setUid] = useState('');
@@ -8,14 +7,11 @@ function Form() {
     setUid(firebase.getCurrentUid());
   }, []);
 
-  const currentUser = useSelector((state) => state.currentUser);
-
   const [fullName, setFullName] = useState('');
   const [profilePicture, setProfilePicture] = useState('');
   const [expertise, setExpertise] = useState('');
   const [therapistBio, setTherapistBio] = useState('');
-  const [certificate, setCertificate] = useState('');
-  const [cost, setCost] = useState(10);
+  const [cost] = useState(10);
 
   function seperateExpertise(expertiseString) {
     let arrOfExpertise = expertiseString.split(',');
@@ -90,8 +86,9 @@ function Form() {
                     e.target.files[0],
                     `profile-images/${uid}/image`
                   );
-
-                  setProfilePicture(firebase.getAvatarUrl(uid));
+                  firebase.getAvatarUrl(uid).then((url) => {
+                    setProfilePicture(url);
+                  });
                 }}
               ></input>
             </div>
@@ -205,7 +202,13 @@ function Form() {
               type="button"
               onClick={(e) => {
                 e.preventDefault();
-                firebase.updateUserDocument();
+                firebase.updateUserDocument(
+                  fullName,
+                  profilePicture,
+                  expertise,
+                  therapistBio,
+                  cost
+                );
               }}
             >
               Sign Up

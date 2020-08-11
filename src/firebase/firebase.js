@@ -109,11 +109,23 @@ class Firebase {
     return this.currentUserDocument;
   }
 
-  async updateUserDocument() {
+  async updateUserDocument(
+    fullName,
+    profilePicture,
+    expertise,
+    therapistBio,
+    cost
+  ) {
     await this.db
       .collection('users')
       .doc(`${this.auth.currentUser.uid}`)
-      .update({ foo: 'bar' })
+      .update({
+        fullName,
+        profilePicture,
+        expertise,
+        therapistBio,
+        cost,
+      })
       .then((res) => {
         console.log(res);
       });
