@@ -17,9 +17,11 @@ function App() {
   useEffect(() => {
     firebase.isInitialized().then((val) => {
       setFirebaseInitialized(val);
-      firebase.getCurrentUser().then((currentUser) => {
-        dispatch(setCurrentUser(currentUser));
-      });
+      if (firebase.getCurrentUsername()) {
+        firebase.getCurrentUser().then((currentUser) => {
+          dispatch(setCurrentUser(currentUser));
+        });
+      }
     });
   }, []);
 
