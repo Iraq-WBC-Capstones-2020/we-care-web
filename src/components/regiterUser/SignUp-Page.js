@@ -6,7 +6,7 @@ import heart from './imgs/signup.svg';
 import './toggleStyle.css';
 import firebase from '../../firebase/firebase';
 import { Route, Switch } from 'react-router-dom';
-import CounslerSignUp from './../Counseling SignUp/Sign Up Page';
+import CounslerSignUp from '../Counseling SignUp/Sign Up Page';
 
 const SignUp = () => {
   let history = useHistory();
@@ -18,11 +18,11 @@ const SignUp = () => {
   return (
     <>
       <Switch>
-        <Route path="/counsellor-signUp">
+        <Route exact path="/signUp/counsellor-signUp">
           <CounslerSignUp />
         </Route>
 
-        <Route path="/signUp">
+        <Route exact path="/signUp">
           <section className="body-font bg-darkP h-screen overflow-hidden flex flex-col items-center justify-between">
             <Navbar />
             <div className="container flex flex-col xl:flex-row items-center h-full justify-center w-full">
@@ -92,7 +92,7 @@ const SignUp = () => {
                     onClick={(e) => {
                       e.preventDefault();
                       if (isTherapist) {
-                        history.push('/counsellor-signUp');
+                        history.push('/signUp/counsellor-signUp');
                       } else {
                         onRegister();
                       }

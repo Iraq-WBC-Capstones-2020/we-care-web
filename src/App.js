@@ -3,7 +3,7 @@ import './scrollBar.css';
 import ProfilePage from './components/profile-page/profile-page.js';
 import ChatroomPage from './components/chatroom-page/chatroom-page';
 import { Switch, Route } from 'react-router-dom';
-import SignUp from './components/regiterUser/SignUp';
+import SignUp from './components/regiterUser/SignUp-Page';
 import Login from './components/regiterUser/Login';
 import ForYou from './components/For You/ForYou';
 import firebase from './firebase/firebase';
