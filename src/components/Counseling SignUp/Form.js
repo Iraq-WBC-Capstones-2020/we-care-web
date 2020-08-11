@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import firebase from './../../firebase/firebase';
+import { useHistory } from 'react-router-dom';
 
 function Form() {
   const [uid, setUid] = useState('');
@@ -12,6 +13,8 @@ function Form() {
   const [expertise, setExpertise] = useState('');
   const [therapistBio, setTherapistBio] = useState('');
   const [cost] = useState(10);
+
+  let history = useHistory();
 
   function seperateExpertise(expertiseString) {
     let arrOfExpertise = expertiseString.split(',');
@@ -209,6 +212,7 @@ function Form() {
                   therapistBio,
                   cost
                 );
+                history.push('/profile');
               }}
             >
               Sign Up
