@@ -2,7 +2,7 @@ import React from 'react';
 import Navbar from './Navbar';
 import Form from './Form';
 import Content from './Content';
-const CounslerSignUp = () => {
+const CounslerSignUp = ({ username, email, password }) => {
   return (
     <>
       <div className="bg-darkBeige w-screen xl:h-screen overflow-hidden">

@@ -19,7 +19,11 @@ const SignUp = () => {
     <>
       <Switch>
         <Route exact path="/signUp/counsellor-signUp">
-          <CounslerSignUp />
+          <CounslerSignUp
+            username={username}
+            email={email}
+            password={password}
+          />
         </Route>
 
         <Route exact path="/signUp">
