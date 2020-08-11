@@ -2,6 +2,8 @@ import React from 'react';
 import Navbar from './Navbar';
 import Form from './Form';
 import Content from './Content';
+import PropTypes from 'prop-types';
+
 const CounslerSignUp = ({ username, email, password }) => {
   return (
     <>
@@ -17,3 +19,9 @@ const CounslerSignUp = ({ username, email, password }) => {
 };
 
 export default CounslerSignUp;
+
+CounslerSignUp.propTypes = {
+  username: PropTypes.string.isRequired,
+  email: PropTypes.string.isRequired,
+  password: PropTypes.string.isRequired,
+};
