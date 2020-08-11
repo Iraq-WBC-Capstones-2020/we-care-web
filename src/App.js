@@ -8,13 +8,18 @@ import Login from './components/regiterUser/Login';
 import ForYou from './components/For You/ForYou';
 import CounslerSignUp from './components/Counseling SignUp/Sign Up Page';
 import firebase from './firebase/firebaseConfig';
+import { setCurrentUser } from './redux/actions';
+import { useDispatch } from 'react-redux';
 
 function App() {
+  const dispatch = useDispatch();
   const [firebaseInitialized, setFirebaseInitialized] = useState(false);
-
   useEffect(() => {
     firebase.isInitialized().then((val) => {
       setFirebaseInitialized(val);
+      firebase.getCurrentUser().then((currentUser) => {
+        dispatch(setCurrentUser(currentUser));
+      });
     });
   }, []);
 

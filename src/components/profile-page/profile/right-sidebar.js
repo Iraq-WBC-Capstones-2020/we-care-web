@@ -1,17 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import profilePic from '../imgs/profile.svg';
 import { FiSmile } from 'react-icons/fi';
 import { useHistory } from 'react-router-dom';
 import firebase from './../../../firebase/firebaseConfig';
+import { useSelector } from 'react-redux';
 
 const RightSidebar = () => {
   let history = useHistory();
-
-  const [currentUser, setCurrentUser] = useState('');
+  const currentUser = useSelector((state) => state.currentUser);
   const [pictureUrl, setPictureUrl] = useState(null);
 
   useEffect(() => {
-    firebase.getCurrentUser().then(setCurrentUser);
     firebase.getAvatarUrl().then((url) => {
       setPictureUrl(url);
     });
@@ -22,8 +20,6 @@ const RightSidebar = () => {
     history.push('/login');
     return null;
   }
-
-  console.log(currentUser);
 
   return (
     <div className="lg:w-1/5 order-1 lg:order-2 w-11/12 md:w-3/5 lg:h-full lg:mt-0 mt-10 mb-5 lg:mb-0 lg:p-0 p-10 lg:bg-darkP bg-white flex flex-col justify-center lg:text-beige text-darkP lg:rounded-none rounded">

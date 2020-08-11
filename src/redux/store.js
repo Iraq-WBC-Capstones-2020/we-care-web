@@ -2,6 +2,7 @@ import { createStore } from 'redux';
 import { reducer } from './reducers/reducer';
 
 const state = {
+  currentUser: null,
   messagesList: [
     {
       from: 'Harry Davies',
