@@ -30,9 +30,6 @@ function App() {
       <Route path="/profile">
         <ProfilePage />
       </Route>
-      <Route path="/counsellor-signUp">
-        <CounslerSignUp />
-      </Route>
       <Route path="/chatroom">
         <ChatroomPage />
       </Route>
