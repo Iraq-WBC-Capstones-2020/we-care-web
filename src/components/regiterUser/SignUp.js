@@ -10,7 +10,7 @@ const SignUp = () => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  // const [isTherapist, setIsTherapist] = useState(false);
+  const [isTherapist, setIsTherapist] = useState(false);
 
   let history = useHistory();
   return (
@@ -58,17 +58,19 @@ const SignUp = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
-            <div
-              // onClick={setIsTherapist(true)}
-              className="flex items-center justify-center w-full mb-8 mt-8 text-sm"
-            >
+            <div className="flex items-center justify-center w-full mb-8 mt-8 text-sm">
               <label
                 htmlFor="toogleA"
                 className="flex items-center cursor-pointer"
               >
                 <div className="mr-3 text-darkP font-medium">Member</div>
                 <div className="relative">
-                  <input id="toogleA" type="checkbox" className="hidden" />
+                  <input
+                    onChange={(e) => setIsTherapist(e.target.value)}
+                    id="toogleA"
+                    type="checkbox"
+                    className="hidden"
+                  />
                   <div className="toggle__line w-8 h-3 bg-white rounded-full shadow-inner"></div>
                   <div className="toggle__dot absolute w-5 h-5 bg-darkP rounded-full shadow "></div>
                 </div>
@@ -99,7 +101,7 @@ const SignUp = () => {
   async function onRegister() {
     try {
       await firebase.register(username, email, password);
-      await firebase.addUser(username);
+      await firebase.addUser(username, isTherapist);
       history.push('/profile');
     } catch (error) {
       alert(error.message);

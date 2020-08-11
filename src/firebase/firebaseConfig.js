@@ -47,7 +47,7 @@ class Firebase {
     });
   }
 
-  addUser(username) {
+  addUser(username, isTherapist) {
     if (!this.auth.currentUser) {
       return alert('not authorized');
     }
@@ -64,7 +64,7 @@ class Firebase {
           favouriteMovies: '',
           favouriteSongs: '',
         },
-        // isTherapist: isTherapist,
+        isTherapist: isTherapist,
       });
   }
 
