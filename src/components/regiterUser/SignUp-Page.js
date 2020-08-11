@@ -98,6 +98,8 @@ const SignUp = () => {
                       onRegister();
                       if (isTherapist) {
                         history.push('/signUp/counsellor-signUp');
+                      } else {
+                        history.push('/profile');
                       }
                     }}
                     className="w-full text-darkP bg-white font-bold border-0 py-2 px-8 focus:outline-none  rounded text-lg"
@@ -126,7 +128,6 @@ const SignUp = () => {
     try {
       await firebase.register(username, email, password);
       await firebase.addUser(username, isTherapist);
-      history.push('/profile');
     } catch (error) {
       alert(error.message);
     }

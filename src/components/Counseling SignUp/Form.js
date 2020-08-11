@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import firebase from './../../firebase/firebase';
+import { useSelector } from 'react-redux';
 
 function Form() {
   const [uid, setUid] = useState('');
@@ -7,12 +8,14 @@ function Form() {
     setUid(firebase.getCurrentUid());
   }, []);
 
+  const currentUser = useSelector((state) => state.currentUser);
+
   const [fullName, setFullName] = useState('');
   const [profilePicture, setProfilePicture] = useState('');
   const [expertise, setExpertise] = useState('');
   const [therapistBio, setTherapistBio] = useState('');
   const [certificate, setCertificate] = useState('');
-  const [cost, setCost] = useState('');
+  const [cost, setCost] = useState(10);
 
   function seperateExpertise(expertiseString) {
     let arrOfExpertise = expertiseString.split(',');
@@ -104,6 +107,7 @@ function Form() {
               className="border border-darkP rounded w-full py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-darkBeige"
               name="body"
               placeholder="Write your bio"
+              style={{ resize: 'none' }}
               value={therapistBio}
               onChange={(e) => {
                 e.preventDefault();
@@ -199,6 +203,10 @@ function Form() {
             <button
               className="shadow bg-darkP w-full focus:shadow-outline focus:outline-none text-white py-2 px-4 rounded"
               type="button"
+              onClick={(e) => {
+                e.preventDefault();
+                console.log(currentUser);
+              }}
             >
               Sign Up
             </button>
