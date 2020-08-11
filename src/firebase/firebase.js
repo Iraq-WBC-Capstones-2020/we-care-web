@@ -43,11 +43,19 @@ class Firebase {
     await this.auth.createUserWithEmailAndPassword(email, password);
     return this.auth.currentUser.updateProfile({
       displayName: username,
-      // photoURL: this.storageRef.child('images/profilePic.svg'),
     });
   }
 
-  addUser(username, isTherapist) {
+  addUser(
+    username,
+    isTherapist,
+    fullName,
+    profilePicture,
+    expertise,
+    therapistBio,
+    certificate,
+    cost
+  ) {
     if (!this.auth.currentUser) {
       return alert('not authorized');
     }
@@ -65,6 +73,14 @@ class Firebase {
           favouriteSongs: '',
         },
         isTherapist: isTherapist,
+        ...(isTherapist && {
+          fullName,
+          profilePicture,
+          expertise,
+          therapistBio,
+          certificate,
+          cost,
+        }),
       });
   }
 

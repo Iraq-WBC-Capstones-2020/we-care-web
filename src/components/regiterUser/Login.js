@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Navbar from './navbar-signIn';
 import { Link, useHistory } from 'react-router-dom';
 import friends from './imgs/friends.svg';
-import firebase from './../../firebase/firebaseConfig';
+import firebase from '../../firebase/firebase';
 
 const Login = () => {
   const [email, setEmail] = useState('');

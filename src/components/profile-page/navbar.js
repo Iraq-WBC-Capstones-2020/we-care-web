@@ -3,7 +3,7 @@ import { FiMenu } from 'react-icons/fi';
 import logo from './imgs/Logo.svg';
 import { Link, useHistory } from 'react-router-dom';
 import profileImg from './imgs/profile.png';
-import firebase from './../../firebase/firebaseConfig';
+import firebase from '../../firebase/firebase';
 
 export default function Navbar() {
   const [navbarOpen, setNavbarOpen] = useState(false);

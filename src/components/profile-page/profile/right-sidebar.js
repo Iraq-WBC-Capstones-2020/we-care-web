@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { FiSmile } from 'react-icons/fi';
 import { useHistory } from 'react-router-dom';
-import firebase from './../../../firebase/firebaseConfig';
+import firebase from '../../../firebase/firebase';
 import { useSelector } from 'react-redux';
 
 const RightSidebar = () => {

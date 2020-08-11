@@ -4,7 +4,7 @@ import Navbar from './navbar-signUp';
 import { Link, useHistory } from 'react-router-dom';
 import heart from './imgs/signup.svg';
 import './toggleStyle.css';
-import firebase from './../../firebase/firebaseConfig';
+import firebase from '../../firebase/firebase';
 
 const SignUp = () => {
   const [username, setUsername] = useState('');
