@@ -22,6 +22,7 @@ class Firebase {
     this.db = app.firestore();
     this.storage = app.storage();
     this.storageRef = this.storage.ref();
+    this.currentUserDocument = {};
   }
 
   async getAvatarUrl(uid) {
@@ -108,7 +109,7 @@ class Firebase {
     return user;
   }
 
-  async getUserDocument(uid) {
+  async fetchUserDocument(uid) {
     const collection = await this.db.collection('users');
     const snapshot = await collection.where('uid', '==', uid).get();
     if (snapshot.empty) {
@@ -116,9 +117,14 @@ class Firebase {
       return;
     }
 
-    snapshot.forEach((doc) => {
-      console.log(doc.id, '=>', doc.data());
+    await snapshot.forEach((doc) => {
+      this.currentUserDocument = doc.data();
     });
+  }
+
+  getUserDocument() {
+    this.fetchUserDocument(this.getCurrentUid());
+    return this.currentUserDocument;
   }
 
   uploadFile(file, path) {
