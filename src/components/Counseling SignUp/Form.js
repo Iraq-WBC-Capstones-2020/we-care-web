@@ -205,7 +205,7 @@ function Form() {
               type="button"
               onClick={(e) => {
                 e.preventDefault();
-                console.log(firebase.getUserDocument());
+                firebase.updateUserDocument();
               }}
             >
               Sign Up

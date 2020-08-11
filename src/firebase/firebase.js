@@ -47,16 +47,7 @@ class Firebase {
     });
   }
 
-  addUser(
-    username,
-    isTherapist
-    // fullName,
-    // profilePicture,
-    // expertise,
-    // therapistBio,
-    // certificate,
-    // cost
-  ) {
+  addUser(username, isTherapist) {
     if (!this.auth.currentUser) {
       return alert('not authorized');
     }
@@ -75,15 +66,6 @@ class Firebase {
           favouriteSongs: '',
         },
         isTherapist: isTherapist,
-        // ...(isTherapist && {
-        //   isTherapist: true,
-        //   fullName,
-        //   profilePicture,
-        //   expertise,
-        //   therapistBio,
-        //   certificate,
-        //   cost,
-        // }),
       });
   }
 
@@ -125,6 +107,16 @@ class Firebase {
   getUserDocument() {
     this.fetchUserDocument(this.getCurrentUid());
     return this.currentUserDocument;
+  }
+
+  async updateUserDocument() {
+    await this.db
+      .collection('users')
+      .doc(`${this.auth.currentUser.uid}`)
+      .update({ foo: 'bar' })
+      .then((res) => {
+        console.log(res);
+      });
   }
 
   uploadFile(file, path) {
