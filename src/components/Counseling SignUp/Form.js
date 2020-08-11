@@ -1,6 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
+import firebase from './../../firebase/firebase';
 
-function Form() {
+function Form({ username }) {
+  const [fullName, setFullName] = useState('');
+  const [profilePicture, setProfilePicture] = useState('');
+  const [expertise, setExpertise] = useState('');
+  const [therapistBio, setTherapistBio] = useState('');
+  const [certificate, setCertificate] = useState('');
+  const [cost, setCost] = useState('');
+  console.log(profilePicture);
   return (
     <div className="order-2 xl:order-1 bg-white rounded-lg xl:w-2/6 lg:w-1/2 md:w-8/12 w-11/12 flex justify-center py-12 xl:my-0 my-5 px-10">
       <form className="w-full max-w-sm text-darkP  flex flex-col justify-evenly items-center">
@@ -14,6 +22,8 @@ function Form() {
               id="inline-full-name"
               type="text"
               placeholder="Your Name"
+              value={fullName}
+              onChange={(e) => setFullName(e.target.value)}
             ></input>
           </div>
         </div>
@@ -62,6 +72,9 @@ function Form() {
                 id="profile_pic"
                 name="profile_pic"
                 accept="image/*"
+                onChange={(e) => {
+                  firebase.uploadFile(e.target.files[0], 'images/girl.jpg');
+                }}
               ></input>
             </div>
           </div>
@@ -79,9 +92,9 @@ function Form() {
             ></textarea>
           </div>
         </div>
-        <div className="flex  flex-col justify-between w-full mb-5">
+        <div className="flex flex-col justify-between w-full mb-5">
           <div className="w-full mb-2">
-            <label>Expertise:</label>
+            <label>Expertise: *comma seperated</label>
           </div>
           <div>
             <input

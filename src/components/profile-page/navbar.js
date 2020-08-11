@@ -45,7 +45,9 @@ export default function Navbar() {
               </li>
 
               <li className="lg:mb-0 lg:py-0 py-3 hover:text-orangeP">
-                <Link onClick={logout}>Sign Out</Link>
+                <Link to="/login" onClick={logout}>
+                  Sign Out
+                </Link>
               </li>
             </ul>
           </div>

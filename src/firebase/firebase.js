@@ -103,6 +103,13 @@ class Firebase {
       .get();
     return user;
   }
+
+  uploadFile(file, path) {
+    let ref = this.storageRef.child(`${path}`);
+    ref.put(file).then(function (snapshot) {
+      console.log('Uploaded a blob or file!');
+    });
+  }
 }
 
 export default new Firebase();
