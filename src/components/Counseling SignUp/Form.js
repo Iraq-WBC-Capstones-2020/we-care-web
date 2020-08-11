@@ -14,6 +14,11 @@ function Form() {
   const [certificate, setCertificate] = useState('');
   const [cost, setCost] = useState('');
 
+  function seperateExpertise(expertiseString) {
+    let arrOfExpertise = expertiseString.split(',');
+    return arrOfExpertise;
+  }
+
   return (
     <div className="order-2 xl:order-1 bg-white rounded-lg xl:w-2/6 lg:w-1/2 md:w-8/12 w-11/12 flex justify-center py-12 xl:my-0 my-5 px-10">
       <form className="w-full max-w-sm text-darkP  flex flex-col justify-evenly items-center">
@@ -109,7 +114,9 @@ function Form() {
         </div>
         <div className="flex flex-col justify-between w-full mb-5">
           <div className="w-full mb-2">
-            <label>Expertise: *comma seperated</label>
+            <label>
+              Expertise: <span className="text-red-600">*comma seperated</span>
+            </label>
           </div>
           <div>
             <input
@@ -119,7 +126,7 @@ function Form() {
               placeholder="Field of Expertise"
               value={expertise}
               onChange={(e) => {
-                setExpertise(e.target.value);
+                setExpertise(seperateExpertise(e.target.value));
               }}
             ></input>
           </div>

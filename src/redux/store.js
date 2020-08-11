@@ -1,9 +1,8 @@
 import { createStore } from 'redux';
 import { reducer } from './reducers/reducer';
-import firebase from './../firebase/firebase';
 
 const state = {
-  currentUser: firebase.getCurrentUser(),
+  currentUser: null,
   messagesList: [
     {
       from: 'Harry Davies',
