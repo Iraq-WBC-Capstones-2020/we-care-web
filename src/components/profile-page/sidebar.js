@@ -26,7 +26,7 @@ const ProfileSidebar = () => {
             }`}
           >
             <Link
-              to="/feed"
+              to="/profile/feed"
               className="flex lg:justify-start justify-center items-center"
               onClick={() => {
                 setSection('feed');
@@ -42,7 +42,7 @@ const ProfileSidebar = () => {
             }`}
           >
             <Link
-              to="/journal"
+              to="/profile/journals"
               className="flex lg:justify-start justify-center items-center"
               onClick={() => {
                 setSection('journal');
@@ -58,7 +58,7 @@ const ProfileSidebar = () => {
             }`}
           >
             <Link
-              to="/messages"
+              to="/profile/messages"
               className="flex lg:justify-start justify-center items-center"
               onClick={() => {
                 setSection('messages');
@@ -74,7 +74,7 @@ const ProfileSidebar = () => {
             }`}
           >
             <Link
-              to="/your-posts"
+              to="/profile/your-posts"
               className="flex lg:justify-start justify-center items-center"
               onClick={() => {
                 setSection('your-posts');

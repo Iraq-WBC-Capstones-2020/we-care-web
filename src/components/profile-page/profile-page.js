@@ -17,10 +17,7 @@ const ProfilePage = () => {
       <main className="flex lg:flex-row flex-col-reverse justify-between h-full overflow-y-auto overflow-x-hidden">
         <ProfileSidebar />
         <Switch>
-          <Route path="/profile">
-            <Profile />
-          </Route>
-          <Route path="/profile/feed">
+          <Route exact path="/profile/feed">
             <ProfileFeed />
           </Route>
           <Route exact path="/profile/journals">
@@ -32,11 +29,14 @@ const ProfilePage = () => {
           <Route exact path="/profile/messages">
             <AllMessages />
           </Route>
-          <Route path="/profile/messages/HarryDavies">
+          <Route exact path="/profile/messages/HarryDavies">
             <ProfileMessages />
           </Route>
-          <Route path="/profile/your-posts">
+          <Route exact path="/profile/your-posts">
             <ProfileYourPosts />
+          </Route>
+          <Route exact path="/profile">
+            <Profile />
           </Route>
         </Switch>
       </main>
