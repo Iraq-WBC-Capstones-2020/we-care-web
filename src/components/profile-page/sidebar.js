@@ -4,13 +4,10 @@ import { BsPencil } from 'react-icons/bs';
 import { AiOutlineMail } from 'react-icons/ai';
 import { BsChat } from 'react-icons/bs';
 import { BsPerson } from 'react-icons/bs';
-import { MdExitToApp } from 'react-icons/md';
 import dashtext from './imgs/dash.svg';
-import { Link, useLocation, useHistory } from 'react-router-dom';
-import firebase from './../../firebase/firebaseConfig';
+import { Link, useLocation } from 'react-router-dom';
 
 const ProfileSidebar = () => {
-  let history = useHistory();
   let location = useLocation();
   const [section, setSection] = useState(`${location.pathname.slice(1)}`);
   const sectionIndicator =
@@ -102,17 +99,8 @@ const ProfileSidebar = () => {
           </li>
         </ul>
       </div>
-      <div onClick={logout} className="flex flex-row">
-        <MdExitToApp />
-        <p>Sign out</p>
-      </div>
     </div>
   );
-
-  async function logout() {
-    await firebase.logout();
-    history.push('/');
-  }
 };
 
 export default ProfileSidebar;
