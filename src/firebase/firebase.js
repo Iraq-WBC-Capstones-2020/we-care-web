@@ -101,11 +101,13 @@ class Firebase {
   }
 
   async getCurrentUser() {
-    const user = await this.db
-      .collection('users')
-      .doc(`${this.auth.currentUser.uid}`)
-      .get();
-    return user;
+    return (
+      this.auth.currentUser &&
+      (await this.db
+        .collection('users')
+        .doc(`${this.auth.currentUser.uid}`)
+        .get())
+    );
   }
 
   uploadFile(file, path) {
