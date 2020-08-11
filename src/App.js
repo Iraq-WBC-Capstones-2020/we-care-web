@@ -6,7 +6,6 @@ import { Switch, Route } from 'react-router-dom';
 import SignUp from './components/regiterUser/SignUp';
 import Login from './components/regiterUser/Login';
 import ForYou from './components/For You/ForYou';
-import CounslerSignUp from './components/Counseling SignUp/Sign Up Page';
 import firebase from './firebase/firebase';
 import { setCurrentUser } from './redux/actions';
 import { useDispatch } from 'react-redux';
