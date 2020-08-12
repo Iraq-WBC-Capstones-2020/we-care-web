@@ -62,7 +62,7 @@ const Quotes = () => {
                       <div className="flex rounded-lg h-full bg-white p-8 flex-col">
                         <div className="flex items-center mb-3 pb-4 border-b border-darkP">
                           <h2 className=" text-lg title-font font-medium">
-                            {quote.author}
+                            {quote.author === null ? 'Unknown' : quote.author}
                           </h2>
                         </div>
                         <div className="flex-grow">
