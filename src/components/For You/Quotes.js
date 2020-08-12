@@ -3,7 +3,6 @@ import QuoteIcon from '../Images/QuoteIcon.svg';
 
 const Quotes = () => {
   const [quotes, setQuotes] = useState([]);
-
   useEffect(() => {
     fetch('https://type.fit/api/quotes')
       .then(function (response) {
@@ -13,17 +12,9 @@ const Quotes = () => {
         setQuotes(data);
       });
   }, []);
-  localStorage.setItem('appDate', new Date().toLocaleDateString());
-  function isitStillToday() {
-    let date = new Date().toLocaleDateString();
-    if (localStorage.getItem('appDate') === date) return false;
-    else {
-      localStorage.setItem('appDate', date);
-      return true;
-    }
-  }
   function runOncePerDay() {
     if (localStorage.getItem('randomNumber') === null) {
+      localStorage.setItem('appDate', new Date().toLocaleDateString());
       localStorage.setItem(
         'randomNumber',
         Math.floor(Math.random() * (1634 - 0 + 1) + 0)
@@ -36,6 +27,18 @@ const Quotes = () => {
     );
   }
   runOncePerDay();
+  function isitStillToday() {
+    let date = new Date().toLocaleDateString();
+    if (localStorage.getItem('appDate') === date) return false;
+    else {
+      localStorage.setItem(
+        'randomNumber',
+        Math.floor(Math.random() * (1634 - 0 + 1) + 0)
+      );
+      localStorage.setItem('appDate', date);
+      return true;
+    }
+  }
   let num = parseInt(localStorage.getItem('randomNumber'));
   return (
     <>
