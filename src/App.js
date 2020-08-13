@@ -6,21 +6,14 @@ import { Switch, Route } from 'react-router-dom';
 import SignUp from './components/regiterUser/SignUp-Page';
 import Login from './components/regiterUser/Login';
 import ForYou from './components/For You/ForYou';
+import ConselingPage from './components/Conseling-Page/Conseling-Page';
 import firebase from './firebase/firebase';
-import { setCurrentUser } from './redux/actions';
-import { useDispatch } from 'react-redux';
 
 function App() {
-  const dispatch = useDispatch();
   const [firebaseInitialized, setFirebaseInitialized] = useState(false);
   useEffect(() => {
     firebase.isInitialized().then((val) => {
       setFirebaseInitialized(val);
-      if (firebase.getCurrentUsername()) {
-        firebase.getCurrentUser().then((currentUser) => {
-          dispatch(setCurrentUser(currentUser));
-        });
-      }
     });
   }, []);
 
@@ -28,6 +21,9 @@ function App() {
     <Switch>
       <Route path="/profile">
         <ProfilePage />
+      </Route>
+      <Route path="/conseling">
+        <ConselingPage />
       </Route>
       <Route path="/chatroom">
         <ChatroomPage />
