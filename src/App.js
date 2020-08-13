@@ -8,10 +8,14 @@ import Login from './components/regiterUser/Login';
 import ForYou from './components/For You/ForYou';
 import CounslerSignUp from './components/Counseling SignUp/Sign Up Page';
 import ConselingPage from './components/Conseling-Page/Conseling-Page';
+import Survey from './components/survey/survey';
 
 function App() {
   return (
     <Switch>
+      <Route exact path="/survey">
+        <Survey />
+      </Route>
       <Route exact path="/ConselingPage">
         <ConselingPage />
       </Route>

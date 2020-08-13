@@ -39,7 +39,7 @@ export default function Navbar() {
                 <a href={'#'}>Counseling</a>
               </li>
               <li className="lg:mb-0 lg:py-0 py-3 hover:text-orangeP">
-                <Link to="/chatroom">Connect Now</Link>
+                <Link to="/survey">Connect Now</Link>
               </li>
             </ul>
           </div>
