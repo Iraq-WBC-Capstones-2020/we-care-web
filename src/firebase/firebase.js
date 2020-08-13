@@ -43,8 +43,8 @@ class Firebase {
   async addUser(
     username,
     isTherapist,
-    profilePicture,
     email,
+    profilePicture,
     expertise,
     therapistBio,
     cost,

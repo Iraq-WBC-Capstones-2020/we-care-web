@@ -133,7 +133,7 @@ const SignUp = () => {
   async function onRegister() {
     try {
       await firebase.register(username, email, password);
-      await firebase.addUser(username, isTherapist);
+      await firebase.addUser(username, isTherapist, email);
       history.push('/profile');
     } catch (error) {
       alert(error.message);

@@ -228,8 +228,8 @@ function Form({ username, email, password }) {
       await firebase.addUser(
         username,
         true,
-        profilePicture,
         email,
+        profilePicture,
         seperateExpertise(expertise),
         therapistBio,
         cost,
