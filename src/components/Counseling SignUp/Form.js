@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import firebase from './../../firebase/firebase';
 import { useHistory } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 function Form({ username, email, password }) {
   let history = useHistory();
@@ -238,5 +239,11 @@ function Form({ username, email, password }) {
     }
   }
 }
+
+Form.propTypes = {
+  username: PropTypes.string.isRequired,
+  email: PropTypes.string.isRequired,
+  password: PropTypes.string.isRequired,
+};
 
 export default Form;
