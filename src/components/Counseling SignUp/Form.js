@@ -47,7 +47,11 @@ function Form({ username, email, password }) {
             <div className="flex items-center overflow-hidden relative">
               <button className="justify-between border border-darkP rounded w-full pl-2 leading-tight focus:outline-none focus:bg-white focus:border-darkBeige inline-flex items-center">
                 <span>Attach Here </span>
-                <img src={attachIcon} />
+                <img
+                  className="cursor-default"
+                  onClick={(e) => e.preventDefault()}
+                  src={attachIcon}
+                />
               </button>
               <input
                 className="cursor-pointer absolute block opacity-0 pin-r pin-t"
@@ -116,7 +120,11 @@ function Form({ username, email, password }) {
           <div className="flex items-center overflow-hidden relative">
             <button className="justify-between border border-darkP rounded w-full pl-2 leading-tight focus:outline-none focus:bg-white focus:border-darkBeige inline-flex items-center">
               <span>Attach Here </span>
-              <img src={attachIcon} />
+              <img
+                className="cursor-default"
+                onClick={(e) => e.preventDefault()}
+                src={attachIcon}
+              />
             </button>
             <input
               className="cursor-pointer absolute block opacity-0 pin-r pin-t"
