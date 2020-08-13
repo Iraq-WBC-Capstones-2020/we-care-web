@@ -81,12 +81,12 @@ function Form({ username, email, password }) {
                 id="profile_pic"
                 name="profile_pic"
                 accept="image/*"
-                onChange={(e) => {
-                  firebase.uploadFile(
+                onChange={async (e) => {
+                  await firebase.uploadFile(
                     e.target.files[0],
                     `profile-images/${email}/image`
                   );
-                  firebase
+                  await firebase
                     .downloadFile(`profile-images/${email}/image`)
                     .then((url) => {
                       setProfilePicture(url);
@@ -179,12 +179,12 @@ function Form({ username, email, password }) {
               id="certificate"
               name="certificate"
               accept=".pdf, .doc, .docx, image/*"
-              onChange={(e) => {
-                firebase.uploadFile(
+              onChange={async (e) => {
+                await firebase.uploadFile(
                   e.target.files[0],
                   `profile-images/${email}/certificate`
                 );
-                firebase
+                await firebase
                   .downloadFile(`profile-images/${email}/certificate`)
                   .then((url) => {
                     setCertificate(url);

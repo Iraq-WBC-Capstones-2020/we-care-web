@@ -107,8 +107,7 @@ class Firebase {
   }
 
   async downloadFile(path) {
-    const url = await this.storageRef.child(`${path}`).getDownloadURL();
-    return url;
+    return await this.storageRef.child(`${path}`).getDownloadURL();
   }
 
   async uploadFile(file, path) {
