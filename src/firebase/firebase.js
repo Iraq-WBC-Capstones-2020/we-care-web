@@ -4,8 +4,6 @@ import 'firebase/auth';
 import 'firebase/firestore';
 import 'firebase/storage';
 
-import defaultProfilePic from './../components/Images/profilePic.svg';
-
 const firebaseConfig = {
   apiKey: 'AIzaSyCqOIt-4gb733slNm5Zy65GcmSESdXkd7Q',
   authDomain: 'we-care-74358.firebaseapp.com',

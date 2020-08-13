@@ -14,7 +14,9 @@ function Form({ username, email, password }) {
   const [cost] = useState(10);
 
   function seperateExpertise(expertiseString) {
-    let arrOfExpertise = expertiseString.split(',');
+    let arrOfExpertise = expertiseString
+      .split(',')
+      .map((element) => element.trim());
     return arrOfExpertise;
   }
 
@@ -129,7 +131,7 @@ function Form({ username, email, password }) {
               placeholder="Field of Expertise"
               value={expertise}
               onChange={(e) => {
-                setExpertise(seperateExpertise(e.target.value));
+                setExpertise(e.target.value);
               }}
             ></input>
           </div>
@@ -228,7 +230,7 @@ function Form({ username, email, password }) {
         true,
         profilePicture,
         email,
-        expertise,
+        seperateExpertise(expertise),
         therapistBio,
         cost,
         certificate
