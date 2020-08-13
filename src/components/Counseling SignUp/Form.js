@@ -226,7 +226,7 @@ function Form({ username, email, password }) {
     try {
       await firebase.register(username, email, password);
       await firebase.addUser(
-        username,
+        fullName,
         true,
         email,
         profilePicture,
