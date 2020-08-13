@@ -4,6 +4,8 @@ import 'firebase/auth';
 import 'firebase/firestore';
 import 'firebase/storage';
 
+import defaultProfilePic from './../components/Images/profilePic.svg';
+
 const firebaseConfig = {
   apiKey: 'AIzaSyCqOIt-4gb733slNm5Zy65GcmSESdXkd7Q',
   authDomain: 'we-care-74358.firebaseapp.com',
@@ -47,7 +49,14 @@ class Firebase {
     });
   }
 
-  addUser(username, isTherapist) {
+  async addUser(
+    username,
+    isTherapist,
+    profilePicture,
+    expertise,
+    therapistBio,
+    cost
+  ) {
     if (!this.auth.currentUser) {
       return alert('not authorized');
     }
@@ -56,7 +65,10 @@ class Firebase {
       .doc(`${this.auth.currentUser.uid}`)
       .set({
         uid: this.auth.currentUser.uid,
-        handler: username,
+        username,
+        profilePicture: await this.storageRef
+          .child(`profile-images/default/image.svg`)
+          .getDownloadURL(),
         dateJoined: app.firestore.Timestamp.now(),
         friends: [],
         about: {
@@ -65,7 +77,16 @@ class Firebase {
           favouriteMovies: '',
           favouriteSongs: '',
         },
-        isTherapist: isTherapist,
+        isTherapist,
+        ...(isTherapist && {
+          profilePicture: this.uploadFile(
+            defaultProfilePic,
+            `profile-images/${this.auth.currentUser.uid}/image`
+          ),
+          expertise,
+          therapistBio,
+          cost,
+        }),
       });
   }
 
@@ -88,47 +109,7 @@ class Firebase {
       .collection('users')
       .doc(`${this.auth.currentUser.uid}`)
       .get();
-    return user;
-  }
-
-  async fetchUserDocument(uid) {
-    const collection = await this.db.collection('users');
-    const snapshot = await collection.where('uid', '==', uid).get();
-    if (snapshot.empty) {
-      console.log('No matching documents.');
-      return;
-    }
-
-    await snapshot.forEach((doc) => {
-      this.currentUserDocument = doc.data();
-    });
-  }
-
-  getUserDocument() {
-    this.fetchUserDocument(this.getCurrentUid());
-    return this.currentUserDocument;
-  }
-
-  async updateUserDocument(
-    fullName,
-    profilePicture,
-    expertise,
-    therapistBio,
-    cost
-  ) {
-    await this.db
-      .collection('users')
-      .doc(`${this.auth.currentUser.uid}`)
-      .update({
-        fullName,
-        profilePicture,
-        expertise,
-        therapistBio,
-        cost,
-      })
-      .then((res) => {
-        console.log(res);
-      });
+    return user.data();
   }
 
   uploadFile(file, path) {

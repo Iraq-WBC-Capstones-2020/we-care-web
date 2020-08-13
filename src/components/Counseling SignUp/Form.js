@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import firebase from './../../firebase/firebase';
 import { useHistory } from 'react-router-dom';
 
-function Form() {
+function Form({ username, email, password }) {
   const [uid, setUid] = useState('');
   useEffect(() => {
     setUid(firebase.getCurrentUid());

@@ -6,7 +6,7 @@ import heart from './imgs/signup.svg';
 import './toggleStyle.css';
 import firebase from '../../firebase/firebase';
 import { Route, Switch } from 'react-router-dom';
-import CounslerSignUp from '../Counseling SignUp/Sign Up Page';
+import CounslerSignUp from '../Counseling SignUp/counselor-signUp-page';
 
 const SignUp = () => {
   let history = useHistory();
@@ -21,7 +21,11 @@ const SignUp = () => {
     <>
       <Switch>
         <Route exact path="/signUp/counsellor-signUp">
-          <CounslerSignUp />
+          <CounslerSignUp
+            username={username}
+            email={email}
+            password={password}
+          />
         </Route>
 
         <Route exact path="/signUp">
@@ -97,11 +101,10 @@ const SignUp = () => {
                   <button
                     onClick={(e) => {
                       e.preventDefault();
-                      onRegister();
                       if (isTherapist) {
                         history.push('/signUp/counsellor-signUp');
                       } else {
-                        history.push('/profile');
+                        onRegister();
                       }
                     }}
                     className="w-full text-darkP bg-white font-bold border-0 py-2 px-8 focus:outline-none  rounded text-lg"
@@ -130,6 +133,7 @@ const SignUp = () => {
     try {
       await firebase.register(username, email, password);
       await firebase.addUser(username, isTherapist);
+      history.push('/profile');
     } catch (error) {
       alert(error.message);
     }

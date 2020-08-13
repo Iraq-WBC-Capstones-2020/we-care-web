@@ -1,25 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { FiSmile } from 'react-icons/fi';
-import { useHistory } from 'react-router-dom';
-import firebase from '../../../firebase/firebase';
 import { useSelector } from 'react-redux';
 
 const RightSidebar = () => {
-  let history = useHistory();
   const currentUser = useSelector((state) => state.currentUser);
-  const [pictureUrl, setPictureUrl] = useState(null);
-
-  useEffect(() => {
-    firebase.getAvatarUrl(firebase.getCurrentUid()).then((url) => {
-      setPictureUrl(url);
-    });
-  }, []);
-
-  if (!firebase.getCurrentUsername()) {
-    alert('Please login first');
-    history.push('/login');
-    return null;
-  }
 
   return (
     currentUser && (
@@ -28,11 +12,11 @@ const RightSidebar = () => {
           <div className="flex flex-col justify-center items-center">
             <img
               className="rounded-full w-24 mb-4"
-              src={pictureUrl}
+              src={currentUser.profilePicture}
               alt="profile picture"
             />
             <h2 className="text-lg font-semibold lg:ml-0 ml-4">
-              {currentUser.get('handler')}
+              {currentUser.username}
             </h2>
             <p className="lg:text-sm md:text-base text-sm lg:font-light">
               Joined three years ago

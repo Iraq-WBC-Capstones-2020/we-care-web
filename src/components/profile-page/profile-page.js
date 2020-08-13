@@ -9,8 +9,24 @@ import ProfileYourPosts from './profile-your-posts/profile-your-posts';
 import AllMessages from './all-messages/all-messages';
 import AllJournals from './all-journals/all-journals';
 import { Switch, Route } from 'react-router-dom';
+import firebase from '../../firebase/firebase';
+import { useHistory } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { setCurrentUser } from './../../redux/actions';
 
 const ProfilePage = () => {
+  let history = useHistory();
+  const dispatch = useDispatch();
+  if (!firebase.getCurrentUsername()) {
+    alert('Please login first');
+    history.push('/login');
+    return null;
+  } else {
+    firebase.getCurrentUser().then((currentUser) => {
+      dispatch(setCurrentUser(currentUser));
+    });
+  }
+
   return (
     <div className="h-screen bg-beige flex flex-col relative">
       <Navbar />
