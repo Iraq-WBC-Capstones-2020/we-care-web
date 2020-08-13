@@ -10,6 +10,7 @@ import CounslerSignUp from '../Counseling SignUp/counselor-signUp-page';
 
 const SignUp = () => {
   let history = useHistory();
+
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');

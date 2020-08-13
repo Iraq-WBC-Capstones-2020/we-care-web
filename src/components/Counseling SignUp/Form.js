@@ -1,20 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import firebase from './../../firebase/firebase';
 import { useHistory } from 'react-router-dom';
 
 function Form({ username, email, password }) {
-  const [uid, setUid] = useState('');
-  useEffect(() => {
-    setUid(firebase.getCurrentUid());
-  }, []);
+  let history = useHistory();
 
   const [fullName, setFullName] = useState('');
   const [profilePicture, setProfilePicture] = useState('');
   const [expertise, setExpertise] = useState('');
   const [therapistBio, setTherapistBio] = useState('');
+  const [certificate, setCertificate] = useState('');
   const [cost] = useState(10);
-
-  let history = useHistory();
 
   function seperateExpertise(expertiseString) {
     let arrOfExpertise = expertiseString.split(',');
@@ -87,11 +83,13 @@ function Form({ username, email, password }) {
                 onChange={(e) => {
                   firebase.uploadFile(
                     e.target.files[0],
-                    `profile-images/${uid}/image`
+                    `profile-images/${email}/image`
                   );
-                  firebase.getAvatarUrl(uid).then((url) => {
-                    setProfilePicture(url);
-                  });
+                  firebase
+                    .downloadFile(`profile-images/${email}/image`)
+                    .then((url) => {
+                      setProfilePicture(url);
+                    });
                 }}
               ></input>
             </div>
@@ -183,8 +181,13 @@ function Form({ username, email, password }) {
               onChange={(e) => {
                 firebase.uploadFile(
                   e.target.files[0],
-                  `profile-images/${uid}/certificate`
+                  `profile-images/${email}/certificate`
                 );
+                firebase
+                  .downloadFile(`profile-images/${email}/certificate`)
+                  .then((url) => {
+                    setCertificate(url);
+                  });
               }}
             ></input>
           </div>
@@ -205,14 +208,7 @@ function Form({ username, email, password }) {
               type="button"
               onClick={(e) => {
                 e.preventDefault();
-                firebase.updateUserDocument(
-                  fullName,
-                  profilePicture,
-                  expertise,
-                  therapistBio,
-                  cost
-                );
-                history.push('/profile');
+                onRegister();
               }}
             >
               Sign Up
@@ -222,6 +218,25 @@ function Form({ username, email, password }) {
       </form>
     </div>
   );
+
+  async function onRegister() {
+    try {
+      await firebase.register(username, email, password);
+      await firebase.addUser(
+        username,
+        true,
+        profilePicture,
+        email,
+        expertise,
+        therapistBio,
+        cost,
+        certificate
+      );
+      history.push('/profile');
+    } catch (error) {
+      alert(error.message);
+    }
+  }
 }
 
 export default Form;

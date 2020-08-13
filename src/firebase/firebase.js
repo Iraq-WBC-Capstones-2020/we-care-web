@@ -27,13 +27,6 @@ class Firebase {
     this.currentUserDocument = {};
   }
 
-  async getAvatarUrl(uid) {
-    const picUrl = await this.storageRef
-      .child(`profile-images/${uid}/image`)
-      .getDownloadURL();
-    return picUrl;
-  }
-
   login(email, password) {
     return this.auth.signInWithEmailAndPassword(email, password);
   }
@@ -53,9 +46,11 @@ class Firebase {
     username,
     isTherapist,
     profilePicture,
+    email,
     expertise,
     therapistBio,
-    cost
+    cost,
+    certificate
   ) {
     if (!this.auth.currentUser) {
       return alert('not authorized');
@@ -78,14 +73,13 @@ class Firebase {
           favouriteSongs: '',
         },
         isTherapist,
+        email,
         ...(isTherapist && {
-          profilePicture: this.uploadFile(
-            defaultProfilePic,
-            `profile-images/${this.auth.currentUser.uid}/image`
-          ),
+          profilePicture,
           expertise,
           therapistBio,
           cost,
+          certificate,
         }),
       });
   }
@@ -112,9 +106,14 @@ class Firebase {
     return user.data();
   }
 
-  uploadFile(file, path) {
-    let ref = this.storageRef.child(`${path}`);
-    ref.put(file).then(function () {
+  async downloadFile(path) {
+    const url = await this.storageRef.child(`${path}`).getDownloadURL();
+    return url;
+  }
+
+  async uploadFile(file, path) {
+    let ref = await this.storageRef.child(`${path}`);
+    await ref.put(file).then(function () {
       console.log('Uploaded a blob or file!');
     });
   }
