@@ -1,8 +1,45 @@
-import React from 'react';
-import profileImg from '../Images/Profile.png';
+import React, { useState, useEffect } from 'react';
 import QuoteIcon from '../Images/QuoteIcon.svg';
 
 const Quotes = () => {
+  const [quotes, setQuotes] = useState([]);
+  useEffect(() => {
+    fetch('https://type.fit/api/quotes')
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (data) {
+        setQuotes(data);
+      });
+  }, []);
+  function runOncePerDay() {
+    if (localStorage.getItem('randomNumber') === null) {
+      localStorage.setItem('appDate', new Date().toLocaleDateString());
+      localStorage.setItem(
+        'randomNumber',
+        Math.floor(Math.random() * (1634 - 0 + 1) + 0)
+      );
+    }
+    if (!isitStillToday()) return false;
+    localStorage.setItem(
+      'randomNumber',
+      Math.floor(Math.random() * (1634 - 0 + 1) + 0)
+    );
+  }
+  runOncePerDay();
+  function isitStillToday() {
+    let date = new Date().toLocaleDateString();
+    if (localStorage.getItem('appDate') === date) return false;
+    else {
+      localStorage.setItem(
+        'randomNumber',
+        Math.floor(Math.random() * (1634 - 0 + 1) + 0)
+      );
+      localStorage.setItem('appDate', date);
+      return true;
+    }
+  }
+  let num = parseInt(localStorage.getItem('randomNumber'));
   return (
     <>
       <div className="bg-beige flex flex-col">
@@ -17,73 +54,32 @@ const Quotes = () => {
               </h1>
             </div>
             <div className="flex flex-wrap -m-4">
-              <div className="p-4 md:w-1/3">
-                <div className="flex rounded-lg h-full bg-white p-8 flex-col">
-                  <div className="flex items-center mb-3 pb-4 border-b border-darkP">
-                    <div className="w-8 h-8 mr-3 inline-flex items-center justify-center rounded-full flex-shrink-0">
-                      <img src={profileImg} alt="profile"></img>
+              {quotes.slice(num, num + 3).map((quote, index) => {
+                // eslint-disable-next-line react/jsx-key
+                return (
+                  <>
+                    <div className="p-4 md:w-1/3" key={index}>
+                      <div className="flex rounded-lg h-full bg-white p-8 flex-col">
+                        <div className="flex items-center mb-3 pb-4 border-b border-darkP">
+                          <h2 className=" text-lg title-font font-medium">
+                            {quote.author}
+                          </h2>
+                        </div>
+                        <div className="flex-grow">
+                          <p className="leading-relaxed text-base">
+                            {quote.text === null ? 'Unknown' : quote.text}
+                          </p>
+                          <img
+                            src={QuoteIcon}
+                            alt="quote"
+                            className="ml-auto mr-2"
+                          ></img>
+                        </div>
+                      </div>
                     </div>
-                    <h2 className=" text-lg title-font font-medium">
-                      Shooting Stars
-                    </h2>
-                  </div>
-                  <div className="flex-grow">
-                    <p className="leading-relaxed text-base">
-                      Blue bottle crucifix vinyl post-ironic four dollar toast
-                      vegan taxidermy. Gastropub indxgo juice poutine.
-                    </p>
-                    <img
-                      src={QuoteIcon}
-                      alt="quote"
-                      className="ml-auto mr-2"
-                    ></img>
-                  </div>
-                </div>
-              </div>
-              <div className="p-4 md:w-1/3">
-                <div className="flex rounded-lg h-full bg-white p-8 flex-col">
-                  <div className="flex items-center mb-3 pb-4 border-b border-darkP">
-                    <div className="w-8 h-8 mr-3 inline-flex items-center justify-center rounded-full flex-shrink-0">
-                      <img src={profileImg} alt="profile"></img>
-                    </div>
-                    <h2 className=" text-lg title-font font-medium">
-                      The Catalyzer
-                    </h2>
-                  </div>
-                  <div className="flex-grow">
-                    <p className="leading-relaxed text-base">
-                      Blue bottle crucifix vinyl post-ironic four dollar toast
-                      vegan taxidermy. Gastropub indxgo juice poutine.
-                    </p>
-                    <img
-                      src={QuoteIcon}
-                      alt="quote"
-                      className="ml-auto mr-2"
-                    ></img>
-                  </div>
-                </div>
-              </div>
-              <div className="p-4 md:w-1/3">
-                <div className="flex rounded-lg h-full bg-white p-8 flex-col">
-                  <div className="flex items-center mb-3 pb-4 border-b border-darkP">
-                    <div className="w-8 h-8 mr-3 inline-flex items-center justify-center rounded-full flex-shrink-0">
-                      <img src={profileImg} alt="profile"></img>
-                    </div>
-                    <h2 className=" text-lg title-font font-medium">Neptune</h2>
-                  </div>
-                  <div className="flex-grow">
-                    <p className="leading-relaxed text-base">
-                      Blue bottle crucifix vinyl post-ironic four dollar toast
-                      vegan taxidermy. Gastropub indxgo juice poutine.
-                    </p>
-                    <img
-                      src={QuoteIcon}
-                      alt="quote"
-                      className="ml-auto mr-2"
-                    ></img>
-                  </div>
-                </div>
-              </div>
+                  </>
+                );
+              })}
             </div>
           </div>
         </section>

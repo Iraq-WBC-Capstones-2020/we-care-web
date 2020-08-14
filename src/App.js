@@ -19,6 +19,9 @@ function App() {
 
   return firebaseInitialized !== false ? (
     <Switch>
+      <Route exact path="/ConselingPage">
+        <ConselingPage />
+      </Route>
       <Route path="/profile">
         <ProfilePage />
       </Route>
