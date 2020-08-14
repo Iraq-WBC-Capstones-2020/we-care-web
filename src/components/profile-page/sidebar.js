@@ -13,7 +13,7 @@ const ProfileSidebar = () => {
   const sectionIndicator =
     'border-b-4 border-l-0 lg:border-l-4 lg:border-b-0 border-orangeP text-orangeP';
   return (
-    <div className="lg:h-full lg:w-1/5 xl:w-2/12 bg-darkP flex flex-col justify-start text-beige text-center">
+    <div className="lg:h-full lg:w-1/5 xl:w-2/12 bg-darkP flex flex-col justify-between text-beige text-center">
       <div className="w-full lg:mt-3">
         <img className="w-12 ml-8 mt-4 lg:block hidden" src={dashtext} />
         <ul className="flex lg:flex-col flex-row lg:justify-start justify-evenly text-sm lg:mt-8">
@@ -23,7 +23,7 @@ const ProfileSidebar = () => {
             }`}
           >
             <Link
-              to="/feed"
+              to="/profile/feed"
               className="flex lg:justify-start justify-center items-center"
               onClick={() => {
                 setSection('feed');
@@ -39,7 +39,7 @@ const ProfileSidebar = () => {
             }`}
           >
             <Link
-              to="/journal"
+              to="/profile/journals"
               className="flex lg:justify-start justify-center items-center"
               onClick={() => {
                 setSection('journal');
@@ -55,7 +55,7 @@ const ProfileSidebar = () => {
             }`}
           >
             <Link
-              to="/messages"
+              to="/profile/messages"
               className="flex lg:justify-start justify-center items-center"
               onClick={() => {
                 setSection('messages');
@@ -71,7 +71,7 @@ const ProfileSidebar = () => {
             }`}
           >
             <Link
-              to="/your-posts"
+              to="/profile/your-posts"
               className="flex lg:justify-start justify-center items-center"
               onClick={() => {
                 setSection('your-posts');

@@ -15,7 +15,7 @@ const AllMessages = () => {
           </li>
           <li className="border-b-2 border-grey py-2 w-full flex justify-center items-center hover:text-orangeP hover:border-orangeP">
             <Link
-              to="/messages/HarryDavies"
+              to="/profile/messages/HarryDavies"
               className="flex w-full justify-center items-center"
             >
               Harry Davies
