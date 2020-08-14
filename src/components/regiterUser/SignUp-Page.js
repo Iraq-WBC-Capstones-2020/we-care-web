@@ -14,7 +14,7 @@ const SignUp = () => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  let isTherapist = false;
+  const [isTherapist, setIsTherapist] = useState(false);
 
   return (
     <>
@@ -81,11 +81,9 @@ const SignUp = () => {
                       <div className="relative">
                         <input
                           onChange={() => {
-                            if (isTherapist === false) {
-                              isTherapist = true;
-                            } else {
-                              isTherapist = false;
-                            }
+                            isTherapist
+                              ? setIsTherapist(false)
+                              : setIsTherapist(true);
                           }}
                           id="toogleA"
                           type="checkbox"
@@ -104,6 +102,7 @@ const SignUp = () => {
                       e.preventDefault();
                       if (isTherapist) {
                         history.push('/signUp/counsellor-signUp');
+                        setIsTherapist(false);
                       } else {
                         onRegister();
                       }

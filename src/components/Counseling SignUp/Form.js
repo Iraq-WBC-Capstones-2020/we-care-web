@@ -150,6 +150,10 @@ function Form({ username, email, password }) {
         <div className="flex items-center justify-end w-full mt-5">
           <div className="md:w-2/5 md:mx-2">
             <button
+              onClick={(e) => {
+                e.preventDefault();
+                history.push('/signUp');
+              }}
               className="shadow-md w-full bg-transparent focus:shadow-outline focus:outline-none text-darkP py-2 px-4 rounded"
               type="button"
             >
