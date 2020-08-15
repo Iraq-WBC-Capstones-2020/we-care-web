@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import EditMode from './editAbout';
 function ProfileAbout() {
   const [editMode, setEditMode] = useState(false);
   const changeToFalse = () => {
@@ -12,7 +12,7 @@ function ProfileAbout() {
     <div className="bg-white w-11/12 md:w-3/5 lg:w-1/2 xl:w-5/12 rounded-md text-darkP flex flex-col p-8 text-center">
       {editMode ? (
         <div>
-          <editAbout changeToFalse={changeToFalse} />
+          <EditMode changeToFalse={changeToFalse} />
         </div>
       ) : (
         <div>
