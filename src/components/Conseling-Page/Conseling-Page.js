@@ -63,7 +63,11 @@ export default function ConselingPage() {
                   </h2>
                 </li>
               </ul>
-              <button className="bg-transparent text-orangeP border border-orangeP rounded py-1 w-32">
+
+              <button
+                type="submit"
+                className="bg-transparent text-orangeP border border-orangeP rounded py-1 w-32"
+              >
                 Book A Time
               </button>
             </div>
