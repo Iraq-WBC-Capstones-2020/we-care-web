@@ -8,6 +8,8 @@ import Login from './components/regiterUser/Login';
 import ForYou from './components/For You/ForYou';
 import ConselingPage from './components/Conseling-Page/Conseling-Page';
 import firebase from './firebase/firebase';
+import { useDispatch } from 'react-redux';
+import { setCurrentUser } from './redux/actions';
 
 function App() {
   const [firebaseInitialized, setFirebaseInitialized] = useState(false);
@@ -16,6 +18,13 @@ function App() {
       setFirebaseInitialized(val);
     });
   }, []);
+
+  const dispatch = useDispatch();
+  if (firebase.getCurrentUsername()) {
+    firebase.getCurrentUser().then((currentUser) => {
+      dispatch(setCurrentUser(currentUser));
+    });
+  }
 
   return firebaseInitialized !== false ? (
     <Switch>
@@ -37,7 +46,7 @@ function App() {
       <Route path="/login">
         <Login />
       </Route>
-      <Route path="/for-you">
+      <Route path="/forYou">
         <ForYou />
       </Route>
       <Route path="/">
