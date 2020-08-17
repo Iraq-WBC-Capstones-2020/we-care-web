@@ -137,12 +137,13 @@ class Firebase {
   }
 
   async getCurrentUser() {
+    this.setupPresence(this.currentUser);
     const user = await this.db
       .collection('users')
       .doc(`${this.auth.currentUser.uid}`)
       .get();
-    this.currentUser = user.data();
     this.setupPresence(this.currentUser);
+    this.currentUser = user.data();
     return user.data();
   }
 
