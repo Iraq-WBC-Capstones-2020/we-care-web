@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './scrollBar.css';
 import ProfilePage from './components/profile-page/profile-page.js';
 import ChatroomPage from './components/chatroom-page/chatroom-page';
+import Loader from './components/loader/loader';
 import { Switch, Route } from 'react-router-dom';
 import SignUp from './components/regiterUser/SignUp-Page';
 import Login from './components/regiterUser/Login';
@@ -54,7 +55,7 @@ function App() {
       </Route>
     </Switch>
   ) : (
-    <div id="loader">Loading...</div>
+    <Loader />
   );
 }
 
