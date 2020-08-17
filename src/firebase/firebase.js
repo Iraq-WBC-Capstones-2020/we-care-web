@@ -24,10 +24,9 @@ class Firebase {
     this.rtdb = app.database();
     this.storage = app.storage();
     this.storageRef = this.storage.ref();
-    this.currentUser = {};
   }
 
-  setupPresence(user) {
+  setupPresence() {
     const isOfflineForRTDB = {
       state: 'offline',
       lastChanged: app.database.ServerValue.TIMESTAMP,
@@ -46,8 +45,8 @@ class Firebase {
       lastChanged: app.firestore.FieldValue.serverTimestamp(),
     };
 
-    const rtdbRef = this.rtdb.ref(`/status/${user.uid}`);
-    const userDoc = this.db.doc(`/users/${user.uid}`);
+    const rtdbRef = this.rtdb.ref(`/status/${this.auth.currentUser.uid}`);
+    const userDoc = this.db.doc(`/users/${this.auth.currentUser.uid}`);
 
     this.rtdb.ref('.info/connected').on('value', async (snapshot) => {
       if (snapshot.val() === false) {
@@ -137,13 +136,11 @@ class Firebase {
   }
 
   async getCurrentUser() {
-    this.setupPresence(this.currentUser);
+    this.auth.currentUser.uid && this.setupPresence();
     const user = await this.db
       .collection('users')
       .doc(`${this.auth.currentUser.uid}`)
       .get();
-    this.setupPresence(this.currentUser);
-    this.currentUser = user.data();
     return user.data();
   }
 
