@@ -5,6 +5,13 @@
   animation: sk-chase 2.5s infinite linear both;
 }
 
+@media screen and (max-width: 450px) {
+  .sk-chase {
+    width: 75px;
+    height: 75px;
+  }
+}
+
 .sk-chase-dot {
   width: 100%;
   height: 100%;
