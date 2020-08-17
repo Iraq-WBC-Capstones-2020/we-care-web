@@ -25,5 +25,20 @@
 
 input:checked ~ .toggle__dot {
   transform: translateX(100%);
-  background-color: #48bb78;
+}
+
+@media (min-width: 768px) and (min-height: 1024px) {
+  .cardsize {
+    width: 50%;
+    height: 50%;
+    padding-top: 8%;
+  }
+}
+@media (min-width: 1024px) and (min-height: 1366px) {
+  .cardsize {
+    width: 50%;
+    height: 40%;
+    padding-left: 60px;
+    padding-top: 10%;
+  }
 }

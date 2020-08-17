@@ -26,7 +26,7 @@ export default function Survey() {
         <body className=" mainhight bg-beige flex row justfy-center w-12/12  md:w-1/1 lg:w-1/1 xl:w-1/1">
           <div className="cardsize bg-darkP   max-w-lg    justfy-center  rounded  overflow-hidden  shadow-lg  m-auto ">
             <div className=" max-w-sm rounded  color-red text-center ">
-              <div className="text-orangeP font-sans font-light px-6 py-5  text-center not-italic  text-4xl mb-2 mt-2">
+              <div className="text-orangeP font-sans font-light px-6  leading-relaxed  text-center not-italic  text-4xl  mt-2">
                 <p className="font-sans">Before you connect</p>
               </div>
               <div>
@@ -72,16 +72,14 @@ export default function Survey() {
 
                   <div className="relative">
                     <input id="toogleA" type="checkbox" className="hidden" />
-
-                    <div className="toggle__line w-10  h-5 bg-orangeP  rounded-full shadow-inner"></div>
-
-                    <div className="toggle__dot absolute border-2 border-orangeP w-5 h-5 mt-1 bg-darkP rounded-full shadow inset-y-0 left-0"></div>
+                    <div className="toggle__line w-8 h-3 bg-white rounded-full shadow-inner"></div>
+                    <div className="toggle__dot absolute w-5 h-5 bg-orangeP rounded-full shadow "></div>
                   </div>
 
-                  <div className="ml-3 text-beige font-medium">Listner</div>
+                  <div className="ml-3 text-beige font-medium">Listener</div>
                 </label>
               </div>
-              <button className="bg-orangeP text-xs  text-darkP   mb-5  py-2 px-4 ">
+              <button className="bg-orangeP text-s  text-darkP rounded   mb-5  py-2 px-4 ">
                 <Link to="/chatroom">Connect Now</Link>
               </button>
             </div>
