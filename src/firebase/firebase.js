@@ -38,10 +38,13 @@ class Firebase {
     };
 
     const rtdbRef = this.rtdb.ref(`/status/${user.uid}`);
-    this.rtdb.ref('.info/connected').on('value', (snapshot) => {
+    this.rtdb.ref('.info/connected').on('value', async (snapshot) => {
       if (snapshot.val() === false) {
         return;
       }
+
+      await rtdbRef.onDisconnect().set(isOfflineForRTDB);
+      rtdbRef.set(isOnlineForRTDB);
     });
   }
 
