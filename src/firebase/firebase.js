@@ -33,6 +33,10 @@ class Firebase {
       state: 'offline',
       lastChanged: app.database.ServerValue.TIMESTAMP,
     };
+    const isOnlineForRTDB = {
+      state: 'online',
+      lastChanged: app.database.ServerValue.TIMESTAMP,
+    };
     this.rtdb.ref('.info/connected').on('value', (snapshot) => {});
   }
 
