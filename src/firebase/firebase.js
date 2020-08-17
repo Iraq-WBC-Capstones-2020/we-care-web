@@ -51,11 +51,17 @@ class Firebase {
 
     this.rtdb.ref('.info/connected').on('value', async (snapshot) => {
       if (snapshot.val() === false) {
+        userDoc.update({
+          status: isOfflineForFirestore,
+        });
         return;
       }
 
       await rtdbRef.onDisconnect().set(isOfflineForRTDB);
       rtdbRef.set(isOnlineForRTDB);
+      userDoc.update({
+        status: isOnlineForFirestore,
+      });
     });
   }
 
