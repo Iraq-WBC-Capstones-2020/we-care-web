@@ -47,6 +47,8 @@ class Firebase {
     };
 
     const rtdbRef = this.rtdb.ref(`/status/${user.uid}`);
+    const userDoc = this.db.doc(`/users/${user.uid}`);
+
     this.rtdb.ref('.info/connected').on('value', async (snapshot) => {
       if (snapshot.val() === false) {
         return;
