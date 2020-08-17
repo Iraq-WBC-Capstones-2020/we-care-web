@@ -3,6 +3,7 @@ import * as app from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/firestore';
 import 'firebase/storage';
+import 'firebase/database';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyCqOIt-4gb733slNm5Zy65GcmSESdXkd7Q',
@@ -23,10 +24,15 @@ class Firebase {
     this.rtdb = app.database();
     this.storage = app.storage();
     this.storageRef = this.storage.ref();
-    this.currentUserDocument = {};
+    this.currentUser = {};
   }
 
-  setupPresence(user) {}
+  setupPresence(user) {
+    console.log(user);
+    this.rtdb.ref('.info/connected').on('value', (snapshot) => {
+      console.log(snapshot.val());
+    });
+  }
 
   login(email, password) {
     return this.auth.signInWithEmailAndPassword(email, password);
@@ -104,7 +110,8 @@ class Firebase {
       .collection('users')
       .doc(`${this.auth.currentUser.uid}`)
       .get();
-    setupPresence(user.data());
+    this.currentUser = user.data();
+    this.setupPresence(this.currentUser);
     return user.data();
   }
 
