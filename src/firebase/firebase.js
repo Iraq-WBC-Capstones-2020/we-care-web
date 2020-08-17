@@ -28,7 +28,6 @@ class Firebase {
   }
 
   setupPresence(user) {
-    console.log(user);
     const isOfflineForRTDB = {
       state: 'offline',
       lastChanged: app.database.ServerValue.TIMESTAMP,
@@ -37,7 +36,13 @@ class Firebase {
       state: 'online',
       lastChanged: app.database.ServerValue.TIMESTAMP,
     };
-    this.rtdb.ref('.info/connected').on('value', (snapshot) => {});
+
+    const rtdbRef = this.rtdb.ref(`/status/${user.uid}`);
+    this.rtdb.ref('.info/connected').on('value', (snapshot) => {
+      if (snapshot.val() === false) {
+        return;
+      }
+    });
   }
 
   login(email, password) {
