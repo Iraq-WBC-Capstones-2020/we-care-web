@@ -37,6 +37,15 @@ class Firebase {
       lastChanged: app.database.ServerValue.TIMESTAMP,
     };
 
+    const isOfflineForFirestore = {
+      state: 'offline',
+      lastChanged: app.firestore.FieldValue.serverTimestamp(),
+    };
+    const isOnlineForFirestore = {
+      state: 'online',
+      lastChanged: app.firestore.FieldValue.serverTimestamp(),
+    };
+
     const rtdbRef = this.rtdb.ref(`/status/${user.uid}`);
     this.rtdb.ref('.info/connected').on('value', async (snapshot) => {
       if (snapshot.val() === false) {
