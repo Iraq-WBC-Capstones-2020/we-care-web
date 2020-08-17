@@ -20,10 +20,13 @@ class Firebase {
     app.initializeApp(firebaseConfig);
     this.auth = app.auth();
     this.db = app.firestore();
+    this.rtdb = app.database();
     this.storage = app.storage();
     this.storageRef = this.storage.ref();
     this.currentUserDocument = {};
   }
+
+  setupPresence(user) {}
 
   login(email, password) {
     return this.auth.signInWithEmailAndPassword(email, password);
@@ -101,6 +104,7 @@ class Firebase {
       .collection('users')
       .doc(`${this.auth.currentUser.uid}`)
       .get();
+    setupPresence(user.data());
     return user.data();
   }
 
