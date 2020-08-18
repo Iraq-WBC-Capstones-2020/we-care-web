@@ -9,37 +9,49 @@ import ProfileYourPosts from './profile-your-posts/profile-your-posts';
 import AllMessages from './all-messages/all-messages';
 import AllJournals from './all-journals/all-journals';
 import { Switch, Route } from 'react-router-dom';
+import firebase from '../../firebase/firebase';
+import { useHistory } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { setCurrentUser } from './../../redux/actions';
 
 const ProfilePage = () => {
+  let history = useHistory();
+  const dispatch = useDispatch();
+  if (!firebase.getCurrentUsername()) {
+    alert('Please login first');
+    history.push('/login');
+    return null;
+  } else {
+    firebase.getCurrentUser().then((currentUser) => {
+      dispatch(setCurrentUser(currentUser));
+    });
+  }
+
   return (
     <div className="h-screen bg-beige flex flex-col relative">
       <Navbar />
       <main className="flex lg:flex-row flex-col-reverse justify-between h-full overflow-y-auto overflow-x-hidden">
         <ProfileSidebar />
         <Switch>
-          <Route path="/profile">
-            <Profile />
-          </Route>
-          <Route path="/feed">
+          <Route exact path="/profile/feed">
             <ProfileFeed />
           </Route>
-          <Route exact path="/journal">
+          <Route exact path="/profile/journals">
             <AllJournals />
           </Route>
-          <Route exact path="/journal/1">
+          <Route exact path="/profile/journals/1">
             <ProfileJournal />
           </Route>
-          <Route exact path="/messages">
+          <Route exact path="/profile/messages">
             <AllMessages />
           </Route>
-          <Route path="/messages/HarryDavies">
+          <Route exact path="/profile/messages/HarryDavies">
             <ProfileMessages />
           </Route>
-          <Route path="/your-posts">
+          <Route exact path="/profile/your-posts">
             <ProfileYourPosts />
           </Route>
-          <Route path="/">
-            {/* temporary */}
+          <Route exact path="/profile">
             <Profile />
           </Route>
         </Switch>

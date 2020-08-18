@@ -1,8 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Navbar from './navbar-signIn';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import friends from './imgs/friends.svg';
+import firebase from '../../firebase/firebase';
+
 const Login = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  let history = useHistory();
   return (
     <>
       <section className="body-font bg-beige h-screen overflow-hidden flex flex-col items-center justify-between">
@@ -30,13 +35,23 @@ const Login = () => {
                 className="bg-darkP w-full text-beige placeholder-beige rounded border border-white focus:outline-none focus:border-orangeP text-sm px-4 py-2 mb-4"
                 placeholder="Email"
                 type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
               />
               <input
                 className="bg-darkP w-full text-beige appearance-none placeholder-beige rounded border border-white focus:outline-none focus:border-orangeP text-sm px-4 py-2 mb-4"
                 placeholder="Password"
                 type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
               />
-              <button className="text-darkP w-full bg-orangeP border-0 py-2 px-8 focus:outline-none  rounded text-lg">
+              <button
+                onClick={(e) => {
+                  e.preventDefault();
+                  login();
+                }}
+                className="text-darkP w-full bg-orangeP border-0 py-2 px-8 focus:outline-none  rounded text-lg"
+              >
                 Sign in
               </button>
               <p className="text-xs text-beige mt-3">
@@ -51,5 +66,13 @@ const Login = () => {
       </section>
     </>
   );
+  async function login() {
+    try {
+      await firebase.login(email, password);
+      history.push('/profile');
+    } catch (error) {
+      alert(error.message);
+    }
+  }
 };
 export default Login;
