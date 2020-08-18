@@ -15,7 +15,7 @@ const AllJournals = () => {
           </li>
           <li className="border-b-2 border-grey py-2 w-full flex justify-center items-center hover:text-orangeP hover:border-orangeP">
             <Link
-              to="/journal/1"
+              to="/profile/journals/1"
               className="flex w-full justify-center items-center"
             >
               why does this happen to me every time?

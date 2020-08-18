@@ -1,8 +1,6 @@
 import React from 'react';
 import profileImg from '../Images/Profile.png';
-import ReactPlayer from 'react-player';
 import Anna from '../Images/anna.webp';
-import smile from '../Images/smile.jpg';
 const Posts = () => {
   return (
     <>
@@ -27,12 +25,9 @@ const Posts = () => {
                 <h2 className="text-lg title-font font-medium mb-3">
                   Shooting Stars
                 </h2>
-                <img
-                  src={smile}
-                  alt="motivation"
-                  width="100%"
-                  height="100%"
-                ></img>
+                <p className="leading-relaxed text-base mb-4">
+                  we don&apos;t have the cool image anymore.
+                </p>
               </div>
             </div>
             <div className="px-4 py-12 w-2/3 md:mb-0 mb-6 flex flex-col text-center items-center bg-white rounded-lg my-16">
@@ -59,11 +54,6 @@ const Posts = () => {
                 <p className="leading-relaxed text-base mb-4">
                   DO YOU WANNA BUILD A SNOWMAN?
                 </p>
-                <ReactPlayer
-                  url="https://youtu.be/TeQ_TTyLGMs"
-                  width="100%"
-                  height="100%"
-                ></ReactPlayer>
               </div>
             </div>
           </div>
