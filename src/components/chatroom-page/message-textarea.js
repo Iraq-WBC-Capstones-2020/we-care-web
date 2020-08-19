@@ -1,9 +1,7 @@
 import React, { useRef } from 'react';
 import { FiSend } from 'react-icons/fi';
-import PropTypes from 'prop-types';
-import moment from 'moment';
 
-const MessageTextarea = ({ messages, setMessages }) => {
+const MessageTextarea = () => {
   const messageInput = useRef('');
   return (
     <div className="w-11/12 text-darkP relative my-10 self-center">
@@ -15,16 +13,6 @@ const MessageTextarea = ({ messages, setMessages }) => {
       ></textarea>
       <button
         onClick={() => {
-          setMessages([
-            ...messages,
-            {
-              nickname: 'Kind-heart',
-              from: 'you',
-              to: 'them',
-              body: messageInput.current.value,
-              createdAt: moment().format('LT'),
-            },
-          ]);
           messageInput.current.value = '';
           messageInput.current.scrollIntoView();
         }}
@@ -38,8 +26,3 @@ const MessageTextarea = ({ messages, setMessages }) => {
 };
 
 export default MessageTextarea;
-
-MessageTextarea.propTypes = {
-  messages: PropTypes.array.isRequired,
-  setMessages: PropTypes.func.isRequired,
-};
