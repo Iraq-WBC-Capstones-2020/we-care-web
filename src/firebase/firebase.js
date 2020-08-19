@@ -27,6 +27,7 @@ class Firebase {
     this.storageRef = this.storage.ref();
     this.currentUser = {};
     this.listenerId = null;
+    this.chatroomObj = null;
   }
 
   async createNewMessage(body) {
@@ -36,10 +37,17 @@ class Firebase {
         .doc(`${this.listenerId}`)
         .collection('messages')
         .add({
+          nickname: this.auth.currentUser.uid,
+          from: this.auth.currentUser.uid,
+          to:
+            this.auth.currentUser.uid === this.chatroomObj.listenerId
+              ? this.chatroomObj.memberId
+              : this.chatroomObj.listenerId,
           body,
+          createdAt: app.firestore.Timestamp.now(),
         });
     } catch {
-      console.log('maybe no listener id');
+      console.log('something went wrong in creating a new message');
     }
   }
 
@@ -52,6 +60,7 @@ class Firebase {
         snapshot.docChanges().forEach(function (change) {
           if (change.type === 'added') {
             self.listenerId = change.doc.data().listenerId;
+            self.chatroomObj = change.doc.data();
           }
         });
       });
@@ -66,6 +75,14 @@ class Firebase {
         listenerId: this.auth.currentUser.uid,
         memberId: (await this.queryAvailableMembersInRTDB()).valueOf(),
       });
+    await this.db
+      .collection('chatrooms')
+      .doc(`${this.auth.currentUser.uid}`)
+      .get()
+      .then((data) => {
+        this.chatroomObj = data.data();
+      });
+    console.log(this.chatroomObj);
   }
 
   async queryAvailableMembersInRTDB() {
