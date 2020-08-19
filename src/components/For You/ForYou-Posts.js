@@ -10,9 +10,7 @@ const ProfileFeed = () => {
 
   async function getPosts() {
     try {
-      const posts = await firebase.getPosts();
-      setPosts(posts);
-      console.log(posts);
+      await firebase.getPosts(setPosts);
     } catch {
       alert('not working');
     }

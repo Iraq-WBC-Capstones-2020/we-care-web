@@ -133,14 +133,29 @@ class Firebase {
       })
       .catch((err) => console.log(err));
   }
-  async getPosts() {
-    const documentData = await this.db
+  async getPosts(setPosts) {
+    this.db
       .collection('posts')
       .orderBy('timestamp', 'desc')
-      .get();
-    return documentData.docs.map((post) => {
-      return post.data();
-    });
+      .onSnapshot((snapshot) => {
+        const posts = snapshot.docs.map((post) => {
+          return post.data();
+        });
+        setPosts(posts);
+      });
+  }
+
+  getUserPosts(setPosts) {
+    this.db
+      .collection('posts')
+      .where('authorId', '==', this.getCurrentUid())
+      .orderBy('timestamp', 'desc')
+      .onSnapshot((snapshot) => {
+        const posts = snapshot.docs.map((post) => {
+          return post.data();
+        });
+        setPosts(posts);
+      });
   }
 }
 

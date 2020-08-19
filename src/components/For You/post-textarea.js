@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import { FiSend } from 'react-icons/fi';
 import PropTypes from 'prop-types';
 import firebase from '../../firebase/firebase';
-const WritePostTextarea = ({ posts, setPosts }) => {
+const WritePostTextarea = () => {
   const postInput = useRef('');
   return (
     <div className="lg:w-1/2 md:w-4/5 w-11/12 text-orangeP relative my-8">
@@ -15,9 +15,12 @@ const WritePostTextarea = ({ posts, setPosts }) => {
       ></textarea>
       <button
         onClick={() => {
-          setPosts([...posts, { body: postInput.current.value }]);
-
-          addPost(postInput.current.value);
+          if (postInput.current.value != '') {
+            addPost(postInput.current.value);
+            postInput.current.value = '';
+          } else {
+            alert('the text is empty');
+          }
         }}
         className="bg-darkP flex items-center text-beige rounded-sm md:px-6 px-3 py-1 absolute bottom-0 right-0 mr-4 mb-4 hover:text-orangeP"
       >
