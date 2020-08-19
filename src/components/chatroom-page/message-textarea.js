@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
 import { FiSend } from 'react-icons/fi';
+import firebase from './../../firebase/firebase';
 
 const MessageTextarea = () => {
   const messageInput = useRef('');

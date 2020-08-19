@@ -26,23 +26,38 @@ class Firebase {
     this.storage = app.storage();
     this.storageRef = this.storage.ref();
     this.currentUser = {};
+    this.listenerId = null;
+  }
+
+  async createNewMessage(body) {
+    try {
+      await this.db
+        .collection('chatrooms')
+        .doc(`${this.listenerId}`)
+        .collection('messages')
+        .add({
+          body,
+        });
+    } catch {
+      console.log('maybe no listener id');
+    }
   }
 
   async listenForCreatedChatroom() {
-    const chatroom = await this.db
+    await this.db
       .collection('chatrooms')
       .where('memberId', '==', this.auth.currentUser.uid)
       .onSnapshot((snapshot) => {
         snapshot.docChanges().forEach(function (change) {
           if (change.type === 'added') {
-            return change.doc.data();
+            this.listenerId = change.doc.data().listenerId;
           }
         });
       });
-    console.log(chatroom);
   }
 
   async createChatroomDocumentInFirestore() {
+    this.listenerId = this.auth.currentUser.uid;
     this.db
       .collection('chatrooms')
       .doc(`${this.auth.currentUser.uid}`)
