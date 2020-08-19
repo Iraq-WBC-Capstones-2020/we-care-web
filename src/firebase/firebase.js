@@ -32,14 +32,18 @@ class Firebase {
 
   async getAllMessages() {
     try {
-      await this.db
+      let arrOfMessages = [];
+      const allMessages = await this.db
         .collection('chatrooms')
         .doc(`${this.listenerId}`)
         .collection('messages')
         .get()
         .then((data) => {
-          console.log(data.data());
+          data.forEach((doc) => {
+            arrOfMessages.push(doc);
+          });
         });
+      return arrOfMessages;
     } catch {
       console.log('something went wrong in getting all messages');
     }
@@ -97,7 +101,6 @@ class Firebase {
       .then((data) => {
         this.chatroomObj = data.data();
       });
-    console.log(this.chatroomObj);
   }
 
   async queryAvailableMembersInRTDB() {

@@ -16,15 +16,16 @@ const ChatroomPage = () => {
     if (currentUser && roomIsCreated === false) {
       if (currentUser.role === 'listener') {
         console.log("I'm a listner");
-        firebase.createChatroomDocumentInFirestore().catch(() => {
-          setNoMembersFound(true);
-        });
-        setRoomIsCreated(true);
+        firebase
+          .createChatroomDocumentInFirestore()
+          .then(() => setRoomIsCreated(true))
+          .catch(() => {
+            setNoMembersFound(true);
+          });
       } else {
         console.log("I'm a member");
         firebase.addAvailableMemberToRTDB();
-        firebase.listenForCreatedChatroom();
-        setRoomIsCreated(true);
+        firebase.listenForCreatedChatroom().then(() => setRoomIsCreated(true));
       }
     }
   }, [currentUser]);
