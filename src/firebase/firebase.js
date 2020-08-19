@@ -133,6 +133,17 @@ class Firebase {
       })
       .catch((err) => console.log(err));
   }
+  async addLike(post) {
+    const id = post.postId;
+    await this.db
+      .collection('posts')
+      .doc(id)
+      .update({
+        likes: post.likes + 1,
+      })
+      .catch((err) => console.log(err));
+  }
+
   async getPosts(setPosts) {
     this.db
       .collection('posts')

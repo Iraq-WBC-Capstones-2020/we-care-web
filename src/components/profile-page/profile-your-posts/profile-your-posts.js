@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import tree from '../imgs/tree.svg';
-import firebase from 'C:/Users/yaras/Desktop/Recoded Bootcamp/we-care-web/src/firebase/firebase.js';
+import firebase from '../../../firebase/firebase';
 import { putPostsIntoGrid } from '../util';
 
 const ProfileYourPosts = () => {

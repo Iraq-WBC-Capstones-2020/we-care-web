@@ -15,6 +15,7 @@ const ProfileFeed = () => {
       alert('not working');
     }
   }
+
   return (
     <>
       <div className="bg-darkP w-full h-full flex flex-col justify-between items-center overflow-y-auto">
