@@ -2,7 +2,8 @@ import React from 'react';
 import Navbar from './Navbar';
 import Content from './Front Content';
 import Quotes from './Quotes';
-import Posts from './Posts';
+// import Posts from './Posts';
+import Feed from './profile-feed';
 const ForYou = () => {
   return (
     <>
@@ -10,7 +11,8 @@ const ForYou = () => {
         <Navbar />
         <Content />
         <Quotes />
-        <Posts />
+        {/* <Posts /> */}
+        <Feed />
       </div>
     </>
   );

@@ -1,5 +1,4 @@
 import * as app from 'firebase/app';
-
 import 'firebase/auth';
 import 'firebase/firestore';
 import 'firebase/storage';
@@ -112,6 +111,35 @@ class Firebase {
     let ref = await this.storageRef.child(`${path}`);
     await ref.put(file).then(function () {
       console.log('Uploaded a blob or file!');
+    });
+  }
+  async createPost(body) {
+    const id = this.db.collection('posts').doc().id;
+    const avatar = await this.storageRef
+      .child(`profile-images/default/image.svg`) // this should be a picture from Zainab
+      .getDownloadURL();
+    await this.db
+      .collection('posts')
+      .doc(id)
+      .set({
+        postId: id,
+        authorId: this.getCurrentUid(),
+        createdAt: new Date().toLocaleString(),
+        timestamp: app.firestore.FieldValue.serverTimestamp(),
+        authorName: this.getCurrentUsername(),
+        authorAvatar: avatar,
+        text: body,
+        likes: 0,
+      })
+      .catch((err) => console.log(err));
+  }
+  async getPosts() {
+    const documentData = await this.db
+      .collection('posts')
+      .orderBy('timestamp', 'desc')
+      .get();
+    return documentData.docs.map((post) => {
+      return post.data();
     });
   }
 }

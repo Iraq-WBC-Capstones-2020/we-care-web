@@ -5,7 +5,7 @@ import firebase from '../../firebase/firebase';
 const WritePostTextarea = ({ posts, setPosts }) => {
   const postInput = useRef('');
   return (
-    <div className="lg:w-1/2 md:w-4/5 w-11/12 text-darkP relative my-8">
+    <div className="lg:w-1/2 md:w-4/5 w-11/12 text-orangeP relative my-8">
       <h2 className="md:text-lg font-semibold">Write a post</h2>
       <textarea
         ref={postInput}
