@@ -57,7 +57,7 @@ class Firebase {
         .doc(`${this.listenerId}`)
         .collection('messages')
         .add({
-          nickname: this.auth.currentUser.uid,
+          nickname: this.currentUser.username,
           from: this.auth.currentUser.uid,
           to:
             this.auth.currentUser.uid === this.chatroomObj.listenerId
