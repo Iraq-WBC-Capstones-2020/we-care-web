@@ -1,10 +1,9 @@
 import React, { useEffect } from 'react';
-import Message from './message';
-import PropTypes from 'prop-types';
+// import Message from './message';
 import MessageTextarea from './message-textarea';
 import { IoIosCloseCircle } from 'react-icons/io';
 
-const Messages = ({ messages, setMessages }) => {
+const Messages = () => {
   useEffect(() => {
     const textarea = document.getElementById('text-area');
     textarea.scrollIntoView();
@@ -18,22 +17,17 @@ const Messages = ({ messages, setMessages }) => {
         <IoIosCloseCircle className="text-darkP text-2xl" />
       </button>
       <div className="w-11/12 self-center flex flex-col">
-        {messages.map((message, index) =>
+        {/* {messages.map((message, index) =>
           message.from === 'you' ? (
             <Message message={message} classes={'self-end'} key={index} />
           ) : (
             <Message message={message} classes={'self-start'} key={index} />
           )
-        )}
+        )} */}
       </div>
-      <MessageTextarea messages={messages} setMessages={setMessages} />
+      <MessageTextarea />
     </div>
   );
 };
 
 export default Messages;
-
-Messages.propTypes = {
-  messages: PropTypes.array.isRequired,
-  setMessages: PropTypes.func.isRequired,
-};

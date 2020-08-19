@@ -21,55 +21,67 @@ class Firebase {
     app.initializeApp(firebaseConfig);
     this.auth = app.auth();
     this.db = app.firestore();
+    this.firestore = app.firestore;
     this.rtdb = app.database();
     this.storage = app.storage();
     this.storageRef = this.storage.ref();
     this.currentUser = {};
   }
 
-  setupPresence(isSignedOut) {
-    const isOfflineForRTDB = {
-      state: 'offline',
-      lastChanged: app.database.ServerValue.TIMESTAMP,
-    };
-    const isOnlineForRTDB = {
-      state: 'online',
-      lastChanged: app.database.ServerValue.TIMESTAMP,
-    };
+  async listenForCreatedChatroom() {
+    const chatroom = await this.db
+      .collection('chatrooms')
+      .where('memberId', '==', this.auth.currentUser.uid)
+      .onSnapshot((snapshot) => {
+        snapshot.docChanges().forEach(function (change) {
+          if (change.type === 'added') {
+            return change.doc.data();
+          }
+        });
+      });
+    console.log(chatroom);
+  }
 
-    const isOfflineForFirestore = {
-      state: 'offline',
-      lastChanged: app.firestore.FieldValue.serverTimestamp(),
-    };
-    const isOnlineForFirestore = {
-      state: 'online',
-      lastChanged: app.firestore.FieldValue.serverTimestamp(),
-    };
+  async createChatroomDocumentInFirestore() {
+    this.db
+      .collection('chatrooms')
+      .doc(`${this.auth.currentUser.uid}`)
+      .set({
+        listenerId: this.auth.currentUser.uid,
+        memberId: (await this.queryAvailableMembersInRTDB()).valueOf(),
+      });
+  }
 
-    const rtdbRef = this.rtdb.ref(`/status/${this.currentUser.uid}`);
-    const userDoc = this.db.doc(`/users/${this.currentUser.uid}`);
+  async queryAvailableMembersInRTDB() {
+    const member = await this.rtdb
+      .ref('/members')
+      .orderByValue()
+      .limitToLast(1)
+      .once('value')
+      .then(function (dataSnapshot) {
+        return dataSnapshot;
+      });
+    const memberId = member && Object.keys(member.val())[0];
+    return memberId;
+  }
+
+  async addAvailableMemberToRTDB(isSignedOut) {
+    const rtdbRef = this.rtdb.ref(`/members`);
+
+    rtdbRef.set({
+      [this.auth.currentUser.uid]: app.database.ServerValue.TIMESTAMP,
+    });
 
     this.rtdb.ref('.info/connected').on('value', async (snapshot) => {
+      rtdbRef.onDisconnect().remove();
       if (snapshot.val() === false) {
-        userDoc.update({
-          status: isOfflineForFirestore,
-        });
         return;
       }
 
       if (isSignedOut) {
-        rtdbRef.set(isOfflineForRTDB);
-        userDoc.update({
-          status: isOfflineForFirestore,
-        });
+        rtdbRef.remove();
         return;
       }
-
-      await rtdbRef.onDisconnect().set(isOfflineForRTDB);
-      rtdbRef.set(isOnlineForRTDB);
-      userDoc.update({
-        status: isOnlineForFirestore,
-      });
     });
   }
 
@@ -79,7 +91,7 @@ class Firebase {
 
   logout() {
     this.auth.signOut();
-    this.setupPresence(true);
+    this.addAvailableMemberToRTDB(true);
   }
 
   async register(username, email, password) {
@@ -151,7 +163,6 @@ class Firebase {
       .doc(`${this.auth.currentUser.uid}`)
       .get();
     this.currentUser = user.data();
-    this.setupPresence();
     return user.data();
   }
 
