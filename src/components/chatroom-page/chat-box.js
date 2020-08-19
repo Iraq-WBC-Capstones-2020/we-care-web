@@ -36,7 +36,7 @@ const Messages = () => {
       <div className="w-11/12 self-center flex flex-col">
         {messages &&
           messages.map((message, index) =>
-            message.from === firebase.auth.currentUser.uid ? (
+            message.get('from') === firebase.auth.currentUser.uid ? (
               <Message message={message} classes={'self-end'} key={index} />
             ) : (
               <Message message={message} classes={'self-start'} key={index} />

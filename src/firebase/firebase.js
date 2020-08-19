@@ -33,7 +33,7 @@ class Firebase {
   async getAllMessages() {
     try {
       let arrOfMessages = [];
-      const allMessages = await this.db
+      await this.db
         .collection('chatrooms')
         .doc(`${this.listenerId}`)
         .collection('messages')
