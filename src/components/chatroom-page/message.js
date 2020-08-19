@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import moment from 'moment';
 
 const Message = ({ message, classes }) => {
   return (
@@ -12,7 +13,7 @@ const Message = ({ message, classes }) => {
             {message.get('nickname')}
           </h2>
           <p className="text-xs md:text-sm text-orangeP">
-            {/* {message.get('createdAt')} */}
+            {moment(message.get('createdAt').toDate()).format('LT')}
           </p>
         </div>
       </div>
