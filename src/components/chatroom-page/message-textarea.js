@@ -14,6 +14,7 @@ const MessageTextarea = () => {
       ></textarea>
       <button
         onClick={() => {
+          firebase.createNewMessage(messageInput.current.value);
           messageInput.current.value = '';
           messageInput.current.scrollIntoView();
         }}

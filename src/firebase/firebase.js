@@ -44,13 +44,14 @@ class Firebase {
   }
 
   async listenForCreatedChatroom() {
+    const self = this;
     await this.db
       .collection('chatrooms')
       .where('memberId', '==', this.auth.currentUser.uid)
       .onSnapshot((snapshot) => {
         snapshot.docChanges().forEach(function (change) {
           if (change.type === 'added') {
-            this.listenerId = change.doc.data().listenerId;
+            self.listenerId = change.doc.data().listenerId;
           }
         });
       });
