@@ -3,7 +3,7 @@ import Navbar from './Navbar';
 import Content from './Front Content';
 import Quotes from './Quotes';
 // import Posts from './Posts';
-import Feed from './profile-feed';
+import Feed from './ForYou-Posts';
 const ForYou = () => {
   return (
     <>
