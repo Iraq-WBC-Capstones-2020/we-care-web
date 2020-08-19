@@ -37,6 +37,7 @@ class Firebase {
         .collection('chatrooms')
         .doc(`${this.listenerId}`)
         .collection('messages')
+        .orderBy('createdAt')
         .get()
         .then((data) => {
           data.forEach((doc) => {
