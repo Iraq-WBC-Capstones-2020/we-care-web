@@ -30,26 +30,6 @@ class Firebase {
     this.chatroomObj = null;
   }
 
-  async getAllMessages() {
-    try {
-      let arrOfMessages = [];
-      await this.db
-        .collection('chatrooms')
-        .doc(`${this.listenerId}`)
-        .collection('messages')
-        .orderBy('createdAt')
-        .get()
-        .then((data) => {
-          data.forEach((doc) => {
-            arrOfMessages.push(doc);
-          });
-        });
-      return arrOfMessages;
-    } catch {
-      console.log('something went wrong in getting all messages');
-    }
-  }
-
   async createNewMessage(body) {
     try {
       await this.db

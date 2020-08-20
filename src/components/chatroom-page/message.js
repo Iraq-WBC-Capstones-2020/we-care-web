@@ -10,14 +10,14 @@ const Message = ({ message, classes }) => {
       <div className="flex mb-3">
         <div>
           <h2 className="md:text-base text-sm font-semibold">
-            {message.get('nickname')}
+            {message.nickname}
           </h2>
           <p className="text-xs md:text-sm text-orangeP">
-            {moment(message.get('createdAt').toDate()).format('LT')}
+            {moment(message.createdAt.toDate()).format('LT')}
           </p>
         </div>
       </div>
-      <div className="mb-3 text-xs md:text-sm">{message.get('body')}</div>
+      <div className="mb-3 text-xs md:text-sm">{message.body}</div>
     </div>
   );
 };

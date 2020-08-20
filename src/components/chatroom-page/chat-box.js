@@ -6,24 +6,36 @@ import firebase from './../../firebase/firebase';
 
 const Messages = () => {
   const [messages, setMessages] = useState(null);
+
   useEffect(() => {
     const textarea = document.getElementById('text-area');
     textarea.scrollIntoView();
   }, []);
 
   useEffect(() => {
-    setTimeout(() => {
-      if (firebase.chatroomObj) {
-        firebase
-          .getAllMessages()
-          .then((theMessages) => setMessages(theMessages));
-      }
-    }, 5000);
+    return firebase.db
+      .collection('chatrooms')
+      .doc(`${firebase.listenerId}`)
+      .collection('messages')
+      .orderBy('createdAt')
+      .onSnapshot((snapshot) => {
+        const docs = [];
+        snapshot.forEach((doc) => {
+          docs.push({
+            ...doc.data(),
+            id: doc.id,
+          });
+        });
+        setMessages(docs);
+      });
   }, []);
 
   if (messages) {
     console.log(messages);
   }
+
+  console.log(firebase.listenerId);
+  console.log(firebase.chatroomObj);
 
   return (
     <div
@@ -35,11 +47,19 @@ const Messages = () => {
       </button>
       <div className="w-11/12 self-center flex flex-col">
         {messages &&
-          messages.map((message, index) =>
-            message.get('from') === firebase.auth.currentUser.uid ? (
-              <Message message={message} classes={'self-end'} key={index} />
+          messages.map((message) =>
+            message.from === firebase.auth.currentUser.uid ? (
+              <Message
+                message={message}
+                classes={'self-end'}
+                key={message.id}
+              />
             ) : (
-              <Message message={message} classes={'self-start'} key={index} />
+              <Message
+                message={message}
+                classes={'self-start'}
+                key={message.id}
+              />
             )
           )}
       </div>
