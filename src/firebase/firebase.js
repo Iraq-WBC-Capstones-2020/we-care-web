@@ -31,11 +31,22 @@ class Firebase {
   }
 
   async removeChatroom() {
-    try {
-      await this.db.collection('chatrooms').doc(`${this.listenerId}`).delete();
-    } catch (err) {
-      console.log(err);
-    }
+    await this.db
+      .collection('chatrooms')
+      .doc(`${this.listenerId}`)
+      .collection('messages')
+      .get()
+      .then((snapshot) => {
+        snapshot.forEach(async (doc) => {
+          await this.db
+            .collection('chatrooms')
+            .doc(`${this.listenerId}`)
+            .collection('messages')
+            .doc(`${doc.id}`)
+            .delete();
+        });
+      });
+    await this.db.collection('chatrooms').doc(`${this.listenerId}`).delete();
   }
 
   async createNewMessage(body) {

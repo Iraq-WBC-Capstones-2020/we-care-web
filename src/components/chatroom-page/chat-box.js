@@ -3,8 +3,11 @@ import Message from './message';
 import MessageTextarea from './message-textarea';
 import { IoIosCloseCircle } from 'react-icons/io';
 import firebase from './../../firebase/firebase';
+import { useHistory } from 'react-router-dom';
 
 const Messages = () => {
+  const history = useHistory();
+
   const [messages, setMessages] = useState(null);
 
   useEffect(() => {
@@ -35,7 +38,14 @@ const Messages = () => {
       className="flex flex-col justify-between md:w-10/12 w-11/12 lg:w-7/12 bg-beige m-5 rounded-lg relative overflow-y-auto overflow-x-hidden"
       style={{ height: '90%' }}
     >
-      <button className="focus:outline-none sticky top-0 ">
+      <button
+        onClick={() => {
+          firebase.removeChatroom().then(() => {
+            history.push('/profile');
+          });
+        }}
+        className="focus:outline-none sticky top-0 "
+      >
         <IoIosCloseCircle className="text-darkP text-2xl" />
       </button>
       <div className="w-11/12 self-center flex flex-col">
