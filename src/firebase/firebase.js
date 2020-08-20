@@ -30,6 +30,12 @@ class Firebase {
     this.chatroomObj = null;
   }
 
+  async listenForDeletionOfChatroom() {
+    // TODO: listen for the chatroom doc getting deleted.
+    // Then change listenerId and chatroomObj back to null.
+    // Then redirect to /profile
+  }
+
   async removeChatroom() {
     await this.db
       .collection('chatrooms')

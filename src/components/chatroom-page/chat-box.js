@@ -33,6 +33,22 @@ const Messages = () => {
       });
   }, []);
 
+  useEffect(() => {
+    return firebase.db
+      .collection('chatrooms')
+      .doc(`${firebase.listenerId}`)
+      .collection('messages')
+      .onSnapshot((snapshot) => {
+        snapshot.docChanges().forEach(function (change) {
+          if (change.type === 'removed') {
+            firebase.listenerId = null;
+            firebase.chatroomObj = null;
+            history.push('/profile');
+          }
+        });
+      });
+  }, []);
+
   if (
     firebase.chatroomObj &&
     firebase.chatroomObj.memberId === firebase.auth.currentUser.uid
