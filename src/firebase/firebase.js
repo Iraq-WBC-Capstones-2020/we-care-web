@@ -46,8 +46,8 @@ class Firebase {
           body,
           createdAt: app.firestore.Timestamp.now(),
         });
-    } catch {
-      console.log('something went wrong in creating a new message');
+    } catch (err) {
+      console.log(err);
     }
   }
 
