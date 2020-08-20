@@ -15,7 +15,7 @@ const WritePostTextarea = () => {
       ></textarea>
       <button
         onClick={() => {
-          if (postInput.current.value != '') {
+          if (postInput.current.value !== '') {
             addPost(postInput.current.value);
             postInput.current.value = '';
           } else {
