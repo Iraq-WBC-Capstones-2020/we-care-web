@@ -23,13 +23,10 @@ function App() {
       <Route exact path="/survey">
         <Survey />
       </Route>
-      <Route exact path="/ConselingPage">
-        <ConselingPage />
-      </Route>
       <Route path="/profile">
         <ProfilePage />
       </Route>
-      <Route path="/conseling">
+      <Route path="/counselling">
         <ConselingPage />
       </Route>
       <Route path="/chatroom">
