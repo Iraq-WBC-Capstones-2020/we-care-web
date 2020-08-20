@@ -10,11 +10,7 @@ const Post = ({ post }) => {
     <div className="bg-white w-11/12 md:w-4/5 lg:w-1/2 rounded-md text-darkP flex flex-col md:p-8 p-5 my-8">
       <div className="flex">
         <div className="mr-4">
-          <img
-            className="rounded-full w-12"
-            src={profilePic}
-            alt="Profile Picture"
-          />
+          <img className="rounded-full w-12" src={profilePic} alt="Profile" />
         </div>
         <div>
           <h2 className="text-base font-semibold">Charles Davies</h2>

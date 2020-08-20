@@ -20,7 +20,7 @@ const Post = ({ post }) => {
           <img
             className="rounded-full w-12"
             src={post.authorAvatar}
-            alt="Profile Picture"
+            alt="Profile"
           />
         </div>
         <div>

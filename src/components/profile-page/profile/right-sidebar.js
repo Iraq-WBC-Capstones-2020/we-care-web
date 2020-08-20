@@ -13,7 +13,7 @@ const RightSidebar = () => {
             <img
               className="rounded-full w-24 mb-4"
               src={currentUser.profilePicture}
-              alt="profile picture"
+              alt="Profile"
             />
             <h2 className="text-lg font-semibold lg:ml-0 ml-4">
               {currentUser.username}
