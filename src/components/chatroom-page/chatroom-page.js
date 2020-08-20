@@ -34,7 +34,11 @@ const ChatroomPage = () => {
     <div className="h-screen flex flex-col bg-darkP">
       <Navbar />
       <main className="flex lg:justify-evenly justify-center items-center h-full w-screen overflow-hidden">
-        <img src={illustration} className="w-1/4 hidden lg:inline-block" />
+        <img
+          src={illustration}
+          className="w-1/4 hidden lg:inline-block"
+          alt="girl with friend"
+        />
         <Messages messages={messages} setMessages={setMessages} />
       </main>
     </div>

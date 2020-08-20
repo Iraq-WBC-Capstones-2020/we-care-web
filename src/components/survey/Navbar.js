@@ -61,6 +61,7 @@ export default function Navbar() {
               <img
                 src={profileImg}
                 className="rounded-full h-10 w-10 object-cover"
+                alt="Profile Picture"
               ></img>
             </Link>
             <Link to="/profile">
