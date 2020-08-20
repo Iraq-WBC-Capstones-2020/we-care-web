@@ -39,13 +39,14 @@ export default function Navbar() {
                 <Link to="/ForYou">For You</Link>
               </li>
               <li className="lg:mb-0 lg:py-0 py-3 hover:text-orangeP">
-                <a href={'#'}>Counseling</a>
+                <a href={() => false}>Counseling</a>
               </li>
             </ul>
           </div>
           <div className="lg:flex justify-center items-center hidden">
             <Link to="/profile">
               <img
+                alt=""
                 src={profileImg}
                 className="rounded-full h-10 w-10 object-cover"
               ></img>

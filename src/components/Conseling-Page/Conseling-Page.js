@@ -10,6 +10,7 @@ export default function ConselingPage() {
           <div className="md:flex items-center sm:w-3/4">
             <div className="w-auto mt-6">
               <img
+                alt=""
                 src="https://source.unsplash.com/random "
                 className="rounded-lg h-40 w-56"
               />

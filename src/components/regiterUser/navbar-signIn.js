@@ -34,7 +34,7 @@ export default function Navbar() {
               <Link to="/ForYou">For you</Link>
             </li>
             <li className="lg:mr-10 lg:my-0 lg:py-0 py-3 lg:border-0 border-b border-darkP">
-              <a href={'#'}>Counseling</a>
+              <a href={() => false}>Counseling</a>
             </li>
             <li className="lg:mb-0 lg:py-0 py-3">
               <Link to="/signUp">SignUp</Link>

@@ -48,6 +48,7 @@ function Form({ username, email, password }) {
               <button className="justify-between border border-darkP rounded w-full pl-2 leading-tight focus:outline-none focus:bg-white focus:border-darkBeige inline-flex items-center">
                 <span>Attach Here </span>
                 <img
+                  alt=""
                   className="cursor-default"
                   onClick={(e) => e.preventDefault()}
                   src={attachIcon}
@@ -121,6 +122,7 @@ function Form({ username, email, password }) {
             <button className="justify-between border border-darkP rounded w-full pl-2 leading-tight focus:outline-none focus:bg-white focus:border-darkBeige inline-flex items-center">
               <span>Attach Here </span>
               <img
+                alt=""
                 className="cursor-default"
                 onClick={(e) => e.preventDefault()}
                 src={attachIcon}

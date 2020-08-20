@@ -7,10 +7,16 @@ const Posts = () => {
       <section className="text-darkP bg-darkP">
         <div className="container px-5 py-24 mx-auto">
           <div className="flex mb-4 items-center justify-evenly">
-            <a className="text-orangeP border-b-2 border-orangeP py-2 md:text-lg md:px-16 text-xs">
+            <a
+              href="{#}"
+              className="text-orangeP border-b-2 border-orangeP py-2 md:text-lg md:px-16 text-xs"
+            >
               By The Team
             </a>
-            <a className="text-white border-b-2 border-white py-2 md:text-lg  md:px-16 text-xs">
+            <a
+              href="{#}"
+              className="text-white border-b-2 border-white py-2 md:text-lg  md:px-16 text-xs"
+            >
               By The Community
             </a>
           </div>

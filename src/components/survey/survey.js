@@ -7,19 +7,19 @@ export default function Survey() {
       <div className="pageHight">
         <nav className="flex justify-around items-center py-6 bg-beige text-darkP text-sm">
           <h1 className="text-lg">
-            <a href={'#'} style={{ fontFamily: 'Pacifico' }}>
+            <a href="{#}" style={{ fontFamily: 'Pacifico' }}>
               We Care
             </a>
           </h1>
           <ul className="flex">
             <li className="mr-10">
-              <a href={'#'}>Home</a>
+              <a href="{#}">Home</a>
             </li>
             <li className="mr-10">
-              <a href={'#'}>For you</a>
+              <a href="{#}">For you</a>
             </li>
             <li className="mr-10">
-              <a href={'#'}>Counseling</a>
+              <a href="{#}">Counseling</a>
             </li>
           </ul>
         </nav>

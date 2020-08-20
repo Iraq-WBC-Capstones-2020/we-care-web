@@ -36,7 +36,7 @@ export default function Navbar() {
                 <Link to="/profile">Profile</Link>
               </li>
               <li className="lg:mr-10 lg:my-0 lg:py-0 py-3 hover:text-orangeP lg:border-0 border-b border-darkP">
-                <a href={'#'}>Counseling</a>
+                <a href={() => false}>Counseling</a>
               </li>
               <li className="lg:mb-0 lg:py-0 py-3 hover:text-orangeP">
                 <Link to="/chatroom">Connect Now</Link>
@@ -46,6 +46,7 @@ export default function Navbar() {
           <div className="lg:flex justify-center items-center hidden">
             <Link to="/profile">
               <img
+                alt=""
                 src={profileImg}
                 className="rounded-full h-10 w-10 object-cover"
               ></img>

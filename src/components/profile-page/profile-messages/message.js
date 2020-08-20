@@ -12,6 +12,7 @@ const Message = ({ message, classes }) => {
       <div className="flex mb-3">
         <div className="mr-4">
           <img
+            alt=""
             className="rounded-full w-12"
             src={message.from === 'Bruce Lee' ? profilePic : profilePic2}
           />
