@@ -8,6 +8,7 @@ import Login from './components/regiterUser/Login';
 import ForYou from './components/For You/ForYou';
 import ConselingPage from './components/Conseling-Page/Conseling-Page';
 import firebase from './firebase/firebase';
+import Survey from './components/survey/survey';
 
 function App() {
   const [firebaseInitialized, setFirebaseInitialized] = useState(false);
@@ -19,6 +20,9 @@ function App() {
 
   return firebaseInitialized !== false ? (
     <Switch>
+      <Route exact path="/survey">
+        <Survey />
+      </Route>
       <Route exact path="/ConselingPage">
         <ConselingPage />
       </Route>
@@ -37,7 +41,7 @@ function App() {
       <Route path="/login">
         <Login />
       </Route>
-      <Route path="/for-you">
+      <Route path="/ForYou">
         <ForYou />
       </Route>
       <Route path="/">
