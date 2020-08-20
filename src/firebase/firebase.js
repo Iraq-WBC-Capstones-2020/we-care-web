@@ -47,6 +47,8 @@ class Firebase {
         });
       });
     await this.db.collection('chatrooms').doc(`${this.listenerId}`).delete();
+    this.listenerId = null;
+    this.chatroomObj = null;
   }
 
   async createNewMessage(body) {
