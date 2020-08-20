@@ -7,5 +7,7 @@ export const reducer = (state, action) => {
       return { ...state, messagesList: action.payload.messagesList };
     case SET_CURRENT_USER:
       return { ...state, currentUser: action.payload.currentUser };
+    default:
+      return state;
   }
 };
