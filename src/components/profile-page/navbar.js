@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FiMenu } from 'react-icons/fi';
 import logo from './imgs/Logo.svg';
 import { Link, useHistory } from 'react-router-dom';
@@ -7,6 +7,19 @@ import firebase from '../../firebase/firebase';
 
 export default function Navbar() {
   const [navbarOpen, setNavbarOpen] = useState(false);
+  const [username, setUsername] = useState([]);
+  useEffect(() => {
+    getUsernameandImage();
+  }, []);
+
+  async function getUsernameandImage() {
+    try {
+      let currentUsername = await firebase.getCurrentUsername();
+      setUsername(currentUsername);
+    } catch {
+      alert('not working');
+    }
+  }
   let history = useHistory();
   return (
     <>
@@ -38,7 +51,7 @@ export default function Navbar() {
                 <Link to="/ForYou">For You</Link>
               </li>
               <li className="lg:mr-10 lg:my-0 lg:py-0 py-3 hover:text-orangeP lg:border-0 border-b border-beige">
-                <a href={'#'}>Counseling</a>
+                <Link to="/Counselling">Counselling</Link>
               </li>
               <li className="lg:mr-10 lg:my-0 lg:py-0 py-3 hover:text-orangeP lg:border-0 border-b border-beige">
                 <Link to="/chatroom">Connect Now</Link>
@@ -59,7 +72,7 @@ export default function Navbar() {
               ></img>
             </Link>
             <Link to="/profile">
-              <p className="ml-2">Bruce Lee</p>
+              <p className="ml-2">{username}</p>
             </Link>
           </div>
         </div>

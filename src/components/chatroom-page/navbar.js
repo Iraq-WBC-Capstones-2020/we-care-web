@@ -1,11 +1,24 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { FiMenu } from 'react-icons/fi';
 import logo from './imgs/Logo.svg';
 import { Link } from 'react-router-dom';
 import profileImg from './imgs/profile.png';
-
+import firebase from '../../firebase/firebase';
 export default function Navbar() {
   const [navbarOpen, setNavbarOpen] = React.useState(false);
+  const [username, setUsername] = useState([]);
+  useEffect(() => {
+    getUsernameandImage();
+  }, []);
+
+  async function getUsernameandImage() {
+    try {
+      let currentUsername = await firebase.getCurrentUsername();
+      setUsername(currentUsername);
+    } catch {
+      alert('not working');
+    }
+  }
   return (
     <>
       <nav className="relative flex flex-wrap items-center justify-between px-2 lg:py-6 py-4 navbar-expand-lg bg-darkP text-beige text-sm">
@@ -39,7 +52,7 @@ export default function Navbar() {
                 <Link to="/ForYou">For You</Link>
               </li>
               <li className="lg:mb-0 lg:py-0 py-3 hover:text-orangeP">
-                <a href={'#'}>Counseling</a>
+                <Link to="/Counselling">Counselling</Link>
               </li>
             </ul>
           </div>
@@ -51,7 +64,7 @@ export default function Navbar() {
               ></img>
             </Link>
             <Link to="/profile">
-              <p className="ml-2">Bruce Lee</p>
+              <p className="ml-2">{username}</p>
             </Link>
           </div>
         </div>
