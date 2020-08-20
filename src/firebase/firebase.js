@@ -30,6 +30,14 @@ class Firebase {
     this.chatroomObj = null;
   }
 
+  async removeChatroom() {
+    try {
+      await this.db.collection('chatrooms').doc(`${this.listenerId}`).delete();
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
   async createNewMessage(body) {
     try {
       await this.db
