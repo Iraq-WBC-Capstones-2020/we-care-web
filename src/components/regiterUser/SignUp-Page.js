@@ -27,6 +27,10 @@ const SignUp = () => {
   const [password, setPassword] = useState('');
   const [isTherapist, setIsTherapist] = useState(false);
 
+  if (firebase.getCurrentUsername()) {
+    history.push('/profile');
+    return null;
+  }
   return (
     <>
       <Switch>
