@@ -58,7 +58,12 @@ export default function Navbar() {
               </li>
 
               <li className="lg:mb-0 lg:py-0 py-3 hover:text-orangeP">
-                <Link to="/login" onClick={logout}>
+                <Link
+                  to="/login"
+                  onClick={() => {
+                    logout();
+                  }}
+                >
                   Sign Out
                 </Link>
               </li>
@@ -83,6 +88,6 @@ export default function Navbar() {
 
   async function logout() {
     await firebase.logout();
-    history.push('/');
+    history.push('/login');
   }
 }
