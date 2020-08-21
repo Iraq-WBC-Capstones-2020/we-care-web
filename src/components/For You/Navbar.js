@@ -56,7 +56,7 @@ export default function Navbar() {
               {firebase.getCurrentUsername() ? (
                 <li className="lg:mb-0 lg:py-0 py-3 hover:text-orangeP">
                   <Link to="/login" onClick={() => firebase.logout()}>
-                    Log Out
+                    Sign Out
                   </Link>
                 </li>
               ) : (

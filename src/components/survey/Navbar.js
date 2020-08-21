@@ -45,15 +45,21 @@ export default function Navbar() {
             id="example-navbar-danger"
           >
             <ul className="flex flex-col justify-center lg:flex-row list-none text-center w-full">
-              <li className="lg:mr-10 lg:mt-0 lg:py-0 py-3 hover:text-orangeP lg:border-0 border-b border-beige">
-                <Link to="/profile/feed">Profile</Link>
-              </li>
               <li className="lg:mr-10 lg:my-0 lg:py-0 py-3 hover:text-orangeP lg:border-0 border-b border-beige">
                 <Link to="/ForYou">For You</Link>
               </li>
               <li className="lg:mb-0 lg:py-0 py-3 hover:text-orangeP">
                 <Link to="/Counselling">Counselling</Link>
               </li>
+              {firebase.getCurrentUsername() ? (
+                <li className="lg:mb-0 lg:py-0 py-3 hover:text-orangeP">
+                  <Link to="/login" onClick={() => firebase.logout()}>
+                    Sign Out
+                  </Link>
+                </li>
+              ) : (
+                ''
+              )}
             </ul>
           </div>
           <div className="lg:flex justify-center items-center hidden">
