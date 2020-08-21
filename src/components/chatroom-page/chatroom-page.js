@@ -26,7 +26,7 @@ const ChatroomPage = () => {
         firebase.addAvailableMemberToRTDB();
         firebase.listenForCreatedChatroom(() => setRoomIsCreated(true));
         setTimeout(() => {
-          if (!roomIsCreated) {
+          if (!firebase.listenerId) {
             setNoListnersFound(true);
           }
         }, 30000);
