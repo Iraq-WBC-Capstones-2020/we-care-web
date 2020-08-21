@@ -46,13 +46,13 @@ export default function Navbar() {
           >
             <ul className="flex flex-col justify-center lg:flex-row list-none text-center w-full">
               <li className="lg:mr-10 lg:mt-0 lg:py-0 py-3 hover:text-orangeP lg:border-0 border-b border-beige">
+                <Link to="/Home">Home</Link>
+              </li>
+              <li className="lg:mr-10 lg:mt-0 lg:py-0 py-3 hover:text-orangeP lg:border-0 border-b border-beige">
                 <Link to="/profile/feed">Profile</Link>
               </li>
               <li className="lg:mr-10 lg:my-0 lg:py-0 py-3 hover:text-orangeP lg:border-0 border-b border-beige">
                 <Link to="/ForYou">For You</Link>
-              </li>
-              <li className="lg:mb-0 lg:py-0 py-3 hover:text-orangeP">
-                <Link to="/Counselling">Counselling</Link>
               </li>
             </ul>
           </div>

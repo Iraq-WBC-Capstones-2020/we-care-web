@@ -1,7 +1,22 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import Navbar from './Navbar';
+import firebase from '../../firebase/firebase';
+import { setCurrentUser } from './../../redux/actions';
 
 export default function ConselingPage() {
+  let history = useHistory();
+  const dispatch = useDispatch();
+  if (!firebase.getCurrentUsername()) {
+    alert('Please login first');
+    history.push('/login');
+    return null;
+  } else {
+    firebase.getCurrentUser().then((currentUser) => {
+      dispatch(setCurrentUser(currentUser));
+    });
+  }
   return (
     <>
       <Navbar />
