@@ -3,7 +3,8 @@ import { FiMenu } from 'react-icons/fi';
 import logo from './imgs/Logo.svg';
 import { Link } from 'react-router-dom';
 import profileImg from './imgs/profile.png';
-import firebase from '../../firebase/firebase';
+import firebase from './../../firebase/firebase';
+
 export default function Navbar() {
   const [navbarOpen, setNavbarOpen] = React.useState(false);
   const [username, setUsername] = useState([]);
@@ -45,11 +46,35 @@ export default function Navbar() {
             id="example-navbar-danger"
           >
             <ul className="flex flex-col justify-center lg:flex-row list-none text-center w-full">
-              <li className="lg:mr-10 lg:my-0 lg:py-0 py-3 hover:text-orangeP lg:border-0 border-b border-beige">
-                <Link to="/ForYou">For You</Link>
+              <li className="lg:mr-10 lg:mt-0 lg:py-0 py-3 hover:text-orangeP lg:border-0 border-b border-beige">
+                <Link
+                  onClick={() => {
+                    firebase.removeChatroom();
+                  }}
+                  to="/profile/feed"
+                >
+                  Profile
+                </Link>
               </li>
               <li className="lg:mr-10 lg:my-0 lg:py-0 py-3 hover:text-orangeP lg:border-0 border-b border-beige">
-                <Link to="/Counselling">Counselling</Link>
+                <Link
+                  onClick={() => {
+                    firebase.removeChatroom();
+                  }}
+                  to="/ForYou"
+                >
+                  For You
+                </Link>
+              </li>
+              <li className="lg:mb-0 lg:py-0 py-3 hover:text-orangeP">
+                <Link
+                  onClick={() => {
+                    firebase.removeChatroom();
+                  }}
+                  to="/Counselling"
+                >
+                  Counselling
+                </Link>
               </li>
               {firebase.getCurrentUsername() ? (
                 <li className="lg:mb-0 lg:py-0 py-3 hover:text-orangeP">
@@ -63,14 +88,24 @@ export default function Navbar() {
             </ul>
           </div>
           <div className="lg:flex justify-center items-center hidden">
-            <Link to="/profile">
+            <Link
+              onClick={() => {
+                firebase.removeChatroom();
+              }}
+              to="/profile"
+            >
               <img
                 src={profileImg}
                 className="rounded-full h-10 w-10 object-cover"
                 alt="Profile"
               ></img>
             </Link>
-            <Link to="/profile">
+            <Link
+              onClick={() => {
+                firebase.removeChatroom();
+              }}
+              to="/profile"
+            >
               <p className="ml-2">{username}</p>
             </Link>
           </div>
