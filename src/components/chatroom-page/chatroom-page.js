@@ -11,28 +11,21 @@ const ChatroomPage = () => {
   const currentUser = useSelector((state) => state.currentUser);
   const [roomIsCreated, setRoomIsCreated] = useState(false);
   const [noMembersFound, setNoMembersFound] = useState(false);
-  const [reload, setReload] = useState(false);
 
   useEffect(() => {
     if (currentUser && roomIsCreated === false) {
       if (currentUser.role === 'listener') {
-        firebase.createChatroomDocumentInFirestore().catch(() => {
-          setNoMembersFound(true);
-        });
+        firebase
+          .createChatroomDocumentInFirestore(() => setRoomIsCreated(true))
+          .catch(() => {
+            setNoMembersFound(true);
+          });
       } else {
         firebase.addAvailableMemberToRTDB();
-        firebase.listenForCreatedChatroom();
+        firebase.listenForCreatedChatroom(() => setRoomIsCreated(true));
       }
     }
   }, [currentUser]);
-
-  useEffect(() => {
-    if (!firebase.listenerId) {
-      reload ? setReload(false) : setReload(true);
-    } else {
-      setRoomIsCreated(true);
-    }
-  }, [reload]);
 
   if (currentUser && noMembersFound) {
     return (
@@ -48,7 +41,7 @@ const ChatroomPage = () => {
         </main>
       </div>
     );
-  } else if (currentUser && roomIsCreated) {
+  } else if (currentUser && roomIsCreated && firebase.listenerId) {
     return (
       <div className="h-screen flex flex-col bg-darkP">
         <Navbar />

@@ -30,12 +30,6 @@ class Firebase {
     this.chatroomObj = null;
   }
 
-  async listenForDeletionOfChatroom() {
-    // TODO: listen for the chatroom doc getting deleted.
-    // Then change listenerId and chatroomObj back to null.
-    // Then redirect to /profile
-  }
-
   async removeChatroom() {
     await this.db
       .collection('chatrooms')
@@ -78,7 +72,7 @@ class Firebase {
     }
   }
 
-  async listenForCreatedChatroom() {
+  async listenForCreatedChatroom(setRoomIsCreated) {
     const self = this;
     await this.db
       .collection('chatrooms')
@@ -88,14 +82,15 @@ class Firebase {
           if (change.type === 'added') {
             self.listenerId = change.doc.data().listenerId;
             self.chatroomObj = change.doc.data();
+            setRoomIsCreated();
           }
         });
       });
   }
 
-  async createChatroomDocumentInFirestore() {
+  async createChatroomDocumentInFirestore(setRoomIsCreated) {
     this.listenerId = this.auth.currentUser.uid;
-    this.db
+    await this.db
       .collection('chatrooms')
       .doc(`${this.auth.currentUser.uid}`)
       .set({
@@ -108,14 +103,15 @@ class Firebase {
       .get()
       .then((data) => {
         this.chatroomObj = data.data();
+        setRoomIsCreated();
       });
   }
 
   async queryAvailableMembersInRTDB() {
     const member = await this.rtdb
-      .ref('/members')
+      .ref(`/members`)
       .orderByValue()
-      .limitToLast(1)
+      .limitToFirst(1)
       .once('value')
       .then(function (dataSnapshot) {
         return dataSnapshot;
@@ -125,10 +121,10 @@ class Firebase {
   }
 
   async addAvailableMemberToRTDB(isSignedOut) {
-    const rtdbRef = this.rtdb.ref(`/members`);
+    const rtdbRef = this.rtdb.ref(`/members/${this.auth.currentUser.uid}`);
 
     rtdbRef.set({
-      [this.auth.currentUser.uid]: app.database.ServerValue.TIMESTAMP,
+      waitingSince: app.database.ServerValue.TIMESTAMP,
     });
 
     this.rtdb.ref('.info/connected').on('value', async (snapshot) => {

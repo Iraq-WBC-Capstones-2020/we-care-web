@@ -49,6 +49,20 @@ const Messages = () => {
       });
   }, []);
 
+  useEffect(() => {
+    return firebase.db.collection('chatrooms').onSnapshot((snapshot) => {
+      snapshot.docChanges().forEach(function (change) {
+        if (change.type === 'removed') {
+          if (change.doc.id === firebase.listenerId) {
+            firebase.listenerId = null;
+            firebase.chatroomObj = null;
+            history.push('/profile');
+          }
+        }
+      });
+    });
+  }, []);
+
   if (
     firebase.chatroomObj &&
     firebase.chatroomObj.memberId === firebase.auth.currentUser.uid
