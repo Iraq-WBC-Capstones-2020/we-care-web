@@ -6,6 +6,7 @@ import './scrollBar.css';
 import firebase from './../../firebase/firebase';
 import { useSelector } from 'react-redux';
 import Loader from './../loader/loader';
+import UserNotFound from './user-not-found-page';
 
 const ChatroomPage = () => {
   const currentUser = useSelector((state) => state.currentUser);
@@ -34,33 +35,9 @@ const ChatroomPage = () => {
   }, [currentUser]);
 
   if (currentUser && noMembersFound) {
-    return (
-      <div className="h-screen flex flex-col bg-darkP">
-        <Navbar />
-        <main className="flex flex-col justify-center items-center h-full w-full overflow-hidden text-center">
-          <h1 className="xl:text-5xl md:text-4xl text-3xl text-beige">
-            Sorry, no members found.
-          </h1>
-          <h2 className="md:text-3xl text-2xl text-orangeP font-light mt-5">
-            Please try again later.
-          </h2>
-        </main>
-      </div>
-    );
+    return <UserNotFound user={'member'} />;
   } else if (currentUser && noListnersFound) {
-    return (
-      <div className="h-screen flex flex-col bg-darkP">
-        <Navbar />
-        <main className="flex flex-col justify-center items-center h-full w-full overflow-hidden text-center">
-          <h1 className="xl:text-5xl md:text-4xl text-3xl text-beige">
-            Looks like there&apos;s no availbale listeners.
-          </h1>
-          <h2 className="md:text-3xl text-2xl text-orangeP font-light mt-5">
-            Please try again later.
-          </h2>
-        </main>
-      </div>
-    );
+    return <UserNotFound user={'listener'} />;
   } else if (currentUser && roomIsCreated && firebase.listenerId) {
     return (
       <div className="h-screen flex flex-col bg-darkP">
