@@ -33,9 +33,6 @@ export default function Navbar() {
             <li className="lg:mr-10 lg:mt-0 lg:py-0 py-3 hover:text-orangeP lg:border-0 border-b border-beige">
               <Link to="/ForYou">For you</Link>
             </li>
-            <li className="lg:mr-10 lg:my-0 lg:py-0 py-3 hover:text-orangeP lg:border-0 border-b border-beige">
-              <Link to="/Counselling">Counselling</Link>
-            </li>
             <li className="lg:mb-0 lg:py-0 py-3 hover:text-orangeP">
               <Link to="/login">Login</Link>
             </li>
