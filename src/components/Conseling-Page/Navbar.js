@@ -56,7 +56,7 @@ export default function Navbar() {
               </li>
             </ul>
           </div>
-          <div className="lg:flex justify-center items-center hidden">
+          <div className="lg:flex justify-center items-center hidden hover:text-orangeP">
             <Link to="/profile">
               <img
                 src={profileImg}
