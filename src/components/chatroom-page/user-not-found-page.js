@@ -1,5 +1,6 @@
 import React from 'react';
 import Navbar from './navbar';
+import PropTypes from 'prop-types';
 
 const UserNotFound = ({ user }) => {
   return (
@@ -18,3 +19,7 @@ const UserNotFound = ({ user }) => {
 };
 
 export default UserNotFound;
+
+UserNotFound.propTypes = {
+  user: PropTypes.string.isRequired,
+};
