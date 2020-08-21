@@ -47,29 +47,44 @@ export default function Navbar() {
             id="example-navbar-danger"
           >
             <ul className="flex flex-col justify-center lg:flex-row list-none text-center w-full">
-              <li className="lg:mr-10 lg:mt-0 lg:py-0 py-3 hover:text-orangeP lg:border-0 border-b border-darkP">
-                <Link to="/profile">Profile</Link>
-              </li>
               <li className="lg:mr-10 lg:my-0 lg:py-0 py-3 hover:text-orangeP lg:border-0 border-b border-darkP">
                 <Link to="/Counselling">Counselling</Link>
               </li>
-              <li className="lg:mb-0 lg:py-0 py-3 hover:text-orangeP">
+              <li className="lg:mr-10 lg:my-0 lg:py-0 py-3 hover:text-orangeP lg:border-0 border-b border-darkP">
                 <Link to="/chatroom">Connect Now</Link>
               </li>
+              {firebase.getCurrentUsername() ? (
+                <li className="lg:mb-0 lg:py-0 py-3 hover:text-orangeP">
+                  <Link to="/login" onClick={() => firebase.logout()}>
+                    Log Out
+                  </Link>
+                </li>
+              ) : (
+                ''
+              )}
             </ul>
           </div>
-          <div className="lg:flex justify-center items-center hidden">
-            <Link to="/profile">
-              <img
-                src={profileImg}
-                className="rounded-full h-10 w-10 object-cover"
-                alt="Profile"
-              ></img>
+          {firebase.getCurrentUsername() ? (
+            <div className="lg:flex justify-center items-center hidden">
+              <Link to="/profile">
+                <img
+                  src={profileImg}
+                  className="rounded-full h-10 w-10 object-cover"
+                  alt="Profile"
+                ></img>
+              </Link>
+              <Link to="/profile">
+                <p className="ml-2">{username}</p>
+              </Link>
+            </div>
+          ) : (
+            <Link
+              to="/login"
+              className="lg:flex justify-center items-center hidden"
+            >
+              Sign In
             </Link>
-            <Link to="/profile">
-              <p className="ml-2">{username}</p>
-            </Link>
-          </div>
+          )}
         </div>
       </nav>
     </>
