@@ -32,7 +32,7 @@ const ChatroomPage = () => {
         }, 30000);
       }
     }
-  }, [currentUser, roomIsCreated]);
+  }, [currentUser]);
 
   if (currentUser && noMembersFound) {
     return <UserNotFound user={'member'} />;

@@ -47,7 +47,7 @@ const Messages = () => {
           }
         });
       });
-  }, [history]);
+  }, []);
 
   useEffect(() => {
     return firebase.db.collection('chatrooms').onSnapshot((snapshot) => {
@@ -61,7 +61,7 @@ const Messages = () => {
         }
       });
     });
-  }, [history]);
+  }, []);
 
   if (
     firebase.chatroomObj &&
