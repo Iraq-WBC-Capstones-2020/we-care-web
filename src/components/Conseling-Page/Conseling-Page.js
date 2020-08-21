@@ -12,6 +12,7 @@ export default function ConselingPage() {
               <img
                 src="https://source.unsplash.com/random "
                 className="rounded-lg h-40 w-56"
+                alt="Counsellor"
               />
             </div>
             <div className="flex-col flex-wrap py-6 sm:px-1 md:px-0 md:py-0 text-base md:text-sm mb-2 mx-4">
@@ -63,9 +64,14 @@ export default function ConselingPage() {
                   </h2>
                 </li>
               </ul>
-              <button className="bg-transparent text-orangeP border border-orangeP rounded py-1 w-32">
-                Book A Time
-              </button>
+              <a href="https://calendly.com/sarasaadiq98/30min">
+                <button
+                  type="submit"
+                  className="bg-transparent text-orangeP border border-orangeP rounded py-1 w-32"
+                >
+                  Book A Time
+                </button>
+              </a>
             </div>
           </div>
         </div>

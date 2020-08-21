@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { FiMenu } from 'react-icons/fi';
 import logo from './imgs/Logo.svg';
 import { Link } from 'react-router-dom';
@@ -7,6 +7,19 @@ import firebase from './../../firebase/firebase';
 
 export default function Navbar() {
   const [navbarOpen, setNavbarOpen] = React.useState(false);
+  const [username, setUsername] = useState([]);
+  useEffect(() => {
+    getUsernameandImage();
+  }, []);
+
+  async function getUsernameandImage() {
+    try {
+      let currentUsername = await firebase.getCurrentUsername();
+      setUsername(currentUsername);
+    } catch {
+      alert('not working');
+    }
+  }
   return (
     <>
       <nav className="relative flex flex-wrap items-center justify-between px-2 lg:py-6 py-4 navbar-expand-lg bg-darkP text-beige text-sm">
@@ -75,6 +88,7 @@ export default function Navbar() {
               <img
                 src={profileImg}
                 className="rounded-full h-10 w-10 object-cover"
+                alt="Profile"
               ></img>
             </Link>
             <Link

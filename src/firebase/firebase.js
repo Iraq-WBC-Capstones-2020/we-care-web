@@ -1,5 +1,4 @@
 import * as app from 'firebase/app';
-
 import 'firebase/auth';
 import 'firebase/firestore';
 import 'firebase/storage';
@@ -230,6 +229,61 @@ class Firebase {
     await ref.put(file).then(function () {
       console.log('Uploaded a blob or file!');
     });
+  }
+  async createPost(body) {
+    const id = this.db.collection('posts').doc().id;
+    const avatar = await this.storageRef
+      .child(`profile-images/default/image.svg`) // this should be a picture from Zainab
+      .getDownloadURL();
+    await this.db
+      .collection('posts')
+      .doc(id)
+      .set({
+        postId: id,
+        authorId: this.getCurrentUid(),
+        createdAt: new Date().toLocaleString(),
+        timestamp: app.firestore.FieldValue.serverTimestamp(),
+        authorName: this.getCurrentUsername(),
+        authorAvatar: avatar,
+        text: body,
+        likes: 0,
+      })
+      .catch((err) => console.log(err));
+  }
+  async addLike(post) {
+    const id = post.postId;
+    await this.db
+      .collection('posts')
+      .doc(id)
+      .update({
+        likes: post.likes + 1,
+      })
+      .catch((err) => console.log(err));
+  }
+
+  async getPosts(setPosts) {
+    this.db
+      .collection('posts')
+      .orderBy('timestamp', 'desc')
+      .onSnapshot((snapshot) => {
+        const posts = snapshot.docs.map((post) => {
+          return post.data();
+        });
+        setPosts(posts);
+      });
+  }
+
+  getUserPosts(setPosts) {
+    this.db
+      .collection('posts')
+      .where('authorId', '==', this.getCurrentUid())
+      .orderBy('timestamp', 'desc')
+      .onSnapshot((snapshot) => {
+        const posts = snapshot.docs.map((post) => {
+          return post.data();
+        });
+        setPosts(posts);
+      });
   }
 }
 

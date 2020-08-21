@@ -11,6 +11,7 @@ import ConselingPage from './components/Conseling-Page/Conseling-Page';
 import firebase from './firebase/firebase';
 import { useDispatch } from 'react-redux';
 import { setCurrentUser } from './redux/actions';
+import Survey from './components/survey/survey';
 
 function App() {
   const [firebaseInitialized, setFirebaseInitialized] = useState(false);
@@ -29,13 +30,13 @@ function App() {
 
   return firebaseInitialized !== false ? (
     <Switch>
-      <Route exact path="/ConselingPage">
-        <ConselingPage />
+      <Route exact path="/survey">
+        <Survey />
       </Route>
       <Route path="/profile">
         <ProfilePage />
       </Route>
-      <Route path="/conseling">
+      <Route path="/counselling">
         <ConselingPage />
       </Route>
       <Route path="/chatroom">
@@ -47,7 +48,7 @@ function App() {
       <Route path="/login">
         <Login />
       </Route>
-      <Route path="/forYou">
+      <Route path="/ForYou">
         <ForYou />
       </Route>
       <Route path="/">
