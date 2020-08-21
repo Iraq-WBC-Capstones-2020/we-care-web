@@ -2,9 +2,12 @@ import React, { useRef } from 'react';
 import { FiSend } from 'react-icons/fi';
 import PropTypes from 'prop-types';
 import firebase from '../../firebase/firebase';
+import { Link } from 'react-router-dom';
+
 const WritePostTextarea = () => {
   const postInput = useRef('');
-  return (
+
+  return firebase.getCurrentUsername() ? (
     <div className="lg:w-1/2 md:w-4/5 w-11/12 text-orangeP relative my-8">
       <h2 className="md:text-lg font-semibold">Write a post</h2>
       <textarea
@@ -27,6 +30,14 @@ const WritePostTextarea = () => {
         <p className="md:text-base text-sm">Share</p>
         <FiSend className="ml-2" />
       </button>
+    </div>
+  ) : (
+    <div>
+      <h2 className="md:text-lg text-darkBeige font-semibold mt-6 border-transparent border-b-2 hover:border-orangeP">
+        <Link to="/login" className="">
+          Sign In To Write A Post
+        </Link>
+      </h2>
     </div>
   );
 
