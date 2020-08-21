@@ -11,6 +11,7 @@ const ChatroomPage = () => {
   const currentUser = useSelector((state) => state.currentUser);
   const [roomIsCreated, setRoomIsCreated] = useState(false);
   const [noMembersFound, setNoMembersFound] = useState(false);
+  const [noListnersFound, setNoListnersFound] = useState(false);
 
   useEffect(() => {
     if (currentUser && roomIsCreated === false) {
@@ -23,6 +24,11 @@ const ChatroomPage = () => {
       } else {
         firebase.addAvailableMemberToRTDB();
         firebase.listenForCreatedChatroom(() => setRoomIsCreated(true));
+        setTimeout(() => {
+          if (!roomIsCreated) {
+            setNoListnersFound(true);
+          }
+        }, 30000);
       }
     }
   }, [currentUser]);
@@ -34,6 +40,20 @@ const ChatroomPage = () => {
         <main className="flex flex-col justify-center items-center h-full w-full overflow-hidden text-center">
           <h1 className="xl:text-5xl md:text-4xl text-3xl text-beige">
             Sorry, no members found.
+          </h1>
+          <h2 className="md:text-3xl text-2xl text-orangeP font-light mt-5">
+            Please try again later.
+          </h2>
+        </main>
+      </div>
+    );
+  } else if (currentUser && noListnersFound) {
+    return (
+      <div className="h-screen flex flex-col bg-darkP">
+        <Navbar />
+        <main className="flex flex-col justify-center items-center h-full w-full overflow-hidden text-center">
+          <h1 className="xl:text-5xl md:text-4xl text-3xl text-beige">
+            Looks like there&apos;s no availbale listeners.
           </h1>
           <h2 className="md:text-3xl text-2xl text-orangeP font-light mt-5">
             Please try again later.
