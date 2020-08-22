@@ -17,6 +17,9 @@ export default function ConselingPage() {
       dispatch(setCurrentUser(currentUser));
     });
   }
+
+  firebase.getAllTherapists();
+
   return (
     <>
       <Navbar />

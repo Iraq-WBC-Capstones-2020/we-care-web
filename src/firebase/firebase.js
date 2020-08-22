@@ -30,6 +30,15 @@ class Firebase {
     this.unsubscribe = null;
   }
 
+  async getAllTherapists() {
+    return await this.db
+      .collection('users')
+      .where('isTherapist', '==', true)
+      .orderBy('dateJoined', 'desc')
+      .get()
+      .then((data) => data.forEach((doc) => console.log(doc.data())));
+  }
+
   async removeChatroom() {
     await this.db
       .collection('chatrooms')
