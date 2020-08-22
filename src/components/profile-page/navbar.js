@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { FiMenu } from 'react-icons/fi';
 import logo from './imgs/Logo.svg';
 import { Link, useHistory } from 'react-router-dom';
-import profileImg from './imgs/profile.png';
 import firebase from '../../firebase/firebase';
 import { useSelector } from 'react-redux';
 
