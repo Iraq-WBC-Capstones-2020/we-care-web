@@ -17,7 +17,7 @@ export default function Footer() {
                   What mental health needs is more sunlight, more candor, and
                   more unashamed conversation
                 </p>
-                <img src={Quotes} className="ml-auto mr-2" />
+                <img src={Quotes} className="ml-auto mr-2" alt="Quotes" />
               </div>
             </div>
           </div>
@@ -45,17 +45,17 @@ export default function Footer() {
       <div className="flex flex-col md:flex-row justify-around mt-4 items-center">
         <p>© 2020 We Care </p>
         <div>
-          <img src={Logo} className="w-16 h-16" />
+          <img src={Logo} className="w-16 h-16" alt="logo" />
         </div>
         <div className="flex flex-row justify-around w-24 ">
           <div>
-            <img src={Facebook} className="w-6 h-6" />
+            <img src={Facebook} className="w-6 h-6" alt="Facebook" />
           </div>
           <div>
-            <img src={Instagram} className="w-6 h-6" />
+            <img src={Instagram} className="w-6 h-6" alt="Instagram" />
           </div>
           <div>
-            <img src={Twitter} className="w-6 h-6" />
+            <img src={Twitter} className="w-6 h-6" alt="Twitter" />
           </div>
         </div>
       </div>
