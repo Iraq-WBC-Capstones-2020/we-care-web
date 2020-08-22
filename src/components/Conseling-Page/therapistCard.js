@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const TherapistCard = ({ therapist }) => {
   return (
@@ -56,6 +57,10 @@ const TherapistCard = ({ therapist }) => {
       </div>
     </div>
   );
+};
+
+TherapistCard.propTypes = {
+  therapist: PropTypes.object.isRequired,
 };
 
 export default TherapistCard;
