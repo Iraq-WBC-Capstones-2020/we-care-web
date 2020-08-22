@@ -30,13 +30,15 @@ class Firebase {
     this.unsubscribe = null;
   }
 
-  async getAllTherapists() {
+  async getAllTherapists(setTherapistsArr) {
+    const therapistsArr = [];
     return await this.db
       .collection('users')
       .where('isTherapist', '==', true)
       .orderBy('dateJoined', 'desc')
       .get()
-      .then((data) => data.forEach((doc) => console.log(doc.data())));
+      .then((data) => data.forEach((doc) => therapistsArr.push(doc.data())))
+      .then(() => setTherapistsArr(therapistsArr));
   }
 
   async removeChatroom() {
