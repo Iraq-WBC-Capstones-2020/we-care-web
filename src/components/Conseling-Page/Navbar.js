@@ -1,24 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { FiMenu } from 'react-icons/fi';
 import Logo from '../Images/LogoDark.svg';
 import { Link } from 'react-router-dom';
-import profileImg from '../Images/Profile.png';
 import firebase from '../../firebase/firebase';
+import { useSelector } from 'react-redux';
+
 export default function Navbar() {
   const [navbarOpen, setNavbarOpen] = React.useState(false);
-  const [username, setUsername] = useState([]);
-  useEffect(() => {
-    getUsernameandImage();
-  }, []);
 
-  async function getUsernameandImage() {
-    try {
-      let currentUsername = await firebase.getCurrentUsername();
-      setUsername(currentUsername);
-    } catch {
-      alert('not working');
-    }
-  }
+  const currentUser = useSelector((state) => state.currentUser);
+
   return (
     <>
       <nav className="relative flex flex-wrap items-center justify-between px-2 lg:py-6 py-4 navbar-expand-lg bg-beige text-darkP text-sm">
@@ -62,18 +53,20 @@ export default function Navbar() {
               )}
             </ul>
           </div>
-          <div className="lg:flex justify-center items-center hidden hover:text-orangeP">
-            <Link to="/profile">
-              <img
-                src={profileImg}
-                className="rounded-full h-10 w-10 object-cover"
-                alt="Profile"
-              ></img>
-            </Link>
-            <Link to="/profile">
-              <p className="ml-2">{username}</p>
-            </Link>
-          </div>
+          {currentUser && (
+            <div className="lg:flex justify-center items-center hidden hover:text-orangeP">
+              <Link to="/profile">
+                <img
+                  src={currentUser.profilePicture}
+                  className="rounded-full h-10 w-10 object-cover"
+                  alt="Profile"
+                ></img>
+              </Link>
+              <Link to="/profile">
+                <p className="ml-2">{currentUser.username}</p>
+              </Link>
+            </div>
+          )}
         </div>
       </nav>
     </>
