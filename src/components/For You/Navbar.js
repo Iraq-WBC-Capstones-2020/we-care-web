@@ -1,25 +1,15 @@
-import profileImg from '../Images/Profile.png';
 import logo from '../Images/Logo.svg';
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { FiMenu } from 'react-icons/fi';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import firebase from '../../firebase/firebase';
+import { useSelector } from 'react-redux';
 
 export default function Navbar() {
   const [navbarOpen, setNavbarOpen] = useState(false);
-  const [username, setUsername] = useState([]);
-  useEffect(() => {
-    getUsernameandImage();
-  }, []);
+  let history = useHistory();
 
-  async function getUsernameandImage() {
-    try {
-      let currentUsername = await firebase.getCurrentUsername();
-      setUsername(currentUsername);
-    } catch {
-      alert('not working');
-    }
-  }
+  const currentUser = useSelector((state) => state.currentUser);
 
   return (
     <>
@@ -55,7 +45,12 @@ export default function Navbar() {
               </li>
               {firebase.getCurrentUsername() ? (
                 <li className="lg:mb-0 lg:py-0 py-3 hover:text-orangeP">
-                  <Link to="/login" onClick={() => firebase.logout()}>
+                  <Link
+                    to="/login"
+                    onClick={() => {
+                      logout();
+                    }}
+                  >
                     Sign Out
                   </Link>
                 </li>
@@ -68,13 +63,13 @@ export default function Navbar() {
             <div className="lg:flex justify-center items-center hidden">
               <Link to="/profile">
                 <img
-                  src={profileImg}
+                  src={currentUser.profilePicture}
                   className="rounded-full h-10 w-10 object-cover"
                   alt="Profile"
                 ></img>
               </Link>
               <Link to="/profile">
-                <p className="ml-2">{username}</p>
+                <p className="ml-2">{currentUser.username}</p>
               </Link>
             </div>
           ) : (
@@ -89,4 +84,9 @@ export default function Navbar() {
       </nav>
     </>
   );
+
+  async function logout() {
+    await firebase.logout();
+    history.push('/login');
+  }
 }
