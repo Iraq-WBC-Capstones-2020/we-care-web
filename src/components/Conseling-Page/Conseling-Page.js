@@ -1,7 +1,22 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import Navbar from './Navbar';
+import firebase from '../../firebase/firebase';
+import { setCurrentUser } from './../../redux/actions';
 
 export default function ConselingPage() {
+  let history = useHistory();
+  const dispatch = useDispatch();
+  if (!firebase.getCurrentUsername()) {
+    alert('Please login first');
+    history.push('/login');
+    return null;
+  } else {
+    firebase.getCurrentUser().then((currentUser) => {
+      dispatch(setCurrentUser(currentUser));
+    });
+  }
   return (
     <>
       <Navbar />
@@ -12,6 +27,7 @@ export default function ConselingPage() {
               <img
                 src="https://source.unsplash.com/random "
                 className="rounded-lg h-40 w-56"
+                alt="Counsellor"
               />
             </div>
             <div className="flex-col flex-wrap py-6 sm:px-1 md:px-0 md:py-0 text-base md:text-sm mb-2 mx-4">

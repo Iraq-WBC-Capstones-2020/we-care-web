@@ -30,13 +30,10 @@ export default function Navbar() {
           id="example-navbar-danger"
         >
           <ul className="flex flex-col justify-end lg:flex-row list-none text-center w-full">
-            <li className="lg:mr-10 lg:mt-0 lg:py-0 py-3 lg:border-0 border-b border-darkP">
+            <li className="lg:mr-10 lg:mt-0 lg:py-0 py-3 lg:border-0 border-b border-darkP hover:text-orangeP">
               <Link to="/ForYou">For you</Link>
             </li>
-            <li className="lg:mr-10 lg:my-0 lg:py-0 py-3 lg:border-0 border-b border-darkP">
-              <a href={'#'}>Counseling</a>
-            </li>
-            <li className="lg:mb-0 lg:py-0 py-3">
+            <li className="lg:mb-0 lg:py-0 py-3 hover:text-orangeP">
               <Link to="/signUp">SignUp</Link>
             </li>
           </ul>

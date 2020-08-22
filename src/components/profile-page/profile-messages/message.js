@@ -14,6 +14,7 @@ const Message = ({ message, classes }) => {
           <img
             className="rounded-full w-12"
             src={message.from === 'Bruce Lee' ? profilePic : profilePic2}
+            alt="Profile"
           />
         </div>
         <div>
