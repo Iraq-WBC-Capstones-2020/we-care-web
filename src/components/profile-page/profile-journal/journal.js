@@ -6,7 +6,6 @@ import Delete from './../../Images/delete.png';
 const Journal = ({ journal }) => {
   return (
     <li>
-      {' '}
       <div className="w-full h-full overflow-y-auto flex flex-col justify-center items-center ">
         <div className="overflow-y-auto w-11/12 md:w-11/12  h-11/12 lg:w-11/12 bg-darkP rounded-md text-darkP flex flex-col justify-start p-8 my-10">
           <div className="flex justify-end">
@@ -21,11 +20,10 @@ const Journal = ({ journal }) => {
               }
             >
               <p className="text-gray-100 text-xsm ml-5/6">
-                {' '}
-                <img className="w-4 " src={Delete} />
+                <img className="w-4 " src={Delete} alt="delete" />
               </p>
-            </button>{' '}
-          </div>{' '}
+            </button>
+          </div>
           <h2 className="md:text-lg text-orangeP ml-1/2 font-semibold mb-4">
             {journal.title}
           </h2>

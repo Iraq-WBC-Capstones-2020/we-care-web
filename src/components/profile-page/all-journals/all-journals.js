@@ -98,7 +98,7 @@ const AllJournals = () => {
             setEnable(true);
           }}
         >
-          <img className="w-8" src={JourIcon} />
+          <img className="w-8" src={JourIcon} alt="Journal" />
         </button>
         <ul className="w-11/12">
           {journals.map((journal, index) => (
