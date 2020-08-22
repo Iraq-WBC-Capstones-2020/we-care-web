@@ -8,8 +8,8 @@ import Logo from './image/Logo.svg';
 export default function Footer() {
   return (
     <footer className="text-darkP bg-darkBeige">
-      <div className=" border-b border-darkP py-4">
-        <div className="container flex flex-col md:flex-row md:justify-between px-5 py-24 mx-auto">
+      <div className="border-b border-darkP py-8">
+        <div className="container flex flex-col md:flex-row md:justify-between px-5 mx-auto">
           <div className="flex flex-wrap lg:text-left text-center mx-auto md:mx-0">
             <div className="lg:w-1/4 md:w-1/2 w-full px-4 text-center items-center">
               <div className="leading-relaxed w-56 font-medium">
