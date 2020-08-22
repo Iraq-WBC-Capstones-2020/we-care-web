@@ -12,7 +12,7 @@ import firebase from './firebase/firebase';
 import { useDispatch } from 'react-redux';
 import { setCurrentUser } from './redux/actions';
 import Survey from './components/survey/survey';
-
+import LandingPage from './components/home-page/home-page';
 function App() {
   const [firebaseInitialized, setFirebaseInitialized] = useState(false);
   useEffect(() => {
@@ -30,6 +30,9 @@ function App() {
 
   return firebaseInitialized !== false ? (
     <Switch>
+      <Route exact path="/landingpage">
+        <LandingPage />
+      </Route>
       <Route exact path="/survey">
         <Survey />
       </Route>

@@ -8,13 +8,13 @@ import Footer from './footer.js';
 const LandingPage = () => {
   return (
     <>
-      <div className="w-screen md:h-screen">
+      <div className="overflow-hidden">
         <Navbar></Navbar>
         <Connect></Connect>
+        <Information></Information>
+        <AboutUs></AboutUs>
+        <Footer></Footer>
       </div>
-      <Information></Information>
-      <AboutUs></AboutUs>
-      <Footer></Footer>
     </>
   );
 };
