@@ -1,25 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { FiMenu } from 'react-icons/fi';
 import logo from './imgs/Logo.svg';
 import { Link, useHistory } from 'react-router-dom';
-import profileImg from './imgs/profile.png';
 import firebase from '../../firebase/firebase';
+import { useSelector } from 'react-redux';
 
 export default function Navbar() {
   const [navbarOpen, setNavbarOpen] = useState(false);
-  const [username, setUsername] = useState([]);
-  useEffect(() => {
-    getUsernameandImage();
-  }, []);
 
-  async function getUsernameandImage() {
-    try {
-      let currentUsername = await firebase.getCurrentUsername();
-      setUsername(currentUsername);
-    } catch {
-      alert('not working');
-    }
-  }
+  const currentUser = useSelector((state) => state.currentUser);
+
   let history = useHistory();
   return (
     <>
@@ -69,18 +59,20 @@ export default function Navbar() {
               </li>
             </ul>
           </div>
-          <div className="lg:flex justify-center items-center hidden">
-            <Link to="/profile">
-              <img
-                src={profileImg}
-                className="rounded-full h-10 w-10 object-cover"
-                alt="Profile"
-              ></img>
-            </Link>
-            <Link to="/profile">
-              <p className="ml-2">{username}</p>
-            </Link>
-          </div>
+          {currentUser && (
+            <div className="lg:flex justify-center items-center hidden">
+              <Link to="/profile">
+                <img
+                  src={currentUser.profilePicture}
+                  className="rounded-full h-10 w-10 object-cover"
+                  alt="Profile"
+                ></img>
+              </Link>
+              <Link to="/profile">
+                <p className="ml-2">{currentUser.username}</p>
+              </Link>
+            </div>
+          )}
         </div>
       </nav>
     </>

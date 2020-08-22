@@ -2,7 +2,7 @@ import React from 'react';
 import plant from '../Images/Plant 05.svg';
 const Content = () => {
   return (
-    <div className="order-1 xl:order-2 md:w-auto w-full flex flex-col xl:justify-between justify-center items-end xl:mb-auto mb-8">
+    <div className="order-1 xl:order-2 md:w-auto w-full xl:flex flex-col xl:justify-between justify-center items-end xl:mb-auto mb-8 hidden">
       <div className="w-full flex flex-col md:pl-0 pl-12">
         <h1 className="md:text-5xl text-4xl text-white leading-relaxed font-semibold">
           Be A Reason
