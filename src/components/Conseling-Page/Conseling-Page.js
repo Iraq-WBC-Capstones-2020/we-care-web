@@ -5,6 +5,7 @@ import Navbar from './Navbar';
 import firebase from '../../firebase/firebase';
 import { setCurrentUser } from './../../redux/actions';
 import Loader from './../loader/loader';
+import TherapistCard from './therapistCard';
 
 export default function ConselingPage() {
   let history = useHistory();
@@ -29,10 +30,14 @@ export default function ConselingPage() {
   console.log(therapistsArr);
 
   return therapistsArr ? (
-    <>
+    <div className="h-screen w-screen overflow-hidden">
       <Navbar />
-      <section className="flex-col bg-beige overflow-hidden text-white"></section>
-    </>
+      <section className="h-full w-full flex-col items-center justify-center bg-beige overflow-hidden text-white overflow-y-auto overflow-x-hidden pb-32">
+        {therapistsArr.map((therapist) => (
+          <TherapistCard key={therapist.uid} />
+        ))}
+      </section>
+    </div>
   ) : (
     <Loader />
   );

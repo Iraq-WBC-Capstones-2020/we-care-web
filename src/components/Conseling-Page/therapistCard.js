@@ -2,7 +2,7 @@ import React from 'react';
 
 const TherapistCard = () => {
   return (
-    <div className="flex flex-col md:h-auto bg-darkP rounded-lg overflow-hidden md:flex-row my-10 p-10 w-2/3 sm:w-10/12 lg:w-2/3 mx-auto">
+    <div className="flex flex-col md:h-auto bg-darkP rounded-lg overflow-hidden md:flex-row my-24 p-10 w-2/3 sm:w-10/12 lg:w-2/3 mx-auto">
       <div className="md:flex items-center sm:w-3/4">
         <div className="w-auto mt-6">
           <img
