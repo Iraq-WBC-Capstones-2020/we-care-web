@@ -157,7 +157,6 @@ class Firebase {
 
   logout() {
     this.auth.signOut();
-    this.addAvailableMemberToRTDB(true);
   }
 
   async register(username, email, password) {
