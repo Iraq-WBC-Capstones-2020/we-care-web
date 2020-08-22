@@ -18,9 +18,9 @@ const TherapistCard = ({ therapist }) => {
           </h2>
           <div className="md:m-0 mb-8">
             <h3 className="text-orangeP text-lg mb-1">Bio:</h3>
-            <h2 className="text-sm">{therapist.therapistBio}</h2>
+            <h2 className="md:text-sm">{therapist.therapistBio}</h2>
           </div>
-          <h2 className="text-sm">
+          <h2 className="md:text-sm">
             <span className="text-orangeP font-extrabold text-base">
               {therapist.cost}.00$
             </span>
@@ -31,7 +31,7 @@ const TherapistCard = ({ therapist }) => {
           <div className="overflow-hidden md:m-0 mb-8">
             <h2 className="text-orangeP text-lg mb-1">Specialties:</h2>
             <ul
-              className="md:overflow-y-auto md:h-24 overflow-x-hidden text-sm"
+              className="md:overflow-y-auto md:h-24 overflow-x-hidden md:text-sm"
               style={{
                 listStyleImage: 'url(srccomponentsConseling-PageForward.png)',
               }}
