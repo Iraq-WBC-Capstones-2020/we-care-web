@@ -24,7 +24,7 @@ const TherapistCard = ({ therapist }) => {
             <span className="text-orangeP font-extrabold text-base">
               {therapist.cost}.00$
             </span>
-            &nbsp; Hourly
+            &nbsp; Per Session
           </h2>
         </div>
         <div className="flex flex-col items-start py-6 text-base md:h-full md:w-auto w-11/12 md:justify-between md:py-2">
