@@ -47,6 +47,7 @@ const Messages = () => {
           }
         });
       });
+    // eslint-disable-next-line
   }, []);
 
   useEffect(() => {
@@ -61,6 +62,7 @@ const Messages = () => {
         }
       });
     });
+    // eslint-disable-next-line
   }, []);
 
   if (

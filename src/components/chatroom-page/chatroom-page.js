@@ -38,6 +38,7 @@ const ChatroomPage = () => {
         };
       }
     }
+    // eslint-disable-next-line
   }, [currentUser]);
 
   if (currentUser && noMembersFound) {
