@@ -13,7 +13,8 @@ function Form({ username, email, password }) {
   const [therapistBio, setTherapistBio] = useState('');
   const [certificate, setCertificate] = useState('');
   const [calendly, setCalendly] = useState('');
-  const [cost] = useState(10);
+  const [cost, setCost] = useState(10);
+
   function seperateExpertise(expertiseString) {
     let arrOfExpertise = expertiseString
       .split(',')
@@ -104,7 +105,7 @@ function Form({ username, email, password }) {
           <div className="w-full mb-2">
             <label>
               Expertise:{' '}
-              <span className="text-red-600 text-xs">*comma seperated</span>
+              <span className="text-red-600 text-xs">*Comma Seperated</span>
             </label>
           </div>
           <div>
@@ -172,16 +173,16 @@ function Form({ username, email, password }) {
 
         <div className="flex flex-col w-full mb-5">
           <div className="w-full mb-2">
-            <label>Cost Per Session:</label>
+            <label>Cost Per Session:</label>{' '}
+            <span className="text-red-600 text-xs">*In Dollars</span>
           </div>
           <div>
             <input
               className="border border-darkP rounded w-full py-2 px-4  leading-tight focus:outline-none focus:bg-white focus:border-darkBeige"
-              type="url"
+              type="number"
               placeholder="Your Cost Per Session"
-              value={calendly}
-              pattern="/^(?:(?:http|https):\/\/)?(?:www.)?calendly.com"
-              onChange={(e) => setCalendly(e.target.value)}
+              value={cost}
+              onChange={(e) => setCost(e.target.value)}
             ></input>
           </div>
         </div>
