@@ -30,6 +30,17 @@ class Firebase {
     this.unsubscribe = null;
   }
 
+  async getAllTherapists(setTherapistsArr) {
+    const therapistsArr = [];
+    return await this.db
+      .collection('users')
+      .where('isTherapist', '==', true)
+      .orderBy('dateJoined', 'desc')
+      .get()
+      .then((data) => data.forEach((doc) => therapistsArr.push(doc.data())))
+      .then(() => setTherapistsArr(therapistsArr));
+  }
+
   async removeChatroom() {
     await this.db
       .collection('chatrooms')
@@ -146,7 +157,6 @@ class Firebase {
 
   logout() {
     this.auth.signOut();
-    this.addAvailableMemberToRTDB(true);
   }
 
   async register(username, email, password) {
@@ -164,7 +174,8 @@ class Firebase {
     expertise,
     therapistBio,
     cost,
-    certificate
+    certificate,
+    calendlyLink
   ) {
     if (!this.auth.currentUser) {
       return alert('not authorized');
@@ -194,6 +205,7 @@ class Firebase {
           therapistBio,
           cost,
           certificate,
+          calendlyLink,
         }),
       });
   }

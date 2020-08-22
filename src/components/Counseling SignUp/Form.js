@@ -12,7 +12,8 @@ function Form({ username, email, password }) {
   const [expertise, setExpertise] = useState('');
   const [therapistBio, setTherapistBio] = useState('');
   const [certificate, setCertificate] = useState('');
-  const [cost] = useState(10);
+  const [calendlyLink, setCalendlyLink] = useState('');
+  const [cost, setCost] = useState(10);
 
   function seperateExpertise(expertiseString) {
     let arrOfExpertise = expertiseString
@@ -22,8 +23,8 @@ function Form({ username, email, password }) {
   }
 
   return (
-    <div className="order-2 xl:order-1 bg-white rounded-lg xl:w-2/6 lg:w-1/2 md:w-8/12 w-11/12 flex justify-center py-12 xl:my-0 my-5 px-10">
-      <form className="w-full max-w-sm text-darkP  flex flex-col justify-evenly items-center">
+    <div className="h-fulloverflow-hidden order-2 xl:order-1 bg-white rounded-lg xl:w-2/6 lg:w-1/2 md:w-8/12 w-11/12 flex justify-center py-5 xl:my-6 my-5 px-10">
+      <form className="w-full max-w-sm text-darkP flex flex-col justify-evenly items-center">
         <div className="flex flex-col w-full mb-5">
           <div className="w-full mb-2">
             <label>Full Name:</label>
@@ -97,13 +98,13 @@ function Form({ username, email, password }) {
         <div className="flex flex-col justify-between w-full mb-5">
           <div className="w-full mb-2">
             <label>
-              Expertise: <span className="text-red-600">*comma seperated</span>
+              Expertise:{' '}
+              <span className="text-red-600 text-xs">*Comma Seperated</span>
             </label>
           </div>
           <div>
             <input
               className="border border-darkP rounded w-full py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-darkBeige"
-              id="inline-full-name"
               type="text"
               placeholder="Field of Expertise"
               value={expertise}
@@ -117,7 +118,6 @@ function Form({ username, email, password }) {
           <div className="w-full mb-2">
             <label>Certificate:</label>
           </div>
-
           <div className="flex items-center overflow-hidden relative">
             <button className="justify-between border border-darkP rounded w-full pl-2 leading-tight focus:outline-none focus:bg-white focus:border-darkBeige inline-flex items-center">
               <span>Attach Here </span>
@@ -145,6 +145,38 @@ function Form({ username, email, password }) {
                     setCertificate(url);
                   });
               }}
+            ></input>
+          </div>
+        </div>
+
+        <div className="flex flex-col w-full mb-5">
+          <div className="w-full mb-2">
+            <label>Calendly Link:</label>
+          </div>
+          <div>
+            <input
+              className="border border-darkP rounded w-full py-2 px-4  leading-tight focus:outline-none focus:bg-white focus:border-darkBeige"
+              type="url"
+              placeholder="Your Calendly Link"
+              value={calendlyLink}
+              pattern="/^(?:(?:http|https):\/\/)?(?:www.)?calendly.com"
+              onChange={(e) => setCalendlyLink(e.target.value)}
+            ></input>
+          </div>
+        </div>
+
+        <div className="flex flex-col w-full mb-5">
+          <div className="w-full mb-2">
+            <label>Cost Per Session:</label>{' '}
+            <span className="text-red-600 text-xs">*In Dollars</span>
+          </div>
+          <div>
+            <input
+              className="border border-darkP rounded w-full py-2 px-4  leading-tight focus:outline-none focus:bg-white focus:border-darkBeige"
+              type="number"
+              placeholder="Your Cost Per Session"
+              value={cost}
+              onChange={(e) => setCost(e.target.value)}
             ></input>
           </div>
         </div>
@@ -190,7 +222,8 @@ function Form({ username, email, password }) {
         seperateExpertise(expertise),
         therapistBio,
         cost,
-        certificate
+        certificate,
+        calendlyLink
       );
       history.push('/profile');
     } catch (error) {
