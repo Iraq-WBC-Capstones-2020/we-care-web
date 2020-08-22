@@ -12,7 +12,7 @@ function Form({ username, email, password }) {
   const [expertise, setExpertise] = useState('');
   const [therapistBio, setTherapistBio] = useState('');
   const [certificate, setCertificate] = useState('');
-  const [calendly, setCalendly] = useState('');
+  const [calendlyLink, setCalendlyLink] = useState('');
   const [cost, setCost] = useState(10);
 
   function seperateExpertise(expertiseString) {
@@ -22,12 +22,6 @@ function Form({ username, email, password }) {
     return arrOfExpertise;
   }
 
-  // function validateURL() {
-  //   document.getElementById('myURL').pattern =
-  //     'http://www.facebook.com/(.+)|https://www.facebook.com/(.+)';
-  //   document.getElementById('myURL').title =
-  //     'URL must start with http://www.facebook.com/';
-  // }
   return (
     <div className="h-fulloverflow-hidden order-2 xl:order-1 bg-white rounded-lg xl:w-2/6 lg:w-1/2 md:w-8/12 w-11/12 flex justify-center py-5 xl:my-6 my-5 px-10">
       <form className="w-full max-w-sm text-darkP flex flex-col justify-evenly items-center">
@@ -164,9 +158,9 @@ function Form({ username, email, password }) {
               className="border border-darkP rounded w-full py-2 px-4  leading-tight focus:outline-none focus:bg-white focus:border-darkBeige"
               type="url"
               placeholder="Your Calendly Link"
-              value={calendly}
+              value={calendlyLink}
               pattern="/^(?:(?:http|https):\/\/)?(?:www.)?calendly.com"
-              onChange={(e) => setCalendly(e.target.value)}
+              onChange={(e) => setCalendlyLink(e.target.value)}
             ></input>
           </div>
         </div>
@@ -228,7 +222,8 @@ function Form({ username, email, password }) {
         seperateExpertise(expertise),
         therapistBio,
         cost,
-        certificate
+        certificate,
+        calendlyLink
       );
       history.push('/profile');
     } catch (error) {

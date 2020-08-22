@@ -175,7 +175,8 @@ class Firebase {
     expertise,
     therapistBio,
     cost,
-    certificate
+    certificate,
+    calendlyLink
   ) {
     if (!this.auth.currentUser) {
       return alert('not authorized');
@@ -205,6 +206,7 @@ class Firebase {
           therapistBio,
           cost,
           certificate,
+          calendlyLink,
         }),
       });
   }

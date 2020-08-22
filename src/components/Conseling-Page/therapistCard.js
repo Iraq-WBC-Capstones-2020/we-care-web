@@ -48,7 +48,7 @@ const TherapistCard = ({ therapist }) => {
               })}
             </ul>
           </div>
-          <a href="https://calendly.com/sarasaadiq98/30min">
+          <a href={therapist.calendlyLink}>
             <button
               type="submit"
               className="bg-transparent text-orangeP border border-orangeP rounded py-1 w-32"
