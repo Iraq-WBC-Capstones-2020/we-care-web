@@ -25,11 +25,17 @@ const ChatroomPage = () => {
       } else {
         firebase.addAvailableMemberToRTDB();
         firebase.listenForCreatedChatroom(() => setRoomIsCreated(true));
-        setTimeout(() => {
+        let timer = setTimeout(() => {
           if (!firebase.listenerId) {
             setNoListnersFound(true);
           }
         }, 30000);
+
+        return () => {
+          firebase.unsubscribe();
+          firebase.rtdb.ref('.info/connected').off();
+          clearTimeout(timer);
+        };
       }
     }
   }, [currentUser]);

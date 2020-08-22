@@ -27,6 +27,7 @@ class Firebase {
     this.currentUser = {};
     this.listenerId = null;
     this.chatroomObj = null;
+    this.unsubscribe = null;
   }
 
   async removeChatroom() {
@@ -73,7 +74,7 @@ class Firebase {
 
   async listenForCreatedChatroom(setRoomIsCreated) {
     const self = this;
-    await this.db
+    this.unsubscribe = await this.db
       .collection('chatrooms')
       .where('memberId', '==', this.auth.currentUser.uid)
       .onSnapshot((snapshot) => {
