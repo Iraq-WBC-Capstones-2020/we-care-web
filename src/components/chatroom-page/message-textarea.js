@@ -1,13 +1,29 @@
 import React, { useRef } from 'react';
 import { FiSend } from 'react-icons/fi';
-import PropTypes from 'prop-types';
-import moment from 'moment';
+import firebase from './../../firebase/firebase';
 
-const MessageTextarea = ({ messages, setMessages }) => {
+const MessageTextarea = () => {
   const messageInput = useRef('');
+
+  function createMessage() {
+    const message = messageInput.current.value.trim();
+    if (message !== '') {
+      firebase.createNewMessage(message);
+
+      messageInput.current.value = '';
+      messageInput.current.scrollIntoView();
+    } else {
+      return;
+    }
+  }
   return (
     <div className="w-11/12 text-darkP relative my-10 self-center">
       <textarea
+        onKeyDown={(key) => {
+          if (key.keyCode === 13) {
+            createMessage();
+          }
+        }}
         ref={messageInput}
         id={'text-area'}
         className="resize-none rounded-md text-darkP px-4 py-3 h-32 w-full mt-4 md:text-base text-sm"
@@ -15,18 +31,7 @@ const MessageTextarea = ({ messages, setMessages }) => {
       ></textarea>
       <button
         onClick={() => {
-          setMessages([
-            ...messages,
-            {
-              nickname: 'Kind-heart',
-              from: 'you',
-              to: 'them',
-              body: messageInput.current.value,
-              createdAt: moment().format('LT'),
-            },
-          ]);
-          messageInput.current.value = '';
-          messageInput.current.scrollIntoView();
+          createMessage();
         }}
         className="bg-darkP flex items-center text-beige rounded-sm md:px-6 px-3 py-1 absolute bottom-0 right-0 mr-4 mb-4 hover:text-orangeP"
       >
@@ -38,8 +43,3 @@ const MessageTextarea = ({ messages, setMessages }) => {
 };
 
 export default MessageTextarea;
-
-MessageTextarea.propTypes = {
-  messages: PropTypes.array.isRequired,
-  setMessages: PropTypes.func.isRequired,
-};

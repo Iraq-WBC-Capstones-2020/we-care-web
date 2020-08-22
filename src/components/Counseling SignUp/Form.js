@@ -51,6 +51,7 @@ function Form({ username, email, password }) {
                   className="cursor-default"
                   onClick={(e) => e.preventDefault()}
                   src={attachIcon}
+                  alt="Attach Icon"
                 />
               </button>
               <input
@@ -124,6 +125,7 @@ function Form({ username, email, password }) {
                 className="cursor-default"
                 onClick={(e) => e.preventDefault()}
                 src={attachIcon}
+                alt="Attach Icon"
               />
             </button>
             <input

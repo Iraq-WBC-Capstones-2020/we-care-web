@@ -1,10 +1,16 @@
 import React from 'react';
 import './../../assets/main.css';
 import Navbar from './navbar-signUp';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import heart from './imgs/signup.svg';
 import './toggleStyle.css';
+import firebase from '../../firebase/firebase';
 const SignUp = () => {
+  let history = useHistory();
+  if (firebase.getCurrentUsername()) {
+    history.push('/profile');
+    return null;
+  }
   return (
     <section className="body-font bg-darkP h-screen overflow-hidden flex flex-col items-center justify-between">
       <Navbar />
@@ -62,7 +68,7 @@ const SignUp = () => {
               Sign Up
             </button>
             <p className="text-xs text-white mt-3">
-              Already have an acount?
+              Already have an account?
               <Link to="/login" className="text-base ml-2 text-darkP font-bold">
                 Sign In.
               </Link>
