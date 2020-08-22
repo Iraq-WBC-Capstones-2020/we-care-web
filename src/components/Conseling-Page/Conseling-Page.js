@@ -27,8 +27,6 @@ export default function ConselingPage() {
     });
   }
 
-  console.log(therapistsArr);
-
   return therapistsArr ? (
     <div className="h-screen w-screen overflow-hidden">
       <Navbar />
