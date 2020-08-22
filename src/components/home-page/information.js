@@ -21,10 +21,10 @@ export default function Information() {
           </div>
           <div className="p-4 lg:w-1/3">
             <div className="h-full bg-white rounded-lg overflow-hidden p-12">
-              <dpiv className="font-bold text-3xl mb-2">
+              <p className="font-bold text-3xl mb-2">
                 Provide <br />
                 Counseling
-              </dpiv>
+              </p>
               <p className="text-base">
                 If you are a certified counselor and would be willing to provide
                 counseling for free, join the we care platform.
