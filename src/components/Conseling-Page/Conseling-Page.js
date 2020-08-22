@@ -34,7 +34,7 @@ export default function ConselingPage() {
       <Navbar />
       <section className="h-full w-full flex-col items-center justify-center bg-beige overflow-hidden text-white overflow-y-auto overflow-x-hidden pb-32">
         {therapistsArr.map((therapist) => (
-          <TherapistCard key={therapist.uid} />
+          <TherapistCard therapist={therapist} key={therapist.uid} />
         ))}
       </section>
     </div>
