@@ -1,6 +1,7 @@
 import React from 'react';
 import { FiSmile } from 'react-icons/fi';
 import { useSelector } from 'react-redux';
+import Moment from 'react-moment';
 
 const RightSidebar = () => {
   const currentUser = useSelector((state) => state.currentUser);
@@ -13,13 +14,13 @@ const RightSidebar = () => {
             <img
               className="rounded-full w-24 mb-4"
               src={currentUser.profilePicture}
-              alt="profile picture"
+              alt="Profile"
             />
             <h2 className="text-lg font-semibold lg:ml-0 ml-4">
               {currentUser.username}
             </h2>
             <p className="lg:text-sm md:text-base text-sm lg:font-light">
-              Joined three years ago
+              Joined <Moment fromNow>{currentUser.dateJoined.toDate()}</Moment>
             </p>
           </div>
           <div className="border lg:border-beige border-darkP border-solid rounded-full py-2 mt-10 w-32 text-sm flex items-center justify-center lg:font-normal font-medium">

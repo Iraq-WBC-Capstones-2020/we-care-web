@@ -2,11 +2,14 @@ import React, { useState } from 'react';
 import { FiMenu } from 'react-icons/fi';
 import logo from './imgs/Logo.svg';
 import { Link, useHistory } from 'react-router-dom';
-import profileImg from './imgs/profile.png';
 import firebase from '../../firebase/firebase';
+import { useSelector } from 'react-redux';
 
 export default function Navbar() {
   const [navbarOpen, setNavbarOpen] = useState(false);
+
+  const currentUser = useSelector((state) => state.currentUser);
+
   let history = useHistory();
 
   return (
@@ -14,11 +17,15 @@ export default function Navbar() {
       <nav className="relative flex flex-wrap items-center justify-between px-2 lg:py-6 py-4 navbar-expand-lg bg-darkP text-beige text-sm">
         <div className="container px-4 mx-auto flex flex-wrap items-center justify-between">
           <div className="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
-            <img
-              src={logo}
-              className="w-16 md:w-20 lg:ml-0 md:ml-12 ml-8 cursor-pointer"
-              alt="We Care logo"
-            />
+            <Link to="/">
+              <img
+                src={logo}
+                className={`w-16 md:w-20 lg:ml-0 md:ml-12 ${
+                  currentUser ? 'ml-8' : ''
+                } cursor-pointer`}
+                alt="We Care logo"
+              />
+            </Link>
             <button
               className="text-white cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none"
               type="button"
@@ -39,30 +46,42 @@ export default function Navbar() {
                 <Link to="/ForYou">For You</Link>
               </li>
               <li className="lg:mr-10 lg:my-0 lg:py-0 py-3 hover:text-orangeP lg:border-0 border-b border-beige">
+<<<<<<< HEAD
                 <a href={'#'}>Home</a>
+=======
+                <Link to="/Counselling">Counselling</Link>
+>>>>>>> 0c625d37897de5ef2b48e82d6e198a4d81b4be08
               </li>
               <li className="lg:mr-10 lg:my-0 lg:py-0 py-3 hover:text-orangeP lg:border-0 border-b border-beige">
                 <Link to="/chatroom">Connect Now</Link>
               </li>
 
               <li className="lg:mb-0 lg:py-0 py-3 hover:text-orangeP">
-                <Link to="/login" onClick={logout}>
+                <Link
+                  to="/login"
+                  onClick={() => {
+                    logout();
+                  }}
+                >
                   Sign Out
                 </Link>
               </li>
             </ul>
           </div>
-          <div className="lg:flex justify-center items-center hidden">
-            <Link to="/profile">
-              <img
-                src={profileImg}
-                className="rounded-full h-10 w-10 object-cover"
-              ></img>
-            </Link>
-            <Link to="/profile">
-              <p className="ml-2">Bruce Lee</p>
-            </Link>
-          </div>
+          {currentUser && (
+            <div className="lg:flex justify-center items-center hidden">
+              <Link to="/profile">
+                <img
+                  src={currentUser.profilePicture}
+                  className="rounded-full h-10 w-10 object-cover"
+                  alt="Profile"
+                ></img>
+              </Link>
+              <Link to="/profile">
+                <p className="ml-2">{currentUser.username}</p>
+              </Link>
+            </div>
+          )}
         </div>
       </nav>
     </>
@@ -70,6 +89,6 @@ export default function Navbar() {
 
   async function logout() {
     await firebase.logout();
-    history.push('/');
+    history.push('/login');
   }
 }

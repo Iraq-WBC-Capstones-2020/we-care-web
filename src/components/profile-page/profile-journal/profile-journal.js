@@ -15,13 +15,14 @@ const ProfileJournal = () => {
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus interdum, risus et iaculis vestibulum, mauris quam bibendum libero, at dignissim dui leo eget massa.',
     },
   ]);
+
   return (
     <>
-      {Journals.map((journal, index) => {
-        if (journal.title === currentJournal) {
+      {Journals.filter((journal) => journal.title === currentJournal).map(
+        (journal, index) => {
           return <Journal journal={journal} key={index} />;
         }
-      })}
+      )}
     </>
   );
 };

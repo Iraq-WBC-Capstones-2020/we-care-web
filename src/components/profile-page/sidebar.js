@@ -15,7 +15,11 @@ const ProfileSidebar = () => {
   return (
     <div className="lg:h-full lg:w-1/5 xl:w-2/12 bg-darkP flex flex-col justify-between text-beige text-center">
       <div className="w-full lg:mt-3">
-        <img className="w-12 ml-8 mt-4 lg:block hidden" src={dashtext} />
+        <img
+          className="w-12 ml-8 mt-4 lg:block hidden"
+          src={dashtext}
+          alt="dashboard"
+        />
         <ul className="flex lg:flex-col flex-row lg:justify-start justify-evenly text-sm lg:mt-8">
           <li
             className={`py-4 md:px-0 px-5 ${
