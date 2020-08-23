@@ -15,6 +15,7 @@ import Survey from './components/survey/survey';
 import LandingPage from './components/home-page/home-page';
 function App() {
   const [firebaseInitialized, setFirebaseInitialized] = useState(false);
+
   useEffect(() => {
     firebase.isInitialized().then((val) => {
       setFirebaseInitialized(val);
@@ -22,6 +23,7 @@ function App() {
   }, []);
 
   const dispatch = useDispatch();
+
   if (firebase.getCurrentUsername()) {
     firebase.getCurrentUser().then((currentUser) => {
       dispatch(setCurrentUser(currentUser));
@@ -30,9 +32,6 @@ function App() {
 
   return firebaseInitialized !== false ? (
     <Switch>
-      <Route exact path="/landingpage">
-        <LandingPage />
-      </Route>
       <Route exact path="/survey">
         <Survey />
       </Route>
@@ -55,7 +54,7 @@ function App() {
         <ForYou />
       </Route>
       <Route path="/">
-        <Login />
+        <LandingPage />
       </Route>
     </Switch>
   ) : (
