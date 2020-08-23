@@ -17,6 +17,7 @@ const ProfileFeed = () => {
         'Rich in mystery across the centuries decipherment finite but unbounded Rig Veda globular star cluster.',
     },
   ]);
+
   return (
     <div className="w-full h-full flex flex-col justify-between items-center overflow-y-auto">
       <div className="w-full flex flex-col justify-center items-center ">

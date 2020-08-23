@@ -3,6 +3,7 @@ import JourIcon from './../../Images/add.png';
 import firebase from './../../../firebase/firebase';
 import { FiSend } from 'react-icons/fi';
 import Journal from './../../profile-page/profile-journal/journal';
+import { useTranslation } from 'react-i18next';
 
 const journals = [];
 const AllJournals = () => {
@@ -53,24 +54,26 @@ const AllJournals = () => {
     setInputBody('');
     setInputTitle('');
   };
-
+  const { t, i18n } = useTranslation();
   return enable ? (
     <div className="md:m-8 lg:m-10 w-9/12 h-8/12   ">
       <form>
         <div className="md:w-2/3 lg:w-1/2 w-11/12 text-darkP  relative my-24 md:ml-40 lg:ml-56 ml-16">
-          <h2 className="md:text-3xl font-semibold mb-4 ">Write a Journal</h2>
+          <h2 className="md:text-3xl font-semibold mb-4 ">
+            {t('Write a Journal')}
+          </h2>
 
           <input
             className=" h-10 w-full rounded-md px-2 py-3"
             value={inputTitle}
             onChange={(event) => setInputTitle(event.target.value)}
-            placeholder="title"
+            placeholder={t('title')}
           ></input>
           <textarea
             value={inputBody}
             onChange={(event) => setInputBody(event.target.value)}
             className="md:text-base text-sm resize-none rounded-md text-darkP px-4 py-3 h-40 w-full mt-4"
-            placeholder="Start typing..."
+            placeholder={t('start_typing')}
           ></textarea>
           <button
             disabled={!inputBody}

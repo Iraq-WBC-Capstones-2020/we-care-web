@@ -12,7 +12,7 @@ export default function ConselingPage() {
   const dispatch = useDispatch();
 
   const [therapistsArr, setTherapistsArr] = useState([]);
-  
+
   useEffect(() => {
     firebase.getAllTherapists(setTherapistsArr);
   }, []);
@@ -26,7 +26,7 @@ export default function ConselingPage() {
       dispatch(setCurrentUser(currentUser));
     });
   }
-  
+
   return therapistsArr ? (
     <div className="h-screen w-screen overflow-hidden">
       <Navbar />

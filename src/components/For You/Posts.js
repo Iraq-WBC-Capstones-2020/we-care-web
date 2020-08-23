@@ -1,17 +1,19 @@
 import React from 'react';
 import profileImg from '../Images/Profile.png';
 import Anna from '../Images/anna.webp';
+import { useTranslation } from 'react-i18next';
 const Posts = () => {
+  const { t, i18n } = useTranslation();
   return (
     <>
       <section className="text-darkP bg-darkP">
         <div className="container px-5 py-24 mx-auto">
           <div className="flex mb-4 items-center justify-evenly">
             <a className="text-orangeP border-b-2 border-orangeP py-2 md:text-lg md:px-16 text-xs">
-              By The Team
+              {t('By The Team')}
             </a>
             <a className="text-white border-b-2 border-white py-2 md:text-lg  md:px-16 text-xs">
-              By The Community
+              {t('By The Community')}
             </a>
           </div>
           <div className="flex flex-col flex-wrap sm:-m-4 -mx-4 -mb-10 -mt-4 items-center">
@@ -23,10 +25,10 @@ const Posts = () => {
               ></img>
               <div className="flex-grow">
                 <h2 className="text-lg title-font font-medium mb-3">
-                  Shooting Stars
+                  {t('Shooting Stars')}
                 </h2>
                 <p className="leading-relaxed text-base mb-4">
-                  we don&apos;t have the cool image anymore.
+                  {t('we don`t have a cool image anymore.')}
                 </p>
               </div>
             </div>
@@ -38,7 +40,7 @@ const Posts = () => {
               ></img>
               <div className="flex-grow">
                 <h2 className="text-lg title-font font-medium mb-3">
-                  The Catalyzer
+                  {t('The Catalyzer')}
                 </h2>
                 <p className="leading-relaxed text-base mb-4">lol.</p>
               </div>
@@ -52,7 +54,7 @@ const Posts = () => {
               <div className="flex-grow">
                 <h2 className="text-lg title-font font-medium mb-3">Anna</h2>
                 <p className="leading-relaxed text-base mb-4">
-                  DO YOU WANNA BUILD A SNOWMAN?
+                  {t('DO YOU WANNA BUILD A SNOWMAN?')}
                 </p>
               </div>
             </div>

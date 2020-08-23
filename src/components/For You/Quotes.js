@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import QuoteIcon from '../Images/QuoteIcon.svg';
+import { useTranslation } from 'react-i18next';
 
 const Quotes = () => {
   const [quotes, setQuotes] = useState([]);
@@ -40,6 +41,7 @@ const Quotes = () => {
     }
   }
   let num = parseInt(localStorage.getItem('randomNumber'));
+  const { t, i18n } = useTranslation();
   return (
     <>
       <div className="bg-beige flex flex-col">
@@ -50,7 +52,7 @@ const Quotes = () => {
               style={{ fontFamily: 'Roboto' }}
             >
               <h1 className="sm:text-3xl text-2xl title-font text-darkP font-semibold">
-                Today&apos;s Quotes.
+              {t('Today`s Quotes.')}
               </h1>
             </div>
             <div className="flex flex-wrap -m-4">

@@ -2,9 +2,11 @@ import React from 'react';
 import { FiSmile } from 'react-icons/fi';
 import { useSelector } from 'react-redux';
 import Moment from 'react-moment';
-
+import { useTranslation } from 'react-i18next';
 const RightSidebar = () => {
   const currentUser = useSelector((state) => state.currentUser);
+
+  const { t, i18n } = useTranslation();
 
   return (
     currentUser && (
@@ -20,17 +22,18 @@ const RightSidebar = () => {
               {currentUser.username}
             </h2>
             <p className="lg:text-sm md:text-base text-sm lg:font-light">
-              Joined <Moment fromNow>{currentUser.dateJoined.toDate()}</Moment>
+              {t('Joined')}{' '}
+              <Moment fromNow>{currentUser.dateJoined.toDate()}</Moment>
             </p>
           </div>
           <div className="border lg:border-beige border-darkP border-solid rounded-full py-2 mt-10 w-32 text-sm flex items-center justify-center lg:font-normal font-medium">
-            <FiSmile className="mr-3 text-xl" /> 34 friends
+            <FiSmile className="mr-3 text-xl" /> 34 {t('friends')}
           </div>
           <button className="text-orangeP border lg:border-orangeP border-darkP lg:bg-transparent bg-darkP border-solid rounded py-2 mt-10 w-32 text-sm">
-            Change Avatar
+            {t('change')} Avatar
           </button>
           <button className="text-orangeP border lg:border-orangeP border-darkP lg:bg-transparent bg-darkP border-solid rounded py-2 mt-6 w-32 text-sm">
-            Edit About
+            {t('edit')} {t('about')}
           </button>
         </div>
       </div>

@@ -1,6 +1,8 @@
 import React from 'react';
 import connection from '../Images/undraw_connection_b38q.svg';
+import { useTranslation } from 'react-i18next';
 const ForYouContent = () => {
+  const { t, i18n } = useTranslation();
   return (
     <>
       <section className="text-darkP bg-beige">
@@ -8,13 +10,14 @@ const ForYouContent = () => {
           <div className="flex flex-wrap my-auto lg:w-1/2 sm:w-2/3 content-start sm:pr-10">
             <div className="w-full">
               <h1 className="mb-2 text-3xl md:text-5xl leading-relaxed font-semibold ">
-                For You
+                {t('For You')}
               </h1>
             </div>
             <div className="md:w-2/3 ">
               <h2 className="font-medium text-sm md:text-xl">
-                Your motivational area, articles from the team and the
-                community.
+                {t(
+                  'Your motivational area, articles from the team and the community.'
+                )}
               </h2>
             </div>
           </div>

@@ -3,18 +3,19 @@ import { FiSend } from 'react-icons/fi';
 import PropTypes from 'prop-types';
 import firebase from '../../firebase/firebase';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 const WritePostTextarea = () => {
   const postInput = useRef('');
-
+  const { t, i18n } = useTranslation();
   return firebase.getCurrentUsername() ? (
     <div className="lg:w-1/2 md:w-4/5 w-11/12 text-orangeP relative my-8">
-      <h2 className="md:text-lg font-semibold">Write a post</h2>
+      <h2 className="md:text-lg font-semibold">{t('write_post')}</h2>
       <textarea
         ref={postInput}
         id={'post-textarea'}
         className="md:text-base text-sm resize-none rounded-md text-darkP px-4 py-3 h-40 w-full mt-4"
-        placeholder="Start typing..."
+        placeholder={t('start_typing')}
       ></textarea>
       <button
         onClick={() => {
@@ -27,7 +28,7 @@ const WritePostTextarea = () => {
         }}
         className="bg-darkP flex items-center text-beige rounded-sm md:px-6 px-3 py-1 absolute bottom-0 right-0 mr-4 mb-4 hover:text-orangeP"
       >
-        <p className="md:text-base text-sm">Share</p>
+        <p className="md:text-base text-sm">{t('Share')}</p>
         <FiSend className="ml-2" />
       </button>
     </div>
@@ -35,7 +36,7 @@ const WritePostTextarea = () => {
     <div>
       <h2 className="md:text-lg text-darkBeige font-semibold mt-6 border-transparent border-b-2 hover:border-orangeP">
         <Link to="/login" className="">
-          Sign In To Write A Post
+          {t('Sign In To Write A Post')}
         </Link>
       </h2>
     </div>

@@ -4,6 +4,7 @@ import logo from './imgs/Logo.svg';
 import { Link } from 'react-router-dom';
 import profileImg from './imgs/profile.png';
 import firebase from './../../firebase/firebase';
+import { useTranslation } from 'react-i18next';
 
 export default function Navbar() {
   const [navbarOpen, setNavbarOpen] = React.useState(false);
@@ -20,6 +21,7 @@ export default function Navbar() {
       alert('not working');
     }
   }
+  const { t, i18n } = useTranslation();
   return (
     <>
       <nav className="relative flex flex-wrap items-center justify-between px-2 lg:py-6 py-4 navbar-expand-lg bg-darkP text-beige text-sm">
@@ -53,7 +55,7 @@ export default function Navbar() {
                   }}
                   to="/profile/feed"
                 >
-                  Profile
+                  {t('profile')}
                 </Link>
               </li>
               <li className="lg:mr-10 lg:my-0 lg:py-0 py-3 hover:text-orangeP lg:border-0 border-b border-beige">
@@ -63,7 +65,7 @@ export default function Navbar() {
                   }}
                   to="/ForYou"
                 >
-                  For You
+                  {t(' For You')}
                 </Link>
               </li>
               <li className="lg:mb-0 lg:py-0 py-3 hover:text-orangeP">
@@ -73,13 +75,13 @@ export default function Navbar() {
                   }}
                   to="/Counselling"
                 >
-                  Counselling
+                  {t('Counselling')}
                 </Link>
               </li>
               {firebase.getCurrentUsername() ? (
                 <li className="lg:mb-0 lg:py-0 py-3 hover:text-orangeP">
                   <Link to="/login" onClick={() => firebase.logout()}>
-                    Sign Out
+                    {t(' Sign Out')}
                   </Link>
                 </li>
               ) : (
