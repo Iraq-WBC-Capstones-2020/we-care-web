@@ -101,6 +101,35 @@ const ProfileSidebar = () => {
               <p className="hidden md:block">Profile</p>
             </Link>
           </li>
+          <li className="py-4 md:px-0 px-5 text">
+            <label
+              className="block uppercase tracking-wide text-orangeP text-sm font-bold mb-2"
+              forHTML="Language"
+            >
+              Change Language
+            </label>
+            <div className="relative">
+              <select
+                className="block appearance-none w-2/3 mx-auto bg-gray-200 border border-gray-200 text-darkP py-2 px-1 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                id="Language"
+              >
+                <option
+                  onClick={() => {
+                    alert('hi');
+                  }}
+                >
+                  English
+                </option>
+                <option
+                  onClick={() => {
+                    alert('hi2 whyyyyyyy');
+                  }}
+                >
+                  Turkish
+                </option>
+              </select>
+            </div>
+          </li>
         </ul>
       </div>
     </div>
