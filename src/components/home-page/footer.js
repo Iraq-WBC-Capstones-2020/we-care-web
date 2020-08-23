@@ -1,5 +1,4 @@
 import React from 'react';
-
 import Facebook from './image/facebook.png';
 import Twitter from './image/twitter.png';
 import Instagram from './image/instagram.png';
@@ -8,36 +7,58 @@ import Logo from './image/Logo.svg';
 
 export default function Footer() {
   return (
-    <div className="m-0 bg-orange-910   h-60 w-screen">
-      <div className="flex flex-row justify-around ">
-        <div className=" mt-16 mb-16">
-          What mental health needs is more
-          <br /> sunlight, more candor, and more
-          <br /> unashamed conversation
-          <img src={Quotes} className="ml-56" />
-        </div>
-        <div>
-          <p className="text-blue-910 mt-16 mb-16">Your Feedback</p>
+    <footer className="text-darkP bg-darkBeige">
+      <div className="border-b border-darkP py-8">
+        <div className="container flex flex-col md:flex-row md:justify-between px-5 mx-auto">
+          <div className="flex flex-wrap lg:text-left text-center mx-auto md:mx-0">
+            <div className="lg:w-1/4 md:w-1/2 w-full px-4 text-center items-center">
+              <div className="leading-relaxed w-56 font-medium">
+                <p>
+                  What mental health needs is more sunlight, more candor, and
+                  more unashamed conversation
+                </p>
+                <img src={Quotes} className="ml-auto mr-2" alt="Quotes" />
+              </div>
+            </div>
+          </div>
+          <div className="lg:w-1/4 md:w-1/2 w-full px-4">
+            <div className="lg:w-1/4 md:w-1/2 w-full px-4 items-center justify-center flex flex-col md:flex-row">
+              <div>
+                <h2 className="title-font font-medium text-darkP tracking-widest text-sm mb-3">
+                  Your Feedback
+                </h2>
+                <textarea
+                  className="w-40 sm:w-auto bg-gray-100 rounded xl:mr-4 lg:mr-0 sm:mr-4 mr-2 border border-gray-400 focus:outline-none focus:border-darkP text-base py-2 px-4 resize-none"
+                  placeholder="Placeholder"
+                  type="text"
+                ></textarea>
+              </div>
+              <div>
+                <button className="lg:mt-2 xl:mt-0 flex-shrink-0 text-darkP bg-orangeP py-2 px-6 rounded-lg font-medium ml-auto mr-2">
+                  Submit
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-      <hr className="w-screen bg-orange-940" />
-      <div className="flex flex-row justify-evenly mt-4">
-        <div className="mt-2">© 2020 We Care </div>
+      <div className="flex flex-col md:flex-row justify-around mt-4 items-center">
+        <p>© 2020 We Care </p>
         <div>
-          <img src={Logo} className="w-16 h-16" />
+          <img src={Logo} className="w-16 h-16" alt="logo" />
         </div>
-        <div className="flex flex-row justify-between  w-24 ">
+        <div className="flex flex-row justify-around w-24 ">
           <div>
-            <img src={Facebook} className="w-6 h-6" />
+            <img src={Facebook} className="w-6 h-6" alt="Facebook" />
           </div>
           <div>
-            <img src={Instagram} className="w-6 h-6" />
+            <img src={Instagram} className="w-6 h-6" alt="Instagram" />
           </div>
           <div>
-            <img src={Twitter} className="w-6 h-6" />
+            <img src={Twitter} className="w-6 h-6" alt="Twitter" />
           </div>
         </div>
       </div>
-    </div>
+    </footer>
   );
 }

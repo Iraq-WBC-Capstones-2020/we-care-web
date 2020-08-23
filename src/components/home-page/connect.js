@@ -1,28 +1,31 @@
 import React from 'react';
-
 import Illustration from './image/undraw-workout.svg';
+import { Link } from 'react-router-dom';
 
 export default function Connect() {
   return (
-    <div className="w-full h-full flex justify-center items-center">
-      <div className="flex md:flex-row flex-col md:justify-evenly justify-center items-center w-full md:mb-40">
-        <div className="md:mt-0 mt-32">
-          <h1 className="text-blue-910 font-bold md:text-4xl text-5xl flex-1 ">
-            let's make a <br />
-            change today
+    <div className="flex justify-evenly lg:justify-between lg:mx-auto items-center lg:mt-12 py-20">
+      <div className="flex xl:flex-row flex-col xl:justify-evenly justify-between lg:ml-4">
+        <div className="xl:mt-0 leading-relaxed mx-auto md:mx-0 w-3/4">
+          <h1 className="text-darkP font-bold xl:text-4xl text-lg xl:w-1/2">
+            Let&apos;s make a change today
           </h1>
-          <h6 className="text-blue-910 md:mt-8 mt-5 md:text-base text-lg">
-            Connect to caring people, chat anonymously
-            <br /> and be part of a supportive community
+          <h6 className="text-darkP xl:mt-8 mt-5 xl:text-base text-xs xl:w-1/2">
+            Connect to caring people, chat anonymously and be part of a
+            supportive community
           </h6>
-          <button className="bg-blue-910 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded md:mt-16 mt-10">
-            Connect Now
+          <button className="bg-darkP text-white font-bold py-2 border rounded-lg xl:mt-16 mt-10 w-1/2">
+            <Link to="/signUp" className="text-sm ml-2">
+              Connect Now
+            </Link>
           </button>
         </div>
-        <div className="flex justify-center items-center md:my-0 my-40">
-          <img className="md:w-86 w-4/6" src={Illustration} />
-        </div>
       </div>
+      <img
+        className="hidden lg:block w-2/6 mr-16"
+        src={Illustration}
+        alt="girl running"
+      />
     </div>
   );
 }
