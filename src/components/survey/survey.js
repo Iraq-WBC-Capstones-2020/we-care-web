@@ -5,20 +5,20 @@ import Navbar from './Navbar';
 export default function Survey() {
   return (
     <>
-      <section className="bg-beige h-screen overflow-hidden flex flex-col items-center justify-between">
+      <section className="bg-beige w-screen h-screen overflow-hidden flex flex-col items-center justify-between">
         <Navbar />
-        <div className="container flex items-center h-full justify-center w-full text-center">
-          <div className="bg-darkP rounded-lg w-3/4 sm:w-1/2 md:w-2/6 p-6">
+        <div className="w-screen flex items-center h-full justify-center text-center">
+          <div className="bg-darkP rounded-lg w-11/12 sm:w-2/3 md:w-1/2 lg:w-5/12 xl:w-1/3 p-2 sm:p-6 self-center">
             <div className="text-orangeP font-sans font-light leading-relaxed ">
-              <p className="text-4xl mt-2">Before You Connect</p>
-              <p className="text-beige text-lg mt-4 px-16">
+              <p className="text-3xl md:text-4xl mt-2">Before You Connect</p>
+              <p className="text-beige text-lg mt-4 px-10 md:px-16">
                 Select the issue that concerns you the most?
               </p>
             </div>
             <div className="text-left relative inline-block mt-6">
               <select
                 type="select"
-                className="bg-darkP text-beige rounded-md border-2 border-orangeP px-4 py-2 leading-5 font-medium text-base  w-full"
+                className="bg-darkP text-beige rounded-md border-2 border-darkBeige px-4 py-2 leading-5 font-medium text-base  w-full"
                 id="options-menu"
                 aria-haspopup="true"
                 aria-expanded="true"
