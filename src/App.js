@@ -9,12 +9,14 @@ import Login from './components/regiterUser/Login';
 import ForYou from './components/For You/ForYou';
 import ConselingPage from './components/Conseling-Page/Conseling-Page';
 import firebase from './firebase/firebase';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setCurrentUser } from './redux/actions';
 import Survey from './components/survey/survey';
 import LandingPage from './components/home-page/home-page';
 function App() {
   const [firebaseInitialized, setFirebaseInitialized] = useState(false);
+
+  const isListener = useSelector((state) => state.isListener);
 
   useEffect(() => {
     firebase.isInitialized().then((val) => {
@@ -42,7 +44,7 @@ function App() {
         <ConselingPage />
       </Route>
       <Route path="/chatroom">
-        <ChatroomPage />
+        <ChatroomPage isListener={isListener} />
       </Route>
       <Route path="/signUp">
         <SignUp />

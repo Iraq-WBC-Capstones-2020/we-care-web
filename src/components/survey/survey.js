@@ -1,11 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import '../regiterUser/toggleStyle.css';
 import Navbar from './Navbar';
+import { useDispatch } from 'react-redux';
+import { setIsListenerRedux } from './../../redux/actions';
+
 export default function Survey() {
   let history = useHistory();
+  const dispatch = useDispatch();
 
   const [isListener, setIsListener] = useState(false);
+
+  useEffect(() => {
+    dispatch(setIsListenerRedux(isListener));
+  }, [isListener]);
 
   return (
     <>
