@@ -8,40 +8,36 @@ export default function Survey() {
       <section className="bg-beige h-screen overflow-hidden flex flex-col items-center justify-between">
         <Navbar />
         <div className="container flex items-center h-full justify-center w-full text-center">
-          <div className="bg-darkP rounded-lg w-3/4 sm:w-1/2 md:w-1/2 xl:w-1/4">
+          <div className="bg-darkP rounded-lg w-3/4 sm:w-1/2 md:w-2/6 p-6">
             <div className="text-orangeP font-sans font-light leading-relaxed ">
-              <p className="text-2xl md:text-3xl mt-2">Before You Connect</p>
-              <p className="text-beige text-sm md:text-base mt-2">
-                Select the issue you want help with
+              <p className="text-4xl mt-2">Before You Connect</p>
+              <p className="text-beige text-lg mt-4 px-16">
+                Select the issue that concerns you the most?
               </p>
             </div>
-            <div className="text-left relative inline-block mt-5">
-              <span className="rounded-md text-beige float-right">
-                <select
-                  type="select"
-                  className="bg-darkP text-beige rounded-md border-2 border-orangeP px-12 py-4 leading-5 font-medium text-base  w-full"
-                  id="options-menu"
-                  aria-haspopup="true"
-                  aria-expanded="true"
-                >
-                  <option value="Depression">Depression</option>
-                  <option value="saddnes">Saddnes</option>
-                  <option value="Hotel?">anixous</option>
-                  <svg
-                    className="justify-center  text-orangeP fill-current float-right -mr-1 ml-2 h-5 w-5"
-                    viewBox="0 0 20 20"
-                    fill="currentColor\"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                </select>
-              </span>
+            <div className="text-left relative inline-block mt-6">
+              <select
+                type="select"
+                className="bg-darkP text-beige rounded-md border-2 border-orangeP px-4 py-2 leading-5 font-medium text-base  w-full"
+                id="options-menu"
+                aria-haspopup="true"
+                aria-expanded="true"
+              >
+                <option value="Depression">Depression</option>
+                <option value="Anxiety">Anxiety</option>
+                <option value="Eating-Disorders">Eating Disorders</option>
+                <option value="OCD">OCD</option>
+                <option value="PTSD">PTSD</option>
+                <option value="Bipolar-disorder">Bipolar disorder</option>
+                <option value="Personality-disorders">
+                  Personality disorders
+                </option>
+                <option value="Schizophrenia-and-other-psychoses">
+                  Schizophrenia
+                </option>
+              </select>
             </div>
-            <div className="flex items-center justify-center w-full mt-10 mb-10">
+            <div className="flex items-center justify-center w-full mt-10 mb-10 text-lg">
               <label
                 htmlFor="toogleA"
                 className="flex items-center cursor-pointer"
@@ -55,7 +51,7 @@ export default function Survey() {
                 <div className="ml-3 text-beige">Listener</div>
               </label>
             </div>
-            <button className="bg-orangeP text-s  text-darkP rounded   mb-5  py-2 px-4 ">
+            <button className="bg-orangeP text-lg text-darkP rounded mb-5 py-2 px-4 ">
               <Link to="/chatroom">Connect Now</Link>
             </button>
           </div>
