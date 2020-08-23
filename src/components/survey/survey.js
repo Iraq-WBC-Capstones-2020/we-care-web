@@ -1,8 +1,12 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import '../regiterUser/toggleStyle.css';
 import Navbar from './Navbar';
 export default function Survey() {
+  let history = useHistory();
+
+  const [isListener, setIsListener] = useState(false);
+
   return (
     <>
       <section className="bg-beige w-screen h-screen overflow-hidden flex flex-col items-center justify-between">
@@ -44,15 +48,29 @@ export default function Survey() {
               >
                 <div className="mr-3 text-beige">Member </div>
                 <div className="relative">
-                  <input id="toogleA" type="checkbox" className="hidden" />
+                  <input
+                    onChange={() => {
+                      isListener ? setIsListener(false) : setIsListener(true);
+                    }}
+                    id="toogleA"
+                    type="checkbox"
+                    className="hidden"
+                  />
                   <div className="toggle__line w-8 h-3 bg-white rounded-full shadow-inner"></div>
                   <div className="toggle__dot absolute w-5 h-5 bg-orangeP rounded-full shadow "></div>
                 </div>
                 <div className="ml-3 text-beige">Listener</div>
               </label>
             </div>
-            <button className="bg-orangeP text-lg text-darkP rounded mb-5 py-2 px-4 ">
-              <Link to="/chatroom">Connect Now</Link>
+            <button
+              onClick={(e) => {
+                e.preventDefault();
+                history.push('/chatroom');
+                setIsListener(false);
+              }}
+              className="bg-orangeP text-lg text-darkP rounded mb-5 py-2 px-4 "
+            >
+              Connect Now
             </button>
           </div>
         </div>
