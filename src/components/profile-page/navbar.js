@@ -48,7 +48,7 @@ export default function Navbar() {
                 <Link to="/Counselling">Counselling</Link>
               </li>
               <li className="lg:mr-10 lg:my-0 lg:py-0 py-3 hover:text-orangeP lg:border-0 border-b border-beige">
-                <Link to="/chatroom">Connect Now</Link>
+                <Link to="/survey">Connect Now</Link>
               </li>
 
               <li className="lg:mb-0 lg:py-0 py-3 hover:text-orangeP">
