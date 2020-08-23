@@ -1,8 +1,7 @@
 import React from 'react';
 import Acomponent from './components/Acomponent';
 import { useTranslation } from 'react-i18next';
-import './components/Conseling-Page/Navbar';
-function aa() {
+function lngs() {
   const { t, i18n } = useTranslation();
 
   function handleClick(lang) {
@@ -18,4 +17,4 @@ function aa() {
   );
 }
 
-export default aa;
+export default lngs;

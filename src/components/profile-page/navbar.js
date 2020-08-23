@@ -46,11 +46,7 @@ export default function Navbar() {
                 <Link to="/ForYou">For You</Link>
               </li>
               <li className="lg:mr-10 lg:my-0 lg:py-0 py-3 hover:text-orangeP lg:border-0 border-b border-beige">
-<<<<<<< HEAD
-                <a href={'#'}>Home</a>
-=======
                 <Link to="/Counselling">Counselling</Link>
->>>>>>> 0c625d37897de5ef2b48e82d6e198a4d81b4be08
               </li>
               <li className="lg:mr-10 lg:my-0 lg:py-0 py-3 hover:text-orangeP lg:border-0 border-b border-beige">
                 <Link to="/chatroom">Connect Now</Link>

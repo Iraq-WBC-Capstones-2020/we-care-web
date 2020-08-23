@@ -5,7 +5,12 @@ import Instagram from './image/instagram.png';
 import Quotes from './image/quotes.svg';
 import Logo from './image/Logo.svg';
 
+import { useTranslation } from 'react-i18next';
 export default function Footer() {
+  const { t, i18n } = useTranslation();
+  function handleClick(lang) {
+    i18n.changeLanguage(lang);
+  }
   return (
     <footer className="text-darkP bg-darkBeige">
       <div className="border-b border-darkP py-8">
@@ -17,6 +22,9 @@ export default function Footer() {
                   What mental health needs is more sunlight, more candor, and
                   more unashamed conversation
                 </p>
+                <button onClick={() => handleClick('en')}>English</button>
+                <button onClick={() => handleClick('tu')}>turkish</button>
+                <p>{t('only testing')}</p>
                 <img src={Quotes} className="ml-auto mr-2" alt="Quotes" />
               </div>
             </div>

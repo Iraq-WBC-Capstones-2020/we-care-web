@@ -3,5 +3,7 @@
 	"description": {
 		"part1": "Um loszulegen, ändere <1>src/App(DE).js</1> und speichere um neuzuladen.",
 		"part2": "Wechsle die Sprache zwischen deutsch und englisch mit Hilfe der beiden Schalter."
-	}
+	},
+	"only testing": "only testing in tirkish",
+	"likes": "likes in turkish"
 }
