@@ -28,8 +28,8 @@ export default function Footer() {
                   Your Feedback
                 </h2>
                 <textarea
-                  className="w-40 sm:w-auto bg-gray-100 rounded xl:mr-4 lg:mr-0 sm:mr-4 mr-2 border border-gray-400 focus:outline-none focus:border-darkP text-base py-2 px-4 resize-none"
-                  placeholder="Placeholder"
+                  className="w-40 sm:w-auto bg-beige rounded xl:mr-4 lg:mr-0 sm:mr-4 mr-2 border border-gray-400 focus:outline-none focus:border-darkP text-sm py-2 px-4 resize-none"
+                  placeholder="Send Us Your Feedback"
                   type="text"
                 ></textarea>
               </div>

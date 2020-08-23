@@ -2,8 +2,8 @@ import React from 'react';
 // import { FillButton } from 'tailwind-react-ui';
 export default function AboutUs() {
   return (
-    <div className="w-full bg-beige flex flex-col md:flex-row md:justify-around mx-auto h-full py-12 items-center">
-      <div className="w-2/3 lg:w-1/4 rounded-lg bg-darkP shadow-lg">
+    <div className="w-full bg-beige flex flex-col flex-wrap md:flex-row md:justify-around mx-auto h-full py-12 items-center">
+      <div className="w-2/3 lg:1/3 xl:w-1/4 rounded-lg bg-darkP shadow-lg">
         <div className="px-10 py-12 ">
           <p className="text-white">We Care</p>
           <div className="font-bold text-3xl mb-2 text-orangeP">About Us</div>
@@ -18,7 +18,7 @@ export default function AboutUs() {
           </p>
         </div>
       </div>
-      <div className="w-2/3 lg:w-1/4 rounded-lg bg-darkP shadow-lg mt-56">
+      <div className="w-2/3 lg:1/3 xl:w-1/4 rounded-lg bg-darkP shadow-lg mt-12 xl:mt-56">
         <div className="px-10 py-12">
           <p className="text-white">We Care</p>
           <div className="font-bold text-3xl mb-2 text-orangeP">
