@@ -254,7 +254,7 @@ class Firebase {
       .set({
         postId: id,
         authorId: this.getCurrentUid(),
-        createdAt: new Date().toLocaleString(),
+        createdAt: new Date().toLocaleString('en-US'),
         timestamp: app.firestore.FieldValue.serverTimestamp(),
         authorName: this.getCurrentUsername(),
         authorAvatar: avatar,
