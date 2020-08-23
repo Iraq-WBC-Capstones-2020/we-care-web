@@ -10,19 +10,22 @@ import UserNotFound from './user-not-found-page';
 
 const ChatroomPage = () => {
   const currentUser = useSelector((state) => state.currentUser);
+
+  const isListener = useSelector((state) => state.isListener);
+
   const [roomIsCreated, setRoomIsCreated] = useState(false);
   const [noMembersFound, setNoMembersFound] = useState(false);
   const [noListnersFound, setNoListnersFound] = useState(false);
 
   useEffect(() => {
-    if (currentUser && roomIsCreated === false) {
-      if (currentUser.role === 'listener') {
+    if (currentUser && isListener !== undefined && roomIsCreated === false) {
+      if (isListener === true) {
         firebase
           .createChatroomDocumentInFirestore(() => setRoomIsCreated(true))
           .catch(() => {
             setNoMembersFound(true);
           });
-      } else {
+      } else if (isListener === false) {
         firebase.addAvailableMemberToRTDB();
         firebase.listenForCreatedChatroom(() => setRoomIsCreated(true));
         let timer = setTimeout(() => {
@@ -39,7 +42,7 @@ const ChatroomPage = () => {
       }
     }
     // eslint-disable-next-line
-  }, [currentUser]);
+  }, [currentUser, isListener]);
 
   if (currentUser && noMembersFound) {
     return <UserNotFound user={'member'} />;
