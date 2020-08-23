@@ -8,6 +8,8 @@ import Login from './components/regiterUser/Login';
 import ForYou from './components/For You/ForYou';
 import ConselingPage from './components/Conseling-Page/Conseling-Page';
 import firebase from './firebase/firebase';
+import './Acomponent';
+
 
 function App() {
   const [firebaseInitialized, setFirebaseInitialized] = useState(false);
@@ -16,7 +18,6 @@ function App() {
       setFirebaseInitialized(val);
     });
   }, []);
-
   return firebaseInitialized !== false ? (
     <Switch>
       <Route exact path="/ConselingPage">
@@ -42,6 +43,9 @@ function App() {
       </Route>
       <Route path="/">
         <Login />
+      </Route>
+      <Route path="/appLAnguages">
+        <appLanguages />
       </Route>
     </Switch>
   ) : (

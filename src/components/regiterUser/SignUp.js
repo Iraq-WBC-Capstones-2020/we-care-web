@@ -4,6 +4,7 @@ import Navbar from './navbar-signUp';
 import { Link } from 'react-router-dom';
 import heart from './imgs/signup.svg';
 import './toggleStyle.css';
+
 const SignUp = () => {
   return (
     <section className="body-font bg-darkP h-screen overflow-hidden flex flex-col items-center justify-between">

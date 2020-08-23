@@ -1,7 +1,8 @@
 import React from 'react';
 import profileImg from '../Images/Profile.png';
 import logo from '../Images/Logo.svg';
-
+import { useTranslation } from 'react-i18next';
+// import '../../Acomponent';
 const ProfileNavbar = () => {
   return (
     <>
@@ -9,7 +10,7 @@ const ProfileNavbar = () => {
         <img src={logo} className="w-20" alt="We Care logo" />
         <ul className="flex">
           <li className="mr-10">
-            <a href={'#'}>Home</a>
+            <a href={'#'}>{t('Welcome to react using react-i18next')}</a>
           </li>
           <li className="mr-10">
             <a href={'#'}>For you</a>

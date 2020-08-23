@@ -8,6 +8,7 @@ import firebase from '../../firebase/firebase';
 export default function Navbar() {
   const [navbarOpen, setNavbarOpen] = useState(false);
   let history = useHistory();
+
   return (
     <>
       <nav className="relative flex flex-wrap items-center justify-between px-2 lg:py-6 py-4 navbar-expand-lg bg-darkP text-beige text-sm">
@@ -38,7 +39,7 @@ export default function Navbar() {
                 <Link to="/ForYou">For You</Link>
               </li>
               <li className="lg:mr-10 lg:my-0 lg:py-0 py-3 hover:text-orangeP lg:border-0 border-b border-beige">
-                <a href={'#'}>Counseling</a>
+                <a href={'#'}>Home</a>
               </li>
               <li className="lg:mr-10 lg:my-0 lg:py-0 py-3 hover:text-orangeP lg:border-0 border-b border-beige">
                 <Link to="/chatroom">Connect Now</Link>
