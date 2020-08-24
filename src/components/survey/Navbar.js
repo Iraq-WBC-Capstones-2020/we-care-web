@@ -1,13 +1,15 @@
 import React from 'react';
 import { FiMenu } from 'react-icons/fi';
 import logo from './imgs/LogoDark.svg';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import firebase from '../../firebase/firebase';
 import { useSelector } from 'react-redux';
 import Loader from './../loader/loader';
 
 export default function Navbar() {
   const [navbarOpen, setNavbarOpen] = React.useState(false);
+
+  let history = useHistory();
 
   const currentUser = useSelector((state) => state.currentUser);
 
@@ -54,7 +56,12 @@ export default function Navbar() {
                 </li>
                 {firebase.getCurrentUsername() ? (
                   <li className="lg:mb-0 lg:py-0 py-3 hover:text-orangeP">
-                    <Link to="/login" onClick={() => firebase.logout()}>
+                    <Link
+                      to="/login"
+                      onClick={() => {
+                        logout();
+                      }}
+                    >
                       Sign Out
                     </Link>
                   </li>
@@ -81,5 +88,10 @@ export default function Navbar() {
     );
   } else {
     return <Loader />;
+  }
+
+  async function logout() {
+    await firebase.logout();
+    history.push('/login');
   }
 }
