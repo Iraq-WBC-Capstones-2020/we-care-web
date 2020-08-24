@@ -19,7 +19,7 @@ export default function Navbar() {
         <nav className="relative flex flex-wrap items-center justify-between px-2 lg:py-6 py-4 navbar-expand-lg bg-white text-darkP text-sm">
           <div
             className={`container px-4 mx-auto flex ${
-              currentUser ? 'flex-wrap' : ''
+              firebase.auth.currentUser ? 'flex-wrap' : ''
             } items-center justify-between`}
           >
             <div className="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
@@ -27,14 +27,14 @@ export default function Navbar() {
                 <img
                   src={logo}
                   className={`w-16 md:w-20 lg:ml-0 md:ml-12 ${
-                    currentUser ? 'ml-8' : ''
+                    firebase.auth.currentUser ? 'ml-8' : ''
                   } cursor-pointer`}
                   alt="We Care logo"
                 />
               </Link>
               <button
                 className={`text-white cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block ${
-                  currentUser ? 'lg:hidden' : 'hidden'
+                  firebase.auth.currentUser ? 'lg:hidden' : 'hidden'
                 } outline-none focus:outline-none`}
                 type="button"
                 onClick={() => setNavbarOpen(!navbarOpen)}
@@ -42,7 +42,7 @@ export default function Navbar() {
                 <FiMenu className="text-2xl text-darkP" />
               </button>
             </div>
-            {firebase.getCurrentUsername() ? (
+            {firebase.auth.currentUser ? (
               <div
                 className={
                   'lg:flex flex-grow items-center justify-center' +
@@ -75,7 +75,7 @@ export default function Navbar() {
             ) : (
               ''
             )}
-            {firebase.getCurrentUsername() ? (
+            {firebase.auth.currentUser ? (
               <div className="lg:flex justify-center items-center hidden">
                 <Link to="/profile">
                   <img
