@@ -20,11 +20,13 @@ export default function Navbar() {
         <nav className="relative flex flex-wrap items-center justify-between px-2 lg:py-6 py-4 navbar-expand-lg bg-beige text-darkP text-sm">
           <div className="container px-4 mx-auto flex flex-wrap items-center justify-between">
             <div className="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
-              <img
-                src={logo}
-                className="w-16 md:w-20 lg:ml-0 md:ml-12 ml-8 cursor-pointer"
-                alt="We Care logo"
-              />
+              <Link to="/">
+                <img
+                  src={logo}
+                  className="w-16 md:w-20 lg:ml-0 md:ml-12 ml-8 cursor-pointer"
+                  alt="We Care logo"
+                />
+              </Link>
               <button
                 className="text-white cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none"
                 type="button"
