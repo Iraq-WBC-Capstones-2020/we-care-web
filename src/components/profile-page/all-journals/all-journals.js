@@ -45,7 +45,7 @@ const AllJournals = () => {
               e.preventDefault();
               history.push('/profile/journals/add');
             }}
-            className="text-beige border text-center border-darkP my-8 bg-darkP h-8 border-solid rounded w-32 text-sm"
+            className="text-beige hover:text-orangeP border text-center border-darkP my-8 bg-darkP h-8 border-solid rounded w-32 text-sm"
           >
             Add Journal
           </button>
