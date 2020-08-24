@@ -39,17 +39,21 @@ export default function Survey() {
                 aria-haspopup="true"
                 aria-expanded="true"
               >
-                <option value="Depression">Depression</option>
-                <option value="Anxiety">Anxiety</option>
-                <option value="Eating-Disorders">Eating Disorders</option>
-                <option value="OCD">OCD</option>
-                <option value="PTSD">PTSD</option>
-                <option value="Bipolar-disorder">Bipolar disorder</option>
+                <option value="Depression">{t('Depression')}</option>
+                <option value="Anxiety">{t('Anxiety')}</option>
+                <option value="Eating-Disorders">
+                  {t('Eating-Disorders')}
+                </option>
+                <option value="OCD">{t('OCD')}</option>
+                <option value="PTSD">{t('PTSD')}</option>
+                <option value="Bipolar-disorder">
+                  {t('Bipolar-disorder')}
+                </option>
                 <option value="Personality-disorders">
-                  Personality disorders
+                  {t('Personality-disorders')}
                 </option>
                 <option value="Schizophrenia-and-other-psychoses">
-                  Schizophrenia
+                  {t('Schizophrenia')}
                 </option>
               </select>
             </div>
