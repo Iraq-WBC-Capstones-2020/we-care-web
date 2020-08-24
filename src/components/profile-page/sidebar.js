@@ -6,12 +6,20 @@ import { BsChat } from 'react-icons/bs';
 import { BsPerson } from 'react-icons/bs';
 import dashtext from './imgs/dash.svg';
 import { Link, useLocation } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 const ProfileSidebar = () => {
   let location = useLocation();
   const [section, setSection] = useState(`${location.pathname.slice(1)}`);
   const sectionIndicator =
     'border-b-4 border-l-0 lg:border-l-4 lg:border-b-0 border-orangeP text-orangeP';
+
+  const { t, i18n } = useTranslation();
+
+  function handleClick(lang) {
+    i18n.changeLanguage(lang);
+  }
+
   return (
     <div className="lg:h-full lg:w-1/5 xl:w-2/12 bg-darkP flex flex-col justify-between text-beige text-center">
       <div className="w-full lg:mt-3">
@@ -34,7 +42,7 @@ const ProfileSidebar = () => {
               }}
             >
               <BsChatSquare className="lg:ml-8 md:mr-4" />
-              <p className="hidden md:block">Feed</p>
+              <p className="hidden md:block">{t('feed')}</p>
             </Link>
           </li>
           <li
@@ -50,7 +58,7 @@ const ProfileSidebar = () => {
               }}
             >
               <BsPencil className="lg:ml-8 md:mr-4" />
-              <p className="hidden md:block">Journals</p>
+              <p className="hidden md:block">{t('journals')}</p>
             </Link>
           </li>
           <li
@@ -66,7 +74,7 @@ const ProfileSidebar = () => {
               }}
             >
               <AiOutlineMail className="lg:ml-8 md:mr-4" />
-              <p className="hidden md:block">Messages</p>
+              <p className="hidden md:block">{t('Messages')}</p>
             </Link>
           </li>
           <li
@@ -82,7 +90,7 @@ const ProfileSidebar = () => {
               }}
             >
               <BsChat className="lg:ml-8 md:mr-4" />
-              <p className="hidden md:block">Your Posts</p>
+              <p className="hidden md:block">{t('Your Posts')}</p>
             </Link>
           </li>
           <li
@@ -98,8 +106,30 @@ const ProfileSidebar = () => {
               }}
             >
               <BsPerson className="lg:ml-8 md:mr-4 text-lg" />
-              <p className="hidden md:block">Profile</p>
+              <p className="hidden md:block">{t('Profile')}</p>
             </Link>
+          </li>
+          <li className="py-4 md:px-0 px-5 text">
+            <label
+              className="block uppercase tracking-wide text-orangeP text-sm font-bold mb-2"
+              forHTML="Language"
+            >
+              {t('Change Language')}
+            </label>
+            <div className="relative">
+              <select
+                className="block appearance-none w-2/3 mx-auto bg-gray-200 border border-gray-200 text-darkP py-2 px-1 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                id="Language"
+                onChange={(e) => {
+                  e.preventDefault();
+                  handleClick(e.target.value);
+                }}
+                defaultValue={i18n.language === 'en' ? 'en' : 'tu'}
+              >
+                <option value="en">English</option>
+                <option value="tu">Turkish</option>
+              </select>
+            </div>
           </li>
         </ul>
       </div>

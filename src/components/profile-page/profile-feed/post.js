@@ -4,8 +4,10 @@ import { FaHeart } from 'react-icons/fa';
 import { MdReply } from 'react-icons/md';
 import PropTypes from 'prop-types';
 import moment from 'moment';
+import { useTranslation } from 'react-i18next';
 
 const Post = ({ post }) => {
+  const { t } = useTranslation();
   return (
     <div className="bg-white w-11/12 md:w-4/5 lg:w-1/2 rounded-md text-darkP flex flex-col md:p-8 p-5 my-8">
       <div className="flex">
@@ -24,9 +26,9 @@ const Post = ({ post }) => {
         <FaHeart className="mr-3" />
         <span>56</span>
         <MdReply className="ml-6 mr-2 text-xl" />
-        <p className="mr-6">Reply</p>
+        <p className="mr-6">{t('Reply')}</p>
         <p>
-          Replies (<span>2</span>)
+          {t('Replies')} (<span>2</span>)
         </p>
       </div>
     </div>

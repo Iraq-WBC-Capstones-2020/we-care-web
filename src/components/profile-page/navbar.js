@@ -5,6 +5,7 @@ import { Link, useHistory } from 'react-router-dom';
 import firebase from '../../firebase/firebase';
 import { useSelector, useDispatch } from 'react-redux';
 import { setCurrentUser } from './../../redux/actions';
+import { useTranslation } from 'react-i18next';
 
 export default function Navbar() {
   const [navbarOpen, setNavbarOpen] = useState(false);
@@ -14,6 +15,7 @@ export default function Navbar() {
   const currentUser = useSelector((state) => state.currentUser);
 
   let history = useHistory();
+  const { t } = useTranslation();
   return (
     <>
       <nav className="relative flex flex-wrap items-center justify-between px-2 lg:py-6 py-4 navbar-expand-lg bg-darkP text-beige text-sm">
@@ -45,13 +47,13 @@ export default function Navbar() {
           >
             <ul className="flex flex-col justify-center lg:flex-row list-none text-center w-full">
               <li className="lg:mr-10 lg:mt-0 lg:py-0 py-3 hover:text-orangeP lg:border-0 border-b border-beige">
-                <Link to="/ForYou">For You</Link>
+                <Link to="/ForYou">{t('for_you')}</Link>
               </li>
               <li className="lg:mr-10 lg:my-0 lg:py-0 py-3 hover:text-orangeP lg:border-0 border-b border-beige">
-                <Link to="/Counselling">Counselling</Link>
+                <Link to="/Counselling">{t('Counselling')}</Link>
               </li>
               <li className="lg:mr-10 lg:my-0 lg:py-0 py-3 hover:text-orangeP lg:border-0 border-b border-beige">
-                <Link to="/survey">Connect Now</Link>
+                <Link to="/chatroom">{t('Connect Now')}</Link>
               </li>
 
               <li className="lg:mb-0 lg:py-0 py-3 hover:text-orangeP">
@@ -61,7 +63,7 @@ export default function Navbar() {
                     logout();
                   }}
                 >
-                  Sign Out
+                  {t('Sign Out')}
                 </Link>
               </li>
             </ul>

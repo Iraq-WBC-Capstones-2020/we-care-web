@@ -5,6 +5,7 @@ import { Link, useHistory } from 'react-router-dom';
 import firebase from './../../firebase/firebase';
 import Loader from './../loader/loader';
 import { useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 
 export default function Navbar() {
   const [navbarOpen, setNavbarOpen] = React.useState(false);
@@ -12,7 +13,7 @@ export default function Navbar() {
   let history = useHistory();
 
   const currentUser = useSelector((state) => state.currentUser);
-
+  const { t } = useTranslation();
   if (
     (firebase.auth.currentUser && currentUser) ||
     !firebase.auth.currentUser
@@ -52,7 +53,7 @@ export default function Navbar() {
                     }}
                     to="/profile/feed"
                   >
-                    Profile
+                    {t('Profile')}
                   </Link>
                 </li>
                 <li className="lg:mr-10 lg:my-0 lg:py-0 py-3 hover:text-orangeP lg:border-0 border-b border-darkP">
@@ -62,7 +63,7 @@ export default function Navbar() {
                     }}
                     to="/ForYou"
                   >
-                    For You
+                    {t('For You')}
                   </Link>
                 </li>
                 <li className="lg:mr-10 lg:my-0 lg:py-0 py-3 hover:text-orangeP lg:border-0 border-b border-darkP">
@@ -72,7 +73,7 @@ export default function Navbar() {
                     }}
                     to="/Counselling"
                   >
-                    Counselling
+                    {t('Counselling')}
                   </Link>
                 </li>
                 {firebase.getCurrentUsername() ? (
@@ -83,7 +84,7 @@ export default function Navbar() {
                         logout();
                       }}
                     >
-                      Sign Out
+                      {t('Sign Out')}
                     </Link>
                   </li>
                 ) : (

@@ -56,6 +56,9 @@ function App() {
       <Route path="/">
         <LandingPage />
       </Route>
+      <Route path="/appLAnguages">
+        <appLanguages />
+      </Route>
     </Switch>
   ) : (
     <Loader />
