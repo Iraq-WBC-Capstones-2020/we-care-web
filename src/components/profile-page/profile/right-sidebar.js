@@ -1,18 +1,38 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { FiSmile } from 'react-icons/fi';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { setCurrentUser } from '../../../redux/actions';
+import firebase from '../../../firebase/firebase';
 import Moment from 'react-moment';
 
 const RightSidebar = () => {
+  const dispatch = useDispatch();
+  const [imageAsUrl, setImageAsUrl] = useState(null);
   const currentUser = useSelector((state) => state.currentUser);
-
+  const userDoc = currentUser && firebase.db.doc(`/users/${currentUser.uid}`);
+  async function updateUserPicture() {
+    await userDoc.update({
+      profilePicture: imageAsUrl,
+    });
+    await firebase.db
+      .collection(`users`)
+      .doc(currentUser.uid)
+      .get()
+      .then((doc) => {
+        console.log(doc.data());
+        dispatch(setCurrentUser(doc.data()));
+      });
+  }
+  useEffect(() => {
+    imageAsUrl && updateUserPicture();
+  }, [imageAsUrl]);
   return (
     currentUser && (
       <div className="lg:w-1/5 order-1 lg:order-2 w-11/12 md:w-3/5 lg:h-full lg:mt-0 mt-10 mb-5 lg:mb-0 lg:p-0 p-10 lg:bg-darkP bg-white flex flex-col justify-center lg:text-beige text-darkP lg:rounded-none rounded">
         <div className="w-full h-auto self-center justify-evenly flex flex-col items-center">
           <div className="flex flex-col justify-center items-center">
             <img
-              className="rounded-full w-24 mb-4"
+              className="rounded-full w-24 h-24 mb-4"
               src={currentUser.profilePicture}
               alt="Profile"
             />
@@ -23,15 +43,31 @@ const RightSidebar = () => {
               Joined <Moment fromNow>{currentUser.dateJoined.toDate()}</Moment>
             </p>
           </div>
-          <div className="border lg:border-beige border-darkP border-solid rounded-full py-2 mt-10 w-32 text-sm flex items-center justify-center lg:font-normal font-medium">
+          <div className="border lg:border-beige border-darkP border-solid rounded-full py-2 mt-10 w-32 text-sm flex items-center h-10 justify-center lg:font-normal font-medium">
             <FiSmile className="mr-3 text-xl" /> 34 friends
           </div>
-          <button className="text-orangeP border lg:border-orangeP border-darkP lg:bg-transparent bg-darkP border-solid rounded py-2 mt-10 w-32 text-sm">
-            Change Avatar
-          </button>
-          <button className="text-orangeP border lg:border-orangeP border-darkP lg:bg-transparent bg-darkP border-solid rounded py-2 mt-6 w-32 text-sm">
-            Edit About
-          </button>
+          <div className="text-orangeP  border text-center lg:border-orangeP border-darkP lg:bg-transparent mt-10 bg-darkP h-8 border-solid rounded   w-32 text-sm">
+            <input
+              className="cursor-pointer absolute opacity-0 block  h-10  w-32 "
+              type="file"
+              id="profile_pic"
+              name="profile_pic"
+              accept="image/*"
+              onChange={async (e) => {
+                await firebase.uploadFile(
+                  e.target.files[0],
+                  `profile-images/${currentUser.email}/image`
+                );
+                await firebase
+                  .downloadFile(`profile-images/${currentUser.email}/image`)
+                  .then((url) => {
+                    console.log(url);
+                    setImageAsUrl(url);
+                  });
+              }}
+            ></input>
+            <p className="pt-1">Change Image</p>
+          </div>
         </div>
       </div>
     )
