@@ -28,6 +28,7 @@ const RightSidebar = () => {
   }
   useEffect(() => {
     imageAsUrl && updateUserPicture();
+    // eslint-disable-next-line
   }, [imageAsUrl]);
   return (
     currentUser && (
