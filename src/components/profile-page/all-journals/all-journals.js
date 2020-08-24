@@ -1,8 +1,35 @@
-import React from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
+import firebase from './../../../firebase/firebase';
 
 const AllJournals = () => {
   let history = useHistory();
+
+  const [journals, setJournals] = useState([]);
+
+  useEffect(() => {
+    async function getJournals() {
+      const journalsRef = firebase.db
+        .collection('users')
+        .doc(`${firebase.auth.currentUser.uid}`)
+        .collection('journals');
+
+      const data = await journalsRef.get();
+      const arrOfJournals = [];
+
+      data.forEach((doc) => {
+        arrOfJournals.push({
+          id: doc.id,
+          title: doc.get('title'),
+          body: doc.get('body'),
+          createdAt: doc.get('createdAt').toDate(),
+        });
+      });
+      setJournals(arrOfJournals);
+    }
+
+    getJournals();
+  }, []);
 
   return (
     <div className="w-full overflow-y-auto h-full flex flex-col justify-center items-center">
@@ -20,26 +47,20 @@ const AllJournals = () => {
           </button>
         </div>
         <ul className="w-full flex flex-col justify-center items-center md:text-base text-sm">
-          <li className="border-b-2 border-grey py-2 w-full flex justify-center items-center hover:text-orangeP hover:border-orangeP">
-            The day she said...
-          </li>
-          <li className="border-b-2 border-grey py-2 w-full flex justify-center items-center hover:text-orangeP hover:border-orangeP">
-            I am happy
-          </li>
-          <li className="border-b-2 border-grey py-2 w-full flex justify-center items-center hover:text-orangeP hover:border-orangeP">
-            <Link
-              to="/profile/journals/1"
-              className="flex w-full justify-center items-center"
-            >
-              why does this happen to me every time?
-            </Link>
-          </li>
-          <li className="border-b-2 border-grey py-2 w-full flex justify-center items-center hover:text-orangeP hover:border-orangeP">
-            well, I didn&apos;t need it anyways
-          </li>
-          <li className="border-grey py-2 w-full flex justify-center items-center hover:text-orangeP hover:border-orangeP">
-            I mean... was that a coincidence!
-          </li>
+          {journals &&
+            journals.map((journal) => (
+              <li
+                key={journal.id}
+                className="cursor-pointer border-b-2 border-grey py-2 w-full flex justify-center items-center hover:text-orangeP hover:border-orangeP"
+                onClick={(e) => {
+                  e.preventDefault();
+                  console.log(journal);
+                  //  setCurrentJournal(Journal);
+                }}
+              >
+                {journal.title}
+              </li>
+            ))}
         </ul>
       </div>
     </div>

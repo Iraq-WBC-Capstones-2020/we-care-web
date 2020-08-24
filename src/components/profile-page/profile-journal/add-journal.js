@@ -58,7 +58,7 @@ const AddJournal = () => {
       .collection('journals')
       .add({
         title: title,
-        journal: body,
+        body: body,
         createdAt: firebase.firestore.Timestamp.now(),
       });
 
