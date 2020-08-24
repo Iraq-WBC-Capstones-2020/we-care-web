@@ -112,7 +112,7 @@ const ProfileSidebar = () => {
           <li className="py-4 md:px-0 px-5 text">
             <label
               className="block uppercase tracking-wide text-orangeP text-sm font-bold mb-2"
-              forHTML="Language"
+              htmlFor="Language"
             >
               {t('Change Language')}
             </label>
