@@ -37,7 +37,7 @@ const AllJournals = () => {
 
   return (
     <div className="w-full overflow-y-auto h-full flex flex-col justify-center items-center">
-      <div className="overflow-y-auto w-11/12 md:w-9/12 bg-white h-full lg:w-1/2 rounded-md text-darkP flex flex-col justify-start items-center p-10 my-10">
+      <div className="overflow-y-auto w-11/12 md:w-9/12 lg:w-1/2 h-full bg-white rounded-md text-darkP flex flex-col justify-start items-center p-10 my-10">
         <div className="flex flex-col w-full justify-evenly items-center">
           <h2 className="text-3xl">Journals</h2>
           <button
