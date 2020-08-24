@@ -10,8 +10,11 @@ const RightSidebar = () => {
   const [imageAsUrl, setImageAsUrl] = useState(null);
   const currentUser = useSelector((state) => state.currentUser);
 
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
+  function handleClick(lang) {
+    i18n.changeLanguage(lang);
+  }
   const userDoc = currentUser && firebase.db.doc(`/users/${currentUser.uid}`);
   async function updateUserPicture() {
     await userDoc.update({
@@ -73,6 +76,26 @@ const RightSidebar = () => {
             ></input>
             <p className="pt-1">{t('changeImage')}</p>
           </div>
+        </div>
+        <div className="text-center mt-8">
+          <label
+            className="block uppercase tracking-wide text-darkP lg:text-beige text-sm font-bold mb-2"
+            htmlFor="Language"
+          >
+            {t('Change Language')}
+          </label>
+          <select
+            className="text-darkP border text-center border-darkP bg-orangeP h-8 border-solid rounded w-32 text-sm"
+            id="Language"
+            onChange={(e) => {
+              e.preventDefault();
+              handleClick(e.target.value);
+            }}
+            defaultValue={i18n.language === 'en' ? 'en' : 'tu'}
+          >
+            <option value="en">English</option>
+            <option value="tu">Turkish</option>
+          </select>
         </div>
       </div>
     )
