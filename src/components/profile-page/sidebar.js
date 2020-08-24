@@ -14,11 +14,7 @@ const ProfileSidebar = () => {
   const sectionIndicator =
     'border-b-4 border-l-0 lg:border-l-4 lg:border-b-0 border-orangeP text-orangeP';
 
-  const { t, i18n } = useTranslation();
-
-  function handleClick(lang) {
-    i18n.changeLanguage(lang);
-  }
+  const { t } = useTranslation();
 
   return (
     <div className="lg:h-full lg:w-1/5 xl:w-2/12 bg-darkP flex flex-col justify-between text-beige text-center">
@@ -108,28 +104,6 @@ const ProfileSidebar = () => {
               <BsPerson className="lg:ml-8 md:mr-4 text-lg" />
               <p className="hidden md:block">{t('Profile')}</p>
             </Link>
-          </li>
-          <li className="py-4 md:px-0 px-5 text">
-            <label
-              className="block uppercase tracking-wide text-orangeP text-sm font-bold mb-2"
-              forHTML="Language"
-            >
-              {t('Change Language')}
-            </label>
-            <div className="relative">
-              <select
-                className="block appearance-none w-2/3 mx-auto bg-gray-200 border border-gray-200 text-darkP py-2 px-1 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                id="Language"
-                onChange={(e) => {
-                  e.preventDefault();
-                  handleClick(e.target.value);
-                }}
-                defaultValue={i18n.language === 'en' ? 'en' : 'tu'}
-              >
-                <option value="en">English</option>
-                <option value="tu">Turkish</option>
-              </select>
-            </div>
           </li>
         </ul>
       </div>

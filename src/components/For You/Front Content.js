@@ -15,9 +15,7 @@ const ForYouContent = () => {
             </div>
             <div className="md:w-2/3 ">
               <h2 className="font-medium text-sm md:text-xl">
-                {t(
-                  'Your motivational area, articles from the team and the community.'
-                )}
+                {t('YourmotivationalArea')}
               </h2>
             </div>
           </div>

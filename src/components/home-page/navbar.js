@@ -94,13 +94,13 @@ export default function Navbar() {
             ) : (
               <ul className="flex justify-end lg:flex-row list-none text-center w-full">
                 <li className="mr-6 lg:mt-0 lg:py-0 py-3 hover:text-orangeP">
-                  <Link to="/ForYou">For you</Link>
+                  <Link to="/ForYou">{t('for_you')}</Link>
                 </li>
                 <li className="mr-6 lg:py-0 py-3 hover:text-orangeP">
-                  <Link to="/login">Login</Link>
+                  <Link to="/login">{t('login')}</Link>
                 </li>
                 <li className="lg:mb-0 lg:py-0 py-3 hover:text-orangeP">
-                  <Link to="/signUp">SignUp</Link>
+                  <Link to="/signUp">{t('signup')}</Link>
                 </li>
               </ul>
             )}
