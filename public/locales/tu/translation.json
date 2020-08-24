@@ -27,10 +27,10 @@
   "dislikes": "Beğenmemeler",
   "favoret": "Favori",
   "songs": "Şarkılar",
-  "books": "Kitabın",
+  "books": "Kitab",
   "friends": "Arkadaşlar",
   "change": "Değişiklik",
-  "edit": "Düzenle",
+  "edit": "Değiştirmek",
   "Reply": "Cevap",
   "Replies": "Cevaplar",
   "write_post": "Bir gönderi yaz",
@@ -71,7 +71,7 @@
   "PTSD": "Travma Sonrası Stres Bozukluğu",
   "Bipolar-disorder": "Bipolar Bozukluk",
   "Personality-disorders": "Kişilik bozuklukları",
-  "Şizofreni": "Şizofreni",
+  "Schizophrenia": "Şizofreni",
   "For You": "Senin için",
   "Looks like there's no available": "Görünüşe göre müsait değil",
   "Please try again later.": "Lütfen daha sonra tekrar deneyiniz.",
@@ -94,7 +94,7 @@
   "Connect to caring people": "Sevecen insanlarla bağlantı kurun, anonim olarak sohbet edin ve bir destekleyici topluluk",
   "What mental health needs are more sunlight, more candor, and more unashamed conversation": "Akıl sağlığının ihtiyacı olan şey daha fazla güneş ışığı, daha açık sözlü ve daha utanmaz sohbettir.",
   "Your Feedback": "Görüşleriniz",
-  "Submit": "Sunmak",
+  "Submit": "Gönder",
   "Send Us Your Feedback": "Bize Görüşlerinizi Gönderin",
   "We care provides a platform for": "Zihinsel olarak yardım almanız için bir platform sağlar ve Kendinizi özgürce, anonim olarak ve yargılamadan ifade edin.",
   "Provide Counseling": "Danışmanlık Sağlayın",
@@ -109,5 +109,6 @@
   "Horror movies": "Korku filmleri",
   "Somewhere over the rainbow": "Gökkuşağının üzerinde bir yerde",
   "You are a badass": "Sen bir belasın",
-  "Leave a message": "Mesaj bırakın"
+  "Leave a message": "Mesaj bırakın",
+  "Cancel": "Iptal"
 }

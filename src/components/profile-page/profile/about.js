@@ -2,7 +2,10 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { setCurrentUser } from '../../../redux/actions';
 import Firebase from '../../../firebase/firebase';
+import { useTranslation } from 'react-i18next';
+
 const ProfileAbout = () => {
+  const { t } = useTranslation();
   const [like, setLike] = useState('');
   const [dislike, setDisLike] = useState('');
   const [Song, setSong] = useState('');
@@ -59,9 +62,9 @@ const ProfileAbout = () => {
         {editMode ? (
           <div>
             <div>
-              <h1 className="font-semibold text-2xl">About</h1>
+              <h1 className="font-semibold text-2xl">{t('about')}</h1>
               <div className="my-4">
-                <h2 className="font-bold">Likes</h2>
+                <h2 className="font-bold">{t('Likes')}</h2>
                 <input
                   className="text-orangeP border lg:border-orangeP border-darkP lg:bg-transparent bg-darkP border-solid rounded px-10 h-10 text-sm"
                   type="text"
@@ -70,7 +73,7 @@ const ProfileAbout = () => {
                 />
               </div>
               <div className="my-4">
-                <h2 className="font-bold">Dislikes</h2>
+                <h2 className="font-bold">{t('dislikes')}</h2>
                 <input
                   value={dislike}
                   onChange={(e) => setDisLike(e.target.value)}
@@ -78,7 +81,9 @@ const ProfileAbout = () => {
                 />
               </div>
               <div className="my-4">
-                <h2 className="font-bold">Favourite Songs</h2>
+                <h2 className="font-bold">
+                  {t('favoret')} {t('songs')}
+                </h2>
                 <input
                   id="songval"
                   value={Song}
@@ -87,7 +92,9 @@ const ProfileAbout = () => {
                 />
               </div>
               <div className="my-4">
-                <h2 className="font-bold">Favourite Books</h2>
+                <h2 className="font-bold">
+                  {t('favoret')} {t('books')}
+                </h2>
                 <input
                   value={book}
                   onChange={(e) => setBook(e.target.value)}
@@ -99,41 +106,46 @@ const ProfileAbout = () => {
                   className="lg:mr-2  text-orangeP border lg:border-orangeP border-darkP lg:bg-transparent bg-darkP border-solid rounded py-2 mt-6 w-32 text-sm"
                   onClick={() => onCancle()}
                 >
-                  Cancel
+                  {t('Cancel')}
                 </button>
 
                 <button
                   className="lg:ml-2 text-orangeP border lg:border-orangeP border-darkP lg:bg-transparent bg-darkP border-solid rounded py-2 mt-6 w-32 text-sm"
                   onClick={() => addAbout()}
                 >
-                  Submit
+                  {t('Submit')}
                 </button>
               </div>
             </div>
           </div>
         ) : (
           <div>
-            <h1 className="font-semibold text-2xl">About</h1>
+            <h1 className="font-semibold text-2xl">{t('about')}</h1>
             <div className="my-4">
-              <h2 className="font-bold">Likes</h2>
+              <h2 className="font-bold">{t('Likes')}</h2>
               <p className="md:text-base text-sm">
                 {currentUser.about.likes.like}
               </p>
             </div>
             <div className="my-4">
-              <h2 className="font-bold">Dislikes</h2>
+              <h2 className="font-bold">{t('dislikes')}</h2>
               <p className="md:text-base text-sm">
                 {currentUser.about.dislikes}
               </p>
             </div>
             <div className="my-4">
-              <h2 className="font-bold">Favourite Songs</h2>
+              <h2 className="font-bold">
+                {t('favoret')} {t('songs')}
+              </h2>
               <p className="md:text-base text-sm">
                 {currentUser.about.favouriteSongs}
               </p>
             </div>
             <div className="my-4">
-              <h2 className="font-bold">Favourite Books</h2>
+              <h2 className="font-bold">
+                {' '}
+                {t('favoret')} {t('books')}
+              </h2>
               <p className="md:text-base text-sm">
                 {currentUser.about.favouriteMovies}
               </p>
@@ -142,7 +154,7 @@ const ProfileAbout = () => {
               className="text-orangeP border lg:border-orangeP border-darkP lg:bg-transparent bg-darkP border-solid rounded py-2 mt-6 w-32 text-sm"
               onClick={changeToTrue}
             >
-              Edit About
+              {t('edit')}
             </button>
           </div>
         )}
