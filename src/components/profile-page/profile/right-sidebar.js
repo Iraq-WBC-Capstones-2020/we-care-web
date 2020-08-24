@@ -71,7 +71,7 @@ const RightSidebar = () => {
                   });
               }}
             ></input>
-            <p className="pt-1">{t('change')} Avatar</p>
+            <p className="pt-1">{t('changeImage')}</p>
           </div>
         </div>
       </div>
