@@ -10,7 +10,7 @@ export default function Connect() {
       <div className="flex xl:flex-row flex-col xl:justify-evenly justify-between lg:ml-4">
         <div className="xl:mt-0 leading-relaxed mx-auto md:mx-0 w-3/4">
           <h1 className="text-darkP font-bold xl:text-4xl text-lg xl:w-2/3">
-            {t('Let`s make a change today')}
+            {t('makeChangeToday')}
           </h1>
           <h6 className="text-darkP xl:mt-8 mt-5 xl:text-base text-xs xl:w-1/2">
             {t('Connect to caring people')}
