@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import Navbar from './navbar';
+import Navbar from './navbar-chat-screen';
 import illustration from './imgs/chat-undraw.svg';
 import Messages from './chat-box';
 import './scrollBar.css';
