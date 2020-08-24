@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import Navbar from './navbar';
+import Navbar from './navbar-chat-screen';
 import illustration from './imgs/chat-undraw.svg';
 import Messages from './chat-box';
 import './scrollBar.css';
@@ -7,6 +7,7 @@ import firebase from './../../firebase/firebase';
 import { useSelector } from 'react-redux';
 import Loader from './../loader/loader';
 import UserNotFound from './user-not-found-page';
+import Waiting from './waiting-screen';
 
 const ChatroomPage = () => {
   const currentUser = useSelector((state) => state.currentUser);
@@ -62,6 +63,8 @@ const ChatroomPage = () => {
         </main>
       </div>
     );
+  } else if (isListener === false) {
+    return <Waiting />;
   } else {
     return <Loader />;
   }
