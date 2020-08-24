@@ -2,9 +2,11 @@ import React from 'react';
 import { FiMenu } from 'react-icons/fi';
 import logo from './imgs/Logo.svg';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 export default function Navbar() {
   const [navbarOpen, setNavbarOpen] = React.useState(false);
+  const { t } = useTranslation();
   return (
     <nav className="w-full relative flex flex-wrap items-center justify-between px-2 lg:py-6 py-4 navbar-expand-lg bg-transparent text-beige text-sm">
       <div className="container px-4 mx-auto flex flex-wrap items-center justify-between">
@@ -33,10 +35,10 @@ export default function Navbar() {
         >
           <ul className="flex flex-col justify-end lg:flex-row list-none text-center w-full">
             <li className="lg:mr-10 lg:mt-0 lg:py-0 py-3 hover:text-orangeP lg:border-0 border-b border-beige">
-              <Link to="/ForYou">For you</Link>
+              <Link to="/ForYou">{t('for_you')}</Link>
             </li>
             <li className="lg:mb-0 lg:py-0 py-3 hover:text-orangeP">
-              <Link to="/login">Login</Link>
+              <Link to="/login">{t('login')}</Link>
             </li>
           </ul>
         </div>

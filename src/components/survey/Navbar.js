@@ -5,10 +5,11 @@ import { Link } from 'react-router-dom';
 import firebase from '../../firebase/firebase';
 import { useSelector } from 'react-redux';
 import Loader from './../loader/loader';
+import { useTranslation } from 'react-i18next';
 
 export default function Navbar() {
   const [navbarOpen, setNavbarOpen] = React.useState(false);
-
+  const { t } = useTranslation();
   const currentUser = useSelector((state) => state.currentUser);
 
   if (
@@ -42,15 +43,15 @@ export default function Navbar() {
             >
               <ul className="flex flex-col justify-center lg:flex-row list-none text-center w-full">
                 <li className="lg:mr-10 lg:my-0 lg:py-0 py-3 hover:text-orangeP lg:border-0 border-b border-beige">
-                  <Link to="/ForYou">For You</Link>
+                  <Link to="/ForYou">{t('for_you')}</Link>
                 </li>
                 <li className="lg:mr-10 lg:my-0 lg:py-0 py-3 hover:text-orangeP lg:border-0 border-b border-beige">
-                  <Link to="/Counselling">Counselling</Link>
+                  <Link to="/Counselling">{t('Counselling')}</Link>
                 </li>
                 {firebase.getCurrentUsername() ? (
                   <li className="lg:mb-0 lg:py-0 py-3 hover:text-orangeP">
                     <Link to="/login" onClick={() => firebase.logout()}>
-                      Sign Out
+                      {t('Sign Out')}
                     </Link>
                   </li>
                 ) : (

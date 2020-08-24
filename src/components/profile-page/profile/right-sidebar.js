@@ -4,11 +4,14 @@ import { useSelector, useDispatch } from 'react-redux';
 import { setCurrentUser } from '../../../redux/actions';
 import firebase from '../../../firebase/firebase';
 import Moment from 'react-moment';
-
+import { useTranslation } from 'react-i18next';
 const RightSidebar = () => {
   const dispatch = useDispatch();
   const [imageAsUrl, setImageAsUrl] = useState(null);
   const currentUser = useSelector((state) => state.currentUser);
+
+  const { t } = useTranslation();
+
   const userDoc = currentUser && firebase.db.doc(`/users/${currentUser.uid}`);
   async function updateUserPicture() {
     await userDoc.update({
@@ -25,6 +28,7 @@ const RightSidebar = () => {
   }
   useEffect(() => {
     imageAsUrl && updateUserPicture();
+    // eslint-disable-next-line
   }, [imageAsUrl]);
   return (
     currentUser && (
@@ -40,7 +44,8 @@ const RightSidebar = () => {
               {currentUser.username}
             </h2>
             <p className="lg:text-sm md:text-base text-sm lg:font-light">
-              Joined <Moment fromNow>{currentUser.dateJoined.toDate()}</Moment>
+              {t('Joined')}{' '}
+              <Moment fromNow>{currentUser.dateJoined.toDate()}</Moment>
             </p>
           </div>
           <div className="border lg:border-beige border-darkP border-solid rounded-full py-2 mt-10 w-32 text-sm flex items-center h-10 justify-center lg:font-normal font-medium">
@@ -66,7 +71,7 @@ const RightSidebar = () => {
                   });
               }}
             ></input>
-            <p className="pt-1">Change Image</p>
+            <p className="pt-1">{t('changeImage')}</p>
           </div>
         </div>
       </div>

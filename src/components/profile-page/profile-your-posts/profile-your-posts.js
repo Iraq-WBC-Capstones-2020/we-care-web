@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import tree from '../imgs/tree.svg';
 import firebase from '../../../firebase/firebase';
 import { putPostsIntoGrid } from '../util';
+import { useTranslation } from 'react-i18next';
 
 const ProfileYourPosts = () => {
   const [postsList, setPosts] = useState([]);
@@ -17,6 +18,7 @@ const ProfileYourPosts = () => {
       alert('not working');
     }
   }
+  const { t } = useTranslation();
   return (
     <div className="w-full h-full flex flex-col justify-center items-center text-darkP overflow-y-auto overflow-x-hidden">
       {postsList.length !== 0 ? (
@@ -27,7 +29,7 @@ const ProfileYourPosts = () => {
         </>
       ) : (
         <>
-          <h1 className="text-5xl font-light mb-12">No posts yet</h1>
+          <h1 className="text-5xl font-light mb-12">{t('No posts yet')}</h1>
           <img src={tree} alt="tree illustration" className="w-1/4" />
         </>
       )}

@@ -4,6 +4,7 @@ import { Link, useHistory } from 'react-router-dom';
 import friends from './imgs/friends.svg';
 import firebase from '../../firebase/firebase';
 
+
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -12,6 +13,7 @@ const Login = () => {
     history.push('/profile');
     return null;
   }
+
   return (
     <>
       <section className="body-font bg-beige h-screen overflow-hidden flex flex-col items-center justify-between">
