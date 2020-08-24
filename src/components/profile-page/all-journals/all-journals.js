@@ -26,7 +26,7 @@ const AllJournals = () => {
           id: doc.id,
           title: doc.get('title'),
           body: doc.get('body'),
-          createdAt: doc.get('createdAt').toDate(),
+          createdAt: doc.get('createdAt').toDate().toLocaleDateString(),
         });
       });
       setJournals(arrOfJournals);
