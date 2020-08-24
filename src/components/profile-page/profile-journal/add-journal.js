@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import firebase from './../../../firebase/firebase';
+import { useHistory } from 'react-router-dom';
 
 const AddJournal = () => {
+  let history = useHistory();
+
   const { t } = useTranslation();
   const [title, setTitle] = useState('');
   const [body, setBody] = useState('');
@@ -16,6 +20,7 @@ const AddJournal = () => {
               Title
             </label>
             <input
+              autoComplete="off"
               className="py-1 px-4 text-darkP md:text-base text-sm rounded-md w-full"
               id="title"
               type="text"
@@ -24,19 +29,42 @@ const AddJournal = () => {
             ></input>
           </div>
           <textarea
+            autoComplete="off"
             id={'post-textarea'}
             className="text-darkP md:text-base text-sm resize-none rounded-md h-full w-11/12 px-4 py-3"
             placeholder={t('Start Writing...')}
             value={body}
             onChange={(e) => setBody(e.target.value)}
           ></textarea>
-          <button className="text-center text-lg bg-darkP text-beige rounded-sm py-1 hover:text-orangeP w-11/12 mt-10">
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              addJournal();
+              history.push('/profile/journals');
+            }}
+            className="text-center text-lg bg-darkP text-beige rounded-sm py-1 hover:text-orangeP w-11/12 mt-10"
+          >
             {t('Done')}
           </button>
         </div>
       </div>
     </div>
   );
+
+  async function addJournal() {
+    await firebase.db
+      .collection('users')
+      .doc(`${firebase.auth.currentUser.uid}`)
+      .collection('journals')
+      .add({
+        title: title,
+        journal: body,
+        createdAt: firebase.firestore.Timestamp.now(),
+      });
+
+    setTitle('');
+    setBody('');
+  }
 };
 
 export default AddJournal;
