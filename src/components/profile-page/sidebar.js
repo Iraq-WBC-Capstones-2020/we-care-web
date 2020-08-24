@@ -13,7 +13,9 @@ const ProfileSidebar = () => {
   const [section, setSection] = useState(`${location.pathname.slice(1)}`);
   const sectionIndicator =
     'border-b-4 border-l-0 lg:border-l-4 lg:border-b-0 border-orangeP text-orangeP';
+
   const { t, i18n } = useTranslation();
+
   function handleClick(lang) {
     i18n.changeLanguage(lang);
   }
@@ -118,12 +120,15 @@ const ProfileSidebar = () => {
               <select
                 className="block appearance-none w-2/3 mx-auto bg-gray-200 border border-gray-200 text-darkP py-2 px-1 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                 id="Language"
+                onChange={(e) => {
+                  e.preventDefault();
+                  handleClick(e.target.value);
+                }}
+                defaultValue={i18n.language === 'en' ? 'en' : 'tu'}
               >
-                <option onClick={() => handleClick('en')}>English</option>
-                <option onClick={() => handleClick('tu')}>Turkish</option>
+                <option value="en">English</option>
+                <option value="tu">Turkish</option>
               </select>
-              <button onClick={() => handleClick('en')}>English</button>
-              <button onClick={() => handleClick('tu')}>turkish</button>
             </div>
           </li>
         </ul>
