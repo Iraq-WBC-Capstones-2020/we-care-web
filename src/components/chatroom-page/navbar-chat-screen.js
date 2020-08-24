@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { FiMenu } from 'react-icons/fi';
-import logo from './imgs/LogoDark.svg';
+import logo from './imgs/Logo.svg';
 import { Link } from 'react-router-dom';
 import profileImg from './imgs/profile.png';
 import firebase from './../../firebase/firebase';
-import { useTranslation } from 'react-i18next';
 
 export default function Navbar() {
   const [navbarOpen, setNavbarOpen] = React.useState(false);
@@ -21,10 +20,9 @@ export default function Navbar() {
       alert('not working');
     }
   }
-  const { t } = useTranslation();
   return (
     <>
-      <nav className="relative flex flex-wrap items-center justify-between px-2 lg:py-6 py-4 navbar-expand-lg bg-beige text-darkP text-sm">
+      <nav className="relative flex flex-wrap items-center justify-between px-2 lg:py-6 py-4 navbar-expand-lg bg-darkP text-beige text-sm">
         <div className="container px-4 mx-auto flex flex-wrap items-center justify-between">
           <div className="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
             <img
@@ -37,7 +35,7 @@ export default function Navbar() {
               type="button"
               onClick={() => setNavbarOpen(!navbarOpen)}
             >
-              <FiMenu className="text-2xl text-darkP" />
+              <FiMenu className="text-2xl text-beige" />
             </button>
           </div>
           <div
@@ -48,24 +46,24 @@ export default function Navbar() {
             id="example-navbar-danger"
           >
             <ul className="flex flex-col justify-center lg:flex-row list-none text-center w-full">
-              <li className="lg:mr-10 lg:mt-0 lg:py-0 py-3 hover:text-orangeP lg:border-0 border-b border-darkP">
+              <li className="lg:mr-10 lg:mt-0 lg:py-0 py-3 hover:text-orangeP lg:border-0 border-b border-beige">
                 <Link
                   onClick={() => {
                     firebase.removeChatroom();
                   }}
                   to="/profile/feed"
                 >
-                  {t('profile')}
+                  Profile
                 </Link>
               </li>
-              <li className="lg:mr-10 lg:my-0 lg:py-0 py-3 hover:text-orangeP lg:border-0 border-b border-darkP">
+              <li className="lg:mr-10 lg:my-0 lg:py-0 py-3 hover:text-orangeP lg:border-0 border-b border-beige">
                 <Link
                   onClick={() => {
                     firebase.removeChatroom();
                   }}
                   to="/ForYou"
                 >
-                  {t(' For You')}
+                  For You
                 </Link>
               </li>
               <li className="lg:mr-10 lg:my-0 lg:py-0 py-3 hover:text-orangeP lg:border-0 border-b border-darkP">
@@ -75,13 +73,13 @@ export default function Navbar() {
                   }}
                   to="/Counselling"
                 >
-                  {t('Counselling')}
+                  Counselling
                 </Link>
               </li>
               {firebase.getCurrentUsername() ? (
                 <li className="lg:mb-0 lg:py-0 py-3 hover:text-orangeP">
                   <Link to="/login" onClick={() => firebase.logout()}>
-                    {t(' Sign Out')}
+                    Sign Out
                   </Link>
                 </li>
               ) : (

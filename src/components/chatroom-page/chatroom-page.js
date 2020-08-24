@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import Navbar from './navbar';
+import Navbar from './navbar-chat-screen';
 import illustration from './imgs/chat-undraw.svg';
 import Messages from './chat-box';
 import './scrollBar.css';
@@ -7,22 +7,26 @@ import firebase from './../../firebase/firebase';
 import { useSelector } from 'react-redux';
 import Loader from './../loader/loader';
 import UserNotFound from './user-not-found-page';
+import Waiting from './waiting-screen';
 
 const ChatroomPage = () => {
   const currentUser = useSelector((state) => state.currentUser);
+
+  const isListener = useSelector((state) => state.isListener);
+
   const [roomIsCreated, setRoomIsCreated] = useState(false);
   const [noMembersFound, setNoMembersFound] = useState(false);
   const [noListnersFound, setNoListnersFound] = useState(false);
 
   useEffect(() => {
-    if (currentUser && roomIsCreated === false) {
-      if (currentUser.role === 'listener') {
+    if (currentUser && isListener !== undefined && roomIsCreated === false) {
+      if (isListener === true) {
         firebase
           .createChatroomDocumentInFirestore(() => setRoomIsCreated(true))
           .catch(() => {
             setNoMembersFound(true);
           });
-      } else {
+      } else if (isListener === false) {
         firebase.addAvailableMemberToRTDB();
         firebase.listenForCreatedChatroom(() => setRoomIsCreated(true));
         let timer = setTimeout(() => {
@@ -39,7 +43,7 @@ const ChatroomPage = () => {
       }
     }
     // eslint-disable-next-line
-  }, [currentUser]);
+  }, [currentUser, isListener]);
 
   if (currentUser && noMembersFound) {
     return <UserNotFound user={'member'} />;
@@ -59,6 +63,8 @@ const ChatroomPage = () => {
         </main>
       </div>
     );
+  } else if (isListener === false) {
+    return <Waiting />;
   } else {
     return <Loader />;
   }

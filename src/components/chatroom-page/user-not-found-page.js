@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next';
 const UserNotFound = ({ user }) => {
   const { t } = useTranslation();
   return (
-    <div className="h-screen flex flex-col bg-darkP">
+    <div className="h-screen flex flex-col bg-beige">
       <Navbar />
       <main className="flex flex-col justify-center items-center h-full w-full overflow-hidden text-center">
         <h1 className="xl:text-5xl md:text-4xl text-3xl text-beige">
