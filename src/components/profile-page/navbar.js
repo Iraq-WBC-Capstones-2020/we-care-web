@@ -3,11 +3,14 @@ import { FiMenu } from 'react-icons/fi';
 import logo from './imgs/Logo.svg';
 import { Link, useHistory } from 'react-router-dom';
 import firebase from '../../firebase/firebase';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { setCurrentUser } from './../../redux/actions';
 import { useTranslation } from 'react-i18next';
 
 export default function Navbar() {
   const [navbarOpen, setNavbarOpen] = useState(false);
+
+  const dispatch = useDispatch();
 
   const currentUser = useSelector((state) => state.currentUser);
 
@@ -87,5 +90,6 @@ export default function Navbar() {
   async function logout() {
     await firebase.logout();
     history.push('/login');
+    dispatch(setCurrentUser(null));
   }
 }
