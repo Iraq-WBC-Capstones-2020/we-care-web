@@ -41,10 +41,13 @@ export default function Navbar() {
               id="example-navbar-danger"
             >
               <ul className="flex flex-col justify-center lg:flex-row list-none text-center w-full">
-                <li className="lg:mr-10 lg:my-0 lg:py-0 py-3 hover:text-orangeP lg:border-0 border-b border-beige">
+                <li className="lg:mr-10 lg:mt-0 lg:py-0 py-3 hover:text-orangeP lg:border-0 border-b border-darkP">
+                  <Link to="/profile">Profile</Link>
+                </li>
+                <li className="lg:mr-10 lg:my-0 lg:py-0 py-3 hover:text-orangeP lg:border-0 border-b border-darkP">
                   <Link to="/ForYou">For You</Link>
                 </li>
-                <li className="lg:mr-10 lg:my-0 lg:py-0 py-3 hover:text-orangeP lg:border-0 border-b border-beige">
+                <li className="lg:mr-10 lg:my-0 lg:py-0 py-3 hover:text-orangeP lg:border-0 border-b border-darkP">
                   <Link to="/Counselling">Counselling</Link>
                 </li>
                 {firebase.getCurrentUsername() ? (
