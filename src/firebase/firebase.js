@@ -245,9 +245,6 @@ class Firebase {
   }
   async createPost(body) {
     const id = this.db.collection('posts').doc().id;
-    const avatar = await this.storageRef
-      .child(`profile-images/default/image.svg`) // this should be a picture from Zainab
-      .getDownloadURL();
     await this.db
       .collection('posts')
       .doc(id)
@@ -257,7 +254,7 @@ class Firebase {
         createdAt: new Date().toLocaleString('en-US'),
         timestamp: app.firestore.FieldValue.serverTimestamp(),
         authorName: this.getCurrentUsername(),
-        authorAvatar: avatar,
+        authorAvatar: this.currentUser.profilePicture,
         text: body,
         likes: 0,
       })

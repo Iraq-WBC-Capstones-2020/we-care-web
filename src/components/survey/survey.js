@@ -5,6 +5,8 @@ import Navbar from './Navbar';
 import { useTranslation } from 'react-i18next';
 import { useDispatch } from 'react-redux';
 import { setIsListenerRedux } from './../../redux/actions';
+import firebase from './../../firebase/firebase';
+
 export default function Survey() {
   const { t } = useTranslation();
   let history = useHistory();
@@ -16,6 +18,12 @@ export default function Survey() {
     dispatch(setIsListenerRedux(isListener));
     // eslint-disable-next-line
   }, [isListener]);
+
+  if (!firebase.auth.currentUser) {
+    alert('Please login first');
+    history.push('/login');
+    return null;
+  }
 
   return (
     <>
