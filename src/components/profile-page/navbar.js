@@ -53,7 +53,7 @@ export default function Navbar() {
                 <Link to="/Counselling">{t('Counselling')}</Link>
               </li>
               <li className="lg:mr-10 lg:my-0 lg:py-0 py-3 hover:text-orangeP lg:border-0 border-b border-beige">
-                <Link to="/chatroom">{t('Connect Now')}</Link>
+                <Link to="/survey">{t('Connect Now')}</Link>
               </li>
               <li className="lg:mb-0 lg:py-0 py-3 hover:text-orangeP">
                 <Link
