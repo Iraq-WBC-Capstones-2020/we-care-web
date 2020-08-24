@@ -13,7 +13,7 @@ const SignUp = () => {
     history.push('/profile');
     return null;
   }
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   return (
     <section className="body-font bg-darkP h-screen overflow-hidden flex flex-col items-center justify-between">
       <Navbar />

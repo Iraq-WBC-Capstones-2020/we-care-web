@@ -9,7 +9,7 @@ const MessageTextarea = () => {
   const dispatch = useDispatch();
 
   const messageInput = useRef('');
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   return (
     <div className="w-5/6 lg:w-4/5 xl:w-4/6 text-darkP relative my-10 self-center">
       <h2 className="md:text-lg font-semibold">{t('Leave a message')}</h2>

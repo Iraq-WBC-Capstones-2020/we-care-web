@@ -3,7 +3,7 @@ import profileImg from '../Images/Profile.png';
 import Anna from '../Images/anna.webp';
 import { useTranslation } from 'react-i18next';
 const Posts = () => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   return (
     <>
       <section className="text-darkP bg-darkP">

@@ -16,13 +16,13 @@ const ProfileFeed = () => {
       alert('not working');
     }
   }
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   return (
     <>
       <div className="bg-darkP w-full h-full flex flex-col justify-between items-center overflow-y-auto">
         <div className="flex my-4 items-center justify-evenly">
           <p className="text-orangeP border-b-2 border-orangeP py-2 md:text-lg  md:px-16 text-xs">
-          {t('By The Community')}
+            {t('By The Community')}
           </p>
         </div>
         <WritePostTextarea posts={posts} setPosts={setPosts} />

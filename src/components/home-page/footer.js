@@ -6,14 +6,13 @@ import Quotes from './image/quotes.svg';
 import Logo from './image/Logo.svg';
 import { useTranslation } from 'react-i18next';
 
-
 // import { useTranslation } from 'react-i18next';
 export default function Footer() {
-  // const { t, i18n } = useTranslation();
+  // const { t } = useTranslation();
   // function handleClick(lang) {
   //   i18n.changeLanguage(lang);
   // }
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   return (
     <footer className="text-darkP bg-darkBeige">
       <div className="border-b border-darkP py-8">
@@ -34,7 +33,7 @@ export default function Footer() {
             <div className="lg:w-1/4 md:w-1/2 w-full px-4 items-center justify-center flex flex-col md:flex-row">
               <div>
                 <h2 className="title-font font-medium text-darkP tracking-widest text-sm mb-3">
-                 {t('Your Feedback')}
+                  {t('Your Feedback')}
                 </h2>
                 <textarea
                   className="w-40 sm:w-auto bg-beige rounded xl:mr-4 lg:mr-0 sm:mr-4 mr-2 border border-gray-400 focus:outline-none focus:border-darkP text-sm py-2 px-4 resize-none"
@@ -44,7 +43,7 @@ export default function Footer() {
               </div>
               <div>
                 <button className="lg:mt-2 xl:mt-0 flex-shrink-0 text-darkP bg-orangeP py-2 px-6 rounded-lg font-medium ml-auto mr-2">
-                {t('Submit')}
+                  {t('Submit')}
                 </button>
               </div>
             </div>

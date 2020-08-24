@@ -18,7 +18,7 @@ const ProfileYourPosts = () => {
       alert('not working');
     }
   }
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   return (
     <div className="w-full h-full flex flex-col justify-center items-center text-darkP overflow-y-auto overflow-x-hidden">
       {postsList.length !== 0 ? (

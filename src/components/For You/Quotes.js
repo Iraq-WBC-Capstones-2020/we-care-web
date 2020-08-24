@@ -41,7 +41,7 @@ const Quotes = () => {
     }
   }
   let num = parseInt(localStorage.getItem('randomNumber'));
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   return (
     <>
       <div className="bg-beige flex flex-col">
@@ -52,7 +52,7 @@ const Quotes = () => {
               style={{ fontFamily: 'Roboto' }}
             >
               <h1 className="sm:text-3xl text-2xl title-font text-darkP font-semibold">
-              {t('Today`s Quotes.')}
+                {t('Today`s Quotes.')}
               </h1>
             </div>
             <div className="flex flex-wrap -m-4">

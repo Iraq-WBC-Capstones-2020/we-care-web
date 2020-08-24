@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next';
 
 export default function Navbar() {
   const [navbarOpen, setNavbarOpen] = React.useState(false);
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   return (
     <nav className="w-full relative flex flex-wrap items-center justify-between px-2 lg:py-6 py-4 navbar-expand-lg bg-transparent text-darkP text-sm">
       <div className="container px-4 mx-auto flex flex-wrap items-center justify-between">

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
 export default function Connect() {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   return (
     <div className="flex justify-evenly lg:mx-auto items-center lg:mt-12 py-20">
       <div className="flex xl:flex-row flex-col xl:justify-evenly justify-between lg:ml-4">

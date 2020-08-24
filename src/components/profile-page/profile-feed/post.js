@@ -7,7 +7,7 @@ import moment from 'moment';
 import { useTranslation } from 'react-i18next';
 
 const Post = ({ post }) => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   return (
     <div className="bg-white w-11/12 md:w-4/5 lg:w-1/2 rounded-md text-darkP flex flex-col md:p-8 p-5 my-8">
       <div className="flex">

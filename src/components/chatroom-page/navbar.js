@@ -21,7 +21,7 @@ export default function Navbar() {
       alert('not working');
     }
   }
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   return (
     <>
       <nav className="relative flex flex-wrap items-center justify-between px-2 lg:py-6 py-4 navbar-expand-lg bg-darkP text-beige text-sm">

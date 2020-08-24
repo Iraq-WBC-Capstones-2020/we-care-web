@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 
 const TherapistCard = ({ therapist }) => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   return (
     <div className="flex flex-col md:h-auto bg-darkP rounded-lg overflow-hidden md:flex-row md:my-24 my-16 md:p-10 p-5 mx-auto xl:w-1/2 lg:w-8/12 w-5/6">
       <div className="w-auto md:mt-0 mt-6 xl:w-5/12 md:w-6/12 flex justify-center items-center">

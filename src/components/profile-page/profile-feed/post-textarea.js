@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 
 const WritePostTextarea = ({ posts, setPosts }) => {
   const postInput = useRef('');
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   return (
     <div className="lg:w-1/2 md:w-4/5 w-11/12 text-darkP relative my-8">
       <h2 className="md:text-lg font-semibold">{t('write_post')}</h2>

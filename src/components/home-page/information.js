@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
 export default function Information() {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   return (
     <section className="text-darkP body-font bg-darkBeige">
       <div className="container px-5 py-24 mx-auto">

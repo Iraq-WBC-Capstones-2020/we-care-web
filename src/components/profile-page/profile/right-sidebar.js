@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next';
 const RightSidebar = () => {
   const currentUser = useSelector((state) => state.currentUser);
 
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   return (
     currentUser && (

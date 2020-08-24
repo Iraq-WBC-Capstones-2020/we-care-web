@@ -54,7 +54,7 @@ const AllJournals = () => {
     setInputBody('');
     setInputTitle('');
   };
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   return enable ? (
     <div className="md:m-8 lg:m-10 w-9/12 h-8/12   ">
       <form>

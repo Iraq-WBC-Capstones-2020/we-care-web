@@ -2,7 +2,7 @@ import React from 'react';
 import connection from '../Images/undraw_connection_b38q.svg';
 import { useTranslation } from 'react-i18next';
 const ForYouContent = () => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   return (
     <>
       <section className="text-darkP bg-beige">

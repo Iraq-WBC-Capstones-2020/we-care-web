@@ -4,7 +4,7 @@ import '../regiterUser/toggleStyle.css';
 import Navbar from './Navbar';
 import { useTranslation } from 'react-i18next';
 export default function Survey() {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   return (
     <>
       <section className="bg-beige h-screen overflow-hidden flex flex-col items-center justify-between">
@@ -16,7 +16,7 @@ export default function Survey() {
                 {t('Before You Connect')}
               </p>
               <p className="text-beige text-sm md:text-base mt-2">
-             {t('Select the issue you want help with')}
+                {t('Select the issue you want help with')}
               </p>
             </div>
             <div className="text-left relative inline-block mt-5">

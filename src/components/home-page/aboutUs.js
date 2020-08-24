@@ -2,7 +2,7 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 // import { FillButton } from 'tailwind-react-ui';
 export default function AboutUs() {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   return (
     <div className="w-full bg-beige flex flex-col flex-wrap md:flex-row md:justify-around mx-auto h-full py-12 items-center">
       <div className="w-2/3 lg:1/3 xl:w-1/4 rounded-lg bg-darkP shadow-lg">
