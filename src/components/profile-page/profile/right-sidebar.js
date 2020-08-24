@@ -3,6 +3,8 @@ import { FiSmile } from 'react-icons/fi';
 import { useSelector, useDispatch } from 'react-redux';
 import { setCurrentUser } from '../../../redux/actions';
 import firebase from '../../../firebase/firebase';
+import Moment from 'react-moment';
+
 const RightSidebar = () => {
   const dispatch = useDispatch();
   const [imageAsUrl, setImageAsUrl] = useState(null);
@@ -32,13 +34,13 @@ const RightSidebar = () => {
             <img
               className="rounded-full w-24 h-24 mb-4"
               src={currentUser.profilePicture}
-              alt="profile picture"
+              alt="Profile"
             />
             <h2 className="text-lg font-semibold lg:ml-0 ml-4">
               {currentUser.username}
             </h2>
             <p className="lg:text-sm md:text-base text-sm lg:font-light">
-              Joined three years ago
+              Joined <Moment fromNow>{currentUser.dateJoined.toDate()}</Moment>
             </p>
           </div>
           <div className="border lg:border-beige border-darkP border-solid rounded-full py-2 mt-10 w-32 text-sm flex items-center h-10 justify-center lg:font-normal font-medium">

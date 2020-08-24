@@ -8,6 +8,10 @@ const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   let history = useHistory();
+  if (firebase.getCurrentUsername()) {
+    history.push('/profile');
+    return null;
+  }
   return (
     <>
       <section className="body-font bg-beige h-screen overflow-hidden flex flex-col items-center justify-between">
