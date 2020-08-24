@@ -71,7 +71,11 @@ const AllJournals = () => {
           </ul>
         ) : (
           <div className="h-full w-full flex flex-col justify-around items-center text-center">
-            <img className="xl:w-1/2 w-11/12 my-3" src={noJournal}></img>
+            <img
+              className="xl:w-1/2 w-11/12 my-3"
+              src={noJournal}
+              alt="no journals"
+            ></img>
             <h3 className="sm:text-3xl text-2xl font-light">
               You don&apos;t have any journals yet.
             </h3>
