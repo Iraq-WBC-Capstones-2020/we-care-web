@@ -1,41 +1,60 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import firebase from './../../../firebase/firebase';
-import Delete from './../../Images/delete.png';
+import moment from 'moment';
 
-const Journal = ({ journal }) => {
+const Journal = () => {
+  let history = useHistory();
+
+  const currentJournal = useSelector((state) => state.currentJournal);
+
+  if (!currentJournal) {
+    history.push('/profile/journals');
+    return null;
+  }
+
   return (
-    <li>
-      <div className="w-full h-full overflow-y-auto flex flex-col justify-center items-center ">
-        <div className="overflow-y-auto w-11/12 md:w-11/12  h-11/12 lg:w-11/12 bg-darkP rounded-md text-darkP flex flex-col justify-start p-8 my-10">
-          <div className="flex justify-end">
+    currentJournal && (
+      <div className="w-full h-full overflow-y-auto flex flex-col justify-center items-center break-words">
+        <div className="w-11/12 md:w-9/12 lg:w-1/2 overflow-y-auto bg-white rounded-md text-darkP flex flex-col justify-start items-left p-10 my-5">
+          <h2 className="text-3xl font-light mb-4">{currentJournal.title}</h2>
+          <p>{currentJournal.createdAt.toDateString()},</p>
+          <p className="text-base mb-10">
+            {' '}
+            {moment(currentJournal.createdAt).format('LT')}
+          </p>
+          <p className="text-lg mb-12">{currentJournal.body}</p>
+          <div className="flex sm:justify-center justify-around items-center my-3">
             <button
-              onClick={() =>
-                firebase.db
+              onClick={async (e) => {
+                e.preventDefault();
+                await firebase.db
                   .collection('users')
                   .doc(`${firebase.auth.currentUser.uid}`)
                   .collection('journals')
-                  .doc(journal.id)
-                  .delete()
-              }
+                  .doc(currentJournal.id)
+                  .delete();
+                history.push('/profile/journals');
+              }}
+              className="text-beige sm:mr-12 mr-6 hover:text-orangeP border text-center border-darkP bg-darkP border-solid rounded text-sm py-2 px-4"
             >
-              <p className="text-gray-100 text-xsm ml-5/6">
-                <img className="w-4 " src={Delete} alt="delete" />
-              </p>
+              Delete
+            </button>
+            <button
+              onClick={(e) => {
+                e.preventDefault();
+                history.push('/profile/journals');
+              }}
+              className="text-beige hover:text-orangeP border text-center border-darkP bg-darkP border-solid rounded text-sm py-2 sm:px-4 px-2"
+            >
+              All Journals
             </button>
           </div>
-          <h2 className="md:text-lg text-orangeP ml-1/2 font-semibold mb-4">
-            {journal.title}
-          </h2>
-          <p className="text-sm text-gray-100">{journal.journal}</p>
         </div>
       </div>
-    </li>
+    )
   );
 };
 
 export default Journal;
-
-Journal.propTypes = {
-  journal: PropTypes.object.isRequired,
-};

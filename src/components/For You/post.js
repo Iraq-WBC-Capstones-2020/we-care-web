@@ -1,13 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FaHeart } from 'react-icons/fa';
 import PropTypes from 'prop-types';
 import Moment from 'react-moment';
 import firebase from '../../firebase/firebase';
 
 const Post = ({ post }) => {
+  const [liked, setLiked] = useState(false);
+
   async function addLike() {
     try {
       await firebase.addLike(post);
+    } catch {
+      alert('not working');
+    }
+  }
+
+  async function removeLike() {
+    try {
+      await firebase.removeLike(post);
     } catch {
       alert('not working');
     }
@@ -34,11 +44,21 @@ const Post = ({ post }) => {
       <div
         className="flex items-center justify-end text-xs font-semibold"
         onClick={() => {
-          addLike();
+          if (liked) {
+            removeLike();
+            setLiked(false);
+          } else {
+            addLike();
+            setLiked(true);
+          }
         }}
       >
-        <FaHeart className="mr-1 text-orangeP mb-1" />
-        <span>{post.likes}</span>
+        <FaHeart
+          className={`mr-1 ${
+            liked ? 'text-red-600' : 'text-orangeP'
+          }  mb-1 cursor-pointer`}
+        />
+        <span className="cursor-pointer">{post.likes}</span>
       </div>
     </div>
   );
