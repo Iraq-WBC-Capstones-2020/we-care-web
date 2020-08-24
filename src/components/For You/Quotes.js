@@ -52,7 +52,7 @@ const Quotes = () => {
               style={{ fontFamily: 'Roboto' }}
             >
               <h1 className="sm:text-3xl text-2xl title-font text-darkP font-semibold">
-                {t('Today`s Quotes.')}
+                {t('TodayQuotes')}
               </h1>
             </div>
             <div className="flex flex-wrap -m-4">
