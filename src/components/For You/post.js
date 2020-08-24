@@ -37,8 +37,8 @@ const Post = ({ post }) => {
           addLike();
         }}
       >
-        <FaHeart className="mr-1 text-orangeP mb-1" />
-        <span>{post.likes}</span>
+        <FaHeart className="mr-1 text-orangeP mb-1 cursor-pointer" />
+        <span className="cursor-pointer">{post.likes}</span>
       </div>
     </div>
   );
