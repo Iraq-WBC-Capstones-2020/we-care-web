@@ -1,8 +1,16 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
 const Journal = () => {
+  let history = useHistory();
+
   const currentJournal = useSelector((state) => state.currentJournal);
+
+  if (!currentJournal) {
+    history.push('/profile/journals');
+    return null;
+  }
 
   return (
     currentJournal && (
