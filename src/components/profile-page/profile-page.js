@@ -7,13 +7,11 @@ import ProfileJournal from './profile-journal/profile-journal';
 import ProfileMessages from './profile-messages/profile-messages';
 import ProfileYourPosts from './profile-your-posts/profile-your-posts';
 import AllMessages from './all-messages/all-messages';
-import AllJournals from './all-journals/all-journals';
 import { Switch, Route } from 'react-router-dom';
 import firebase from '../../firebase/firebase';
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { setCurrentUser } from './../../redux/actions';
-import AddJournal from './profile-journal/add-journal';
 
 const ProfilePage = () => {
   let history = useHistory();
@@ -37,14 +35,8 @@ const ProfilePage = () => {
           <Route exact path="/profile/feed">
             <ProfileFeed />
           </Route>
-          <Route exact path="/profile/journals">
-            <AllJournals />
-          </Route>
-          <Route exact path="/profile/journals/1">
+          <Route path="/profile/journals">
             <ProfileJournal />
-          </Route>
-          <Route exact path="/profile/journals/add">
-            <AddJournal />
           </Route>
           <Route exact path="/profile/messages">
             <AllMessages />
