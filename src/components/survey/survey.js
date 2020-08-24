@@ -4,6 +4,7 @@ import '../regiterUser/toggleStyle.css';
 import Navbar from './Navbar';
 import { useDispatch } from 'react-redux';
 import { setIsListenerRedux } from './../../redux/actions';
+import firebase from './../../firebase/firebase';
 
 export default function Survey() {
   let history = useHistory();
@@ -14,6 +15,12 @@ export default function Survey() {
   useEffect(() => {
     dispatch(setIsListenerRedux(isListener));
   }, [isListener]);
+
+  if (!firebase.auth.currentUser) {
+    alert('Please login first');
+    history.push('/login');
+    return null;
+  }
 
   return (
     <>

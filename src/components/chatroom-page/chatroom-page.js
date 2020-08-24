@@ -8,8 +8,11 @@ import { useSelector } from 'react-redux';
 import Loader from './../loader/loader';
 import UserNotFound from './user-not-found-page';
 import Waiting from './waiting-screen';
+import { useHistory } from 'react-router-dom';
 
 const ChatroomPage = () => {
+  let history = useHistory();
+
   const currentUser = useSelector((state) => state.currentUser);
 
   const isListener = useSelector((state) => state.isListener);
@@ -44,6 +47,12 @@ const ChatroomPage = () => {
     }
     // eslint-disable-next-line
   }, [currentUser, isListener]);
+
+  if (!firebase.auth.currentUser) {
+    alert('Please login first');
+    history.push('/login');
+    return null;
+  }
 
   if (currentUser && noMembersFound) {
     return <UserNotFound user={'member'} />;
