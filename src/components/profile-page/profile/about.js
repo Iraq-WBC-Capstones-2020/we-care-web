@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { setCurrentUser } from '../../../redux/actions';
 import Firebase from '../../../firebase/firebase';
 const ProfileAbout = () => {
   const [like, setLike] = useState('');
@@ -7,18 +8,35 @@ const ProfileAbout = () => {
   const [Song, setSong] = useState('');
   const [book, setBook] = useState('');
   const [editMode, setEditMode] = useState(false);
+
   const changeToFalse = () => {
     setEditMode(false);
   };
   const changeToTrue = () => {
     setEditMode(true);
   };
+
+  const dispatch = useDispatch();
   const currentUser = useSelector((state) => state.currentUser);
+
+  function clearInput() {
+    setDisLike('');
+    setLike('');
+    setBook('');
+    setSong('');
+  }
+
+  function onCancle() {
+    changeToFalse();
+    clearInput();
+  }
+
   async function addAbout() {
     const userDoc = Firebase.db.doc(`/users/${currentUser.uid}`);
-
     changeToFalse();
-    userDoc.update({
+    clearInput();
+
+    await userDoc.update({
       about: {
         likes: { like },
         dislikes: dislike,
@@ -26,6 +44,14 @@ const ProfileAbout = () => {
         favouriteSongs: Song,
       },
     });
+    await Firebase.db
+      .collection(`users`)
+      .doc(currentUser.uid)
+      .get()
+      .then((doc) => {
+        console.log(doc.data());
+        dispatch(setCurrentUser(doc.data()));
+      });
   }
   return (
     currentUser && (
@@ -54,6 +80,7 @@ const ProfileAbout = () => {
               <div className="my-4">
                 <h2 className="font-bold">Favourite Songs</h2>
                 <input
+                  id="songval"
                   value={Song}
                   onChange={(e) => setSong(e.target.value)}
                   className="text-orangeP border lg:border-orangeP border-darkP lg:bg-transparent bg-darkP border-solid rounded px-10 h-10 text-sm"
@@ -67,21 +94,21 @@ const ProfileAbout = () => {
                   className="text-orangeP border lg:border-orangeP border-darkP lg:bg-transparent bg-darkP border-solid rounded px-10 h-10 text-sm"
                 />
               </div>
-              <row>
+              <div>
                 <button
-                  className="mr-2 text-orangeP border lg:border-orangeP border-darkP lg:bg-transparent bg-darkP border-solid rounded py-2 mt-6 w-32 text-sm"
-                  onClick={changeToFalse}
+                  className="lg:mr-2  text-orangeP border lg:border-orangeP border-darkP lg:bg-transparent bg-darkP border-solid rounded py-2 mt-6 w-32 text-sm"
+                  onClick={() => onCancle()}
                 >
                   Cancel
                 </button>
 
                 <button
-                  className="ml-2 text-orangeP border lg:border-orangeP border-darkP lg:bg-transparent bg-darkP border-solid rounded py-2 mt-6 w-32 text-sm"
+                  className="lg:ml-2 text-orangeP border lg:border-orangeP border-darkP lg:bg-transparent bg-darkP border-solid rounded py-2 mt-6 w-32 text-sm"
                   onClick={() => addAbout()}
                 >
                   Submit
                 </button>
-              </row>
+              </div>
             </div>
           </div>
         ) : (
