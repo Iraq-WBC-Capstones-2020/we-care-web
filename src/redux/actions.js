@@ -1,4 +1,9 @@
-import { SET_MESSAGES, SET_IS_LISTENER, SET_CURRENT_USER } from './actionTypes';
+import {
+  SET_MESSAGES,
+  SET_IS_LISTENER,
+  SET_CURRENT_USER,
+  SET_CURRENT_JOURNAL,
+} from './actionTypes';
 
 export const setMessages = (messages) => ({
   type: SET_MESSAGES,
@@ -13,4 +18,8 @@ export const setCurrentUser = (currentUser) => ({
 export const setIsListenerRedux = (isListener) => ({
   type: SET_IS_LISTENER,
   payload: { isListener },
+});
+export const setCurrentJournal = (currentJournal) => ({
+  type: SET_CURRENT_JOURNAL,
+  payload: { currentJournal },
 });

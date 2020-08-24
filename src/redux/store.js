@@ -3,6 +3,7 @@ import { reducer } from './reducers/reducer';
 const state = {
   currentUser: null,
   isListener: undefined,
+  currentJournal: null,
   messagesList: [
     {
       from: 'Harry Davies',

@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import firebase from './../../../firebase/firebase';
+import { setCurrentJournal } from './../../../redux/actions';
+import { useDispatch } from 'react-redux';
 
 const AllJournals = () => {
   let history = useHistory();
+
+  const dispatch = useDispatch();
 
   const [journals, setJournals] = useState([]);
 
@@ -54,8 +58,8 @@ const AllJournals = () => {
                 className="cursor-pointer border-b-2 border-grey py-2 w-full flex justify-center items-center hover:text-orangeP hover:border-orangeP"
                 onClick={(e) => {
                   e.preventDefault();
-                  console.log(journal);
-                  //  setCurrentJournal(Journal);
+                  dispatch(setCurrentJournal(journal));
+                  history.push('/profile/journals/journal');
                 }}
               >
                 {journal.title}

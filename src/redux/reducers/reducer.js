@@ -2,6 +2,7 @@ import {
   SET_MESSAGES,
   SET_CURRENT_USER,
   SET_IS_LISTENER,
+  SET_CURRENT_JOURNAL,
 } from '../actionTypes';
 
 export const reducer = (state, action) => {
@@ -14,6 +15,9 @@ export const reducer = (state, action) => {
 
     case SET_IS_LISTENER:
       return { ...state, isListener: action.payload.isListener };
+
+    case SET_CURRENT_JOURNAL:
+      return { ...state, currentJournal: action.payload.currentJournal };
 
     default:
       return state;
