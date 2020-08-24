@@ -79,13 +79,13 @@ const RightSidebar = () => {
         </div>
         <div className="text-center mt-8">
           <label
-            className="block uppercase tracking-wide text-darkP lg:text-beige text-sm font-bold mb-2"
+            className="block uppercase tracking-wide text-darkP lg:text-beige text-sm font-bold mb-3"
             htmlFor="Language"
           >
             {t('Change Language')}
           </label>
           <select
-            className="text-darkP border text-center border-darkP bg-orangeP h-8 border-solid rounded w-32 text-sm"
+            className="text-darkP border text-center border-darkP bg-orangeP h-8 border-solid rounded w-32 text-sm cursor-pointer px-2"
             id="Language"
             onChange={(e) => {
               e.preventDefault();
