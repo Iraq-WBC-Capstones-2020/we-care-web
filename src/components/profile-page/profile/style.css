@@ -1,0 +1,7 @@
+.fileInput {
+  opacity: 0;
+  overflow: hidden;
+  z-index: -1;
+  border-style: none;
+  width: 15px;
+}
