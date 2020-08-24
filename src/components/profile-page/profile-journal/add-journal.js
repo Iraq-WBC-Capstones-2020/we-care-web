@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 const AddJournal = () => {
   const { t } = useTranslation();
+  const [title, setTitle] = useState('');
+  const [body, setBody] = useState('');
 
   return (
     <div className="w-full overflow-y-auto h-full flex flex-col justify-center items-center">
@@ -17,14 +19,16 @@ const AddJournal = () => {
               className="py-1 px-4 text-darkP md:text-base text-sm rounded-md w-full"
               id="title"
               type="text"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
             ></input>
           </div>
           <textarea
-            // ref={postInput}
             id={'post-textarea'}
-            // className="md:text-base text-sm  rounded-md  h-full w-11/12 bg-beige"
             className="text-darkP md:text-base text-sm resize-none rounded-md h-full w-11/12 px-4 py-3"
             placeholder={t('Start Writing...')}
+            value={body}
+            onChange={(e) => setBody(e.target.value)}
           ></textarea>
           <button className="text-center text-lg bg-darkP text-beige rounded-sm py-1 hover:text-orangeP w-11/12 mt-10">
             {t('Done')}
