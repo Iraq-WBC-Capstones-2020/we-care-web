@@ -3,6 +3,7 @@ import {
   SET_IS_LISTENER,
   SET_CURRENT_USER,
   SET_CURRENT_JOURNAL,
+  SET_SEARCHED_USER,
 } from './actionTypes';
 
 export const setMessages = (messages) => ({
@@ -19,7 +20,13 @@ export const setIsListenerRedux = (isListener) => ({
   type: SET_IS_LISTENER,
   payload: { isListener },
 });
+
 export const setCurrentJournal = (currentJournal) => ({
   type: SET_CURRENT_JOURNAL,
   payload: { currentJournal },
+});
+
+export const setSearchedUser = (searchedUser) => ({
+  type: SET_SEARCHED_USER,
+  payload: { searchedUser },
 });

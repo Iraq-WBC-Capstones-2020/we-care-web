@@ -4,7 +4,7 @@ import logo from './imgs/Logo.svg';
 import { Link, useHistory } from 'react-router-dom';
 import firebase from '../../firebase/firebase';
 import { useSelector, useDispatch } from 'react-redux';
-import { setCurrentUser } from './../../redux/actions';
+import { setCurrentUser, setSearchedUser } from './../../redux/actions';
 import { useTranslation } from 'react-i18next';
 
 export default function Navbar() {
@@ -12,8 +12,6 @@ export default function Navbar() {
   const [searchValue, setSearchValue] = useState('');
   const [foundUsers, setFoundUsers] = useState(null);
   const [openSearchResults, setOpenSearchResults] = useState(false);
-
-  console.log(foundUsers);
 
   const dispatch = useDispatch();
 
@@ -72,7 +70,9 @@ export default function Navbar() {
                           <div
                             onClick={(e) => {
                               e.preventDefault();
-                              console.log(firebase.getUser(user.uid));
+                              firebase
+                                .getUser(user.uid)
+                                .then((doc) => dispatch(setSearchedUser(doc)));
                             }}
                             key={index}
                             className="rounded-md w-full flex justify-start items-center text-darkP md:text-base text-sm py-1 hover:bg-orangeP cursor-pointer"

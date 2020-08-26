@@ -4,6 +4,7 @@ const state = {
   currentUser: null,
   isListener: undefined,
   currentJournal: null,
+  searchedUser: null,
   messagesList: [
     {
       from: 'Harry Davies',
