@@ -9,6 +9,7 @@ import { useTranslation } from 'react-i18next';
 
 export default function Navbar() {
   const [navbarOpen, setNavbarOpen] = useState(false);
+  const [searchValue, setSearchValue] = useState('');
   const [foundUsers, setFoundUsers] = useState([]);
 
   console.log(foundUsers);
@@ -55,15 +56,19 @@ export default function Navbar() {
                   autoComplete="off"
                   placeholder="Search Users"
                   className="px-4 text-darkP md:text-base text-sm rounded-md"
-                  onChange={(e) => {
+                  value={searchValue}
+                  onChange={(e) => setSearchValue(e.target.value)}
+                />
+                <button
+                  onClick={(e) => {
                     e.preventDefault();
                     firebase.queryUsersnamesCollectionForMatchingUsername(
-                      e.target.value,
+                      searchValue,
                       setFoundUsers
                     );
                   }}
-                />
-                <button className="px-1 ml-1 text-darkP hover:bg-beige text-center bg-orangeP rounded md:text-base text-sm">
+                  className="px-1 ml-1 text-darkP hover:bg-beige text-center bg-orangeP rounded md:text-base text-sm"
+                >
                   Search
                 </button>
               </li>
