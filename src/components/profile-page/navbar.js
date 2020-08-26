@@ -47,6 +47,15 @@ export default function Navbar() {
           >
             <ul className="flex flex-col justify-center lg:flex-row list-none text-center w-full">
               <li className="lg:mr-10 lg:mt-0 lg:py-0 py-3 hover:text-orangeP lg:border-0 border-b border-beige">
+                <input
+                  type="text"
+                  autoComplete="off"
+                  placeholder="Search Users"
+                  className="px-4 text-darkP md:text-base text-sm rounded-md"
+                />
+              </li>
+
+              <li className="lg:mr-10 lg:mt-0 lg:py-0 py-3 hover:text-orangeP lg:border-0 border-b border-beige">
                 <Link to="/ForYou">{t('for_you')}</Link>
               </li>
               <li className="lg:mr-10 lg:my-0 lg:py-0 py-3 hover:text-orangeP lg:border-0 border-b border-beige">
