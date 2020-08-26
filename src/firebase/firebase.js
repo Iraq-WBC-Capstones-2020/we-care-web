@@ -30,6 +30,19 @@ class Firebase {
     this.unsubscribe = null;
   }
 
+  async queryUsersnamesCollectionForMatchingUsername(
+    searchedValue,
+    setFoundUsers
+  ) {
+    const foundUsers = [];
+    return await this.db
+      .collection('usernames')
+      .where('username', '==', `${searchedValue}`)
+      .get()
+      .then((data) => data.forEach((doc) => foundUsers.push(doc.data())))
+      .then(() => setFoundUsers(foundUsers));
+  }
+
   async getAllTherapists(setTherapistsArr) {
     const therapistsArr = [];
     return await this.db
