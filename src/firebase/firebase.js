@@ -30,6 +30,11 @@ class Firebase {
     this.unsubscribe = null;
   }
 
+  async getUser(uid) {
+    const user = await this.db.collection('users').doc(`${uid}`).get();
+    return user.data();
+  }
+
   async queryUsersnamesCollectionForMatchingUsername(
     searchedValue,
     setFoundUsers
@@ -39,7 +44,9 @@ class Firebase {
       .collection('usernames')
       .where('username', '==', `${searchedValue}`)
       .get()
-      .then((data) => data.forEach((doc) => foundUsers.push(doc.data())))
+      .then((data) =>
+        data.forEach((doc) => foundUsers.push({ uid: doc.id, ...doc.data() }))
+      )
       .then(() => setFoundUsers(foundUsers));
   }
 

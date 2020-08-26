@@ -70,6 +70,10 @@ export default function Navbar() {
                       foundUsers.length !== 0 ? (
                         foundUsers.map((user, index) => (
                           <div
+                            onClick={(e) => {
+                              e.preventDefault();
+                              console.log(firebase.getUser(user.uid));
+                            }}
                             key={index}
                             className="rounded-md w-full flex justify-start items-center text-darkP md:text-base text-sm py-1 hover:bg-orangeP cursor-pointer"
                           >
