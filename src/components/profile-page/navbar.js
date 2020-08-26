@@ -10,7 +10,8 @@ import { useTranslation } from 'react-i18next';
 export default function Navbar() {
   const [navbarOpen, setNavbarOpen] = useState(false);
   const [searchValue, setSearchValue] = useState('');
-  const [foundUsers, setFoundUsers] = useState([]);
+  const [foundUsers, setFoundUsers] = useState(null);
+  const [openSearchResults, setOpenSearchResults] = useState(false);
 
   console.log(foundUsers);
 
@@ -51,14 +52,46 @@ export default function Navbar() {
           >
             <ul className="flex flex-col justify-center lg:flex-row list-none text-center w-full">
               <li className="lg:mr-10 lg:mt-0 lg:py-0 py-3 hover:text-orangeP lg:border-0 border-b border-beige">
-                <input
-                  type="text"
-                  autoComplete="off"
-                  placeholder="Search Users"
-                  className="px-4 text-darkP md:text-base text-sm rounded-md"
-                  value={searchValue}
-                  onChange={(e) => setSearchValue(e.target.value)}
-                />
+                <div className="inline relative">
+                  <input
+                    type="text"
+                    autoComplete="off"
+                    placeholder="Search Users"
+                    className="px-4 text-darkP md:text-base text-sm rounded-md"
+                    value={searchValue}
+                    onChange={(e) => setSearchValue(e.target.value)}
+                  />
+                  <div
+                    className={`w-full bg-white absolute z-50 rounded-md mt-1 ${
+                      openSearchResults ? 'block' : 'hidden'
+                    }`}
+                  >
+                    {foundUsers ? (
+                      foundUsers.length !== 0 ? (
+                        foundUsers.map((user, index) => (
+                          <div
+                            key={index}
+                            className="rounded-md w-full flex justify-start items-center text-darkP md:text-base text-sm py-1 hover:bg-orangeP cursor-pointer"
+                          >
+                            <img
+                              className="rounded-full h-10 w-10 object-cover ml-5"
+                              src={user.profilePicture}
+                            ></img>
+                            <p className="ml-4">{user.username}</p>
+                          </div>
+                        ))
+                      ) : (
+                        <div className="rounded-md w-full flex justify-start items-center text-darkP text-sm py-1 px-2">
+                          No users with that username.
+                        </div>
+                      )
+                    ) : (
+                      <div className="rounded-md w-full flex justify-start items-center text-darkP text-sm py-1 px-2">
+                        Please wait...
+                      </div>
+                    )}
+                  </div>
+                </div>
                 <button
                   onClick={(e) => {
                     e.preventDefault();
@@ -66,6 +99,7 @@ export default function Navbar() {
                       searchValue,
                       setFoundUsers
                     );
+                    setOpenSearchResults(true);
                   }}
                   className="px-1 ml-1 text-darkP hover:bg-beige text-center bg-orangeP rounded md:text-base text-sm"
                 >
