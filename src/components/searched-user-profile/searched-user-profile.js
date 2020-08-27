@@ -1,9 +1,20 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import Navbar from './../profile-page/navbar';
 import ProfileAbout from './about';
 import RightSidebar from './right-sidebar';
 
 const SearchedUserProfile = () => {
+  const searchedUser = useSelector((state) => state.searchedUser);
+
+  let history = useHistory();
+
+  if (!searchedUser) {
+    history.push('/profile');
+    return null;
+  }
+
   return (
     <div className="h-screen bg-beige flex flex-col relative">
       <Navbar />
