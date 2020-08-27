@@ -28,7 +28,7 @@ const Post = ({ post }) => {
       <div className="flex">
         <div className="mr-4">
           <img
-            className="rounded-full w-12"
+            className="rounded-full w-12 object-cover"
             src={post.authorAvatar}
             alt="Profile"
           />

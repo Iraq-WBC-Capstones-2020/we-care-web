@@ -6,6 +6,7 @@ import firebase from '../../firebase/firebase';
 import { useSelector, useDispatch } from 'react-redux';
 import { setCurrentUser } from './../../redux/actions';
 import { useTranslation } from 'react-i18next';
+import SearchUsers from './search-box';
 
 export default function Navbar() {
   const [navbarOpen, setNavbarOpen] = useState(false);
@@ -46,6 +47,9 @@ export default function Navbar() {
             id="example-navbar-danger"
           >
             <ul className="flex flex-col justify-center lg:flex-row list-none text-center w-full">
+              <li className="lg:mr-10 lg:mt-0 lg:py-0 py-3 hover:text-orangeP lg:border-0 border-b border-beige">
+                <SearchUsers />
+              </li>
               <li className="lg:mr-10 lg:mt-0 lg:py-0 py-3 hover:text-orangeP lg:border-0 border-b border-beige">
                 <Link to="/ForYou">{t('for_you')}</Link>
               </li>

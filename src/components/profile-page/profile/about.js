@@ -5,11 +5,16 @@ import Firebase from '../../../firebase/firebase';
 import { useTranslation } from 'react-i18next';
 
 const ProfileAbout = () => {
+  const dispatch = useDispatch();
+
+  const currentUser = useSelector((state) => state.currentUser);
+
   const { t } = useTranslation();
+
   const [like, setLike] = useState('');
   const [dislike, setDisLike] = useState('');
   const [Song, setSong] = useState('');
-  const [book, setBook] = useState('');
+  const [movie, setMovie] = useState('');
   const [editMode, setEditMode] = useState(false);
 
   const changeToFalse = () => {
@@ -17,33 +22,29 @@ const ProfileAbout = () => {
   };
   const changeToTrue = () => {
     setEditMode(true);
+    fillInputs();
   };
 
-  const dispatch = useDispatch();
-  const currentUser = useSelector((state) => state.currentUser);
-
-  function clearInput() {
-    setDisLike('');
-    setLike('');
-    setBook('');
-    setSong('');
+  function fillInputs() {
+    setDisLike(currentUser.about.dislikes);
+    setLike(currentUser.about.likes);
+    setMovie(currentUser.about.favouriteMovies);
+    setSong(currentUser.about.favouriteSongs);
   }
 
   function onCancle() {
     changeToFalse();
-    clearInput();
   }
 
   async function addAbout() {
     const userDoc = Firebase.db.doc(`/users/${currentUser.uid}`);
     changeToFalse();
-    clearInput();
 
     await userDoc.update({
       about: {
-        likes: { like },
+        likes: like,
         dislikes: dislike,
-        favouriteMovies: book,
+        favouriteMovies: movie,
         favouriteSongs: Song,
       },
     });
@@ -93,11 +94,11 @@ const ProfileAbout = () => {
               </div>
               <div className="my-4">
                 <h2 className="font-bold">
-                  {t('favoret')} {t('books')}
+                  {t('favoret')} {t('movies')}
                 </h2>
                 <input
-                  value={book}
-                  onChange={(e) => setBook(e.target.value)}
+                  value={movie}
+                  onChange={(e) => setMovie(e.target.value)}
                   className="text-orangeP border lg:border-orangeP border-darkP lg:bg-transparent bg-darkP border-solid rounded px-10 h-10 text-sm"
                 />
               </div>
@@ -124,13 +125,17 @@ const ProfileAbout = () => {
             <div className="my-4">
               <h2 className="font-bold">{t('Likes')}</h2>
               <p className="md:text-base text-sm">
-                {currentUser.about.likes.like}
+                {currentUser.about.likes === ''
+                  ? '...'
+                  : currentUser.about.likes}
               </p>
             </div>
             <div className="my-4">
               <h2 className="font-bold">{t('dislikes')}</h2>
               <p className="md:text-base text-sm">
-                {currentUser.about.dislikes}
+                {currentUser.about.dislikes === ''
+                  ? '...'
+                  : currentUser.about.dislikes}
               </p>
             </div>
             <div className="my-4">
@@ -138,16 +143,19 @@ const ProfileAbout = () => {
                 {t('favoret')} {t('songs')}
               </h2>
               <p className="md:text-base text-sm">
-                {currentUser.about.favouriteSongs}
+                {currentUser.about.favouriteSongs === ''
+                  ? '...'
+                  : currentUser.about.favouriteSongs}
               </p>
             </div>
             <div className="my-4">
               <h2 className="font-bold">
-                {' '}
-                {t('favoret')} {t('books')}
+                {t('favoret')} {t('movies')}
               </h2>
               <p className="md:text-base text-sm">
-                {currentUser.about.favouriteMovies}
+                {currentUser.about.favouriteMovies === ''
+                  ? '...'
+                  : currentUser.about.favouriteMovies}
               </p>
             </div>
             <button

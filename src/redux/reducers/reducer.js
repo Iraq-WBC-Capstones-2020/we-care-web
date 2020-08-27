@@ -3,6 +3,7 @@ import {
   SET_CURRENT_USER,
   SET_IS_LISTENER,
   SET_CURRENT_JOURNAL,
+  SET_SEARCHED_USER,
 } from '../actionTypes';
 
 export const reducer = (state, action) => {
@@ -18,6 +19,9 @@ export const reducer = (state, action) => {
 
     case SET_CURRENT_JOURNAL:
       return { ...state, currentJournal: action.payload.currentJournal };
+
+    case SET_SEARCHED_USER:
+      return { ...state, searchedUser: action.payload.searchedUser };
 
     default:
       return state;

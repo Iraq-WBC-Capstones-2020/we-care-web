@@ -30,6 +30,23 @@ class Firebase {
     this.unsubscribe = null;
   }
 
+  async getUser(uid) {
+    const user = await this.db.collection('users').doc(`${uid}`).get();
+    return user.data();
+  }
+
+  async queryUsersCollectionForMatchingUsername(searchedValue, setFoundUsers) {
+    const foundUsers = [];
+    return await this.db
+      .collection('users')
+      .where('username', '==', `${searchedValue}`)
+      .get()
+      .then((data) =>
+        data.forEach((doc) => foundUsers.push({ uid: doc.id, ...doc.data() }))
+      )
+      .then(() => setFoundUsers(foundUsers));
+  }
+
   async getAllTherapists(setTherapistsArr) {
     const therapistsArr = [];
     return await this.db
@@ -149,6 +166,12 @@ class Firebase {
         return;
       }
     });
+  }
+
+  async removeMemberFromRTDB() {
+    const rtdbRef = this.rtdb.ref(`/members/${this.auth.currentUser.uid}`);
+    rtdbRef.remove();
+    return;
   }
 
   login(email, password) {
