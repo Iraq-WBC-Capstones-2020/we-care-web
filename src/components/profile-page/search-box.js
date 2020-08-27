@@ -54,6 +54,7 @@ const SearchUsers = () => {
                   <img
                     className="rounded-full h-10 w-10 object-cover ml-5"
                     src={user.profilePicture}
+                    alt="profile"
                   ></img>
                   <p className="ml-4">{user.username}</p>
                 </div>
