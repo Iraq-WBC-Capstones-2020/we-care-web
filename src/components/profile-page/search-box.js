@@ -56,7 +56,7 @@ const SearchUsers = () => {
                     });
                   }}
                   key={index}
-                  className="shadow-md rounded-md w-full flex justify-start items-center md:text-base text-sm py-1 cursor-pointer"
+                  className="shadow-md rounded-md w-full flex justify-start items-center md:text-base text-sm py-3 cursor-pointer"
                 >
                   <img
                     className="rounded-full h-10 w-10 object-cover ml-5"
