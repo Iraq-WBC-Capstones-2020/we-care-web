@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import firebase from '../../firebase/firebase';
 import { setSearchedUser } from './../../redux/actions';
 import { CgCloseO } from 'react-icons/cg';
@@ -8,6 +9,8 @@ const SearchUsers = () => {
   const [searchValue, setSearchValue] = useState('');
   const [foundUsers, setFoundUsers] = useState(null);
   const [openSearchResults, setOpenSearchResults] = useState(false);
+
+  let history = useHistory();
 
   const dispatch = useDispatch();
 
@@ -23,12 +26,12 @@ const SearchUsers = () => {
           onChange={(e) => setSearchValue(e.target.value)}
         />
         <div
-          className={`w-full bg-white absolute z-40 rounded-md mt-1 ${
+          className={`w-full bg-white absolute z-40 rounded-md mt-1 text-darkP ${
             openSearchResults ? 'block' : 'hidden'
           }`}
         >
           <CgCloseO
-            className="absolute right-0 text-darkP mr-1 mt-1 z-50 cursor-pointer"
+            className="absolute right-0 mr-1 mt-1 z-50 cursor-pointer"
             onClick={() => {
               setOpenSearchResults(false);
               setFoundUsers(null);
@@ -38,14 +41,15 @@ const SearchUsers = () => {
             foundUsers.length !== 0 ? (
               foundUsers.map((user, index) => (
                 <div
-                  onClick={(e) => {
+                  onClick={async (e) => {
                     e.preventDefault();
-                    firebase
-                      .getUser(user.uid)
-                      .then((doc) => dispatch(setSearchedUser(doc)));
+                    await firebase.getUser(user.uid).then((doc) => {
+                      dispatch(setSearchedUser(doc));
+                      history.push(`/users/${doc.username}`);
+                    });
                   }}
                   key={index}
-                  className="shadow-md rounded-md w-full flex justify-start items-center text-darkP md:text-base text-sm py-1 hover:bg-orangeP cursor-pointer"
+                  className="shadow-md rounded-md w-full flex justify-start items-center md:text-base text-sm py-1 cursor-pointer"
                 >
                   <img
                     className="rounded-full h-10 w-10 object-cover ml-5"
