@@ -73,7 +73,7 @@ const SearchUsers = () => {
       <button
         onClick={(e) => {
           e.preventDefault();
-          firebase.queryUsersnamesCollectionForMatchingUsername(
+          firebase.queryUsersCollectionForMatchingUsername(
             searchValue,
             setFoundUsers
           );

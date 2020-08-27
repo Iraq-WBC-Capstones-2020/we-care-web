@@ -35,13 +35,10 @@ class Firebase {
     return user.data();
   }
 
-  async queryUsersnamesCollectionForMatchingUsername(
-    searchedValue,
-    setFoundUsers
-  ) {
+  async queryUsersCollectionForMatchingUsername(searchedValue, setFoundUsers) {
     const foundUsers = [];
     return await this.db
-      .collection('usernames')
+      .collection('users')
       .where('username', '==', `${searchedValue}`)
       .get()
       .then((data) =>
