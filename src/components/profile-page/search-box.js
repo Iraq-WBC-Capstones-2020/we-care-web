@@ -56,7 +56,7 @@ const SearchUsers = () => {
                     src={user.profilePicture}
                     alt="profile"
                   ></img>
-                  <p className="ml-4">{user.username}</p>
+                  <p className="ml-3">{user.username}</p>
                 </div>
               ))
             ) : (
