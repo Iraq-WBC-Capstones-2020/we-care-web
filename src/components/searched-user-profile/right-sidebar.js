@@ -27,10 +27,14 @@ const RightSidebar = () => {
             </p>
           </div>
           <div className="border lg:border-beige border-darkP border-solid rounded-full py-2 mt-10 w-32 text-sm flex items-center h-10 justify-center lg:font-normal font-medium">
-            <FiSmile className="mr-3 text-xl" /> 34 friends
+            <FiSmile className="mr-3 text-xl" />({searchedUser.friends.length}){' '}
+            {searchedUser.friends.length === 1 ? 'friend' : 'friends'}
           </div>
-          <button className="text-orangeP  border text-center lg:border-orangeP border-darkP lg:bg-transparent mt-10 bg-darkP h-8 border-solid rounded   w-32 text-sm">
+          <button className="text-orangeP border text-center lg:border-orangeP border-darkP lg:bg-transparent mt-10 bg-darkP h-8 border-solid rounded w-32 text-sm">
             Add Friend
+          </button>
+          <button className="text-orangeP border text-center lg:border-orangeP border-darkP lg:bg-transparent mt-6 bg-darkP h-8 border-solid rounded w-32 text-sm">
+            Send Message
           </button>
         </div>
       </div>
