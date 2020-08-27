@@ -40,8 +40,7 @@ const ProfileAbout = () => {
           </div>
           <div className="my-4">
             <h2 className="font-bold">
-              {' '}
-              {t('favoret')} {t('books')}
+              {t('favoret')} {t('movies')}
             </h2>
             <p className="md:text-base text-sm">
               {searchedUser.about.favouriteMovies === ''
