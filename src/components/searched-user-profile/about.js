@@ -15,13 +15,17 @@ const ProfileAbout = () => {
           <div className="my-4">
             <h2 className="font-bold">{t('Likes')}</h2>
             <p className="md:text-base text-sm">
-              {searchedUser.about.likes.like}
+              {searchedUser.about.likes === ''
+                ? '...'
+                : searchedUser.about.likes}
             </p>
           </div>
           <div className="my-4">
             <h2 className="font-bold">{t('dislikes')}</h2>
             <p className="md:text-base text-sm">
-              {searchedUser.about.dislikes}
+              {searchedUser.about.dislikes === ''
+                ? '...'
+                : searchedUser.about.dislikes}
             </p>
           </div>
           <div className="my-4">
@@ -29,7 +33,9 @@ const ProfileAbout = () => {
               {t('favoret')} {t('songs')}
             </h2>
             <p className="md:text-base text-sm">
-              {searchedUser.about.favouriteSongs}
+              {searchedUser.about.favouriteSongs === ''
+                ? '...'
+                : searchedUser.about.favouriteSongs}
             </p>
           </div>
           <div className="my-4">
@@ -38,7 +44,9 @@ const ProfileAbout = () => {
               {t('favoret')} {t('books')}
             </h2>
             <p className="md:text-base text-sm">
-              {searchedUser.about.favouriteMovies}
+              {searchedUser.about.favouriteMovies === ''
+                ? '...'
+                : searchedUser.about.favouriteMovies}
             </p>
           </div>
         </div>
