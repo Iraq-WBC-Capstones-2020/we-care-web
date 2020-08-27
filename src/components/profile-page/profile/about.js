@@ -124,13 +124,17 @@ const ProfileAbout = () => {
             <div className="my-4">
               <h2 className="font-bold">{t('Likes')}</h2>
               <p className="md:text-base text-sm">
-                {currentUser.about.likes.like}
+                {currentUser.about.likes.like === ''
+                  ? '...'
+                  : currentUser.about.likes.like}
               </p>
             </div>
             <div className="my-4">
               <h2 className="font-bold">{t('dislikes')}</h2>
               <p className="md:text-base text-sm">
-                {currentUser.about.dislikes}
+                {currentUser.about.dislikes === ''
+                  ? '...'
+                  : currentUser.about.dislikes}
               </p>
             </div>
             <div className="my-4">
@@ -138,7 +142,9 @@ const ProfileAbout = () => {
                 {t('favoret')} {t('songs')}
               </h2>
               <p className="md:text-base text-sm">
-                {currentUser.about.favouriteSongs}
+                {currentUser.about.favouriteSongs === ''
+                  ? '...'
+                  : currentUser.about.favouriteSongs}
               </p>
             </div>
             <div className="my-4">
@@ -147,7 +153,9 @@ const ProfileAbout = () => {
                 {t('favoret')} {t('books')}
               </h2>
               <p className="md:text-base text-sm">
-                {currentUser.about.favouriteMovies}
+                {currentUser.about.favouriteMovies === ''
+                  ? '...'
+                  : currentUser.about.favouriteMovies}
               </p>
             </div>
             <button
