@@ -168,6 +168,12 @@ class Firebase {
     });
   }
 
+  async removeMemberFromRTDB() {
+    const rtdbRef = this.rtdb.ref(`/members/${this.auth.currentUser.uid}`);
+    rtdbRef.remove();
+    return;
+  }
+
   login(email, password) {
     return this.auth.signInWithEmailAndPassword(email, password);
   }

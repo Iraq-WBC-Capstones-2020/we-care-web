@@ -35,6 +35,7 @@ const ChatroomPage = () => {
         let timer = setTimeout(() => {
           if (!firebase.listenerId) {
             setNoListnersFound(true);
+            firebase.removeMemberFromRTDB();
           }
         }, 30000);
 
