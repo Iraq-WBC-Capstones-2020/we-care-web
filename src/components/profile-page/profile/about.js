@@ -41,7 +41,7 @@ const ProfileAbout = () => {
 
     await userDoc.update({
       about: {
-        likes: { like },
+        likes: like,
         dislikes: dislike,
         favouriteMovies: book,
         favouriteSongs: Song,
@@ -124,9 +124,9 @@ const ProfileAbout = () => {
             <div className="my-4">
               <h2 className="font-bold">{t('Likes')}</h2>
               <p className="md:text-base text-sm">
-                {currentUser.about.likes.like === ''
+                {currentUser.about.likes === ''
                   ? '...'
-                  : currentUser.about.likes.like}
+                  : currentUser.about.likes}
               </p>
             </div>
             <div className="my-4">
