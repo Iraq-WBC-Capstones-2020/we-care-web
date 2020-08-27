@@ -26,7 +26,7 @@ const SearchUsers = () => {
           onChange={(e) => setSearchValue(e.target.value)}
         />
         <div
-          className={`w-full bg-white absolute z-40 rounded-md mt-1 text-darkP ${
+          className={`w-full bg-white absolute left-0 z-40 rounded-md mt-1 text-darkP ${
             openSearchResults ? 'block' : 'hidden'
           }`}
         >
@@ -35,6 +35,7 @@ const SearchUsers = () => {
             onClick={() => {
               setOpenSearchResults(false);
               setFoundUsers(null);
+              setSearchValue('');
             }}
           />
           {foundUsers ? (
@@ -60,12 +61,12 @@ const SearchUsers = () => {
                 </div>
               ))
             ) : (
-              <div className="rounded-md w-full flex justify-start items-center text-darkP text-sm py-4 px-2">
-                No users with that username.
+              <div className="rounded-md w-full flex justify-start items-center text-darkP text-sm py-4 px-2 text-left">
+                No users found with that username.
               </div>
             )
           ) : (
-            <div className="rounded-md w-full flex justify-start items-center text-darkP text-sm py-4 px-2">
+            <div className="rounded-md w-full flex justify-start items-center text-darkP text-sm py-4 px-2 text-left">
               Please wait...
             </div>
           )}
