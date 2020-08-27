@@ -24,6 +24,12 @@ const SearchUsers = () => {
           className="px-4 text-darkP md:text-base text-sm rounded-md"
           value={searchValue}
           onChange={(e) => setSearchValue(e.target.value)}
+          onKeyDown={(key) => {
+            if (key.keyCode === 13) {
+              searchUser();
+              setOpenSearchResults(true);
+            }
+          }}
         />
         <div
           className={`w-full bg-white absolute left-0 z-40 rounded-md mt-1 text-darkP ${
@@ -75,10 +81,7 @@ const SearchUsers = () => {
       <button
         onClick={(e) => {
           e.preventDefault();
-          firebase.queryUsersCollectionForMatchingUsername(
-            searchValue,
-            setFoundUsers
-          );
+          searchUser();
           setOpenSearchResults(true);
         }}
         className="px-1 ml-1 text-darkP hover:bg-beige text-center bg-orangeP rounded md:text-base text-sm"
@@ -87,6 +90,12 @@ const SearchUsers = () => {
       </button>
     </>
   );
+  async function searchUser() {
+    await firebase.queryUsersCollectionForMatchingUsername(
+      searchValue,
+      setFoundUsers
+    );
+  }
 };
 
 export default SearchUsers;
