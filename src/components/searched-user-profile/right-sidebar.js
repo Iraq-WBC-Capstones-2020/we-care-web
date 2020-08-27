@@ -14,7 +14,7 @@ const RightSidebar = () => {
         <div className="w-full h-auto self-center justify-evenly flex flex-col items-center">
           <div className="flex flex-col justify-center items-center">
             <img
-              className="rounded-full w-24 h-24 mb-4"
+              className="rounded-full w-24 h-24 mb-4 object-cover"
               src={searchedUser.profilePicture}
               alt="Profile"
             />
