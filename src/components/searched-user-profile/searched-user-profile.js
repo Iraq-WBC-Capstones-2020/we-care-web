@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import Navbar from './../profile-page/navbar';
+import Navbar from './navbar';
 import ProfileAbout from './about';
 import RightSidebar from './right-sidebar';
 
