@@ -47,7 +47,7 @@ export default function Navbar() {
             id="example-navbar-danger"
           >
             <ul className="flex flex-col justify-center lg:flex-row list-none text-center w-full">
-              <li className="lg:mr-10 lg:mt-0 lg:py-0 py-3 hover:text-orangeP lg:border-0 border-b border-beige">
+              <li className="lg:mr-10 lg:mt-0 lg:py-0 py-3 hover:text-orangeP lg:border-0 border-b border-beige lg:hidden block">
                 <SearchUsers />
               </li>
               <li className="lg:mr-10 lg:mt-0 lg:py-0 py-3 hover:text-orangeP lg:border-0 border-b border-beige">
@@ -72,17 +72,8 @@ export default function Navbar() {
             </ul>
           </div>
           {currentUser && (
-            <div className="lg:flex justify-center items-center hidden">
-              <Link to="/profile">
-                <img
-                  src={currentUser.profilePicture}
-                  className="rounded-full h-10 w-10 object-cover"
-                  alt="Profile"
-                ></img>
-              </Link>
-              <Link to="/profile">
-                <p className="ml-2">{currentUser.username}</p>
-              </Link>
+            <div className="lg:flex justify-end items-center hidden">
+              <SearchUsers />
             </div>
           )}
         </div>
