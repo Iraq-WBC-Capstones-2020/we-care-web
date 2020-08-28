@@ -3,9 +3,16 @@ import { FaHeart } from 'react-icons/fa';
 import PropTypes from 'prop-types';
 import Moment from 'react-moment';
 import firebase from '../../firebase/firebase';
+import { useDispatch } from 'react-redux';
+import { setSearchedUser } from './../../redux/actions';
+import { useHistory } from 'react-router-dom';
 
 const Post = ({ post }) => {
+  let history = useHistory();
+
   const [liked, setLiked] = useState(false);
+
+  const dispatch = useDispatch();
 
   async function addLike() {
     try {
@@ -25,7 +32,16 @@ const Post = ({ post }) => {
 
   return (
     <div className="bg-white w-11/12 md:w-4/5 lg:w-1/2 rounded-md text-darkP flex flex-col md:p-8 p-5 my-8">
-      <div className="flex">
+      <div
+        onClick={async (e) => {
+          e.preventDefault();
+          await firebase.getUser(post.authorId).then((doc) => {
+            dispatch(setSearchedUser(doc));
+            history.push(`/users/${doc.username}`);
+          });
+        }}
+        className="flex cursor-pointer"
+      >
         <div className="mr-4">
           <img
             className="rounded-full w-12 object-cover"
