@@ -37,14 +37,26 @@ const RightSidebar = () => {
           <button
             onClick={async (e) => {
               e.preventDefault();
-              await firebase.addFriend(searchedUser);
-              await firebase.getUser(searchedUser.uid).then((doc) => {
-                dispatch(setSearchedUser(doc));
-              });
+              if (
+                searchedUser.friends.includes(firebase.auth.currentUser.uid)
+              ) {
+                return;
+              } else {
+                await firebase.addFriend(searchedUser);
+                await firebase.getUser(searchedUser.uid).then((doc) => {
+                  dispatch(setSearchedUser(doc));
+                });
+              }
             }}
-            className="text-orangeP border text-center lg:border-orangeP border-darkP lg:bg-transparent mt-10 bg-darkP h-8 border-solid rounded w-32 text-sm"
+            className={`text-orangeP border text-center lg:border-orangeP border-darkP lg:bg-transparent mt-10 bg-darkP h-8 border-solid rounded w-32 text-sm ${
+              searchedUser.friends.includes(firebase.auth.currentUser.uid)
+                ? 'cursor-default focus:outline-none'
+                : 'cursor-pointer'
+            }`}
           >
-            Add Friend
+            {searchedUser.friends.includes(firebase.auth.currentUser.uid)
+              ? "Your're friends!"
+              : 'Add Friend'}
           </button>
           <button className="text-orangeP border text-center lg:border-orangeP border-darkP lg:bg-transparent mt-6 bg-darkP h-8 border-solid rounded w-32 text-sm">
             Send Message
