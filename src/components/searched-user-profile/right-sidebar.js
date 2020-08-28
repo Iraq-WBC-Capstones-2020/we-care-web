@@ -55,7 +55,7 @@ const RightSidebar = () => {
             }`}
           >
             {searchedUser.friends.includes(firebase.auth.currentUser.uid)
-              ? "Your're friends!"
+              ? "You're friends!"
               : 'Add Friend'}
           </button>
           <button className="text-orangeP border text-center lg:border-orangeP border-darkP lg:bg-transparent mt-6 bg-darkP h-8 border-solid rounded w-32 text-sm">
