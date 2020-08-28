@@ -1,4 +1,5 @@
 import React from 'react';
+import firebase from './../../firebase/firebase';
 import { FiSmile } from 'react-icons/fi';
 import { useSelector } from 'react-redux';
 import Moment from 'react-moment';
@@ -30,7 +31,13 @@ const RightSidebar = () => {
             <FiSmile className="mr-3 text-xl" />({searchedUser.friends.length}){' '}
             {searchedUser.friends.length === 1 ? 'friend' : 'friends'}
           </div>
-          <button className="text-orangeP border text-center lg:border-orangeP border-darkP lg:bg-transparent mt-10 bg-darkP h-8 border-solid rounded w-32 text-sm">
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              firebase.addFriend(searchedUser);
+            }}
+            className="text-orangeP border text-center lg:border-orangeP border-darkP lg:bg-transparent mt-10 bg-darkP h-8 border-solid rounded w-32 text-sm"
+          >
             Add Friend
           </button>
           <button className="text-orangeP border text-center lg:border-orangeP border-darkP lg:bg-transparent mt-6 bg-darkP h-8 border-solid rounded w-32 text-sm">

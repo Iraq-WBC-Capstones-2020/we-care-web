@@ -30,6 +30,22 @@ class Firebase {
     this.unsubscribe = null;
   }
 
+  async addFriend(searchedUser) {
+    await this.db
+      .collection('users')
+      .doc(`${this.auth.currentUser.uid}`)
+      .update({
+        friends: [...this.currentUser.friends, searchedUser.uid],
+      });
+
+    await this.db
+      .collection('users')
+      .doc(`${searchedUser.uid}`)
+      .update({
+        friends: [...searchedUser.friends, this.auth.currentUser.uid],
+      });
+  }
+
   async getUser(uid) {
     const user = await this.db.collection('users').doc(`${uid}`).get();
     return user.data();
