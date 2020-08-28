@@ -1,10 +1,13 @@
 import React from 'react';
 import firebase from './../../firebase/firebase';
+import { setSearchedUser } from './../../redux/actions';
 import { FiSmile } from 'react-icons/fi';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import Moment from 'react-moment';
 import { useTranslation } from 'react-i18next';
 const RightSidebar = () => {
+  const dispatch = useDispatch();
+
   const searchedUser = useSelector((state) => state.searchedUser);
 
   const { t } = useTranslation();
@@ -32,9 +35,12 @@ const RightSidebar = () => {
             {searchedUser.friends.length === 1 ? 'friend' : 'friends'}
           </div>
           <button
-            onClick={(e) => {
+            onClick={async (e) => {
               e.preventDefault();
-              firebase.addFriend(searchedUser);
+              await firebase.addFriend(searchedUser);
+              await firebase.getUser(searchedUser.uid).then((doc) => {
+                dispatch(setSearchedUser(doc));
+              });
             }}
             className="text-orangeP border text-center lg:border-orangeP border-darkP lg:bg-transparent mt-10 bg-darkP h-8 border-solid rounded w-32 text-sm"
           >
