@@ -1,12 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { FiSmile } from 'react-icons/fi';
 import { useSelector, useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import { setCurrentUser } from '../../../redux/actions';
 import firebase from '../../../firebase/firebase';
 import Moment from 'react-moment';
 import { useTranslation } from 'react-i18next';
+
 const RightSidebar = () => {
   const dispatch = useDispatch();
+
+  let history = useHistory();
+
   const [imageAsUrl, setImageAsUrl] = useState(null);
   const currentUser = useSelector((state) => state.currentUser);
 
@@ -35,7 +40,7 @@ const RightSidebar = () => {
   }, [imageAsUrl]);
   return (
     currentUser && (
-      <div className="lg:w-1/5 order-1 lg:order-2 w-11/12 md:w-3/5 lg:h-full lg:mt-0 mt-10 mb-5 lg:mb-0 lg:p-0 p-10 lg:bg-darkP bg-white flex flex-col justify-center lg:text-beige text-darkP lg:rounded-none rounded">
+      <div className="xl:w-1/5 lg:w-1/4 order-1 lg:order-2 w-11/12 md:w-3/5 lg:h-full lg:mt-0 mt-10 mb-5 lg:mb-0 lg:p-0 p-10 lg:bg-darkP bg-white flex flex-col justify-center lg:text-beige text-darkP lg:rounded-none rounded">
         <div className="w-full h-auto self-center justify-evenly flex flex-col items-center">
           <div className="flex flex-col justify-center items-center">
             <img
@@ -51,7 +56,13 @@ const RightSidebar = () => {
               <Moment fromNow>{currentUser.dateJoined.toDate()}</Moment>
             </p>
           </div>
-          <div className="border lg:border-beige border-darkP border-solid rounded-full py-2 mt-10 w-32 text-sm flex items-center h-10 justify-center lg:font-normal font-medium">
+          <div
+            onClick={(e) => {
+              e.preventDefault();
+              history.push('/profile/friends');
+            }}
+            className="border lg:border-beige border-darkP border-solid rounded-full py-2 mt-10 w-32 text-sm flex items-center h-10 justify-center lg:font-normal font-medium cursor-pointer"
+          >
             <FiSmile className="mr-3 text-xl" />({currentUser.friends.length}){' '}
             {currentUser.friends.length === 1 ? 'friend' : 'friends'}
           </div>

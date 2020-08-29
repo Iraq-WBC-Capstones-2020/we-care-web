@@ -102,7 +102,7 @@ const ProfileSidebar = () => {
               }}
             >
               <BsPerson className="lg:ml-8 md:mr-4 text-lg" />
-              <p className="hidden md:block">{t('Profile')}</p>
+              <p className="hidden md:block">{t('About')}</p>
             </Link>
           </li>
         </ul>

@@ -1,0 +1,10 @@
+.friends-list-container {
+  height: auto;
+}
+
+@media only screen and (min-width: 1024px) {
+  .friends-list-container {
+    height: 500px;
+    overflow-y: auto;
+  }
+}

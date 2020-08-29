@@ -47,7 +47,7 @@ const ProfilePage = () => {
           <Route exact path="/profile/your-posts">
             <ProfileYourPosts />
           </Route>
-          <Route exact path="/profile">
+          <Route path="/profile">
             <Profile />
           </Route>
         </Switch>

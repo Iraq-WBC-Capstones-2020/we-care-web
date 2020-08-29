@@ -12,7 +12,7 @@ const AddJournal = () => {
 
   return (
     <div className="w-full overflow-y-auto h-full flex flex-col justify-center items-center">
-      <div className="overflow-y-auto w-11/12 md:w-9/12 bg-darkBeige h-full lg:w-1/2 rounded-md text-darkP flex flex-col justify-start items-center p-10 my-10">
+      <div className="overflow-y-auto w-11/12 md:w-9/12 bg-darkBeige h-full lg:w-1/2 rounded-md text-darkP flex flex-col justify-start items-center md:p-10 p-5 my-10">
         <h2 className="text-3xl text-darkP">Write A Journal</h2>
         <div className="flex flex-col justify-center items-center h-full w-full">
           <div className="flex items-center justify-center w-11/12 my-12">

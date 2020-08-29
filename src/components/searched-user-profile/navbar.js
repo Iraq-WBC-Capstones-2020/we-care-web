@@ -1,21 +1,13 @@
 import React, { useState } from 'react';
 import { FiMenu } from 'react-icons/fi';
-import logo from './imgs/Logo.svg';
-import { Link, useHistory } from 'react-router-dom';
-import firebase from '../../firebase/firebase';
-import { useSelector, useDispatch } from 'react-redux';
-import { setCurrentUser } from './../../redux/actions';
+import logo from './../profile-page/imgs/Logo.svg';
+import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import SearchUsers from './search-box';
+import SearchUsers from './../profile-page/search-box';
 
 export default function Navbar() {
   const [navbarOpen, setNavbarOpen] = useState(false);
 
-  const dispatch = useDispatch();
-
-  const currentUser = useSelector((state) => state.currentUser);
-
-  let history = useHistory();
   const { t } = useTranslation();
   return (
     <>
@@ -25,9 +17,7 @@ export default function Navbar() {
             <Link to="/">
               <img
                 src={logo}
-                className={`w-16 md:w-20 lg:ml-0 md:ml-12 ${
-                  currentUser ? 'ml-8' : ''
-                } cursor-pointer`}
+                className="w-16 md:w-20 lg:ml-0 md:ml-12 ml-8 cursor-pointer"
                 alt="We Care logo"
               />
             </Link>
@@ -60,30 +50,15 @@ export default function Navbar() {
                 <Link to="/survey">{t('Connect Now')}</Link>
               </li>
               <li className="lg:mb-0 lg:py-0 py-3 hover:text-orangeP">
-                <Link
-                  to="/login"
-                  onClick={() => {
-                    logout();
-                  }}
-                >
-                  {t('Sign Out')}
-                </Link>
+                <Link to="/profile">Profile</Link>
               </li>
             </ul>
           </div>
-          {currentUser && (
-            <div className="lg:flex justify-end items-center hidden">
-              <SearchUsers />
-            </div>
-          )}
+          <div className="lg:flex justify-end items-center hidden">
+            <SearchUsers />
+          </div>
         </div>
       </nav>
     </>
   );
-
-  async function logout() {
-    await firebase.logout();
-    history.push('/login');
-    dispatch(setCurrentUser(null));
-  }
 }

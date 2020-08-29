@@ -21,7 +21,8 @@ const SearchUsers = () => {
           type="text"
           autoComplete="off"
           placeholder="Search Users"
-          className="px-4 text-darkP md:text-base text-sm rounded-md"
+          style={{ paddingTop: '0.2rem', paddingBottom: '0.2rem' }}
+          className="px-3 text-darkP text-sm rounded focus:outline-none"
           value={searchValue}
           onChange={(e) => setSearchValue(e.target.value)}
           onKeyDown={(key) => {
@@ -32,7 +33,7 @@ const SearchUsers = () => {
           }}
         />
         <div
-          className={`w-full bg-white absolute left-0 z-40 rounded-md mt-1 text-darkP ${
+          className={`w-full bg-white absolute left-0 z-40 rounded mt-1 text-darkP ${
             openSearchResults ? 'block' : 'hidden'
           }`}
         >
@@ -52,27 +53,27 @@ const SearchUsers = () => {
                     e.preventDefault();
                     await firebase.getUser(user.uid).then((doc) => {
                       dispatch(setSearchedUser(doc));
-                      history.push(`/users/${doc.username}`);
+                      history.push(`/users/${doc.username}/about`);
                     });
                   }}
                   key={index}
-                  className="shadow-md rounded-md w-full flex justify-start items-center md:text-base text-sm py-3 cursor-pointer"
+                  className="rounded w-full flex justify-start items-center md:text-base text-sm py-3 cursor-pointer"
                 >
                   <img
-                    className="rounded-full h-10 w-10 object-cover ml-5"
+                    className="rounded h-10 w-10 object-cover ml-5"
                     src={user.profilePicture}
                     alt="profile"
                   ></img>
-                  <p className="ml-3">{user.username}</p>
+                  <p className="ml-3 text-sm">{user.username}</p>
                 </div>
               ))
             ) : (
-              <div className="rounded-md w-full flex justify-start items-center text-darkP text-sm py-4 px-2 text-left">
+              <div className="rounded w-full flex justify-start items-center text-darkP text-sm py-4 px-2 text-left">
                 No users found with that username.
               </div>
             )
           ) : (
-            <div className="rounded-md w-full flex justify-start items-center text-darkP text-sm py-4 px-2 text-left">
+            <div className="rounded w-full flex justify-start items-center text-darkP text-sm py-4 px-2 text-left">
               Please wait...
             </div>
           )}
@@ -84,7 +85,8 @@ const SearchUsers = () => {
           searchUser();
           setOpenSearchResults(true);
         }}
-        className="px-1 ml-1 text-darkP hover:bg-beige text-center bg-orangeP rounded md:text-base text-sm"
+        style={{ paddingTop: '0.2rem', paddingBottom: '0.2rem' }}
+        className="px-3 ml-1 text-darkP hover:bg-beige text-center bg-orangeP rounded text-sm"
       >
         Search
       </button>

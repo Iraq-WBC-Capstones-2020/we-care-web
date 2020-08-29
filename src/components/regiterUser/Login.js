@@ -4,7 +4,6 @@ import { Link, useHistory } from 'react-router-dom';
 import friends from './imgs/friends.svg';
 import firebase from '../../firebase/firebase';
 
-
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');

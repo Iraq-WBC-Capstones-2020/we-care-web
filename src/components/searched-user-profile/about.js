@@ -9,7 +9,7 @@ const ProfileAbout = () => {
 
   return (
     searchedUser && (
-      <div className="bg-white w-11/12 md:w-3/5 lg:w-1/2 xl:w-5/12 rounded-md text-darkP flex flex-col p-8 text-center">
+      <div className="bg-white w-11/12 md:w-3/5 xl:w-5/12 rounded-md text-darkP flex flex-col p-8 text-center">
         <div>
           <h1 className="font-semibold text-2xl">{t('about')}</h1>
           <div className="my-4">

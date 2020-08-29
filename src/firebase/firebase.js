@@ -30,6 +30,68 @@ class Firebase {
     this.unsubscribe = null;
   }
 
+  async removeFriend(user, friend) {
+    let currentUserfriends = [...user.friends];
+
+    for (let i = 0; i < currentUserfriends.length; i++) {
+      if (currentUserfriends[i] === friend.uid) {
+        currentUserfriends.splice(i, 1);
+      }
+    }
+
+    await this.db
+      .collection('users')
+      .doc(`${this.auth.currentUser.uid}`)
+      .update({
+        friends: [...currentUserfriends],
+      });
+
+    let otherUserFriends = [...friend.friends];
+
+    for (let i = 0; i < otherUserFriends.length; i++) {
+      if (otherUserFriends[i] === this.auth.currentUser.uid) {
+        otherUserFriends.splice(i, 1);
+      }
+    }
+
+    await this.db
+      .collection('users')
+      .doc(`${friend.uid}`)
+      .update({
+        friends: [...otherUserFriends],
+      });
+  }
+
+  async getAllFriends(friendsArr) {
+    const friends = [];
+    for (let uid of friendsArr) {
+      await this.db
+        .collection('users')
+        .doc(`${uid}`)
+        .get()
+        .then((user) => friends.push(user.data()));
+    }
+    return friends;
+  }
+
+  async addFriend(searchedUser) {
+    await this.getUser(this.auth.currentUser.uid).then(async (doc) => {
+      await this.db
+        .collection('users')
+        .doc(`${this.auth.currentUser.uid}`)
+        .update({
+          friends: [...doc.friends, searchedUser.uid],
+        });
+    });
+
+    await this.db
+      .collection('users')
+      .doc(`${searchedUser.uid}`)
+      .update({
+        friends: [...searchedUser.friends, this.auth.currentUser.uid],
+      });
+  }
+
   async getUser(uid) {
     const user = await this.db.collection('users').doc(`${uid}`).get();
     return user.data();
@@ -317,10 +379,10 @@ class Firebase {
       });
   }
 
-  getUserPosts(setPosts) {
-    this.db
+  async getUserPosts(setPosts, uid) {
+    await this.db
       .collection('posts')
-      .where('authorId', '==', this.getCurrentUid())
+      .where('authorId', '==', uid ? uid : this.getCurrentUid())
       .orderBy('timestamp', 'desc')
       .onSnapshot((snapshot) => {
         const posts = snapshot.docs.map((post) => {
