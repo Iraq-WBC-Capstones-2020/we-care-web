@@ -73,12 +73,14 @@ class Firebase {
   }
 
   async addFriend(searchedUser) {
-    await this.db
-      .collection('users')
-      .doc(`${this.auth.currentUser.uid}`)
-      .update({
-        friends: [...this.currentUser.friends, searchedUser.uid],
-      });
+    await this.getUser(this.auth.currentUser.uid).then(async (doc) => {
+      await this.db
+        .collection('users')
+        .doc(`${this.auth.currentUser.uid}`)
+        .update({
+          friends: [...doc.friends, searchedUser.uid],
+        });
+    });
 
     await this.db
       .collection('users')
