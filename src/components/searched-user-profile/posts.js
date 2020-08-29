@@ -4,7 +4,6 @@ import tree from './../profile-page/imgs/tree.svg';
 import firebase from '../../firebase/firebase';
 import { putPostsIntoGrid } from './../profile-page/util';
 import { useTranslation } from 'react-i18next';
-import Loader from './../loader/loader';
 
 const ProfilePosts = () => {
   const [postsList, setPosts] = useState(null);
@@ -13,6 +12,7 @@ const ProfilePosts = () => {
 
   useEffect(() => {
     getPosts();
+    // eslint-disable-next-line
   }, []);
 
   function getPosts() {
