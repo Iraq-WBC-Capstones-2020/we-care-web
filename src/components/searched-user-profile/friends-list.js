@@ -34,7 +34,7 @@ const ProfileFriends = ({ user, profilePage }) => {
             {friends.map((friend, index) => (
               <li
                 key={index}
-                className="w-full flex justify-start items-center py-3 my-3 cursor-pointer border border-beige rounded-md hover:border-orangeP"
+                className="w-full flex justify-between items-center py-3 my-3 cursor-pointer border border-beige rounded hover:border-orangeP"
                 onClick={async (e) => {
                   e.preventDefault();
                   await firebase.getUser(friend.uid).then((doc) => {
@@ -43,12 +43,25 @@ const ProfileFriends = ({ user, profilePage }) => {
                   });
                 }}
               >
-                <img
-                  className="rounded-full h-12 w-12 object-cover ml-6"
-                  src={friend.profilePicture}
-                  alt="profile"
-                ></img>
-                <p className="ml-6">{friend.username}</p>
+                <div className="ml-6 flex items-center justify-start">
+                  <img
+                    className="rounded-full h-12 w-12 object-cover"
+                    src={friend.profilePicture}
+                    alt="profile"
+                  ></img>
+                  <p className="ml-6">{friend.username}</p>
+                </div>
+
+                {profilePage ? (
+                  <button
+                    style={{ paddingTop: '0.2rem', paddingBottom: '0.2rem' }}
+                    className="sm:px-3 px-2 mr-5 text-darkP hover:bg-beige text-center bg-orangeP rounded sm:text-sm text-xs"
+                  >
+                    Unfriend
+                  </button>
+                ) : (
+                  ''
+                )}
               </li>
             ))}
           </ul>
