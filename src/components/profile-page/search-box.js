@@ -53,7 +53,7 @@ const SearchUsers = () => {
                     e.preventDefault();
                     await firebase.getUser(user.uid).then((doc) => {
                       dispatch(setSearchedUser(doc));
-                      history.push(`/users/${doc.username}`);
+                      history.push(`/users/${doc.username}/about`);
                     });
                   }}
                   key={index}

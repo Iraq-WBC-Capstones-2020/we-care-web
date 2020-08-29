@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 import { BsChatSquare } from 'react-icons/bs';
-import { BsPencil } from 'react-icons/bs';
-import { AiOutlineMail } from 'react-icons/ai';
-import { BsChat } from 'react-icons/bs';
+import { BsPeopleFill } from 'react-icons/bs';
 import { BsPerson } from 'react-icons/bs';
 import dashtext from './../profile-page/imgs/dash.svg';
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
 const ProfileSidebar = () => {
-  let location = useLocation();
-  const [section, setSection] = useState(`${location.pathname.slice(1)}`);
+  const searchedUser = useSelector((state) => state.searchedUser);
+
+  const [section, setSection] = useState('about');
   const sectionIndicator =
     'border-b-4 border-l-0 lg:border-l-4 lg:border-b-0 border-orangeP text-orangeP';
 
@@ -27,82 +27,52 @@ const ProfileSidebar = () => {
         <ul className="flex lg:flex-col flex-row lg:justify-start justify-evenly text-sm lg:mt-8">
           <li
             className={`py-4 md:px-0 px-5 ${
-              section === 'feed' ? sectionIndicator : ''
+              section === 'friends' ? sectionIndicator : ''
             }`}
           >
             <Link
-              to="/profile/feed"
+              to={`/users/${searchedUser.username}/friends`}
               className="flex lg:justify-start justify-center items-center"
               onClick={() => {
-                setSection('feed');
+                setSection('friends');
+              }}
+            >
+              <BsPeopleFill className="lg:ml-8 md:mr-4" />
+              <p className="hidden md:block">Friends</p>
+            </Link>
+          </li>
+
+          <li
+            className={`py-4 md:px-0 px-5 ${
+              section === 'posts' ? sectionIndicator : ''
+            }`}
+          >
+            <Link
+              to={`/users/${searchedUser.username}/posts`}
+              className="flex lg:justify-start justify-center items-center"
+              onClick={() => {
+                setSection('posts');
               }}
             >
               <BsChatSquare className="lg:ml-8 md:mr-4" />
-              <p className="hidden md:block">{t('feed')}</p>
+              <p className="hidden md:block">Posts</p>
             </Link>
           </li>
+
           <li
             className={`py-4 md:px-0 px-5 ${
-              section === 'journal' ? sectionIndicator : ''
+              section === 'about' || section === '' ? sectionIndicator : ''
             }`}
           >
             <Link
-              to="/profile/journals"
+              to={`/users/${searchedUser.username}/about`}
               className="flex lg:justify-start justify-center items-center"
               onClick={() => {
-                setSection('journal');
-              }}
-            >
-              <BsPencil className="lg:ml-8 md:mr-4" />
-              <p className="hidden md:block">{t('journals')}</p>
-            </Link>
-          </li>
-          <li
-            className={`py-4 md:px-0 px-5 ${
-              section === 'messages' ? sectionIndicator : ''
-            }`}
-          >
-            <Link
-              to="/profile/messages"
-              className="flex lg:justify-start justify-center items-center"
-              onClick={() => {
-                setSection('messages');
-              }}
-            >
-              <AiOutlineMail className="lg:ml-8 md:mr-4" />
-              <p className="hidden md:block">{t('Messages')}</p>
-            </Link>
-          </li>
-          <li
-            className={`py-4 md:px-0 px-5 ${
-              section === 'your-posts' ? sectionIndicator : ''
-            }`}
-          >
-            <Link
-              to="/profile/your-posts"
-              className="flex lg:justify-start justify-center items-center"
-              onClick={() => {
-                setSection('your-posts');
-              }}
-            >
-              <BsChat className="lg:ml-8 md:mr-4" />
-              <p className="hidden md:block">{t('Your Posts')}</p>
-            </Link>
-          </li>
-          <li
-            className={`py-4 md:px-0 px-5 ${
-              section === 'profile' || section === '' ? sectionIndicator : ''
-            }`}
-          >
-            <Link
-              to="/profile"
-              className="flex lg:justify-start justify-center items-center"
-              onClick={() => {
-                setSection('profile');
+                setSection('about');
               }}
             >
               <BsPerson className="lg:ml-8 md:mr-4 text-lg" />
-              <p className="hidden md:block">{t('Profile')}</p>
+              <p className="hidden md:block">{t('About')}</p>
             </Link>
           </li>
         </ul>
