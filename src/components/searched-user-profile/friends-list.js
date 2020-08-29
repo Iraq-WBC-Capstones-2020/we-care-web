@@ -11,7 +11,7 @@ const ProfileFriends = () => {
       firebase
         .getAllFriends(searchedUser.friends)
         .then((data) => setFriends(data));
-  }, []);
+  }, [searchedUser]);
 
   return (
     searchedUser &&
@@ -22,9 +22,20 @@ const ProfileFriends = () => {
             {searchedUser.username}&apos;s friends
           </h1>
 
-          <ul className="mt-4 w-full flex-col justify-start items-center">
+          <ul className="mt-10 w-full flex-col justify-start items-center">
             {friends.map((friend, index) => (
-              <li key={index}>{friend.uid}</li>
+              <li
+                key={index}
+                style={{ borderBottom: 'solid 1px #eedad1' }}
+                className="w-full flex justify-start items-center py-3"
+              >
+                <img
+                  className="rounded-full h-12 w-12 object-cover ml-6"
+                  src={friend.profilePicture}
+                  alt="profile"
+                ></img>
+                <p className="ml-6">{friend.username}</p>
+              </li>
             ))}
           </ul>
         </div>
