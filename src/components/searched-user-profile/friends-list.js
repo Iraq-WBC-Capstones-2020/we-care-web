@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { setSearchedUser } from './../../redux/actions';
+import { setSearchedUser, setCurrentUser } from './../../redux/actions';
 import firebase from './../../firebase/firebase';
 import friendship from './img/friendship.svg';
 import './friends-list.css';
@@ -64,7 +64,9 @@ const ProfileFriends = ({ user, profilePage }) => {
                       let currentUserfriends = [...user.friends];
                       await firebase.removeFriend(currentUserfriends, friend);
 
-                      // dispatch(setSearchedUser(doc));
+                      await firebase.getUser(user.uid).then((doc) => {
+                        dispatch(setCurrentUser(doc));
+                      });
                     }}
                     style={{ paddingTop: '0.2rem', paddingBottom: '0.2rem' }}
                     className="sm:px-3 px-2 mr-0 sm:mr-4 sm:my-0 my-2 sm:ml-0 ml-6 text-darkP hover:bg-beige text-center bg-orangeP rounded sm:text-sm text-xs"
