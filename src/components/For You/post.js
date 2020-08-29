@@ -37,7 +37,7 @@ const Post = ({ post }) => {
           e.preventDefault();
           await firebase.getUser(post.authorId).then((doc) => {
             dispatch(setSearchedUser(doc));
-            history.push(`/users/${doc.username}`);
+            history.push(`/users/${doc.username}/about`);
           });
         }}
         className="flex cursor-pointer"
