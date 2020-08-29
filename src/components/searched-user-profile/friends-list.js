@@ -44,7 +44,7 @@ const ProfileFriends = () => {
       <h2 className="mb-10 font-light lg:text-4xl md:text-3xl text-4xl">
         No friends yet.
       </h2>
-      <img className="w-4/5" src={friendship}></img>
+      <img className="w-4/5" src={friendship} alt="no friends"></img>
     </div>
   );
 };
