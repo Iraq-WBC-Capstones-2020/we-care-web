@@ -6,7 +6,7 @@ import firebase from './../../firebase/firebase';
 import friendship from './img/friendship.svg';
 import './friends-list.css';
 
-const ProfileFriends = ({ user }) => {
+const ProfileFriends = ({ user, profilePage }) => {
   const [friends, setFriends] = useState(null);
 
   const dispatch = useDispatch();
@@ -22,10 +22,12 @@ const ProfileFriends = ({ user }) => {
     user &&
     friends &&
     (friends.length !== 0 ? (
-      <div className="bg-white w-11/12 md:w-3/5 lg:w-1/2 xl:w-5/12 rounded-md text-darkP flex flex-col p-8 text-center friends-list-container">
+      <div
+        className={`bg-white w-11/12 md:w-3/5 lg:w-1/2 xl:w-5/12 rounded-md text-darkP flex flex-col p-8 text-center friends-list-container`}
+      >
         <div>
           <h1 className="my-5 font-light text-3xl">
-            {user.username}&apos;s friends
+            {profilePage ? 'Friends' : `${user.username}'s friends`}
           </h1>
 
           <ul className="mt-10 w-full flex-col justify-start items-center">
