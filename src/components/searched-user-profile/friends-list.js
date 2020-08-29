@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { setSearchedUser } from './../../redux/actions';
 import firebase from './../../firebase/firebase';
 import friendship from './img/friendship.svg';
 import './friends-list.css';
@@ -7,6 +9,10 @@ import './friends-list.css';
 const ProfileFriends = () => {
   const [friends, setFriends] = useState(null);
   const searchedUser = useSelector((state) => state.searchedUser);
+
+  const dispatch = useDispatch();
+
+  let history = useHistory();
 
   useEffect(() => {
     searchedUser &&
@@ -30,6 +36,13 @@ const ProfileFriends = () => {
               <li
                 key={index}
                 className="w-full flex justify-start items-center py-3 my-3 cursor-pointer border border-beige rounded-md hover:border-orangeP"
+                onClick={async (e) => {
+                  e.preventDefault();
+                  await firebase.getUser(friend.uid).then((doc) => {
+                    dispatch(setSearchedUser(doc));
+                    history.push(`/users/${doc.username}/about`);
+                  });
+                }}
               >
                 <img
                   className="rounded-full h-12 w-12 object-cover ml-6"
