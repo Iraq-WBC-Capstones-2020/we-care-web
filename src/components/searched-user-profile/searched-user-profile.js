@@ -33,7 +33,7 @@ const SearchedUserProfile = () => {
                 </Route>
 
                 <Route exact path={`/users/${searchedUser.username}/friends`}>
-                  <ProfileFriends />
+                  <ProfileFriends user={searchedUser} />
                 </Route>
 
                 <Route exact path={`/users/${searchedUser.username}/posts`}>
