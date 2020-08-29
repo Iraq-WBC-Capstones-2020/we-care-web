@@ -26,8 +26,7 @@ const ProfileFriends = () => {
             {friends.map((friend, index) => (
               <li
                 key={index}
-                style={{ borderBottom: 'solid 1px #eedad1' }}
-                className="w-full flex justify-start items-center py-3"
+                className="w-full flex justify-start items-center py-3 my-3 cursor-pointer border border-beige rounded-md hover:border-orangeP"
               >
                 <img
                   className="rounded-full h-12 w-12 object-cover ml-6"
