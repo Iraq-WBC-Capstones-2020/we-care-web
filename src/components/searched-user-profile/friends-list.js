@@ -34,16 +34,18 @@ const ProfileFriends = ({ user, profilePage }) => {
             {friends.map((friend, index) => (
               <li
                 key={index}
-                className="w-full flex sm:flex-row flex-col justify-between sm:items-center items-start py-3 my-3 cursor-pointer border border-beige rounded hover:border-orangeP"
-                onClick={async (e) => {
-                  e.preventDefault();
-                  await firebase.getUser(friend.uid).then((doc) => {
-                    dispatch(setSearchedUser(doc));
-                    history.push(`/users/${doc.username}/about`);
-                  });
-                }}
+                className="w-full flex sm:flex-row flex-col justify-between sm:items-center items-start py-3 my-3 border border-beige rounded hover:border-orangeP"
               >
-                <div className="ml-6 sm:my-0 my-2 flex items-center justify-start">
+                <div
+                  onClick={async (e) => {
+                    e.preventDefault();
+                    await firebase.getUser(friend.uid).then((doc) => {
+                      dispatch(setSearchedUser(doc));
+                      history.push(`/users/${doc.username}/about`);
+                    });
+                  }}
+                  className="ml-6 sm:my-0 my-2 flex items-center justify-start cursor-pointer"
+                >
                   <img
                     className="rounded h-12 w-12 object-cover"
                     src={friend.profilePicture}
@@ -56,6 +58,14 @@ const ProfileFriends = ({ user, profilePage }) => {
 
                 {profilePage ? (
                   <button
+                    onClick={async (e) => {
+                      e.preventDefault();
+
+                      let currentUserfriends = [...user.friends];
+                      await firebase.removeFriend(currentUserfriends, friend);
+
+                      // dispatch(setSearchedUser(doc));
+                    }}
                     style={{ paddingTop: '0.2rem', paddingBottom: '0.2rem' }}
                     className="sm:px-3 px-2 mr-0 sm:mr-4 sm:my-0 my-2 sm:ml-0 ml-6 text-darkP hover:bg-beige text-center bg-orangeP rounded sm:text-sm text-xs"
                   >

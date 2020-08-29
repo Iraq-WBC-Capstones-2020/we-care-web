@@ -30,6 +30,36 @@ class Firebase {
     this.unsubscribe = null;
   }
 
+  async removeFriend(currentUserfriends, friend) {
+    for (let i = 0; i < currentUserfriends.length; i++) {
+      if (currentUserfriends[i] === friend.uid) {
+        currentUserfriends.splice(i, 1);
+      }
+    }
+
+    await this.db
+      .collection('users')
+      .doc(`${this.auth.currentUser.uid}`)
+      .update({
+        friends: [...currentUserfriends],
+      });
+
+    let otherUserFriends = [...friend.friends];
+
+    for (let i = 0; i < otherUserFriends.length; i++) {
+      if (otherUserFriends[i] === this.auth.currentUser.uid) {
+        otherUserFriends.splice(i, 1);
+      }
+    }
+
+    await this.db
+      .collection('users')
+      .doc(`${friend.uid}`)
+      .update({
+        friends: [...otherUserFriends],
+      });
+  }
+
   async getAllFriends(friendsArr) {
     const friends = [];
     for (let uid of friendsArr) {
