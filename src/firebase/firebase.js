@@ -30,7 +30,9 @@ class Firebase {
     this.unsubscribe = null;
   }
 
-  async removeFriend(currentUserfriends, friend) {
+  async removeFriend(user, friend) {
+    let currentUserfriends = [...user.friends];
+
     for (let i = 0; i < currentUserfriends.length; i++) {
       if (currentUserfriends[i] === friend.uid) {
         currentUserfriends.splice(i, 1);

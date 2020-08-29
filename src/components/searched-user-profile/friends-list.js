@@ -61,8 +61,7 @@ const ProfileFriends = ({ user, profilePage }) => {
                     onClick={async (e) => {
                       e.preventDefault();
 
-                      let currentUserfriends = [...user.friends];
-                      await firebase.removeFriend(currentUserfriends, friend);
+                      await firebase.removeFriend(user, friend);
 
                       await firebase.getUser(user.uid).then((doc) => {
                         dispatch(setCurrentUser(doc));
