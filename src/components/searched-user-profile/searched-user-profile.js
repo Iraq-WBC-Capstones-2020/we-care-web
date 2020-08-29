@@ -7,6 +7,7 @@ import ProfileAbout from './about';
 import ProfilePosts from './posts';
 import RightSidebar from './right-sidebar';
 import ProfileSidebar from './sidebar';
+import ProfileFriends from './friends-list';
 
 const SearchedUserProfile = () => {
   const searchedUser = useSelector((state) => state.searchedUser);
@@ -32,7 +33,7 @@ const SearchedUserProfile = () => {
                 </Route>
 
                 <Route exact path={`/users/${searchedUser.username}/friends`}>
-                  {/* // */}
+                  <ProfileFriends />
                 </Route>
 
                 <Route exact path={`/users/${searchedUser.username}/posts`}>
