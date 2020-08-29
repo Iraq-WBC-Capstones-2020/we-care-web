@@ -23,7 +23,7 @@ const ProfileFriends = ({ user, profilePage }) => {
     friends &&
     (friends.length !== 0 ? (
       <div
-        className={`bg-white w-11/12 md:w-3/5 lg:w-1/2 xl:w-5/12 rounded-md text-darkP flex flex-col p-8 text-center friends-list-container`}
+        className={`bg-white w-11/12 md:w-3/5 xl:w-5/12 rounded-md text-darkP flex flex-col p-8 text-center friends-list-container`}
       >
         <div>
           <h1 className="my-5 font-light text-3xl">
@@ -34,7 +34,7 @@ const ProfileFriends = ({ user, profilePage }) => {
             {friends.map((friend, index) => (
               <li
                 key={index}
-                className="w-full flex justify-between items-center py-3 my-3 cursor-pointer border border-beige rounded hover:border-orangeP"
+                className="w-full flex sm:flex-row flex-col justify-between sm:items-center items-start py-3 my-3 cursor-pointer border border-beige rounded hover:border-orangeP"
                 onClick={async (e) => {
                   e.preventDefault();
                   await firebase.getUser(friend.uid).then((doc) => {
@@ -43,19 +43,21 @@ const ProfileFriends = ({ user, profilePage }) => {
                   });
                 }}
               >
-                <div className="ml-6 flex items-center justify-start">
+                <div className="ml-6 sm:my-0 my-2 flex items-center justify-start">
                   <img
-                    className="rounded-full h-12 w-12 object-cover"
+                    className="rounded h-12 w-12 object-cover"
                     src={friend.profilePicture}
                     alt="profile"
                   ></img>
-                  <p className="ml-6">{friend.username}</p>
+                  <p className="sm:ml-6 ml-4 sm:text-base text-sm">
+                    {friend.username}
+                  </p>
                 </div>
 
                 {profilePage ? (
                   <button
                     style={{ paddingTop: '0.2rem', paddingBottom: '0.2rem' }}
-                    className="sm:px-3 px-2 mr-5 text-darkP hover:bg-beige text-center bg-orangeP rounded sm:text-sm text-xs"
+                    className="sm:px-3 px-2 mr-0 sm:mr-4 sm:my-0 my-2 sm:ml-0 ml-6 text-darkP hover:bg-beige text-center bg-orangeP rounded sm:text-sm text-xs"
                   >
                     Unfriend
                   </button>
