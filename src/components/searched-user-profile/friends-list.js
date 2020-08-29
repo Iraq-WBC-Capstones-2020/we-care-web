@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import firebase from './../../firebase/firebase';
+import './friends-list.css';
 
 const ProfileFriends = () => {
   const [friends, setFriends] = useState(null);
@@ -16,7 +17,7 @@ const ProfileFriends = () => {
   return (
     searchedUser &&
     friends && (
-      <div className="bg-white w-11/12 md:w-3/5 lg:w-1/2 xl:w-5/12 rounded-md text-darkP flex flex-col p-8 text-center">
+      <div className="bg-white w-11/12 md:w-3/5 lg:w-1/2 xl:w-5/12 rounded-md text-darkP flex flex-col p-8 text-center friends-list-container">
         <div>
           <h1 className="font-semibold text-2xl">
             {searchedUser.username}&apos;s friends
