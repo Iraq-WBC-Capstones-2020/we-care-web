@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom';
 import { Switch, Route } from 'react-router-dom';
 import Navbar from './navbar';
 import ProfileAbout from './about';
+import ProfilePosts from './posts';
 import RightSidebar from './right-sidebar';
 import ProfileSidebar from './sidebar';
 
@@ -28,6 +29,14 @@ const SearchedUserProfile = () => {
               <Switch>
                 <Route exact path={`/users/${searchedUser.username}/about`}>
                   <ProfileAbout />
+                </Route>
+
+                <Route exact path={`/users/${searchedUser.username}/friends`}>
+                  {/* // */}
+                </Route>
+
+                <Route exact path={`/users/${searchedUser.username}/posts`}>
+                  <ProfilePosts />
                 </Route>
               </Switch>
             </div>

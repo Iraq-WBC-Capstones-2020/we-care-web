@@ -333,10 +333,10 @@ class Firebase {
       });
   }
 
-  getUserPosts(setPosts) {
-    this.db
+  async getUserPosts(setPosts, uid) {
+    await this.db
       .collection('posts')
-      .where('authorId', '==', this.getCurrentUid())
+      .where('authorId', '==', uid ? uid : this.getCurrentUid())
       .orderBy('timestamp', 'desc')
       .onSnapshot((snapshot) => {
         const posts = snapshot.docs.map((post) => {
