@@ -3,7 +3,6 @@ import { useSelector } from 'react-redux';
 import tree from './../profile-page/imgs/tree.svg';
 import firebase from '../../firebase/firebase';
 import { putPostsIntoGrid } from './../profile-page/util';
-import { useTranslation } from 'react-i18next';
 
 const ProfilePosts = () => {
   const [postsList, setPosts] = useState(null);
@@ -23,7 +22,6 @@ const ProfilePosts = () => {
       alert('not working');
     }
   }
-  const { t } = useTranslation();
   return (
     <div className="w-full h-full flex flex-col justify-center items-center text-darkP overflow-y-auto overflow-x-hidden">
       {postsList ? (
@@ -35,8 +33,14 @@ const ProfilePosts = () => {
           </>
         ) : (
           <>
-            <h1 className="text-5xl font-light mb-12">{t('No posts yet')}</h1>
-            <img src={tree} alt="tree illustration" className="w-1/4" />
+            <h1 className="xl:text-5xl sm:text-4xl text-3xl font-light mb-12 text-center">
+              {searchedUser.username} hasn&apos;t posted yet.
+            </h1>
+            <img
+              src={tree}
+              alt="tree illustration"
+              className="xl:w-1/4 lg:w-2/4 md:w-2/5 sm:w-2/4 w-2/3"
+            />
           </>
         )
       ) : (
