@@ -33,7 +33,7 @@ const ProfilePosts = () => {
           </>
         ) : (
           <>
-            <h1 className="xl:text-5xl sm:text-4xl text-3xl font-light mb-12 text-center">
+            <h1 className="sm:text-4xl text-3xl font-light mb-12 text-center">
               {searchedUser.username} hasn&apos;t posted yet.
             </h1>
             <img
