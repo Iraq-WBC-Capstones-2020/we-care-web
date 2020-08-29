@@ -30,6 +30,18 @@ class Firebase {
     this.unsubscribe = null;
   }
 
+  async getAllFriends(friendsArr) {
+    const friends = [];
+    for (let uid of friendsArr) {
+      await this.db
+        .collection('users')
+        .doc(`${uid}`)
+        .get()
+        .then((user) => friends.push(user.data()));
+    }
+    return friends;
+  }
+
   async addFriend(searchedUser) {
     await this.db
       .collection('users')
