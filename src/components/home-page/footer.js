@@ -1,18 +1,24 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import Facebook from './image/facebook.png';
 import Twitter from './image/twitter.png';
 import Instagram from './image/instagram.png';
 import Quotes from './image/quotes.svg';
 import Logo from './image/Logo.svg';
 import { useTranslation } from 'react-i18next';
+import firebase from '../../firebase/firebase';
 
-// import { useTranslation } from 'react-i18next';
 export default function Footer() {
-  // const { t } = useTranslation();
-  // function handleClick(lang) {
-  //   i18n.changeLanguage(lang);
-  // }
   const { t } = useTranslation();
+  const postInput = useRef('');
+
+  async function addFeedback(body) {
+    try {
+      await firebase.sendFeedback(body);
+    } catch {
+      alert('not working');
+    }
+  }
+
   return (
     <footer className="text-darkP bg-darkBeige">
       <div className="border-b border-darkP py-8">
@@ -36,13 +42,24 @@ export default function Footer() {
                   {t('Your Feedback')}
                 </h2>
                 <textarea
+                  ref={postInput}
                   className="w-40 sm:w-auto bg-beige rounded xl:mr-4 lg:mr-0 sm:mr-4 mr-2 border border-gray-400 focus:outline-none focus:border-darkP text-sm py-2 px-4 resize-none"
                   placeholder={t('Send Us Your Feedback')}
                   type="text"
                 ></textarea>
               </div>
               <div>
-                <button className="lg:mt-2 xl:mt-0 flex-shrink-0 text-darkP bg-orangeP py-2 px-6 rounded-lg font-medium ml-auto mr-2">
+                <button
+                  onClick={() => {
+                    if (postInput.current.value !== '') {
+                      addFeedback(postInput.current.value);
+                      postInput.current.value = '';
+                    } else {
+                      alert('the text is empty');
+                    }
+                  }}
+                  className="lg:mt-2 xl:mt-0 flex-shrink-0 text-darkP bg-orangeP py-2 px-6 rounded-lg font-medium ml-auto mr-2"
+                >
                   {t('Submit')}
                 </button>
               </div>
