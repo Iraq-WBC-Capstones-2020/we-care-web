@@ -68,7 +68,7 @@ const SignUp = () => {
                   </h2>
                   <form onSubmit={handleSubmit(onSubmit)}>
                     <input
-                      minLength="6"
+                      minLength="4"
                       name="username"
                       className="bg-white w-full text-darkP placeholder-darkP rounded border border-white focus:outline-none focus:border-darkP text-base px-4 py-2 "
                       placeholder="Username"
@@ -84,7 +84,7 @@ const SignUp = () => {
                         },
                       })}
                     />
-                    <p className="error-color">
+                    <p className="error-color text-xs">
                       {errors.username && errors.username.message}
                     </p>
 
@@ -111,7 +111,7 @@ const SignUp = () => {
                       className="bg-white w-full text-darkP placeholder-darkP rounded border border-white focus:outline-none focus:border-darkP text-base px-4 py-2  mt-4"
                       placeholder="Password"
                       type="password"
-                      minLength="8"
+                      minLength="6"
                       required
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
