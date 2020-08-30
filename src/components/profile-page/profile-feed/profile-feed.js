@@ -1,22 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import Post from './post';
 import WritePostTextarea from './post-textarea';
+import firebase from '../../../firebase/firebase';
 
 const ProfileFeed = () => {
+  const [posts, setPosts] = useState([]);
   useEffect(() => {
-    const textarea = document.getElementById('post-textarea');
-    textarea.scrollIntoView();
+    getPosts();
   }, []);
-  const [posts, setPosts] = useState([
-    {
-      body:
-        'Rich in mystery across the centuries decipherment finite but unbounded Rig Veda globular star cluster.',
-    },
-    {
-      body:
-        'Rich in mystery across the centuries decipherment finite but unbounded Rig Veda globular star cluster.',
-    },
-  ]);
+
+  async function getPosts() {
+    try {
+      await firebase.getFriendsPosts(setPosts);
+    } catch (err) {
+      console.log(err);
+      alert('not working');
+    }
+  }
 
   return (
     <div className="w-full h-full flex flex-col justify-between items-center overflow-y-auto">

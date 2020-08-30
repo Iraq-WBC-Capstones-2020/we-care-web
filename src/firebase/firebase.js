@@ -392,6 +392,20 @@ class Firebase {
       });
   }
 
+  async getFriendsPosts(setPosts) {
+    await this.getCurrentUser();
+    this.db
+      .collection('posts')
+      .where('authorId', 'in', this.currentUser.friends)
+      .orderBy('timestamp', 'desc')
+      .onSnapshot((snapshot) => {
+        const posts = snapshot.docs.map((post) => {
+          return post.data();
+        });
+        setPosts(posts);
+      });
+  }
+
   async sendFeedback(body) {
     const id = this.db.collection('feedback').doc().id;
 
