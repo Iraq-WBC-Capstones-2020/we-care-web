@@ -68,14 +68,12 @@ class Firebase {
             .then((doc) =>
               doc.get().then((doc) => {
                 this.conversationId = doc.id;
-                console.log(this.conversationId);
               })
             )
             .catch((err) => console.log(err));
         } else {
           docs.forEach((doc) => {
             this.conversationId = doc.id;
-            console.log(this.conversationId);
           });
         }
       })

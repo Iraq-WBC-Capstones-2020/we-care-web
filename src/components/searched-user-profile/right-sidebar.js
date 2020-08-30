@@ -64,9 +64,9 @@ const RightSidebar = () => {
               : 'Add Friend'}
           </button>
           <button
-            onClick={(e) => {
+            onClick={async (e) => {
               e.preventDefault();
-              firebase.createConversation(searchedUser);
+              await firebase.createConversation(searchedUser);
               history.push(`/profile/messages/${searchedUser.username}`);
             }}
             className={` ${
