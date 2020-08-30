@@ -28,6 +28,7 @@ class Firebase {
     this.listenerId = null;
     this.chatroomObj = null;
     this.unsubscribe = null;
+    this.conversationId = null;
   }
 
   async createConversation(recipient) {
@@ -38,15 +39,25 @@ class Firebase {
         `${this.auth.currentUser.uid}-${recipient.uid}`,
       ])
       .get()
-      .then(async (doc) => {
-        if (doc.empty === true) {
+      .then(async (docs) => {
+        if (docs.empty === true) {
           await this.db
             .collection('conversations')
             .add({
               users: [`${recipient.uid}-${this.auth.currentUser.uid}`],
             })
-            .then((doc) => doc.get().then((doc) => console.log(doc.data())))
+            .then((doc) =>
+              doc.get().then((doc) => {
+                this.conversationId = doc.id;
+                console.log(this.conversationId);
+              })
+            )
             .catch((err) => console.log(err));
+        } else {
+          docs.forEach((doc) => {
+            this.conversationId = doc.id;
+            console.log(this.conversationId);
+          });
         }
       })
       .catch((err) => console.log(err));
