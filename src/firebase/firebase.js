@@ -31,6 +31,21 @@ class Firebase {
     this.conversationId = null;
   }
 
+  async sendMessage(sender, recipient, body) {
+    await this.db
+      .collection('conversations')
+      .doc(`${this.conversationId}`)
+      .collection('messages')
+      .add({
+        senderId: this.auth.currentUser.uid,
+        senderAvatar: sender.profilePicture,
+        senderUsername: sender.username,
+        recipientId: recipient.uid,
+        body,
+        createdAt: this.firestore.Timestamp.now(),
+      });
+  }
+
   async createConversation(recipient) {
     await this.db
       .collection('conversations')
