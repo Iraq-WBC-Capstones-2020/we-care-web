@@ -59,7 +59,11 @@ class Firebase {
           await this.db
             .collection('conversations')
             .add({
-              users: [`${recipient.uid}-${this.auth.currentUser.uid}`],
+              users: [
+                `${recipient.uid}-${this.auth.currentUser.uid}`,
+                `${recipient.uid}`,
+                `${this.auth.currentUser.uid}`,
+              ],
             })
             .then((doc) =>
               doc.get().then((doc) => {
