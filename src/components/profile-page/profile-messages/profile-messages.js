@@ -1,12 +1,15 @@
-import React, { useEffect } from 'react';
+import React from 'react';
+import { useHistory } from 'react-router-dom';
 import Messages from './messages';
 import MessageTextarea from './message-textarea';
+import firebase from './../../../firebase/firebase';
 
 const ProfileMessages = () => {
-  useEffect(() => {
-    const textarea = document.getElementById('message-textarea');
-    textarea.scrollIntoView();
-  }, []);
+  let history = useHistory();
+
+  if (!firebase.conversationId) {
+    history.push('/profile/conversations');
+  }
 
   return (
     <>

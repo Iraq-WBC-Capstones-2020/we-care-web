@@ -6,6 +6,11 @@ const Messages = () => {
   const [messages, setMessages] = useState(null);
 
   useEffect(() => {
+    const textarea = document.getElementById('message-textarea');
+    textarea.scrollIntoView();
+  }, [messages]);
+
+  useEffect(() => {
     return firebase.db
       .collection('conversations')
       .doc(`${firebase.conversationId}`)
