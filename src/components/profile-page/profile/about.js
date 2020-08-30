@@ -53,7 +53,6 @@ const ProfileAbout = () => {
       .doc(currentUser.uid)
       .get()
       .then((doc) => {
-        console.log(doc.data());
         dispatch(setCurrentUser(doc.data()));
       });
   }

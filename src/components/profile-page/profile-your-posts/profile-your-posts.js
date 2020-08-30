@@ -14,7 +14,6 @@ const ProfileYourPosts = () => {
     try {
       firebase.getUserPosts(setPosts);
     } catch (e) {
-      console.log(e);
       alert('not working');
     }
   }
