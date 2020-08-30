@@ -1,4 +1,5 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import firebase from './../../firebase/firebase';
 import { setSearchedUser } from './../../redux/actions';
 import { FiSmile } from 'react-icons/fi';
@@ -6,6 +7,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import Moment from 'react-moment';
 import { useTranslation } from 'react-i18next';
 const RightSidebar = () => {
+  let history = useHistory();
+
   const dispatch = useDispatch();
 
   const searchedUser = useSelector((state) => state.searchedUser);
@@ -58,7 +61,13 @@ const RightSidebar = () => {
               ? "You're friends!"
               : 'Add Friend'}
           </button>
-          <button className="text-orangeP border text-center lg:border-orangeP border-darkP lg:bg-transparent mt-6 bg-darkP h-8 border-solid rounded w-32 text-sm">
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              history.push(`/profile/messages/${searchedUser.username}`);
+            }}
+            className="text-orangeP border text-center lg:border-orangeP border-darkP lg:bg-transparent mt-6 bg-darkP h-8 border-solid rounded w-32 text-sm"
+          >
             Send Message
           </button>
         </div>
