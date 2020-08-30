@@ -1,18 +1,14 @@
 import React, { useState } from 'react';
 import { FiSend } from 'react-icons/fi';
 import { useSelector } from 'react-redux';
-// import { setMessages } from '../../../redux/actions';
 import { useTranslation } from 'react-i18next';
 import firebase from './../../../firebase/firebase';
 
 const MessageTextarea = () => {
   const [messageBody, setMessageBody] = useState('');
-  // const messagesList = useSelector((state) => state.messagesList);
 
   const searchedUser = useSelector((state) => state.searchedUser);
   const currentUser = useSelector((state) => state.currentUser);
-
-  // const dispatch = useDispatch();
 
   const { t } = useTranslation();
   return (
@@ -28,17 +24,6 @@ const MessageTextarea = () => {
       <button
         onClick={() => {
           firebase.sendMessage(currentUser, searchedUser, messageBody);
-
-          // dispatch(
-          //   setMessages([
-          //     ...messagesList,
-          //     {
-          //       from: 'Bruce Lee',
-          //       to: 'Harry Davies',
-          //       body: messageInput.current.value,
-          //     },
-          //   ])
-          // );
 
           // messageInput.current.value = '';
           // messageInput.current.scrollIntoView();

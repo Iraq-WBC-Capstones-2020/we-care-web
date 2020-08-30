@@ -1,22 +1,42 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Message from './message';
-import { useSelector } from 'react-redux';
+import firebase from './../../../firebase/firebase';
 
 const Messages = () => {
-  const messagesList = useSelector((state) => state.messagesList);
+  const [messages, setMessages] = useState(null);
+
+  useEffect(() => {
+    return firebase.db
+      .collection('conversations')
+      .doc(`${firebase.conversationId}`)
+      .collection('messages')
+      .orderBy('createdAt')
+      .onSnapshot((snapshot) => {
+        const docs = [];
+        snapshot.forEach((doc) => {
+          docs.push({
+            ...doc.data(),
+            id: doc.id,
+          });
+        });
+        setMessages(docs);
+      });
+  }, []);
+
   return (
     <div className="w-5/6 lg:w-4/5 xl:w-4/6 self-center flex flex-col">
-      {messagesList.some((message) => message.from === 'Harry Davies') ? ( // ToDo: think about how you can differentiate between who the messages are from and switching
-        messagesList.map((message, index) =>
-          message.from === 'Bruce Lee' ? (
-            <Message message={message} classes={'self-end'} key={index} />
+      {messages &&
+        messages.map((message) =>
+          message.senderId === firebase.auth.currentUser.uid ? (
+            <Message message={message} classes={'self-end'} key={message.id} />
           ) : (
-            <Message message={message} classes={'self-start'} key={index} />
+            <Message
+              message={message}
+              classes={'self-start'}
+              key={message.id}
+            />
           )
-        )
-      ) : (
-        <p />
-      )}
+        )}
     </div>
   );
 };
