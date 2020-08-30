@@ -51,7 +51,9 @@ const RightSidebar = () => {
                 });
               }
             }}
-            className={`text-orangeP border text-center lg:border-orangeP border-darkP lg:bg-transparent mt-10 bg-darkP h-8 border-solid rounded w-32 text-sm ${
+            className={`${
+              searchedUser.uid === firebase.auth.currentUser.uid && 'hidden'
+            } text-orangeP border text-center lg:border-orangeP border-darkP lg:bg-transparent mt-10 bg-darkP h-8 border-solid rounded w-32 text-sm ${
               searchedUser.friends.includes(firebase.auth.currentUser.uid)
                 ? 'cursor-default focus:outline-none'
                 : 'cursor-pointer'
@@ -66,7 +68,9 @@ const RightSidebar = () => {
               e.preventDefault();
               history.push(`/profile/messages/${searchedUser.username}`);
             }}
-            className="text-orangeP border text-center lg:border-orangeP border-darkP lg:bg-transparent mt-6 bg-darkP h-8 border-solid rounded w-32 text-sm"
+            className={` ${
+              searchedUser.uid === firebase.auth.currentUser.uid && 'hidden'
+            } text-orangeP border text-center lg:border-orangeP border-darkP lg:bg-transparent mt-6 bg-darkP h-8 border-solid rounded w-32 text-sm`}
           >
             Send Message
           </button>
