@@ -20,7 +20,9 @@ const Message = ({ message, classes }) => {
             {message.senderUsername}
           </h2>
           <p className="md:text-sm text-xs text-orangeP">
-            {moment(message.createdAt.toDate()).format('LT')}
+            {`${moment(message.createdAt.toDate()).format('LT')} - ${moment(
+              message.createdAt.toDate()
+            ).format('MMMM D, YYYY')}`}
           </p>
         </div>
       </div>
