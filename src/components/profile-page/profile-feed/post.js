@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { FaHeart } from 'react-icons/fa';
-import { MdReply } from 'react-icons/md';
+// import { MdReply } from 'react-icons/md';
 import PropTypes from 'prop-types';
-import { useTranslation } from 'react-i18next';
+// import { useTranslation } from 'react-i18next';
 import Moment from 'react-moment';
 import firebase from '../../../firebase/firebase';
 
 const Post = ({ post }) => {
-  const { t } = useTranslation();
+  // const { t } = useTranslation();
 
   const [liked, setLiked] = useState(false);
 
