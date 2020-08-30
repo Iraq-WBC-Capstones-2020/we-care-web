@@ -31,6 +31,23 @@ class Firebase {
     this.conversationId = null;
   }
 
+  async getUserConversations() {
+    await this.db
+      .collection('conversations')
+      .where('users', 'array-contains', `${this.auth.currentUser.uid}`)
+      .onSnapshot((snapshot) => {
+        const docs = [];
+        snapshot.forEach((doc) => {
+          docs.push({
+            ...doc.data(),
+            id: doc.id,
+          });
+        });
+        console.log(docs);
+      })
+      .catch((err) => console.log(err));
+  }
+
   async sendMessage(sender, recipient, body) {
     await this.db
       .collection('conversations')
