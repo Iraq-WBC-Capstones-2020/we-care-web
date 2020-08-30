@@ -62,7 +62,7 @@ const SignUp = () => {
                 ></img>
               </div>
               <div className="bg-orangeP rounded-lg xl:w-2/6 lg:w-1/2 md:w-8/12 w-11/12 flex justify-center py-10 xl:my-0 my-5 px-10 mx-auto">
-                <form className="w-full md:w-3/4 lg:w-2/3 flex flex-col justify-evenly items-center">
+                <div className="w-full md:w-3/4 lg:w-2/3 flex flex-col justify-evenly items-center">
                   <h2 className="text-darkP text-center text-4xl font-sans font-bold title-font mb-5">
                     Sign Up
                   </h2>
@@ -156,7 +156,7 @@ const SignUp = () => {
                       Sign In.
                     </Link>
                   </p>
-                </form>
+                </div>
               </div>
             </div>
           </section>
