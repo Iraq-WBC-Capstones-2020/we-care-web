@@ -9,7 +9,7 @@ import firebase from '../../firebase/firebase';
 
 export default function Footer() {
   const { t } = useTranslation();
-  const postInput = useRef('');
+  const feedbackInput = useRef('');
 
   async function addFeedback(body) {
     try {
@@ -42,7 +42,7 @@ export default function Footer() {
                   {t('Your Feedback')}
                 </h2>
                 <textarea
-                  ref={postInput}
+                  ref={feedbackInput}
                   className="w-40 sm:w-auto bg-beige rounded xl:mr-4 lg:mr-0 sm:mr-4 mr-2 border border-gray-400 focus:outline-none focus:border-darkP text-sm py-2 px-4 resize-none"
                   placeholder={t('Send Us Your Feedback')}
                   type="text"
@@ -51,9 +51,9 @@ export default function Footer() {
               <div>
                 <button
                   onClick={() => {
-                    if (postInput.current.value !== '') {
-                      addFeedback(postInput.current.value);
-                      postInput.current.value = '';
+                    if (feedbackInput.current.value !== '') {
+                      addFeedback(feedbackInput.current.value);
+                      feedbackInput.current.value = '';
                     } else {
                       alert('the text is empty');
                     }
