@@ -30,6 +30,28 @@ class Firebase {
     this.unsubscribe = null;
   }
 
+  async createConversation(recipient) {
+    await this.db
+      .collection('conversations')
+      .where('users', 'array-contains-any', [
+        `${recipient.uid}-${this.auth.currentUser.uid}`,
+        `${this.auth.currentUser.uid}-${recipient.uid}`,
+      ])
+      .get()
+      .then(async (doc) => {
+        if (doc.empty === true) {
+          await this.db
+            .collection('conversations')
+            .add({
+              users: [`${recipient.uid}-${this.auth.currentUser.uid}`],
+            })
+            .then((doc) => doc.get().then((doc) => console.log(doc.data())))
+            .catch((err) => console.log(err));
+        }
+      })
+      .catch((err) => console.log(err));
+  }
+
   async removeFriend(user, friend) {
     let currentUserfriends = [...user.friends];
 

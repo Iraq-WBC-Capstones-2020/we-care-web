@@ -66,6 +66,7 @@ const RightSidebar = () => {
           <button
             onClick={(e) => {
               e.preventDefault();
+              firebase.createConversation(searchedUser);
               history.push(`/profile/messages/${searchedUser.username}`);
             }}
             className={` ${
