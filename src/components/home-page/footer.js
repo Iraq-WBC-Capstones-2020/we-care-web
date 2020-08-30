@@ -58,7 +58,7 @@ export default function Footer() {
                       alert('the text is empty');
                     }
                   }}
-                  className="lg:mt-2 xl:mt-0 flex-shrink-0 text-darkP bg-orangeP py-2 px-6 rounded-lg font-medium ml-auto mr-2"
+                  className="md:mt-5 flex-shrink-0 text-darkP bg-orangeP py-2 px-6 rounded-lg font-medium ml-2 mr-2"
                 >
                   {t('Submit')}
                 </button>
