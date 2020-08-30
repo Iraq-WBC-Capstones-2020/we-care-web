@@ -43,7 +43,7 @@ export default function Footer() {
                 </h2>
                 <textarea
                   ref={feedbackInput}
-                  className="w-40 sm:w-auto bg-beige rounded xl:mr-4 lg:mr-0 sm:mr-4 mr-2 border border-gray-400 focus:outline-none focus:border-darkP text-sm py-2 px-4 resize-none"
+                  className="w-40 sm:w-auto bg-beige rounded sm:mr-4 mr-2 border border-gray-400 focus:outline-none focus:border-darkP text-sm py-2 px-4 resize-none"
                   placeholder={t('Send Us Your Feedback')}
                   type="text"
                 ></textarea>
@@ -58,7 +58,7 @@ export default function Footer() {
                       alert('the text is empty');
                     }
                   }}
-                  className="md:mt-5 flex-shrink-0 text-darkP bg-orangeP py-2 px-6 rounded-lg font-medium ml-2 mr-2"
+                  className="md:mt-5 flex-shrink-0 text-darkP bg-orangeP py-2 px-6 rounded-lg font-medium"
                 >
                   {t('Submit')}
                 </button>
