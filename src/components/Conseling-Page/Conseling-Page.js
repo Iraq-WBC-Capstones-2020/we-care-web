@@ -28,7 +28,7 @@ export default function ConselingPage() {
   }
 
   return therapistsArr ? (
-    <div className="h-screen w-screen overflow-hidden">
+    <div className="h-full w-full overflow-hidden">
       <Navbar />
       <section className="h-full w-full flex-col items-center justify-center bg-beige overflow-hidden text-white overflow-y-auto overflow-x-hidden pb-32">
         {therapistsArr.map((therapist) => (
