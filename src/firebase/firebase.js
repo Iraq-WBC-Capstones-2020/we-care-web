@@ -478,9 +478,10 @@ class Firebase {
 
   async getFriendsPosts(setPosts) {
     await this.getCurrentUser();
+    const feedList = [...this.currentUser.friends, this.currentUser.uid];
     this.db
       .collection('posts')
-      .where('authorId', 'in', this.currentUser.friends)
+      .where('authorId', 'in', feedList)
       .orderBy('timestamp', 'desc')
       .onSnapshot((snapshot) => {
         const posts = snapshot.docs.map((post) => {
