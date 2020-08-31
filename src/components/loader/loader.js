@@ -1,5 +1,6 @@
 import React from 'react';
 import './loader.css';
+import PropTypes from 'prop-types';
 
 const Loader = ({ classes }) => {
   console.log(classes);
@@ -22,3 +23,7 @@ const Loader = ({ classes }) => {
 };
 
 export default Loader;
+
+Loader.propTypes = {
+  classes: PropTypes.string,
+};
