@@ -28,6 +28,88 @@ class Firebase {
     this.listenerId = null;
     this.chatroomObj = null;
     this.unsubscribe = null;
+    this.conversationId = null;
+  }
+
+  async getUserConversations(setUsersDocs) {
+    const conversations = [];
+    const otherUsersIds = [];
+    const usersDocs = [];
+
+    await this.db
+      .collection('conversations')
+      .where('users', 'array-contains', `${this.auth.currentUser.uid}`)
+      .onSnapshot(async (snapshot) => {
+        snapshot.forEach((doc) => {
+          conversations.push({
+            ...doc.data(),
+            id: doc.id,
+          });
+        });
+
+        conversations.forEach((conversation) =>
+          otherUsersIds.push(
+            conversation.users.filter(
+              (user) => !user.includes(`${this.auth.currentUser.uid}`)
+            )[0]
+          )
+        );
+
+        for (let uid of otherUsersIds) {
+          await this.getUser(uid).then((doc) => usersDocs.push(doc));
+        }
+
+        setUsersDocs(usersDocs);
+      });
+  }
+
+  async sendMessage(sender, recipient, body) {
+    await this.db
+      .collection('conversations')
+      .doc(`${this.conversationId}`)
+      .collection('messages')
+      .add({
+        senderId: this.auth.currentUser.uid,
+        senderAvatar: sender.profilePicture,
+        senderUsername: sender.username,
+        recipientId: recipient.uid,
+        body,
+        createdAt: this.firestore.Timestamp.now(),
+      });
+  }
+
+  async createConversation(recipient) {
+    await this.db
+      .collection('conversations')
+      .where('users', 'array-contains-any', [
+        `${recipient.uid}-${this.auth.currentUser.uid}`,
+        `${this.auth.currentUser.uid}-${recipient.uid}`,
+      ])
+      .get()
+      .then(async (docs) => {
+        if (docs.empty === true) {
+          await this.db
+            .collection('conversations')
+            .add({
+              users: [
+                `${recipient.uid}-${this.auth.currentUser.uid}`,
+                `${recipient.uid}`,
+                `${this.auth.currentUser.uid}`,
+              ],
+            })
+            .then((doc) =>
+              doc.get().then((doc) => {
+                this.conversationId = doc.id;
+              })
+            )
+            .catch((err) => console.log(err));
+        } else {
+          docs.forEach((doc) => {
+            this.conversationId = doc.id;
+          });
+        }
+      })
+      .catch((err) => console.log(err));
   }
 
   async removeFriend(user, friend) {
@@ -260,7 +342,8 @@ class Firebase {
     therapistBio,
     cost,
     certificate,
-    calendlyLink
+    calendlyLink,
+    fullName
   ) {
     if (!this.auth.currentUser) {
       return alert('not authorized');
@@ -291,6 +374,7 @@ class Firebase {
           cost,
           certificate,
           calendlyLink,
+          fullName,
         }),
       });
   }

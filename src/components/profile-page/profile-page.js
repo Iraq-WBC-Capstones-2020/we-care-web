@@ -15,7 +15,9 @@ import { setCurrentUser } from './../../redux/actions';
 
 const ProfilePage = () => {
   let history = useHistory();
+
   const dispatch = useDispatch();
+
   if (!firebase.getCurrentUsername()) {
     alert('Please login first');
     history.push('/login');
@@ -38,10 +40,10 @@ const ProfilePage = () => {
           <Route path="/profile/journals">
             <ProfileJournal />
           </Route>
-          <Route exact path="/profile/messages">
+          <Route exact path="/profile/conversations">
             <AllMessages />
           </Route>
-          <Route exact path="/profile/messages/HarryDavies">
+          <Route path="/profile/messages/">
             <ProfileMessages />
           </Route>
           <Route exact path="/profile/your-posts">

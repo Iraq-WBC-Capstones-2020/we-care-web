@@ -1,6 +1,4 @@
 import React from 'react';
-import profilePic from '../imgs/profile.svg';
-import profilePic2 from '../imgs/profile2.svg';
 import PropTypes from 'prop-types';
 import moment from 'moment';
 
@@ -12,15 +10,19 @@ const Message = ({ message, classes }) => {
       <div className="flex mb-3">
         <div className="mr-4">
           <img
-            className="rounded-full w-12"
-            src={message.from === 'Bruce Lee' ? profilePic : profilePic2}
+            className="rounded-full w-12 h-12 object-cover"
+            src={message.senderAvatar}
             alt="Profile"
           />
         </div>
         <div>
-          <h2 className="md:text-base text-sm font-semibold">{message.from}</h2>
+          <h2 className="md:text-base text-sm font-semibold">
+            {message.senderUsername}
+          </h2>
           <p className="md:text-sm text-xs text-orangeP">
-            {moment().startOf('hour').fromNow()}
+            {`${moment(message.createdAt.toDate()).format('LT')} - ${moment(
+              message.createdAt.toDate()
+            ).format('MMMM D, YYYY')}`}
           </p>
         </div>
       </div>

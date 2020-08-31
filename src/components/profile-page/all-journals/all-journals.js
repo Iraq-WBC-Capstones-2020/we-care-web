@@ -84,7 +84,7 @@ const AllJournals = () => {
       </div>
     </div>
   ) : (
-    <Loader />
+    <Loader classes={'w-full h-full'} />
   );
 };
 

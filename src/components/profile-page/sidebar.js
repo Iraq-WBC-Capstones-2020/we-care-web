@@ -63,7 +63,7 @@ const ProfileSidebar = () => {
             }`}
           >
             <Link
-              to="/profile/messages"
+              to="/profile/conversations"
               className="flex lg:justify-start justify-center items-center"
               onClick={() => {
                 setSection('messages');

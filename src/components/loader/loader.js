@@ -1,9 +1,14 @@
 import React from 'react';
 import './loader.css';
+import PropTypes from 'prop-types';
 
-const Loader = () => {
+const Loader = ({ classes }) => {
   return (
-    <div className="h-screen w-screen bg-beige flex justify-center items-center">
+    <div
+      className={`${
+        classes ? classes : 'h-screen w-screen'
+      } bg-beige flex justify-center items-center`}
+    >
       <div className="sk-chase">
         <div className="sk-chase-dot"></div>
         <div className="sk-chase-dot"></div>
@@ -17,3 +22,7 @@ const Loader = () => {
 };
 
 export default Loader;
+
+Loader.propTypes = {
+  classes: PropTypes.string,
+};
