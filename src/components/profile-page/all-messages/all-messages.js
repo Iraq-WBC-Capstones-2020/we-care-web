@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import firebase from './../../../firebase/firebase';
+import { setSearchedUser } from './../../../redux/actions';
 import Loader from './../../loader/loader';
 
 const AllMessages = () => {
   let history = useHistory();
+
+  const dispatch = useDispatch();
 
   const [usersDocs, setUsersDocs] = useState(null);
 
@@ -32,6 +36,7 @@ const AllMessages = () => {
               onClick={async (e) => {
                 e.preventDefault();
                 await firebase.createConversation(user);
+                dispatch(setSearchedUser(user));
                 history.push(`/profile/messages/${user.username}`);
               }}
             >
