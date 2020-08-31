@@ -5,6 +5,7 @@ import { setSearchedUser, setCurrentUser } from './../../redux/actions';
 import firebase from './../../firebase/firebase';
 import friendship from './img/friendship.svg';
 import Loader from './../loader/loader';
+import PropTypes from 'prop-types';
 import './friends-list.css';
 
 const ProfileFriends = ({ user, profilePage }) => {
@@ -93,3 +94,8 @@ const ProfileFriends = ({ user, profilePage }) => {
 };
 
 export default ProfileFriends;
+
+ProfileFriends.propTypes = {
+  user: PropTypes.object,
+  profilePage: PropTypes.bool,
+};
