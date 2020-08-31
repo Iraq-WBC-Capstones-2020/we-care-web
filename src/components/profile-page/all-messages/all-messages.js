@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import firebase from './../../../firebase/firebase';
 import Loader from './../../loader/loader';
 
 const AllMessages = () => {
+  let history = useHistory();
+
   const [usersDocs, setUsersDocs] = useState(null);
 
   const { t } = useTranslation();
@@ -15,8 +18,6 @@ const AllMessages = () => {
     getConverssations();
   }, []);
 
-  console.log(usersDocs);
-
   return usersDocs ? (
     <div className="w-full h-full flex flex-col justify-center items-center">
       <div className="overflow-y-auto w-11/12 md:w-9/12 bg-white h-full lg:w-1/2 rounded-md text-darkP flex flex-col justify-start items-center p-10 my-10">
@@ -27,7 +28,12 @@ const AllMessages = () => {
           {usersDocs.map((user) => (
             <li
               key={user.uid}
-              className="border-b-2 border-grey py-2 w-full flex justify-center items-center hover:text-orangeP hover:border-orangeP"
+              className="border-b-2 border-grey py-2 w-full flex justify-center items-center hover:text-orangeP hover:border-orangeP cursor-pointer"
+              onClick={async (e) => {
+                e.preventDefault();
+                await firebase.createConversation(user);
+                history.push(`/profile/messages/${user.username}`);
+              }}
             >
               {user.username}
             </li>
