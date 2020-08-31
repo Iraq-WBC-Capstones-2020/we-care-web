@@ -215,7 +215,7 @@ function Form({ username, email, password }) {
     try {
       await firebase.register(username, email, password);
       await firebase.addUser(
-        fullName,
+        username,
         true,
         email,
         profilePicture,
@@ -223,7 +223,8 @@ function Form({ username, email, password }) {
         therapistBio,
         cost,
         certificate,
-        calendlyLink
+        calendlyLink,
+        fullName
       );
       history.push('/profile');
     } catch (error) {
