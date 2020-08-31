@@ -30,7 +30,6 @@ const RightSidebar = () => {
       .doc(currentUser.uid)
       .get()
       .then((doc) => {
-        console.log(doc.data());
         dispatch(setCurrentUser(doc.data()));
       });
   }
@@ -81,7 +80,6 @@ const RightSidebar = () => {
                 await firebase
                   .downloadFile(`profile-images/${currentUser.email}/image`)
                   .then((url) => {
-                    console.log(url);
                     setImageAsUrl(url);
                   });
               }}

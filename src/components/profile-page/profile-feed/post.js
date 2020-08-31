@@ -1,35 +1,73 @@
-import React from 'react';
-import profilePic from '../imgs/profile.svg';
+import React, { useState } from 'react';
 import { FaHeart } from 'react-icons/fa';
-import { MdReply } from 'react-icons/md';
+// import { MdReply } from 'react-icons/md';
 import PropTypes from 'prop-types';
-import moment from 'moment';
-import { useTranslation } from 'react-i18next';
+// import { useTranslation } from 'react-i18next';
+import Moment from 'react-moment';
+import firebase from '../../../firebase/firebase';
 
 const Post = ({ post }) => {
-  const { t } = useTranslation();
+  // const { t } = useTranslation();
+
+  const [liked, setLiked] = useState(false);
+
+  async function addLike() {
+    try {
+      await firebase.addLike(post);
+    } catch {
+      alert('not working');
+    }
+  }
+
+  async function removeLike() {
+    try {
+      await firebase.removeLike(post);
+    } catch {
+      alert('not working');
+    }
+  }
   return (
     <div className="bg-white w-11/12 md:w-4/5 lg:w-1/2 rounded-md text-darkP flex flex-col md:p-8 p-5 my-8">
       <div className="flex">
         <div className="mr-4">
-          <img className="rounded-full w-12" src={profilePic} alt="Profile" />
+          <img
+            className="rounded-full w-12"
+            src={post.authorAvatar}
+            alt="Profile"
+          />
         </div>
         <div>
-          <h2 className="text-base font-semibold">Charles Davies</h2>
+          <h2 className="text-base font-semibold">{post.authorName}</h2>
           <p className="text-sm text-orangeP">
-            {moment().startOf('hour').fromNow()}
+            <Moment fromNow>{post.createdAt}</Moment>
           </p>
         </div>
       </div>
-      <div className="my-4 text-sm">{post.body}</div>
+      <div className="my-4 text-sm">{post.text}</div>
       <div className="flex items-center justify-end text-xs font-semibold">
-        <FaHeart className="mr-3" />
-        <span>56</span>
-        <MdReply className="ml-6 mr-2 text-xl" />
-        <p className="mr-6">{t('Reply')}</p>
+        <div
+          className="flex items-center justify-end text-xs font-semibold"
+          onClick={() => {
+            if (liked) {
+              removeLike();
+              setLiked(false);
+            } else {
+              addLike();
+              setLiked(true);
+            }
+          }}
+        >
+          <FaHeart
+            className={`mr-1 ${
+              liked ? 'text-red-600' : 'text-orangeP'
+            }  mb-1 cursor-pointer`}
+          />
+          <span className="cursor-pointer">{post.likes}</span>
+        </div>
+        {/* <p className="mr-6">{t('Reply')}</p>
         <p>
           {t('Replies')} (<span>2</span>)
-        </p>
+        </p> */}
       </div>
     </div>
   );

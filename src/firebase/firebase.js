@@ -464,7 +464,7 @@ class Firebase {
   }
 
   async getUserPosts(setPosts, uid) {
-    await this.db
+    this.db
       .collection('posts')
       .where('authorId', '==', uid ? uid : this.getCurrentUid())
       .orderBy('timestamp', 'desc')
@@ -474,6 +474,49 @@ class Firebase {
         });
         setPosts(posts);
       });
+  }
+
+  async getFriendsPosts(setPosts) {
+    await this.getCurrentUser();
+    const feedList = [...this.currentUser.friends, this.currentUser.uid];
+    this.db
+      .collection('posts')
+      .where('authorId', 'in', feedList)
+      .orderBy('timestamp', 'desc')
+      .onSnapshot((snapshot) => {
+        const posts = snapshot.docs.map((post) => {
+          return post.data();
+        });
+        setPosts(posts);
+      });
+  }
+
+  async sendFeedback(body) {
+    const id = this.db.collection('feedback').doc().id;
+    await this.db
+      .collection('feedback')
+      .doc(id)
+      .set({
+        createdAt: new Date().toLocaleString('en-US'),
+        timestamp: app.firestore.FieldValue.serverTimestamp(),
+        text: body,
+      })
+      .catch((err) => console.log(err));
+  }
+
+  async checkUsername(username) {
+    let notExists = true;
+    await this.db
+      .collection('users')
+      .where('username', '==', username)
+      .get()
+      .then((doc) => {
+        notExists = doc.empty;
+      })
+      .catch((err) => {
+        console.log('Error getting document', err);
+      });
+    return notExists;
   }
 }
 

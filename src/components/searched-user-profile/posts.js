@@ -18,7 +18,6 @@ const ProfilePosts = () => {
     try {
       firebase.getUserPosts(setPosts, searchedUser.uid);
     } catch (e) {
-      console.log(e);
       alert('not working');
     }
   }
