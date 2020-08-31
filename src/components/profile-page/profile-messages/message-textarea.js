@@ -21,6 +21,14 @@ const MessageTextarea = () => {
     <div className="w-5/6 lg:w-4/5 xl:w-4/6 text-darkP relative my-10 self-center">
       <h2 className="md:text-lg font-semibold">{t('Leave a message')}</h2>
       <textarea
+        onKeyDown={(key) => {
+          if (key.keyCode === 13) {
+            firebase.sendMessage(currentUser, searchedUser, messageBody);
+
+            setMessageBody('');
+            messageInput.current.scrollIntoView();
+          }
+        }}
         ref={messageInput}
         value={messageBody}
         onChange={(e) => setMessageBody(e.target.value)}
