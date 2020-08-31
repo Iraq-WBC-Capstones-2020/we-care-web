@@ -1,8 +1,21 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import firebase from './../../../firebase/firebase';
 
 const AllMessages = () => {
+  const [usersDocs, setUsersDocs] = useState(null);
+
   const { t } = useTranslation();
+
+  const getConverssations = async () =>
+    await firebase.getUserConversations(setUsersDocs);
+
+  useEffect(() => {
+    getConverssations();
+  }, []);
+
+  console.log(usersDocs);
+
   return (
     <div className="w-full h-full flex flex-col justify-center items-center">
       <div className="overflow-y-auto w-11/12 md:w-9/12 bg-white h-full lg:w-1/2 rounded-md text-darkP flex flex-col justify-start items-center p-10 my-10">

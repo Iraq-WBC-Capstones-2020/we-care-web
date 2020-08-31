@@ -31,21 +31,36 @@ class Firebase {
     this.conversationId = null;
   }
 
-  async getUserConversations() {
+  async getUserConversations(setUsersDocs) {
+    const conversations = [];
+    const otherUsersIds = [];
+    const usersDocs = [];
+
     await this.db
       .collection('conversations')
       .where('users', 'array-contains', `${this.auth.currentUser.uid}`)
-      .onSnapshot((snapshot) => {
-        const docs = [];
+      .onSnapshot(async (snapshot) => {
         snapshot.forEach((doc) => {
-          docs.push({
+          conversations.push({
             ...doc.data(),
             id: doc.id,
           });
         });
-        console.log(docs);
-      })
-      .catch((err) => console.log(err));
+
+        conversations.forEach((conversation) =>
+          otherUsersIds.push(
+            conversation.users.filter(
+              (user) => !user.includes(`${this.auth.currentUser.uid}`)
+            )[0]
+          )
+        );
+
+        for (let uid of otherUsersIds) {
+          await this.getUser(uid).then((doc) => usersDocs.push(doc));
+        }
+
+        setUsersDocs(usersDocs);
+      });
   }
 
   async sendMessage(sender, recipient, body) {
