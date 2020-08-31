@@ -3,7 +3,6 @@ import './loader.css';
 import PropTypes from 'prop-types';
 
 const Loader = ({ classes }) => {
-  console.log(classes);
   return (
     <div
       className={`${
