@@ -493,7 +493,6 @@ class Firebase {
 
   async sendFeedback(body) {
     const id = this.db.collection('feedback').doc().id;
-
     await this.db
       .collection('feedback')
       .doc(id)
@@ -503,6 +502,21 @@ class Firebase {
         text: body,
       })
       .catch((err) => console.log(err));
+  }
+
+  async checkUsername(username) {
+    let notExists = true;
+    await this.db
+      .collection('users')
+      .where('username', '==', username)
+      .get()
+      .then((doc) => {
+        notExists = doc.empty;
+      })
+      .catch((err) => {
+        console.log('Error getting document', err);
+      });
+    return notExists;
   }
 }
 

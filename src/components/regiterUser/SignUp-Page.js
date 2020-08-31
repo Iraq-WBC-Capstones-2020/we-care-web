@@ -167,9 +167,13 @@ const SignUp = () => {
 
   async function onRegister() {
     try {
-      await firebase.register(username, email, password);
-      await firebase.addUser(username, isTherapist, email);
-      history.push('/profile');
+      if (await firebase.checkUsername(username)) {
+        await firebase.register(username, email, password);
+        await firebase.addUser(username, isTherapist, email);
+        history.push('/profile');
+      } else {
+        alert('username is in use');
+      }
     } catch (error) {
       alert(error.message);
     }
