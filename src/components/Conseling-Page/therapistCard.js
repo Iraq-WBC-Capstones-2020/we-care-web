@@ -16,7 +16,7 @@ const TherapistCard = ({ therapist }) => {
       <div className="flex md:flex-row flex-col justify-between items-center w-full xl:px-10 lg:pl-10 md:pl-8">
         <div className="flex flex-col items-start py-6 text-base md:h-full md:w-auto w-11/12 md:justify-between md:py-2 md:pr-6">
           <h2 className="text-beige text-xl md:m-0 mb-8">
-            {therapist.username}
+            {therapist.fullName}
           </h2>
           <div className="md:m-0 mb-8">
             <h3 className="text-orangeP text-lg mb-1">{t('Bio:')}</h3>

@@ -4,6 +4,8 @@ import { useDispatch } from 'react-redux';
 import { setSearchedUser, setCurrentUser } from './../../redux/actions';
 import firebase from './../../firebase/firebase';
 import friendship from './img/friendship.svg';
+import Loader from './../loader/loader';
+import PropTypes from 'prop-types';
 import './friends-list.css';
 
 const ProfileFriends = ({ user, profilePage }) => {
@@ -18,10 +20,8 @@ const ProfileFriends = ({ user, profilePage }) => {
       firebase.getAllFriends(user.friends).then((data) => setFriends(data));
   }, [user]);
 
-  return (
-    user &&
-    friends &&
-    (friends.length !== 0 ? (
+  return user && friends ? (
+    friends.length !== 0 ? (
       <div
         className={`bg-white w-11/12 md:w-3/5 xl:w-5/12 rounded-md text-darkP flex flex-col p-8 text-center friends-list-container`}
       >
@@ -87,8 +87,15 @@ const ProfileFriends = ({ user, profilePage }) => {
         </h2>
         <img className="w-4/5" src={friendship} alt="no friends"></img>
       </div>
-    ))
+    )
+  ) : (
+    <Loader classes={'w-full h-full'} />
   );
 };
 
 export default ProfileFriends;
+
+ProfileFriends.propTypes = {
+  user: PropTypes.object,
+  profilePage: PropTypes.bool,
+};

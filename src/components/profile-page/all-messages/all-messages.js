@@ -1,42 +1,48 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import firebase from './../../../firebase/firebase';
+import Loader from './../../loader/loader';
 
 const AllMessages = () => {
+  let history = useHistory();
+
+  const [usersDocs, setUsersDocs] = useState(null);
+
   const { t } = useTranslation();
-  return (
+
+  const getConverssations = async () =>
+    await firebase.getUserConversations(setUsersDocs);
+
+  useEffect(() => {
+    getConverssations();
+  }, []);
+
+  return usersDocs ? (
     <div className="w-full h-full flex flex-col justify-center items-center">
       <div className="overflow-y-auto w-11/12 md:w-9/12 bg-white h-full lg:w-1/2 rounded-md text-darkP flex flex-col justify-start items-center p-10 my-10">
         <h2 className="md:text-2xl text-xl font-semibold mb-10">
           {t('Messages')}
         </h2>
         <ul className="w-full flex flex-col justify-center items-center md:text-base text-sm">
-          <li className="border-b-2 border-grey py-2 w-full flex justify-center items-center hover:text-orangeP hover:border-orangeP">
-            Leena Elliana
-          </li>
-          <li className="border-b-2 border-grey py-2 w-full flex justify-center items-center hover:text-orangeP hover:border-orangeP">
-            Odin Valdemar
-          </li>
-          <li className="border-b-2 border-grey py-2 w-full flex justify-center items-center hover:text-orangeP hover:border-orangeP">
-            <Link
-              to="/profile/messages/HarryDavies"
-              className="flex w-full justify-center items-center"
+          {usersDocs.map((user) => (
+            <li
+              key={user.uid}
+              className="border-b-2 border-grey py-2 w-full flex justify-center items-center hover:text-orangeP hover:border-orangeP cursor-pointer"
+              onClick={async (e) => {
+                e.preventDefault();
+                await firebase.createConversation(user);
+                history.push(`/profile/messages/${user.username}`);
+              }}
             >
-              Harry Davies
-              <span className="w-6 h-6 bg-darkP text-white rounded-full flex justify-center items-center ml-3">
-                3
-              </span>
-            </Link>
-          </li>
-          <li className="border-b-2 border-grey py-2 w-full flex justify-center items-center hover:text-orangeP hover:border-orangeP">
-            Davis Eugene
-          </li>
-          <li className="border-grey py-2 w-full flex justify-center items-center hover:text-orangeP hover:border-orangeP">
-            Rositsa Boyana
-          </li>
+              {user.username}
+            </li>
+          ))}
         </ul>
       </div>
     </div>
+  ) : (
+    <Loader classes={'w-full h-full'} />
   );
 };
 
